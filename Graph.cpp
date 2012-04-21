@@ -25,26 +25,68 @@ Graph::~Graph()
 	}
 }
 
-void Graph::readAdjacencyListFromFile(const char* filename)
+void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat fmt)
 {
+	std::cout << "Loading file...\n";
 	adjacencyList.clear();
 	std::ifstream file;
-	file.open("48US.txt", std::ios::in);
+	file.open(filename, std::ios::in);
 	if (file.is_open())
 	{
-		while (file.good())
+		if (fmt == SINGLE_LINE_CSV)
 		{
-			std::string line; 
-			getline(file,line);
-			std::vector<std::string> tokens = StringUtils::split(line, ',');
-			//create adjacency list entry
-			std::pair< std::string, std::vector<std::string> > pair;
-			pair.first = tokens[0];
-			tokens.erase(tokens.begin());
-			pair.second = tokens;
-			adjacencyList.push_back(pair);
+			while (file.good())
+			{
+				std::string line; 
+				getline(file,line);
+				std::vector<std::string> tokens = StringUtils::split(line, ',');
+				//create adjacency list entry
+				std::pair< std::string, std::vector<std::string> > entry;
+				entry.first = tokens[0];
+				tokens.erase(tokens.begin());
+				entry.second = tokens;
+				adjacencyList.push_back(entry);
+			}
+		}
+		else if (fmt == MULTI_LINE_TAB_DELIMITED_US_CENSUS)
+		{
+			int lineNum = 0;
+			std::pair< std::string, std::vector<std::string> > entry;
+			while (file.good())
+			{
+				std::string line;
+				getline(file,line);
+				++lineNum;
+				std::vector<std::string> tokens = StringUtils::split(line, '\t');
+				if (tokens.size() == 4)
+				{
+					if (tokens[0] != "")
+					{
+						if (!entry.first.empty())
+						{
+							adjacencyList.push_back(entry);
+							entry.second.clear();
+						}
+						entry.first = tokens[0];
+					}
+					else
+					{
+						entry.second.push_back(tokens[2]);
+					}
+				}
+				else
+				{
+					if (line != "")
+					{
+						std::cerr << "Parser Error on line " << lineNum << ".\n";
+						std::cerr << "Expected 4 columns but found " << tokens.size() << std::endl;
+					}
+				}
+			}
 		}
 		file.close();
+		std::cout << "Done. " << adjacencyList.size() << " entries loaded from file.\n";
+		std::cout << "Generating nodes...\n";
 
 		//create a node for each adjacency list entry
 		AdjacencyList::const_iterator it;
@@ -66,6 +108,7 @@ void Graph::readAdjacencyListFromFile(const char* filename)
 				node->adjacentNodes.push_back(adjacentNode);
 			}
 		}
+		std::cout << "Done.\n";
 	}
 	else
 	{

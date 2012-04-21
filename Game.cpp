@@ -18,11 +18,14 @@ Game::Game() :
 	printNeighbors(true)
 {
 	srand((unsigned int)time(NULL));
-	graph.readAdjacencyListFromFile("48US.txt");
+	graph.readAdjacencyListFromFile("48US.txt", SINGLE_LINE_CSV);
+	//graph.readAdjacencyListFromFile(
+	//	"US_county_adjacency_2010.txt", 
+	//	MULTI_LINE_TAB_DELIMITED_US_CENSUS);
 	chooseStartNode();
 	currentNode = startNode;
 	chooseTargetNode();
-	optimalPath = graph.breadthFirstSearch(startNode, targetNode);
+	//optimalPath = graph.breadthFirstSearch(startNode, targetNode);
 	mainLoop();
 }
 
@@ -74,7 +77,7 @@ void Game::mainLoop()
 		printStats(false);
 		std::string dest;
 		std::cout << "Enter Destination: ";
-		std::cin >> dest;
+		getline(std::cin, dest);
 		std::vector<std::string>::const_iterator it;
 		StringUtils::CaseInsensitiveComparator comp(dest);
 		while ((it = std::find_if(neighbors.begin(), neighbors.end(), comp)) == neighbors.end())

@@ -25,7 +25,7 @@ Game::Game() :
 	chooseStartNode();
 	currentNode = startNode;
 	chooseTargetNode();
-	//optimalPath = graph.breadthFirstSearch(startNode, targetNode);
+	optimalPath = graph.breadthFirstSearch(startNode, targetNode);
 	mainLoop();
 }
 
@@ -52,8 +52,8 @@ void Game::printStats(bool final)
 {
 	if (printNeighbors)
 	{
-		std::cout << "Neighbors: ";
-		graph.printNeighbors(currentNode, " ");
+		std::cout << "Neighbors:\n";
+		graph.printNeighbors(currentNode, "\n");
 		std::cout << std::endl;
 	}
 	std::cout << "Target: " << targetNode << std::endl;

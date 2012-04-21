@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 #ifndef DEBUG
 #define DEBUG 0
@@ -43,6 +44,7 @@ public:
 			BLACK, WHITE, RED, GREEN, BLUE
 		};
 		Node();
+		bool operator<(const Node &other) const;
 		std::string value;
 		std::vector<Node*> adjacentNodes;
 		Color color; //used in various ways by different searching and traversal algorithms
@@ -96,9 +98,15 @@ public:
 	std::vector<std::string> breadthFirstSearch(std::string startNodeValue, std::string goalNodeValue);
 
 private:
-	typedef std::vector< std::pair< std::string, std::vector<std::string> > > AdjacencyList;
+	typedef std::pair<std::string, std::vector<std::string> > AdjacencyListEntry;
+	typedef std::vector< AdjacencyListEntry > AdjacencyList;
 	AdjacencyList adjacencyList;
-	std::vector<Node*> nodes;
+	struct NodeComparator
+	{
+		bool operator() (const Node* a, const Node* b);
+	};
+	typedef std::set<Node*, NodeComparator> NodeSet;
+	NodeSet nodes;
 };
 
 #endif

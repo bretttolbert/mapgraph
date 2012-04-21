@@ -13,12 +13,11 @@
 
 Graph::Graph()
 {
-
 }
 
 Graph::~Graph()
 {
-	std::vector<Node*>::iterator it;
+	NodeSet::iterator it;
 	for (it=nodes.begin(); it!=nodes.end(); ++it)
 	{
 		Node* node = *it;
@@ -97,7 +96,7 @@ void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat 
 			//create node
 			Node* node = new Node();
 			node->value = it->first;
-			nodes.push_back(node);
+			nodes.insert(node);
 		}
 		//populate adjacentNodes of each node
 		for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
@@ -149,16 +148,17 @@ bool Graph::isNodeValid(const std::string& node)
 
 Graph::Node* Graph::findNodeByValue(const std::string& value)
 {
-	std::vector<Node*>::const_iterator it;
-	for (it=nodes.begin(); it!=nodes.end(); ++it)
+	Node temp;
+	temp.value = value;
+	NodeSet::const_iterator it = nodes.find(&temp);
+	if (it != nodes.end())
 	{
-		Node *node = *it;
-		if (node->value == value)
-		{
-			return node;
-		}
+		return *it;
 	}
-	return NULL;
+	else
+	{
+		return NULL;
+	}
 }
 
 std::vector<std::string> Graph::getNeighbors(const std::string& node)
@@ -202,6 +202,11 @@ Graph::Node::Node() :
 	color(BLACK), 
 	parent(NULL) 
 { }
+
+bool Graph::NodeComparator::operator() (const Node* a,  const Node* b)
+{
+	return (a->value < b->value);
+}
 
 std::vector<std::string> Graph::breadthFirstSearch(std::string startNodeValue, std::string goalNodeValue)
 {

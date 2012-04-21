@@ -6,6 +6,7 @@
 #include <queue>
 #include <algorithm>
 #include <iterator>
+#include <cstdlib>
 
 #include "Graph.h"
 #include "StringUtils.h"
@@ -57,29 +58,30 @@ void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat 
 				std::string line;
 				getline(file,line);
 				++lineNum;
-				std::vector<std::string> tokens = StringUtils::split(line, '\t');
-				if (tokens.size() == 4)
+				if (!line.empty())
 				{
-					if (tokens[0] != "")
+					std::vector<std::string> tokens = StringUtils::split(line, '\t');
+					if (tokens.size() == 4)
 					{
-						if (!entry.first.empty())
+						if (tokens[0] != "")
 						{
-							adjacencyList.push_back(entry);
-							entry.second.clear();
+							if (!entry.first.empty())
+							{
+								adjacencyList.push_back(entry);
+								entry.second.clear();
+							}
+							entry.first = tokens[0];
 						}
-						entry.first = tokens[0];
+						else
+						{
+							entry.second.push_back(tokens[2]);
+						}
 					}
 					else
 					{
-						entry.second.push_back(tokens[2]);
-					}
-				}
-				else
-				{
-					if (line != "")
-					{
 						std::cerr << "Parser Error on line " << lineNum << ".\n";
 						std::cerr << "Expected 4 columns but found " << tokens.size() << std::endl;
+						exit(1);
 					}
 				}
 			}

@@ -15,7 +15,7 @@
  *     One line per node with tokens seperated by commas.
  *     First token is the node. The rest of the tokens are its neighbors.
  *   MULTI_LINE_TAB_DELIMITED_US_CENSUS
- *     Example file: US_county_adjacency_2010.txt
+ *     Example file: US_county_adjacency_2010.txt (from http://www.census.gov/geo/www/geoareas/county_adjacency.html)
  *     Each node entry spans multiple lines. The first line is the node.
  *     The followings lines are its neighbors. Each line consists of the
  *     following columns: 

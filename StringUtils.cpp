@@ -21,14 +21,19 @@ bool StringUtils::iequals(std::string s1, std::string s2)
 	return (s1 == s2);
 }
 
-StringUtils::CaseInsensitiveComparator::CaseInsensitiveComparator(const std::string& strToMatch) 
-	: matchTarget(strToMatch) 
-{ 
-	std::transform(matchTarget.begin(), matchTarget.end(), matchTarget.begin(), ::tolower);
+StringUtils::CaseInsensitiveComparator::CaseInsensitiveComparator(const std::string& strToMatch)
+{
+	setMatchTarget(strToMatch);
 }
 
 bool StringUtils::CaseInsensitiveComparator::operator() (std::string s)
 {
 	std::transform(s.begin(), s.end(), s.begin(), ::tolower);
 	return (s == matchTarget);
+}
+
+void StringUtils::CaseInsensitiveComparator::setMatchTarget(const std::string& strToMatch)
+{
+	matchTarget = strToMatch;
+	std::transform(matchTarget.begin(), matchTarget.end(), matchTarget.begin(), ::tolower);
 }

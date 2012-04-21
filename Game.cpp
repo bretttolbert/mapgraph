@@ -60,7 +60,7 @@ void Game::printStats(bool final)
 		std::cout << "Optimal Path: ";
 		std::ostream_iterator<std::string> output(std::cout, " ");
 		std::copy(optimalPath.begin(), optimalPath.end(), output);
-		std::cout << " (" << optimalPath.size() << " moves)\n";
+		std::cout << "(" << optimalPath.size() << " moves)\n";
 	}
 	//std::cout << "Fuel: " << fuel << "/" << maxFuel << std::endl;
 }
@@ -82,6 +82,7 @@ void Game::mainLoop()
 			std::cout << "Invalid Destination. Destination must be a neighbor.\n";
 			std::cout << "Enter Destination: ";
 			std::cin >> dest;
+			comp.setMatchTarget(dest);
 		}
 		currentNode = *it;
 		++moves;

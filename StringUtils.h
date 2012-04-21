@@ -12,8 +12,9 @@ public:
 	class CaseInsensitiveComparator 
 	{
 	public:
-		CaseInsensitiveComparator(const std::string& match);
+		CaseInsensitiveComparator(const std::string& strToMatch);
 		bool operator() (std::string s);
+		void setMatchTarget(const std::string& strToMatch);
 	private:
 		std::string matchTarget;
 	};

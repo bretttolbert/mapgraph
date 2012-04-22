@@ -7,26 +7,6 @@
 
 #define DEBUG_GRAPH 0
 
-/**
- * Adjacency File Formats:
- *   SINGLE_LINE_CSV
- *     Example file: 48US.txt
- *     One line per node with tokens seperated by commas.
- *     First token is the node. The rest of the tokens are its neighbors.
- *   MULTI_LINE_TAB_DELIMITED_US_CENSUS
- *     Example file: US_county_adjacency_2010.txt (from http://www.census.gov/geo/www/geoareas/county_adjacency.html)
- *     Each node entry spans multiple lines. The first line is the node.
- *     The followings lines are its neighbors. Each line consists of the
- *     following columns: 
- *	     1 County Name	    2010 State and County Name
- *	     2 County GEOID     2010 State and County FIPS Codes
- *	     3 Neighbor Name	2010 State and County name of each neighboring county or county equivalent
- *	     4 Neighbor GEOID	2010 State and County FIPS Codes of each neighboring county or county equivalent
- *     For the first line of a block, columns 3 and 4 are identical to columns 1 and 2
- *     For the rest of the lines in a block, columns 1 and 2 are empty.
- *     Note: The US census file lists each county as a neighbor of itself so we need to 
- *     account for that.
- **/
 enum AdjacencyFileFormat
 {
 	UNDEFINED,

@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 				{
 					fmt = SINGLE_LINE_CSV;
 				}
-				else if (strcmp(argv[i], "mltd") == 0)
+				else if (strcmp(argv[i], "mltdusc") == 0)
 				{
 					fmt = MULTI_LINE_TAB_DELIMITED_US_CENSUS;
 				}

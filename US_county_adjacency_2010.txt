@@ -7926,6 +7926,11 @@ Lincoln Parish, LA	22063	Ascension Parish, LA	22005
 		St. Helena Parish, LA	22091
 		St. John the Baptist Parish, LA	22095
 		Tangipahoa Parish, LA	22105
+Livingston Parish, LA	22063	St. Helena Parish, LA	22091
+		Tangipahoa Parish, LA	22105
+		St. John the Baptist Parish, LA	22095
+		Ascension Parish, LA	22005
+		East Baton Rouge Parish, LA	22033
 Madison Parish, LA	22065	East Carroll Parish, LA	22035
 		Franklin Parish, LA	22041
 		Madison Parish, LA	22065

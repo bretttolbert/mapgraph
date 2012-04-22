@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
 
 #include "USCountiesAdjacencyList.h"
 #include "StringUtils.h"
@@ -60,7 +62,24 @@ USCountiesAdjacencyList::USCountiesAdjacencyList()
                 }
             }
         }
+        //sort adjacency list
+        std::sort(adjacencyList.begin(), adjacencyList.end(), USCountiesAdjacencyList::AdjacencyListEntryComparator());
     }
+}
+
+bool USCountiesAdjacencyList::AdjacencyListEntryComparator::operator() (const AdjacencyListEntry a, const AdjacencyListEntry b)
+{
+    return a.first < b.first;
+}
+
+const USCountiesAdjacencyList::AdjacencyList& USCountiesAdjacencyList::getAdjacencyList()
+{
+    return adjacencyList;
+}
+
+const USCountiesAdjacencyList::CountyFipsMap& USCountiesAdjacencyList::getCounties()
+{
+    return counties;
 }
 
 std::string USCountiesAdjacencyList::getCountyNameByFipsCode(int fipsCode)
@@ -73,7 +92,22 @@ std::string USCountiesAdjacencyList::getCountyNameByFipsCode(const std::string& 
     return counties[atoi(fipsCode.c_str())];
 }
 
-int USCountiesAdjacencyList::getRandomCountyFips()
+int USCountiesAdjacencyList::getFipsCodeByCountyName(const std::string& countyName)
+{
+    int result = 0;
+    CountyFipsMap::const_iterator it;
+    for (it=counties.begin(); it!=counties.end(); ++it)
+    {
+        if (it->second == countyName)
+        {
+            result = it->first;
+            break;
+        }
+    }
+    return result;
+}
+
+int USCountiesAdjacencyList::getRandomFipsCode()
 {
     CountyFipsMap::const_iterator it = counties.begin();
     std::advance(it, rand() % counties.size());
@@ -83,17 +117,7 @@ int USCountiesAdjacencyList::getRandomCountyFips()
 std::string USCountiesAdjacencyList::fipsToString(int fips)
 {
     //fips code is 5 digits left padded with '0'
-    char buf[33];
-    _itoa_s(fips, buf, sizeof(buf), 10);
-    if (buf == NULL)
-    {
-        std::cerr << "fipsToString: buf is NULL\n";
-        exit(1);
-    }
-    std::string str(buf);
-    while (str.size() < 5)
-    {
-        str.insert('0', 0);
-    }
-    return str;
+    std::ostringstream oss;
+    oss << std::setfill('0') << std::setw(5) << fips;
+    return oss.str();
 }

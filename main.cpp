@@ -9,7 +9,7 @@
 #include <cmath>
 #include <ctime>
 
-#include "Game.h"
+//#include "Game.h"
 #include "Graph.h"
 #include "UsCountiesSvgFile.h"
 #include "USCountiesAdjacencyList.h"
@@ -19,6 +19,7 @@ enum Mode
     MODE_UNDEFINED,
     MODE_GAME,
     MODE_BFS,
+    MODE_WASHINGTONS,
     MODE_TEST
 };
 
@@ -27,16 +28,22 @@ enum Mode
  */
 bool showWarnings = false;
 
+//performs BFS, prints info to console and updates SVG but does not save it
+void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
+                            USCountiesSvgFile& svg,
+                            Graph<int>& graph,
+                            int startFips, 
+                            int goalFips);
+
 int main(int argc, char *argv[])
 {
     srand((unsigned int)time(NULL));
 
     Mode mode = MODE_UNDEFINED;
     const char* adjacencyFile = NULL;
-    const char* start = NULL;
-    const char* goal = NULL;
+    std::string start, goal;
     const char* svgFile = NULL;
-    AdjacencyFileFormat fmt = UNDEFINED;
+    //AdjacencyFileFormat fmt = UNDEFINED;
 
     if (argc == 1)
     {
@@ -62,6 +69,10 @@ int main(int argc, char *argv[])
                 {
                     mode = MODE_TEST;
                 }
+                else if (strcmp(argv[i], "washingtons") == 0)
+                {
+                    mode = MODE_WASHINGTONS;
+                }
                 else
                 {
                     std::cerr << "Invalid mode \"" << argv[i] << "\"\n";
@@ -74,6 +85,7 @@ int main(int argc, char *argv[])
                 return 1;
             }
         }
+        /*
         else if (strcmp(argv[i], "-af") == 0)
         {
             if (++i < argc)
@@ -107,6 +119,7 @@ int main(int argc, char *argv[])
                 return 1;
             }
         }
+        */
         else if (strcmp(argv[i], "-s") == 0)
         {
             if (++i < argc)
@@ -148,6 +161,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    /*
     if (mode == MODE_GAME || mode == MODE_BFS)
     {
         if (adjacencyFile == NULL)
@@ -161,59 +175,89 @@ int main(int argc, char *argv[])
             return 1;
         }
     }
+    */
 
     if (mode == MODE_GAME)
     {
-        Game(adjacencyFile, fmt, start, goal);
+        //Game(adjacencyFile, fmt, start, goal);
+        std::cout << "Temporarily disabled\n";
     }
     else if (mode == MODE_BFS)
     {
-        Graph graph;
-        graph.readAdjacencyListFromFile(adjacencyFile, fmt);
-        std::vector<std::string> candidates = graph.getNodeValues();
-        if (!start || start == "")
+        USCountiesAdjacencyList adjacencyList;
+        USCountiesSvgFile svg;
+        Graph<int> graph((const Graph<int>::AdjacencyList&)adjacencyList.getAdjacencyList());
+        int startFips, goalFips;
+        if (start.empty())
         {
-            start = candidates[rand() % candidates.size()].c_str();
+            startFips = adjacencyList.getRandomFipsCode();
+            start = adjacencyList.getCountyNameByFipsCode(startFips);
         }
-        if (!goal || goal == "")
+        else
         {
-            goal = candidates[rand() % candidates.size()].c_str();
+            startFips = adjacencyList.getFipsCodeByCountyName(start);
         }
-        std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
-        std::vector<std::string> path = graph.breadthFirstSearch(start, goal);
-        std::cout << "Optimal Path:\n";
-        std::ostream_iterator<std::string> output(std::cout, "\n");
-        std::copy(path.begin(), path.end(), output);
-        std::cout << "(" << path.size() << " moves)\n";
-        //create svg
-        /*
-        UsCountiesSvgFile svg;
-        std::vector<std::string>::const_iterator it;
-        for (it=path.begin(); it!=path.end(); ++it)
+        if (goal.empty())
         {
-            const char * countyName = it->c_str();
-            const char * fill = "red";
-            if (it == path.begin())
+            goalFips = adjacencyList.getRandomFipsCode();
+            goal = adjacencyList.getCountyNameByFipsCode(goalFips);
+        }
+        else
+        {
+            goalFips = adjacencyList.getFipsCodeByCountyName(goal);
+        }
+        performBfsAndUpdateSvg(adjacencyList, svg, graph, startFips, goalFips);
+        svg.saveFile("output.svg");
+    }
+    else if (mode == MODE_WASHINGTONS)
+    {
+        USCountiesAdjacencyList adjacencyList;
+        USCountiesSvgFile svg;
+        Graph<int> graph((const Graph<int>::AdjacencyList&)adjacencyList.getAdjacencyList());
+        const USCountiesAdjacencyList::CountyFipsMap& counties = adjacencyList.getCounties();
+        std::vector<std::pair<int,std::string> > washingtons;
+        USCountiesAdjacencyList::CountyFipsMap::const_iterator it;
+        for (it=counties.begin(); it!=counties.end(); ++it)
+        {
+            if (it->second.find("Washington") != std::string::npos)
             {
-                fill = "blue";
+                washingtons.push_back(*it);
             }
-            if (!svg.markCountyByName(countyName, fill) && showWarnings)
-            {
-                std::cerr << "Warning: County \"" << countyName << "\" not found in SVG file\n";
-            }
+        }
+        std::cout << "found " << washingtons.size() << " Washingtons\n";
+        std::vector<std::pair<int,std::string> >::const_iterator jt;
+        for (jt=washingtons.begin(); jt!=washingtons.end(); ++jt)
+        {
+            performBfsAndUpdateSvg(adjacencyList, svg, graph, 
+                adjacencyList.getFipsCodeByCountyName("Madison County, AL"), jt->first);
         }
         svg.saveFile("output.svg");
-        */
     }
     else if (mode == MODE_TEST)
     {
-        USCountiesSvgFile svg;
-        USCountiesAdjacencyList adjacencyList;
-        int fips = adjacencyList.getRandomCountyFips();
-        std::string name = adjacencyList.getCountyNameByFipsCode(fips);
-        std::cout << "county: " << name << " fips: " << fips << std::endl;
-        svg.markCountyByFips(fips, "purple");
-        svg.saveFile("output.svg");
+        std::cout << "Test stub\n";
     }
     return 0;
+}
+
+void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
+                            USCountiesSvgFile& svg,
+                            Graph<int>& graph,
+                            int startFips, 
+                            int goalFips)
+{
+    std::string start = adjacencyList.getCountyNameByFipsCode(startFips);
+    std::string goal = adjacencyList.getCountyNameByFipsCode(goalFips);
+    std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
+    std::cout << "Start: " << start << " (fips: " << USCountiesAdjacencyList::fipsToString(startFips) << ")\n";
+    std::cout << "Goal: " << goal << " (fips: " << USCountiesAdjacencyList::fipsToString(goalFips) << ")\n";
+    std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
+    std::cout << "Optimal Path:\n";
+    std::vector<int>::const_iterator it;
+    for (it=path.begin(); it!=path.end(); ++it)
+    {
+        std::cout << adjacencyList.getCountyNameByFipsCode(*it) << std::endl;\
+        svg.markCountyByFips(*it, "purple");
+    }
+    std::cout << "(" << path.size() << " moves)\n"; 
 }

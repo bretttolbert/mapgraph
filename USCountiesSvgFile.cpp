@@ -19,8 +19,7 @@ bool USCountiesSvgFile::markCountyByFips(int fips, const std::string& fill)
 {
     tinyxml2::XMLElement* svg = doc.FirstChildElement("svg");
     tinyxml2::XMLElement* path = svg->FirstChildElement("path");
-    const char* fipsStr = USCountiesAdjacencyList::fipsToString(fips).c_str();
-
+    std::string fipsStr = USCountiesAdjacencyList::fipsToString(fips);
     do
     {
         const char* countyFips = path->Attribute("id");
@@ -29,7 +28,7 @@ bool USCountiesSvgFile::markCountyByFips(int fips, const std::string& fill)
         {
             continue;
         }
-        if (strcmp(countyFips, fipsStr) == 0)
+        if (fipsStr == countyFips)
         {
             std::string style = path->Attribute("style");
             std::vector<std::string> tokens = StringUtils::split(style, ';');

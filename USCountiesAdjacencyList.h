@@ -18,17 +18,24 @@ struct USCountiesNodeValue
 class USCountiesAdjacencyList : public AdjacencyList
 {
 public:
+    typedef std::pair<int, std::vector<int> > AdjacencyListEntry;
+    typedef std::vector<AdjacencyListEntry > AdjacencyList;
+    typedef std::map<int,std::string> CountyFipsMap;
     USCountiesAdjacencyList();
+    const AdjacencyList& getAdjacencyList();
+    const CountyFipsMap& getCounties();
     std::string getCountyNameByFipsCode(int fipsCode);
     std::string getCountyNameByFipsCode(const std::string& fipsCode);
-    int getRandomCountyFips();
+    int getFipsCodeByCountyName(const std::string& countyName);
+    int getRandomFipsCode();
     static std::string fipsToString(int fips);
 private:
-    typedef std::map<int,std::string> CountyFipsMap;
+    struct AdjacencyListEntryComparator
+    {
+        bool operator() (const AdjacencyListEntry a, const AdjacencyListEntry b);
+    };
     CountyFipsMap counties; //key: county fips code, value: county name
     //to save memory, the adjacency list contains only fips codes
-    typedef std::pair<int, std::vector<int> > AdjacencyListEntry;
-    typedef std::vector< AdjacencyListEntry > AdjacencyList;
     AdjacencyList adjacencyList;
 };
 

@@ -5,9 +5,7 @@
 #include <vector>
 #include <set>
 
-#ifndef DEBUG
-#define DEBUG 0
-#endif
+#define DEBUG_GRAPH 0
 
 /**
  * Adjacency File Formats:

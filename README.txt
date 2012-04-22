@@ -4,5 +4,7 @@ Usage:
 
 	-m game -af US_county_adjacency_2010.txt mltd
 
+	-m bfs -s "Madison County, AL" -g "San Diego County, CA" -af US_county_adjacency_2010.txt mltd
+
 Ideas: 
 	Different goal - have the user "walk" the graph, attempting to traverse all 48 states with as few moves as possible.

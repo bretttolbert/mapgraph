@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
 {
 	Mode mode = MODE_UNDEFINED;
 	const char* adjacencyFile;
+	const char* start = "";
+	const char* goal = "";
 	AdjacencyFileFormat fmt = UNDEFINED;
 
 	if (argc == 1)
@@ -88,6 +90,30 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 		}
+		else if (strcmp(argv[i], "-s") == 0)
+		{
+			if (++i < argc)
+			{
+				start = argv[i];
+			}
+			else
+			{
+				std::cerr << "Error: Expected value after -s flag\n";
+				return 1;
+			}
+		}
+		else if (strcmp(argv[i], "-g") == 0)
+		{
+			if (++i < argc)
+			{
+				goal = argv[i];
+			}
+			else
+			{
+				std::cerr << "Error: Expected value after -g flag\n";
+				return 1;
+			}
+		}
 		else
 		{
 			std::cerr << "Unrecognized argument \"" << argv[i] << "\"\n";
@@ -117,7 +143,24 @@ int main(int argc, char *argv[])
 	}
 	else if (mode == MODE_BFS)
 	{
-		std::cout << "BFS\n";
+		if (start == "")
+		{
+			std::cerr << "Error: Start node not specified\n";
+			return 1;
+		}
+		if (goal == "")
+		{
+			std::cerr << "Error: Goal node not specified\n";
+			return 1;
+		}
+		std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
+		Graph graph;
+		graph.readAdjacencyListFromFile(adjacencyFile, fmt);
+		std::vector<std::string> path = graph.breadthFirstSearch(start, goal);
+		std::cout << "Optimal Path:\n";
+		std::ostream_iterator<std::string> output(std::cout, "\n");
+		std::copy(path.begin(), path.end(), output);
+		std::cout << "(" << path.size() << " moves)\n";
 	}
 	return 0;
 }

@@ -5,6 +5,8 @@
 
 #include "Graph.h"
 
+#define DEBUG_GAME 1
+
 class Game
 {
 public:

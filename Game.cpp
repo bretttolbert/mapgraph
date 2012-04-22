@@ -55,14 +55,15 @@ void Game::printStats(bool final)
 	}
 	std::cout << "Target: " << targetNode << std::endl;
 	std::cout << "Moves: " << moves << std::endl;
-	if (final)
+	if (final || DEBUG_GAME)
 	{
-		std::cout << "Optimal Path: ";
-		std::ostream_iterator<std::string> output(std::cout, " ");
+		std::cout << "Optimal Path:\n";
+		std::ostream_iterator<std::string> output(std::cout, "\n");
 		std::copy(optimalPath.begin(), optimalPath.end(), output);
 		std::cout << "(" << optimalPath.size() << " moves)\n";
 	}
 	//std::cout << "Fuel: " << fuel << "/" << maxFuel << std::endl;
+	std::cout << std::endl;
 }
 
 void Game::mainLoop()

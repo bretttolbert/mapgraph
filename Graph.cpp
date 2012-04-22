@@ -238,7 +238,7 @@ std::vector<std::string> Graph::breadthFirstSearch(std::string startNodeValue, s
 	{
 		Node* currentNode = q.front(); 
 		q.pop();
-		if (DEBUG)
+		if (DEBUG_GRAPH)
 		{
 			std::cout << "examining " << currentNode->value << std::endl;
 		}
@@ -252,7 +252,7 @@ std::vector<std::string> Graph::breadthFirstSearch(std::string startNodeValue, s
 				node = node->parent;
 			}
 			std::reverse(path.begin(),path.end());
-			if (DEBUG)
+			if (DEBUG_GRAPH)
 			{
 				std::cout << "found it\npath taken: ";
 				std::ostream_iterator<std::string> output(std::cout, " ");
@@ -275,7 +275,7 @@ std::vector<std::string> Graph::breadthFirstSearch(std::string startNodeValue, s
 				}
 				if (adjacentNode->color != Node::WHITE)
 				{
-					if (DEBUG)
+					if (DEBUG_GRAPH)
 					{
 						std::cout << "enqueuing neighbor " << adjacentNode->value << std::endl;
 					}

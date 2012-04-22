@@ -6108,7 +6108,7 @@ Wright County, IA	19197	Cerro Gordo County, IA	19033
 		Kossuth County, IA	19109
 		Webster County, IA	19187
 		Wright County, IA	19197
-20001	20001	Allen County, KS	20001
+		Allen County, KS	20001
 		Anderson County, KS	20003
 		Bourbon County, KS	20011
 		Coffey County, KS	20031
@@ -6116,6 +6116,13 @@ Wright County, IA	19197	Cerro Gordo County, IA	19033
 		Neosho County, KS	20133
 		Wilson County, KS	20205
 		Woodson County, KS	20207
+Allen County, KS	20001	Anderson County, KS	20003
+		Linn County, KS	20107
+		Bourbon County, KS	20011
+		Neosho County, KS	20133
+		Wilson County, KS	20205
+		Woodson County, KS	20207
+		Coffey County, KS	20031
 Anderson County, KS	20003	Allen County, KS	20001
 		Anderson County, KS	20003
 		Bourbon County, KS	20011

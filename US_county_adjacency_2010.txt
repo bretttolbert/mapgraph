@@ -18373,6 +18373,11 @@ Starr County, TX	48247	Brooks County, TX	48047
 		Starr County, TX	48427
 		Webb County, TX	48479
 		Zapata County, TX	48505
+Jim Hogg County, TX	48247	Duval County, TX	48131
+		Brooks County, TX	48047
+		Starr County, TX	48427
+		Zapata County, TX	48505
+		Webb County, TX	48479
 Jim Wells County, TX	48249	Brooks County, TX	48047
 		Duval County, TX	48131
 		Jim Wells County, TX	48249

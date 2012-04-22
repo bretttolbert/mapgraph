@@ -29,6 +29,7 @@
  **/
 enum AdjacencyFileFormat
 {
+	UNDEFINED,
 	SINGLE_LINE_CSV,
 	MULTI_LINE_TAB_DELIMITED_US_CENSUS
 };

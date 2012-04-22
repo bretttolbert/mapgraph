@@ -8,7 +8,7 @@
 class Game
 {
 public:
-	Game();
+	Game(const char* adjacencyFile, AdjacencyFileFormat fmt);
 	void mainLoop();
 	void chooseStartNode();
 	void chooseTargetNode();

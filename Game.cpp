@@ -11,17 +11,14 @@
 #include "Game.h"
 #include "StringUtils.h"
 
-Game::Game() :
+Game::Game(const char* adjacencyFile, AdjacencyFileFormat fmt) :
 	//maxFuel(10),
 	//fuel(10),
 	moves(0),
 	printNeighbors(true)
 {
 	srand((unsigned int)time(NULL));
-	graph.readAdjacencyListFromFile("48US.txt", SINGLE_LINE_CSV);
-	//graph.readAdjacencyListFromFile(
-	//	"US_county_adjacency_2010.txt", 
-	//	MULTI_LINE_TAB_DELIMITED_US_CENSUS);
+	graph.readAdjacencyListFromFile(adjacencyFile, fmt);
 	chooseStartNode();
 	currentNode = startNode;
 	chooseTargetNode();
@@ -72,7 +69,7 @@ void Game::mainLoop()
 {
 	while (1)
 	{
-		std::cout << "Welcome to " << currentNode << std::endl;
+		std::cout << "\nWelcome to " << currentNode << std::endl;
 		std::vector<std::string> neighbors = graph.getNeighbors(currentNode);
 		printStats(false);
 		std::string dest;

@@ -9658,6 +9658,11 @@ Washington County, MN	27163	Anoka County, MN	27003
 		Jackson County, MN	27063
 		Martin County, MN	27091
 		Watonwan County, MN	27165
+Watonwan County, MN	27165	Brown County, MN	27015
+		Blue Earth County, MN	27013
+		Martin County, MN	27091
+		Jackson County, MN	27063
+		Cottonwood County, MN	27033
 Wilkin County, MN	27167	Clay County, MN	27027
 		Grant County, MN	27051
 		Otter Tail County, MN	27111

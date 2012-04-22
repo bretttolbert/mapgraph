@@ -9285,6 +9285,13 @@ Emmet County, IA	27063	Dickinson County, IA	19059
 		Martin County, MN	27091
 		Nobles County, MN	27105
 		Watonwan County, MN	27165
+Jackson County, MN	27063	Cottonwood County, MN	27033
+		Watonwan County, MN	27165
+		Martin County, MN	27091
+		Emmet County, IA	19063
+		Dickinson County, IA	19059
+		Osceola County, IA	19143
+		Nobles County, MN	27105
 Kanabec County, MN	27065	Aitkin County, MN	27001
 		Chisago County, MN	27025
 		Isanti County, MN	27059
@@ -9626,7 +9633,7 @@ Washington County, MN	27163	Anoka County, MN	27003
 		Pierce County, WI	55093
 		Polk County, WI	55095
 		St. Croix County, WI	55109
-	27165	Blue Earth County, MN	27013
+		Blue Earth County, MN	27013
 		Brown County, MN	27015
 		Cottonwood County, MN	27033
 		Jackson County, MN	27063
@@ -18514,7 +18521,7 @@ Lipscomb County, TX	48295	Beaver County, OK	40007
 		Lipscomb County, TX	48295
 		Ochiltree County, TX	48357
 		Roberts County, TX	48393
-	48297	Atascosa County, TX	48013
+		Atascosa County, TX	48013
 		Bee County, TX	48025
 		Duval County, TX	48131
 		Jim Wells County, TX	48249

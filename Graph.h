@@ -26,6 +26,8 @@
  *	     4 Neighbor GEOID	2010 State and County FIPS Codes of each neighboring county or county equivalent
  *     For the first line of a block, columns 3 and 4 are identical to columns 1 and 2
  *     For the rest of the lines in a block, columns 1 and 2 are empty.
+ *     Note: The US census file lists each county as a neighbor of itself so we need to 
+ *     account for that.
  **/
 enum AdjacencyFileFormat
 {

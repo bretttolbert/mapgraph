@@ -70,10 +70,17 @@ void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat 
 								entry.second.clear();
 							}
 							entry.first = tokens[0];
+							if (tokens[2] != entry.first)
+							{
+								entry.second.push_back(tokens[2]);
+							}
 						}
 						else
 						{
-							entry.second.push_back(tokens[2]);
+							if (tokens[2] != entry.first)
+							{
+								entry.second.push_back(tokens[2]);
+							}
 						}
 					}
 					else
@@ -102,11 +109,23 @@ void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat 
 		for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
 		{
 			Node* node = findNodeByValue(it->first);
+			if (node == NULL)
+			{
+				std::cerr << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
+				exit(1);
+			}
 			std::vector<std::string>::const_iterator jt;
 			for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
 			{
 				Node* adjacentNode = findNodeByValue(*jt);
-				node->adjacentNodes.push_back(adjacentNode);
+				if (adjacentNode == NULL)
+				{
+					std::cerr << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
+				}
+				else
+				{
+					node->adjacentNodes.push_back(adjacentNode);
+				}
 			}
 		}
 		std::cout << "Done.\n";
@@ -248,6 +267,12 @@ std::vector<std::string> Graph::breadthFirstSearch(std::string startNodeValue, s
 			for (it=currentNode->adjacentNodes.begin(); it!=currentNode->adjacentNodes.end(); ++it)
 			{
 				Node* adjacentNode = *it;
+				if (adjacentNode == NULL)
+				{
+					std::cerr << "Error: adjacentNode is NULL\n";
+					std::cerr << "currentNode = " << currentNode->value << std::endl;
+					exit(1);
+				}
 				if (adjacentNode->color != Node::WHITE)
 				{
 					if (DEBUG)

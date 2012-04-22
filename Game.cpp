@@ -11,18 +11,31 @@
 #include "Game.h"
 #include "StringUtils.h"
 
-Game::Game(const char* adjacencyFile, AdjacencyFileFormat fmt) :
+Game::Game(const char* adjacencyFile, AdjacencyFileFormat fmt, const char* start, const char* goal) :
     //maxFuel(10),
     //fuel(10),
     moves(0),
     printNeighbors(true)
 {
-    srand((unsigned int)time(NULL));
     graph.readAdjacencyListFromFile(adjacencyFile, fmt);
-    chooseStartNode();
+    if (!start || start == "")
+    {
+        chooseStartNode();
+    }
+    else
+    {
+        startNode = start;
+    }
     currentNode = startNode;
-    chooseTargetNode();
-    optimalPath = graph.breadthFirstSearch(startNode, targetNode);
+    if (!goal || goal == "")
+    {
+        chooseGoalNode();
+    }
+    else
+    {
+        goalNode = goal;
+    }
+    optimalPath = graph.breadthFirstSearch(startNode, goalNode);
     mainLoop();
 }
 
@@ -32,7 +45,7 @@ void Game::chooseStartNode()
     startNode = candidates[rand() % candidates.size()];
 }
 
-void Game::chooseTargetNode()
+void Game::chooseGoalNode()
 {
     std::vector<std::string> candidates = graph.getNodeValues();
     std::vector<std::string> nonCandidates = graph.getNeighbors(currentNode);
@@ -42,7 +55,7 @@ void Game::chooseTargetNode()
     {
         candidates.erase(std::remove(candidates.begin(), candidates.end(), *it), candidates.end());
     }
-    targetNode = candidates[rand() % candidates.size()];
+    goalNode = candidates[rand() % candidates.size()];
 }
 
 void Game::printStats(bool final)
@@ -53,7 +66,7 @@ void Game::printStats(bool final)
         graph.printNeighbors(currentNode, "\n");
         std::cout << std::endl;
     }
-    std::cout << "Target: " << targetNode << std::endl;
+    std::cout << "Goal: " << goalNode << std::endl;
     std::cout << "Moves: " << moves << std::endl;
     if (final || DEBUG_GAME)
     {
@@ -87,9 +100,9 @@ void Game::mainLoop()
         }
         currentNode = *it;
         ++moves;
-        if (currentNode == targetNode)
+        if (currentNode == goalNode)
         {
-            std::cout << "Target Reached!!!\nFinal Stats:\n";
+            std::cout << "Goal Reached!!!\nFinal Stats:\n";
             printStats(true);
             break;
         }

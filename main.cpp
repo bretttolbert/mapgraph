@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <iterator>
 #include <cstring>
+#include <cmath>
+#include <ctime>
 
 #include "Game.h"
 #include "Graph.h"
@@ -17,12 +19,19 @@ enum Mode
     MODE_BFS
 };
 
+/*
+ * Application Globals
+ */
+bool showWarnings = false;
+
 int main(int argc, char *argv[])
 {
+    srand((unsigned int)time(NULL));
+
     Mode mode = MODE_UNDEFINED;
-    const char* adjacencyFile;
-    const char* start = "";
-    const char* goal = "";
+    const char* adjacencyFile = NULL;
+    const char* start = NULL;
+    const char* goal = NULL;
     AdjacencyFileFormat fmt = UNDEFINED;
 
     if (argc == 1)
@@ -114,6 +123,10 @@ int main(int argc, char *argv[])
                 return 1;
             }
         }
+        else if (strcmp(argv[i], "-w") == 0)
+        {
+            showWarnings = true;
+        }
         else
         {
             std::cerr << "Unrecognized argument \"" << argv[i] << "\"\n";
@@ -139,23 +152,22 @@ int main(int argc, char *argv[])
 
     if (mode == MODE_GAME)
     {
-        Game(adjacencyFile, fmt);
+        Game(adjacencyFile, fmt, start, goal);
     }
     else if (mode == MODE_BFS)
     {
-        if (start == "")
-        {
-            std::cerr << "Error: Start node not specified\n";
-            return 1;
-        }
-        if (goal == "")
-        {
-            std::cerr << "Error: Goal node not specified\n";
-            return 1;
-        }
-        std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
         Graph graph;
         graph.readAdjacencyListFromFile(adjacencyFile, fmt);
+        std::vector<std::string> candidates = graph.getNodeValues();
+        if (!start || start == "")
+        {
+            start = candidates[rand() % candidates.size()].c_str();
+        }
+        if (!goal || goal == "")
+        {
+            goal = candidates[rand() % candidates.size()].c_str();
+        }
+        std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
         std::vector<std::string> path = graph.breadthFirstSearch(start, goal);
         std::cout << "Optimal Path:\n";
         std::ostream_iterator<std::string> output(std::cout, "\n");

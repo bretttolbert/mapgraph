@@ -11,6 +11,8 @@
 #include "Graph.h"
 #include "StringUtils.h"
 
+extern bool showWarnings;
+
 Graph::Graph()
 {
 }
@@ -118,7 +120,7 @@ void Graph::readAdjacencyListFromFile(const char* filename, AdjacencyFileFormat 
             for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
             {
                 Node* adjacentNode = findNodeByValue(*jt);
-                if (adjacentNode == NULL)
+                if (adjacentNode == NULL && showWarnings)
                 {
                     std::cerr << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
                 }

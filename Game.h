@@ -10,10 +10,13 @@
 class Game
 {
 public:
-    Game(const char* adjacencyFile, AdjacencyFileFormat fmt);
+    Game(const char* adjacencyFile, 
+         AdjacencyFileFormat fmt, 
+         const char* start, 
+         const char* goal);
     void mainLoop();
     void chooseStartNode();
-    void chooseTargetNode();
+    void chooseGoalNode();
     void printStats(bool final);
 private:
     Graph graph;
@@ -21,7 +24,7 @@ private:
     //int fuel;
     std::string startNode;
     std::string currentNode;
-    std::string targetNode;
+    std::string goalNode;
     std::vector<std::string> optimalPath;
     int moves;
     bool printNeighbors;

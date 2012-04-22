@@ -1,8 +1,9 @@
 Usage:
 
--m <mode>                Set mode. Posible values are "game" and "bfs".
--s <start>                Specify starting node (optional, defaults to random).
--g <goal>                Specify goal node (optional, defaults to random).
+-m <mode>               Set mode. Posible values are "game" and "bfs".
+-s <start>              Specify starting node (optional, defaults to random).
+-g <goal>               Specify goal node (optional, defaults to random).
+-w                      Show warnings (useful for validating adjacency file).
 -af <file> <fmt>        Set adjacency file and adjacency file format.
                         Possible formats:
    slc            Single Line CSV

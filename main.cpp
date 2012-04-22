@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "Graph.h"
 #include "UsCountiesSvgFile.h"
+#include "USCountiesAdjacencyList.h"
 
 enum Mode
 {
@@ -185,6 +186,7 @@ int main(int argc, char *argv[])
         std::copy(path.begin(), path.end(), output);
         std::cout << "(" << path.size() << " moves)\n";
         //create svg
+        /*
         UsCountiesSvgFile svg;
         std::vector<std::string>::const_iterator it;
         for (it=path.begin(); it!=path.end(); ++it)
@@ -201,12 +203,16 @@ int main(int argc, char *argv[])
             }
         }
         svg.saveFile("output.svg");
+        */
     }
     else if (mode == MODE_TEST)
     {
-        UsCountiesSvgFile svg;
-        svg.markCountyByName("Richmond Co., VA", "red");
-        svg.markCountyByName("Richmond, VA", "blue");
+        USCountiesSvgFile svg;
+        USCountiesAdjacencyList adjacencyList;
+        int fips = adjacencyList.getRandomCountyFips();
+        std::string name = adjacencyList.getCountyNameByFipsCode(fips);
+        std::cout << "county: " << name << " fips: " << fips << std::endl;
+        svg.markCountyByFips(fips, "purple");
         svg.saveFile("output.svg");
     }
     return 0;

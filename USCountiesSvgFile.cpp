@@ -3,9 +3,10 @@
 #include <string>
 
 #include "USCountiesSvgFile.h"
+#include "USCountiesAdjacencyList.h" //for fipsToString
 #include "StringUtils.h"
 
-UsCountiesSvgFile::UsCountiesSvgFile()
+USCountiesSvgFile::USCountiesSvgFile()
 {
     if (doc.LoadFile(USCOUNTIES_SVGFILE_FILENAME) != tinyxml2::XML_SUCCESS)
     {
@@ -14,20 +15,21 @@ UsCountiesSvgFile::UsCountiesSvgFile()
     }
 }
 
-bool UsCountiesSvgFile::markCountyByName(const std::string& name, const std::string& fill)
+bool USCountiesSvgFile::markCountyByFips(int fips, const std::string& fill)
 {
     tinyxml2::XMLElement* svg = doc.FirstChildElement("svg");
     tinyxml2::XMLElement* path = svg->FirstChildElement("path");
+    const char* fipsStr = USCountiesAdjacencyList::fipsToString(fips).c_str();
 
     do
     {
-        const char* countyGeoid = path->Attribute("id");
-        const char* countyName = path->Attribute("inkscape:label");
-        if (countyName == NULL)
+        const char* countyFips = path->Attribute("id");
+        //const char* countyName = path->Attribute("inkscape:label");
+        if (countyFips == NULL)
         {
             continue;
         }
-        if (strcmp(countyName, name.c_str()) == 0)
+        if (strcmp(countyFips, fipsStr) == 0)
         {
             std::string style = path->Attribute("style");
             std::vector<std::string> tokens = StringUtils::split(style, ';');
@@ -47,4 +49,3 @@ bool UsCountiesSvgFile::markCountyByName(const std::string& name, const std::str
     } while ((path = path->NextSiblingElement()) != NULL);
     return false;
 }
-

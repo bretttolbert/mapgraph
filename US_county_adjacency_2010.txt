@@ -9454,6 +9454,13 @@ Olmsted County, MN	27109	Dodge County, MN	27039
 		Olmsted County, MN	27109
 		Wabasha County, MN	27157
 		Winona County, MN	27169
+Otter Tail County, MN	27111	Becker County, MN	27005
+		Wadena County, MN	27159
+		Todd County, MN	27153
+		Douglas County, MN	27041
+		Grant County, MN	27051
+		Wilkin County, MN	27167
+		Clay County, MN	27027
 Todd County, MN	27111	Becker County, MN	27005
 		Clay County, MN	27027
 		Douglas County, MN	27041

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include <vector>
 #include <algorithm>
 #include <iterator>
@@ -34,6 +35,9 @@ void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
                             Graph<int>& graph,
                             int startFips, 
                             int goalFips);
+
+//returns hex code for a random color
+std::string randomColor();
 
 int main(int argc, char *argv[])
 {
@@ -228,8 +232,11 @@ int main(int argc, char *argv[])
         std::vector<std::pair<int,std::string> >::const_iterator jt;
         for (jt=washingtons.begin(); jt!=washingtons.end(); ++jt)
         {
-            performBfsAndUpdateSvg(adjacencyList, svg, graph, 
-                adjacencyList.getFipsCodeByCountyName("Madison County, AL"), jt->first);
+            if (jt!=washingtons.begin())
+            {
+                std::vector<std::pair<int,std::string> >::const_iterator prev = jt; --prev; 
+                performBfsAndUpdateSvg(adjacencyList, svg, graph, prev->first, jt->first);
+            }
         }
         svg.saveFile("output.svg");
     }
@@ -254,10 +261,21 @@ void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
     std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
     std::cout << "Optimal Path:\n";
     std::vector<int>::const_iterator it;
+    std::string pathColor = randomColor();
     for (it=path.begin(); it!=path.end(); ++it)
     {
-        std::cout << adjacencyList.getCountyNameByFipsCode(*it) << std::endl;\
-        svg.markCountyByFips(*it, "purple");
+        std::cout << adjacencyList.getCountyNameByFipsCode(*it) << std::endl;
+        svg.markCountyByFips(*it, pathColor);
     }
     std::cout << "(" << path.size() << " moves)\n"; 
+}
+
+std::string randomColor()
+{
+    std::ostringstream oss;
+    oss << '#' << std::hex << std::setfill('0')
+        << std::setw(2) << (rand() % 256)
+        << std::setw(2) << (rand() % 256)
+        << std::setw(2) << (rand() % 256);
+    return oss.str();
 }

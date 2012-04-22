@@ -11,12 +11,14 @@
 
 #include "Game.h"
 #include "Graph.h"
+#include "UsCountiesSvgFile.h"
 
 enum Mode
 {
     MODE_UNDEFINED,
     MODE_GAME,
-    MODE_BFS
+    MODE_BFS,
+    MODE_TEST
 };
 
 /*
@@ -32,6 +34,7 @@ int main(int argc, char *argv[])
     const char* adjacencyFile = NULL;
     const char* start = NULL;
     const char* goal = NULL;
+    const char* svgFile = NULL;
     AdjacencyFileFormat fmt = UNDEFINED;
 
     if (argc == 1)
@@ -53,6 +56,10 @@ int main(int argc, char *argv[])
                 else if (strcmp(argv[i], "bfs") == 0)
                 {
                     mode = MODE_BFS;
+                }
+                else if (strcmp(argv[i], "test") == 0)
+                {
+                    mode = MODE_TEST;
                 }
                 else
                 {
@@ -134,20 +141,24 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (adjacencyFile == NULL)
-    {
-        std::cerr << "Error: No adjacency file specified\n";
-        return 1;
-    }
-    else if (mode == MODE_UNDEFINED)
+    if (mode == MODE_UNDEFINED)
     {
         std::cerr << "Error: Mode not specified\n";
         return 1;
     }
-    else if (fmt == UNDEFINED)
+
+    if (mode == MODE_GAME || mode == MODE_BFS)
     {
-        std::cerr << "Error: Adjacency file format not specified\n";
-        return 1;
+        if (adjacencyFile == NULL)
+        {
+            std::cerr << "Error: No adjacency file specified\n";
+            return 1;
+        }
+        else if (fmt == UNDEFINED)
+        {
+            std::cerr << "Error: Adjacency file format not specified\n";
+            return 1;
+        }
     }
 
     if (mode == MODE_GAME)
@@ -173,6 +184,30 @@ int main(int argc, char *argv[])
         std::ostream_iterator<std::string> output(std::cout, "\n");
         std::copy(path.begin(), path.end(), output);
         std::cout << "(" << path.size() << " moves)\n";
+        //create svg
+        UsCountiesSvgFile svg;
+        std::vector<std::string>::const_iterator it;
+        for (it=path.begin(); it!=path.end(); ++it)
+        {
+            const char * countyName = it->c_str();
+            const char * fill = "red";
+            if (it == path.begin())
+            {
+                fill = "blue";
+            }
+            if (!svg.markCountyByName(countyName, fill) && showWarnings)
+            {
+                std::cerr << "Warning: County \"" << countyName << "\" not found in SVG file\n";
+            }
+        }
+        svg.saveFile("output.svg");
+    }
+    else if (mode == MODE_TEST)
+    {
+        UsCountiesSvgFile svg;
+        svg.markCountyByName("Richmond Co., VA", "red");
+        svg.markCountyByName("Richmond, VA", "blue");
+        svg.saveFile("output.svg");
     }
     return 0;
 }

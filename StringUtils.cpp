@@ -14,6 +14,22 @@ std::vector<std::string> StringUtils::split(const std::string& str, char delim)
     return elems;
 }
 
+std::string StringUtils::join(const std::vector<std::string>& tokens, char delim)
+{
+    std::string output;
+    std::vector<std::string>::const_iterator it;
+    for (it = tokens.begin(); it != tokens.end(); ++it)
+    {
+        output += *it;
+        std::vector<std::string>::const_iterator jt = it;
+        if (++jt != tokens.end())
+        {
+            output += delim;
+        }
+    }
+    return output;
+}
+
 bool StringUtils::iequals(std::string s1, std::string s2)
 {
     std::transform(s1.begin(), s1.end(), s1.begin(), ::tolower);

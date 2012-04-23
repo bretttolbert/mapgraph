@@ -1,10 +1,16 @@
 Usage:
 
 -m <mode>               Set mode. Posible include:
-                          game  navigation game
-                          bfs   breadth first search
-                          tsp   traveling salesman problem
-                          test  test stub
+    game        Navigation game
+    bfs         Breadth first search
+    tsp         Traveling salesman problem
+        Find a path to visit all 31 counties named "Washington" starting
+        from and returning to Washington County, AL. 
+        In a traditional TSP, the distance between each Washington
+        would be given. In this case, we must use another algorithm
+        to find the shortest path between each Washington and then use
+        that path length as the distance for the TSP algorithm.
+    test        Test stub
 -s <start>              Specify starting node (optional, defaults to random).
 -g <goal>               Specify goal node (optional, defaults to random).
 -w                      Show warnings (useful for validating adjacency file).

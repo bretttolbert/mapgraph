@@ -4,8 +4,12 @@ Usage:
 -s <start>              Specify starting node (optional, defaults to random).
 -g <goal>               Specify goal node (optional, defaults to random).
 -w                      Show warnings (useful for validating adjacency file).
--af <file> <fmt>        Set adjacency file and adjacency file format.
-                        Possible formats:
+-lf <file>              Specify log file (defaults to "output.txt")
+-al preset <preset>     Use preset adjacency list. Presets include:
+                          usstates - The 48 continental states of the USA
+                          uscounties - 3000+ county or county equivalents 
+-al <file> <fmt>        Use custom adjacency list file. Must specify adjacency 
+                        file and adjacency file format. Possible formats:
    slc            Single Line CSV
      Example file: 48US.txt
      One line per node with tokens seperated by commas.

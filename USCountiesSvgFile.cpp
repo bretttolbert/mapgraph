@@ -3,7 +3,7 @@
 #include <string>
 
 #include "USCountiesSvgFile.h"
-#include "USCountiesAdjacencyList.h" //for fipsToString
+#include "USCountiesAdjacencyListFile.h" //for fipsToString
 #include "StringUtils.h"
 
 USCountiesSvgFile::USCountiesSvgFile()
@@ -19,7 +19,7 @@ bool USCountiesSvgFile::markCountyByFips(int fips, const std::string& fill)
 {
     tinyxml2::XMLElement* svg = doc.FirstChildElement("svg");
     tinyxml2::XMLElement* path = svg->FirstChildElement("path");
-    std::string fipsStr = USCountiesAdjacencyList::fipsToString(fips);
+    std::string fipsStr = USCountiesAdjacencyListFile::fipsToString(fips);
     do
     {
         const char* countyFips = path->Attribute("id");

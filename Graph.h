@@ -7,6 +7,8 @@
 #include <queue>
 #include <iterator>
 
+#include "AdjacencyListFile.h"
+
 #define DEBUG_GRAPH 0
 
 template <typename T>
@@ -27,10 +29,8 @@ public:
         Color color; //used in various ways by different searching and traversal algorithms
         Node* parent; //used by pathfinding algorithms
     };
-    typedef std::pair<T, std::vector<T> > AdjacencyListEntry;
-    typedef std::vector< AdjacencyListEntry > AdjacencyList;
 
-    Graph(const AdjacencyList& adjacencyList);
+    Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList);
     ~Graph();
 
     Node* Graph::findNodeByValue(const T& value);
@@ -51,10 +51,10 @@ private:
 
 template <typename T>
 inline
-Graph<T>::Graph(const AdjacencyList& adjacencyList)
+Graph<T>::Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList)
 {
     //create a node for each adjacency list entry
-    AdjacencyList::const_iterator it;
+    AdjacencyListFile<T>::AdjacencyList::const_iterator it;
     for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
     {
         //create node

@@ -13,7 +13,7 @@
 //#include "Game.h"
 #include "Graph.h"
 #include "UsCountiesSvgFile.h"
-#include "USCountiesAdjacencyList.h"
+#include "USCountiesAdjacencyListFile.h"
 
 enum Mode
 {
@@ -28,9 +28,10 @@ enum Mode
  * Application Globals
  */
 bool showWarnings = false;
+std::ofstream logfile;
 
 //performs BFS, prints info to console and updates SVG but does not save it
-void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
+void performBfsAndUpdateSvg(USCountiesAdjacencyListFile& adjacencyListFile,
                             USCountiesSvgFile& svg,
                             Graph<int>& graph,
                             int startFips, 
@@ -41,6 +42,8 @@ std::string randomColor();
 
 int main(int argc, char *argv[])
 {
+    logfile.open("output.txt", std::ios::out);
+
     srand((unsigned int)time(NULL));
 
     Mode mode = MODE_UNDEFINED;
@@ -51,7 +54,7 @@ int main(int argc, char *argv[])
 
     if (argc == 1)
     {
-        std::cerr << "Usage: ?\n";
+        logfile << "Usage: ?\n";
         return 1;
     }
 
@@ -79,13 +82,13 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    std::cerr << "Invalid mode \"" << argv[i] << "\"\n";
+                    logfile << "Invalid mode \"" << argv[i] << "\"\n";
                     return 1;
                 }
             }
             else
             {
-                std::cerr << "Error: Expected mode after -m flag\n";
+                logfile << "Error: Expected mode after -m flag\n";
                 return 1;
             }
         }
@@ -98,7 +101,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                std::cerr << "Error: Expected filename\n";
+                logfile << "Error: Expected filename\n";
                 return 1;
             }
             if (++i < argc)
@@ -113,13 +116,13 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    std::cerr << "Invalid format \"" << argv[i] << "\"\n";
+                    logfile << "Invalid format \"" << argv[i] << "\"\n";
                     return 1;
                 }
             }
             else
             {
-                std::cerr << "Error: Expected file format specifier\n";
+                logfile << "Error: Expected file format specifier\n";
                 return 1;
             }
         }
@@ -132,7 +135,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                std::cerr << "Error: Expected value after -s flag\n";
+                logfile << "Error: Expected value after -s flag\n";
                 return 1;
             }
         }
@@ -144,7 +147,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                std::cerr << "Error: Expected value after -g flag\n";
+                logfile << "Error: Expected value after -g flag\n";
                 return 1;
             }
         }
@@ -154,14 +157,14 @@ int main(int argc, char *argv[])
         }
         else
         {
-            std::cerr << "Unrecognized argument \"" << argv[i] << "\"\n";
+            logfile << "Unrecognized argument \"" << argv[i] << "\"\n";
             return 1;
         }
     }
 
     if (mode == MODE_UNDEFINED)
     {
-        std::cerr << "Error: Mode not specified\n";
+        logfile << "Error: Mode not specified\n";
         return 1;
     }
 
@@ -170,12 +173,12 @@ int main(int argc, char *argv[])
     {
         if (adjacencyFile == NULL)
         {
-            std::cerr << "Error: No adjacency file specified\n";
+            logfile << "Error: No adjacency file specified\n";
             return 1;
         }
         else if (fmt == UNDEFINED)
         {
-            std::cerr << "Error: Adjacency file format not specified\n";
+            logfile << "Error: Adjacency file format not specified\n";
             return 1;
         }
     }
@@ -184,13 +187,13 @@ int main(int argc, char *argv[])
     if (mode == MODE_GAME)
     {
         //Game(adjacencyFile, fmt, start, goal);
-        std::cout << "Temporarily disabled\n";
+        logfile << "Temporarily disabled\n";
     }
     else if (mode == MODE_BFS)
     {
-        USCountiesAdjacencyList adjacencyList;
+        USCountiesAdjacencyListFile adjacencyList;
         USCountiesSvgFile svg;
-        Graph<int> graph((const Graph<int>::AdjacencyList&)adjacencyList.getAdjacencyList());
+        Graph<int> graph(adjacencyList.getAdjacencyList());
         int startFips, goalFips;
         if (start.empty())
         {
@@ -215,12 +218,12 @@ int main(int argc, char *argv[])
     }
     else if (mode == MODE_WASHINGTONS)
     {
-        USCountiesAdjacencyList adjacencyList;
+        USCountiesAdjacencyListFile adjacencyListFile;
         USCountiesSvgFile svg;
-        Graph<int> graph((const Graph<int>::AdjacencyList&)adjacencyList.getAdjacencyList());
-        const USCountiesAdjacencyList::CountyFipsMap& counties = adjacencyList.getCounties();
+        Graph<int> graph(adjacencyListFile.getAdjacencyList());
+        const USCountiesAdjacencyListFile::CountyFipsMap& counties = adjacencyListFile.getCounties();
         std::vector<std::pair<int,std::string> > washingtons;
-        USCountiesAdjacencyList::CountyFipsMap::const_iterator it;
+        USCountiesAdjacencyListFile::CountyFipsMap::const_iterator it;
         for (it=counties.begin(); it!=counties.end(); ++it)
         {
             if (it->second.find("Washington") != std::string::npos)
@@ -228,46 +231,53 @@ int main(int argc, char *argv[])
                 washingtons.push_back(*it);
             }
         }
-        std::cout << "found " << washingtons.size() << " Washingtons\n";
+        logfile << "found " << washingtons.size() << " Washingtons\n";
         std::vector<std::pair<int,std::string> >::const_iterator jt;
         for (jt=washingtons.begin(); jt!=washingtons.end(); ++jt)
         {
             if (jt!=washingtons.begin())
             {
                 std::vector<std::pair<int,std::string> >::const_iterator prev = jt; --prev; 
-                performBfsAndUpdateSvg(adjacencyList, svg, graph, prev->first, jt->first);
+                performBfsAndUpdateSvg(adjacencyListFile, svg, graph, prev->first, jt->first);
             }
         }
         svg.saveFile("output.svg");
     }
     else if (mode == MODE_TEST)
     {
-        std::cout << "Test stub\n";
+        logfile << "Test stub\n";
     }
     return 0;
 }
 
-void performBfsAndUpdateSvg(USCountiesAdjacencyList& adjacencyList,
+void performBfsAndUpdateSvg(USCountiesAdjacencyListFile& adjacencyListFile,
                             USCountiesSvgFile& svg,
                             Graph<int>& graph,
                             int startFips, 
                             int goalFips)
 {
-    std::string start = adjacencyList.getCountyNameByFipsCode(startFips);
-    std::string goal = adjacencyList.getCountyNameByFipsCode(goalFips);
-    std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
-    std::cout << "Start: " << start << " (fips: " << USCountiesAdjacencyList::fipsToString(startFips) << ")\n";
-    std::cout << "Goal: " << goal << " (fips: " << USCountiesAdjacencyList::fipsToString(goalFips) << ")\n";
+    std::string start = adjacencyListFile.getCountyNameByFipsCode(startFips);
+    std::string goal = adjacencyListFile.getCountyNameByFipsCode(goalFips);
+    logfile << "Performing BFS from " << start << " to " << goal << "...\n";
+    logfile << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
+    logfile << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
     std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
-    std::cout << "Optimal Path:\n";
+    logfile << "Optimal Path:\n";
     std::vector<int>::const_iterator it;
-    std::string pathColor = randomColor();
     for (it=path.begin(); it!=path.end(); ++it)
     {
-        std::cout << adjacencyList.getCountyNameByFipsCode(*it) << std::endl;
-        svg.markCountyByFips(*it, pathColor);
+        std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
+        logfile << countyName << " (" << *it << "), ";
+        if (countyName.find("Washington") != std::string::npos)
+        {
+            svg.markCountyByFips(*it, "red");
+        }
+        else
+        {
+            svg.markCountyByFips(*it, "gray");
+        }
     }
-    std::cout << "(" << path.size() << " moves)\n"; 
+    logfile << "\n(" << path.size() << " moves)\n"; 
 }
 
 std::string randomColor()

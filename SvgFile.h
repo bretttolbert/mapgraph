@@ -3,13 +3,16 @@
 
 #include "tinyxml2\tinyxml2.h"
 
-class SvgFile
+namespace GraphGame
 {
-public:
-    SvgFile();
-    void saveFile(const char* filename);
-protected:
-    tinyxml2::XMLDocument doc;
-};
+    class SvgFile
+    {
+    public:
+        SvgFile();
+        void saveFile(const char* filename);
+    protected:
+        tinyxml2::XMLDocument doc;
+    };
+}
 
 #endif

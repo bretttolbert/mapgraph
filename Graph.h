@@ -6,201 +6,207 @@
 #include <set>
 #include <queue>
 #include <iterator>
+#include <fstream>
 
 #include "AdjacencyListFile.h"
 
-#define DEBUG_GRAPH 0
-
-template <typename T>
-class Graph
+namespace GraphGame
 {
-public:
-    class Node
+    #define DEBUG_GRAPH 0
+    extern std::ofstream log;
+    extern bool showWarnings;
+
+    template <typename T>
+    class Graph
     {
     public:
-        enum Color
+        class Node
         {
-            BLACK, WHITE, RED, GREEN, BLUE
+        public:
+            enum Color
+            {
+                BLACK, WHITE, RED, GREEN, BLUE
+            };
+            Node();
+            bool operator<(const Node &other) const;
+            T value;
+            std::vector<Node*> adjacentNodes;
+            Color color; //used in various ways by different searching and traversal algorithms
+            Node* parent; //used by pathfinding algorithms
         };
-        Node();
-        bool operator<(const Node &other) const;
-        T value;
-        std::vector<Node*> adjacentNodes;
-        Color color; //used in various ways by different searching and traversal algorithms
-        Node* parent; //used by pathfinding algorithms
+
+        Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList);
+        ~Graph();
+
+        Node* Graph::findNodeByValue(const T& value);
+
+        /** 
+         * Uses breadth first search to find path from start to goal 
+         * Returns vector of values representing path taken
+         */
+        std::vector<T> breadthFirstSearch(T startNodeValue, T goalNodeValue);
+    private:
+        struct NodeComparator
+        {
+            bool operator() (const Node* a, const Node* b);
+        };
+        typedef std::set<Node*, NodeComparator> NodeSet;
+        NodeSet nodes;
     };
 
-    Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList);
-    ~Graph();
-
-    Node* Graph::findNodeByValue(const T& value);
-
-    /** 
-     * Uses breadth first search to find path from start to goal 
-     * Returns vector of values representing path taken
-     */
-    std::vector<T> breadthFirstSearch(T startNodeValue, T goalNodeValue);
-private:
-    struct NodeComparator
+    template <typename T>
+    inline
+    Graph<T>::Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList)
     {
-        bool operator() (const Node* a, const Node* b);
-    };
-    typedef std::set<Node*, NodeComparator> NodeSet;
-    NodeSet nodes;
-};
-
-template <typename T>
-inline
-Graph<T>::Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList)
-{
-    //create a node for each adjacency list entry
-    AdjacencyListFile<T>::AdjacencyList::const_iterator it;
-    for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
-    {
-        //create node
-        Node* node = new Node();
-        node->value = it->first;
-        nodes.insert(node);
-    }
-    //populate adjacentNodes of each node
-    for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
-    {
-        Node* node = findNodeByValue(it->first);
-        if (node == NULL)
+        //create a node for each adjacency list entry
+        AdjacencyListFile<T>::AdjacencyList::const_iterator it;
+        for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
         {
-            std::cerr << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
-            exit(1);
+            //create node
+            Node* node = new Node();
+            node->value = it->first;
+            nodes.insert(node);
         }
-        std::vector<T>::const_iterator jt;
-        for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
+        //populate adjacentNodes of each node
+        for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
         {
-            Node* adjacentNode = findNodeByValue(*jt);
-            if (adjacentNode == NULL && showWarnings)
+            Node* node = findNodeByValue(it->first);
+            if (node == NULL)
             {
-                std::cerr << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
+                log << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
+                exit(1);
             }
-            else
+            std::vector<T>::const_iterator jt;
+            for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
             {
-                node->adjacentNodes.push_back(adjacentNode);
+                Node* adjacentNode = findNodeByValue(*jt);
+                if (adjacentNode == NULL && showWarnings)
+                {
+                    log << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
+                }
+                else
+                {
+                    node->adjacentNodes.push_back(adjacentNode);
+                }
             }
         }
+        log << "Done.\n";
     }
-    std::cout << "Done.\n";
-}
 
-template <typename T>
-inline
-Graph<T>::~Graph()
-{
-    NodeSet::iterator it;
-    for (it=nodes.begin(); it!=nodes.end(); ++it)
+    template <typename T>
+    inline
+    Graph<T>::~Graph()
     {
-        Node* node = *it;
-        delete node;
-    }
-}
-
-template <typename T>
-inline
-typename Graph<T>::Node* Graph<T>::findNodeByValue(const T& value)
-{
-    Graph<T>::Node temp;
-    temp.value = value;
-    Graph<T>::NodeSet::const_iterator it = nodes.find(&temp);
-    if (it != nodes.end())
-    {
-        return *it;
-    }
-    else
-    {
-        return NULL;
-    }
-}
-
-template <typename T>
-inline
-Graph<T>::Node::Node() : 
-    color(BLACK), 
-    parent(NULL) 
-{ }
-
-template <typename T>
-inline
-bool Graph<T>::NodeComparator::operator() (const Node* a,  const Node* b)
-{
-    return (a->value < b->value);
-}
-
-template <typename T>
-inline
-typename std::vector<T> Graph<T>::breadthFirstSearch(T startNodeValue, T goalNodeValue)
-{
-    std::vector<T> path;
-    Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
-    std::queue<Graph<T>::Node*> q;
-    startNode->color = Node::WHITE; //white=marked, black=unmarked (default)
-    q.push(startNode);
-    while (q.size() > 0)
-    {
-        Node* currentNode = q.front(); 
-        q.pop();
-        if (DEBUG_GRAPH)
+        NodeSet::iterator it;
+        for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
-            std::cout << "examining " << currentNode->value << std::endl;
+            Node* node = *it;
+            delete node;
         }
-        if (currentNode->value == goalNodeValue)
+    }
+
+    template <typename T>
+    inline
+    typename Graph<T>::Node* Graph<T>::findNodeByValue(const T& value)
+    {
+        Graph<T>::Node temp;
+        temp.value = value;
+        Graph<T>::NodeSet::const_iterator it = nodes.find(&temp);
+        if (it != nodes.end())
         {
-            //populate path vector
-            Graph<T>::Node *node = currentNode;
-            while (node != NULL)
-            {
-                path.push_back(node->value);
-                node = node->parent;
-            }
-            std::reverse(path.begin(),path.end());
-            if (DEBUG_GRAPH)
-            {
-                std::cout << "found it\npath taken: ";
-                std::ostream_iterator<int> output(std::cout, " ");
-                std::copy(path.begin(), path.end(), output);
-                std::cout << std::endl;
-            }
-            break;
+            return *it;
         }
         else
         {
-            std::vector<Node*>::const_iterator it;
-            for (it=currentNode->adjacentNodes.begin(); it!=currentNode->adjacentNodes.end(); ++it)
+            return NULL;
+        }
+    }
+
+    template <typename T>
+    inline
+    Graph<T>::Node::Node() : 
+        color(BLACK), 
+        parent(NULL) 
+    { }
+
+    template <typename T>
+    inline
+    bool Graph<T>::NodeComparator::operator() (const Node* a,  const Node* b)
+    {
+        return (a->value < b->value);
+    }
+
+    template <typename T>
+    inline
+    typename std::vector<T> Graph<T>::breadthFirstSearch(T startNodeValue, T goalNodeValue)
+    {
+        std::vector<T> path;
+        Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
+        std::queue<Graph<T>::Node*> q;
+        startNode->color = Node::WHITE; //white=marked, black=unmarked (default)
+        q.push(startNode);
+        while (q.size() > 0)
+        {
+            Node* currentNode = q.front(); 
+            q.pop();
+            if (DEBUG_GRAPH)
             {
-                Graph<T>::Node* adjacentNode = *it;
-                if (adjacentNode == NULL)
+                log << "examining " << currentNode->value << std::endl;
+            }
+            if (currentNode->value == goalNodeValue)
+            {
+                //populate path vector
+                Graph<T>::Node *node = currentNode;
+                while (node != NULL)
                 {
-                    std::cerr << "Error: adjacentNode is NULL\n";
-                    std::cerr << "currentNode = " << currentNode->value << std::endl;
-                    exit(1);
+                    path.push_back(node->value);
+                    node = node->parent;
                 }
-                if (adjacentNode->color != Node::WHITE)
+                std::reverse(path.begin(),path.end());
+                if (DEBUG_GRAPH)
                 {
-                    if (DEBUG_GRAPH)
+                    log << "found it\npath taken: ";
+                    std::ostream_iterator<int> output(log, " ");
+                    std::copy(path.begin(), path.end(), output);
+                    log << std::endl;
+                }
+                break;
+            }
+            else
+            {
+                std::vector<Node*>::const_iterator it;
+                for (it=currentNode->adjacentNodes.begin(); it!=currentNode->adjacentNodes.end(); ++it)
+                {
+                    Graph<T>::Node* adjacentNode = *it;
+                    if (adjacentNode == NULL)
                     {
-                        std::cout << "enqueuing neighbor " << adjacentNode->value << std::endl;
+                        log << "Error: adjacentNode is NULL\n";
+                        log << "currentNode = " << currentNode->value << std::endl;
+                        exit(1);
                     }
-                    adjacentNode->parent = currentNode;
-                    q.push(adjacentNode);
-                    adjacentNode->color = Node::WHITE;
+                    if (adjacentNode->color != Node::WHITE)
+                    {
+                        if (DEBUG_GRAPH)
+                        {
+                            log << "enqueuing neighbor " << adjacentNode->value << std::endl;
+                        }
+                        adjacentNode->parent = currentNode;
+                        q.push(adjacentNode);
+                        adjacentNode->color = Node::WHITE;
+                    }
                 }
             }
         }
+        //reset node color and parent
+        Graph<T>::NodeSet::const_iterator it;
+        for (it=nodes.begin(); it!=nodes.end(); ++it)
+        {
+            Graph<T>::Node* node = *it;
+            node->color = Graph<int>::Node::BLACK;
+            node->parent = NULL;
+        }
+        return path;
     }
-    //reset node color and parent
-    Graph<T>::NodeSet::const_iterator it;
-    for (it=nodes.begin(); it!=nodes.end(); ++it)
-    {
-        Graph<T>::Node* node = *it;
-        node->color = Graph<int>::Node::BLACK;
-        node->parent = NULL;
-    }
-    return path;
 }
 
 #endif

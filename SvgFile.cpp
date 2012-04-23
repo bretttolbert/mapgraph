@@ -1,10 +1,13 @@
 #include "SvgFile.h"
 
-SvgFile::SvgFile()
+namespace GraphGame
 {
-}
+    SvgFile::SvgFile()
+    {
+    }
 
-void SvgFile::saveFile(const char* filename)
-{
-    doc.SaveFile(filename);
+    void SvgFile::saveFile(const char* filename)
+    {
+        doc.SaveFile(filename);
+    }
 }

@@ -1,5 +1,5 @@
-#ifndef ADAJACENCY_LIST_H
-#define ADAJACENCY_LIST_H
+#ifndef ADAJACENCY_LIST_FILE_H
+#define ADAJACENCY_LIST_FILE_H
 
 /**
  * Interface

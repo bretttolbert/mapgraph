@@ -1,6 +1,10 @@
 Usage:
 
--m <mode>               Set mode. Posible values are "game" and "bfs".
+-m <mode>               Set mode. Posible include:
+                          game  navigation game
+                          bfs   breadth first search
+                          tsp   traveling salesman problem
+                          test  test stub
 -s <start>              Specify starting node (optional, defaults to random).
 -g <goal>               Specify goal node (optional, defaults to random).
 -w                      Show warnings (useful for validating adjacency file).

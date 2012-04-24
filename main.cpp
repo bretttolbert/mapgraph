@@ -1,4 +1,4 @@
-#include <fstream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -39,10 +39,6 @@ namespace GraphGame
 
     int parseCommandLineArgs(int argc, char *argv[])
     {
-        log.open("output.txt", std::ios::out);
-
-        srand((unsigned int)time(NULL));
-
         Mode mode = MODE_UNDEFINED;
         const char* adjacencyFile = NULL;
         std::string start, goal;
@@ -234,7 +230,8 @@ namespace GraphGame
         }
         else if (mode == MODE_TSP)
         {
-            TravelingSalesmanProblem tsp();
+            log << "Traveling Salesman Problem\n";
+            TravelingSalesmanProblem tsp;
         }
         else if (mode == MODE_TEST)
         {
@@ -257,6 +254,9 @@ namespace GraphGame
 
 int main(int argc, char *argv[])
 {
+    GraphGame::log.open("output.txt", std::ios::out);
+    srand((unsigned int)time(NULL));
     GraphGame::parseCommandLineArgs(argc,argv);
+    GraphGame::log.close();
     return 0;
 }

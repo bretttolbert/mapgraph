@@ -20,7 +20,7 @@ namespace GraphGame
         if (file.is_open())
         {
             int lineNum = 0;
-            std::pair< int, std::vector<int> > entry;
+            AdjacencyListEntry entry;
             entry.first = 0;
             while (file.good())
             {
@@ -39,7 +39,7 @@ namespace GraphGame
                         {
                             if (entry.first != 0)
                             {
-                                adjacencyList.push_back(entry);
+                                adjacencyList.insert(entry);
                                 entry.second.clear();
                             }
                             std::string countyName = tokens[0];
@@ -47,7 +47,7 @@ namespace GraphGame
                             entry.first = countyFips;
                             if (neighborFips != entry.first)
                             {
-                                entry.second.push_back(neighborFips);
+                                entry.second.insert(neighborFips);
                             }
                             counties[countyFips] = countyName;
                         }
@@ -55,7 +55,7 @@ namespace GraphGame
                         {
                             if (neighborFips != entry.first)
                             {
-                                entry.second.push_back(neighborFips);
+                                entry.second.insert(neighborFips);
                             }
                         }
                     }
@@ -67,19 +67,25 @@ namespace GraphGame
                     }
                 }
             }
-            //sort adjacency list
-            std::sort(adjacencyList.begin(), adjacencyList.end(), USCountiesAdjacencyListFile::AdjacencyListEntryComparator());
         }
     }
 
-    bool USCountiesAdjacencyListFile::AdjacencyListEntryComparator::operator() (const AdjacencyListEntry a, const AdjacencyListEntry b)
-    {
-        return a.first < b.first;
-    }
-
-    const AdjacencyListFile<int>::AdjacencyList& USCountiesAdjacencyListFile::getAdjacencyList()
+    const AdjacencyListFile<int>::AdjacencyList& USCountiesAdjacencyListFile::getAdjacencyList() const
     {
         return adjacencyList;
+    }
+
+    const std::set<int>& USCountiesAdjacencyListFile::getNeighbors(int nodeId) const
+    {
+        AdjacencyListEntry temp;
+        temp.first = nodeId;
+        AdjacencyList::const_iterator it = adjacencyList.find(temp);
+        if (it == adjacencyList.end())
+        {
+            log << "Error: invalid nodeId\n";
+            exit(1);
+        }
+        return it->second;
     }
 
     const USCountiesAdjacencyListFile::CountyFipsMap& USCountiesAdjacencyListFile::getCounties()
@@ -95,6 +101,30 @@ namespace GraphGame
     std::string USCountiesAdjacencyListFile::getCountyNameByFipsCode(const std::string& fipsCode)
     {
         return counties[atoi(fipsCode.c_str())];
+    }
+
+    std::set<std::string> USCountiesAdjacencyListFile::getCountyNamesByFipsCodes(const std::set<int>& fipsCodes)
+    {
+        std::set<std::string> names;
+        std::set<int>::const_iterator it;
+        for (it=fipsCodes.begin(); it!=fipsCodes.end(); ++it)
+        {
+            int fipsCode = *it;
+            names.insert(counties[fipsCode]);
+        }
+        return names;
+    }
+
+    std::vector<std::string> USCountiesAdjacencyListFile::getCountyNamesByFipsCodes(const std::vector<int>& fipsCodes)
+    {
+        std::vector<std::string> names;
+        std::vector<int>::const_iterator it;
+        for (it=fipsCodes.begin(); it!=fipsCodes.end(); ++it)
+        {
+            int fipsCode = *it;
+            names.push_back(counties[fipsCode]);
+        }
+        return names;
     }
 
     int USCountiesAdjacencyListFile::getFipsCodeByCountyName(const std::string& countyName)

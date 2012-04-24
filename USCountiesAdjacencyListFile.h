@@ -22,18 +22,17 @@ namespace GraphGame
     public:
         typedef std::map<int,std::string> CountyFipsMap;
         USCountiesAdjacencyListFile();
-        const AdjacencyListFile<int>::AdjacencyList& getAdjacencyList();
+        virtual const AdjacencyListFile<int>::AdjacencyList& getAdjacencyList() const;
+        virtual const std::set<int>& getNeighbors(int nodeId) const;
         const CountyFipsMap& getCounties();
         std::string getCountyNameByFipsCode(int fipsCode);
         std::string getCountyNameByFipsCode(const std::string& fipsCode);
+        std::set<std::string> getCountyNamesByFipsCodes(const std::set<int>& fipsCodes);
+        std::vector<std::string> getCountyNamesByFipsCodes(const std::vector<int>& fipsCodes);
         int getFipsCodeByCountyName(const std::string& countyName);
         int getRandomFipsCode();
         static std::string fipsToString(int fips);
     private:
-        struct AdjacencyListEntryComparator
-        {
-            bool operator() (const AdjacencyListEntry a, const AdjacencyListEntry b);
-        };
         CountyFipsMap counties; //key: county fips code, value: county name
         //to save memory, the adjacency list contains only fips codes
         AdjacencyList adjacencyList;

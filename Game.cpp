@@ -11,100 +11,131 @@
 #include "Game.h"
 #include "StringUtils.h"
 
-Game::Game(const char* adjacencyFile, AdjacencyFileFormat fmt, const char* start, const char* goal) :
-    //maxFuel(10),
-    //fuel(10),
-    moves(0),
-    printNeighbors(true)
+namespace GraphGame
 {
-    graph.readAdjacencyListFromFile(adjacencyFile, fmt);
-    if (!start || start == "")
-    {
-        chooseStartNode();
-    }
-    else
-    {
-        startNode = start;
-    }
-    currentNode = startNode;
-    if (!goal || goal == "")
-    {
-        chooseGoalNode();
-    }
-    else
-    {
-        goalNode = goal;
-    }
-    optimalPath = graph.breadthFirstSearch(startNode, goalNode);
-    mainLoop();
-}
+    extern std::ofstream log;
+    extern bool showWarnings;
 
-void Game::chooseStartNode()
-{
-    std::vector<std::string> candidates = graph.getNodeValues();
-    startNode = candidates[rand() % candidates.size()];
-}
-
-void Game::chooseGoalNode()
-{
-    std::vector<std::string> candidates = graph.getNodeValues();
-    std::vector<std::string> nonCandidates = graph.getNeighbors(currentNode);
-    nonCandidates.push_back(currentNode);
-    std::vector<std::string>::const_iterator it;
-    for (it=nonCandidates.begin(); it!=nonCandidates.end(); ++it)
+    Game::Game(const std::string& start, 
+             const std::string& goal) :
+        adjacencyFile(),
+        graph(adjacencyFile.getAdjacencyList()),
+        //maxFuel(10),
+        //fuel(10),
+        moves(0),
+        printNeighbors(true)
     {
-        candidates.erase(std::remove(candidates.begin(), candidates.end(), *it), candidates.end());
+        if (start.empty())
+        {
+            chooseStartNode();
+        }
+        else
+        {
+            startNodeId = adjacencyFile.getFipsCodeByCountyName(start);
+        }
+        currentNodeId = startNodeId;
+        if (goal.empty())
+        {
+            chooseGoalNode();
+        }
+        else
+        {
+            goalNodeId = adjacencyFile.getFipsCodeByCountyName(goal);
+        }
+        optimalPath = graph.breadthFirstSearch(startNodeId, goalNodeId);
+        mainLoop();
     }
-    goalNode = candidates[rand() % candidates.size()];
-}
 
-void Game::printStats(bool final)
-{
-    if (printNeighbors)
+    void Game::chooseStartNode()
     {
-        std::cout << "Neighbors:\n";
-        graph.printNeighbors(currentNode, "\n");
+        startNodeId = adjacencyFile.getRandomFipsCode();
+        /*
+        std::vector<std::string> candidates = graph.getNodeValues();
+        startNode = candidates[rand() % candidates.size()];
+        */
+    }
+
+    void Game::chooseGoalNode()
+    {
+        goalNodeId = adjacencyFile.getRandomFipsCode();
+        /*
+        std::vector<std::string> candidates = graph.getNodeValues();
+        std::vector<std::string> nonCandidates = graph.getNeighbors(currentNode);
+        nonCandidates.push_back(currentNode);
+        std::vector<std::string>::const_iterator it;
+        for (it=nonCandidates.begin(); it!=nonCandidates.end(); ++it)
+        {
+            candidates.erase(std::remove(candidates.begin(), candidates.end(), *it), candidates.end());
+        }
+        goalNode = candidates[rand() % candidates.size()];
+        */
+    }
+
+    void Game::printStats(bool final)
+    {
+        if (printNeighbors)
+        {
+            std::cout << "Neighbors:\n";
+            const std::set<int>& neighbors = adjacencyFile.getNeighbors(currentNodeId);
+            std::set<std::string> names = adjacencyFile.getCountyNamesByFipsCodes(neighbors);
+            std::set<std::string>::const_iterator it;
+            for (it=names.begin(); it!=names.end(); ++it)
+            {
+                std::cout << *it << "\n";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << "Goal: " << adjacencyFile.getCountyNameByFipsCode(goalNodeId) << std::endl;
+        std::cout << "Moves: " << moves << std::endl;
+        if (final || DEBUG_GAME)
+        {
+            std::cout << "Optimal Path:\n";
+            std::vector<std::string> names = adjacencyFile.getCountyNamesByFipsCodes(optimalPath);
+            std::vector<std::string>::const_iterator it;
+            for (it=names.begin(); it!=names.end(); ++it)
+            {
+                std::cout << *it << "\n";
+            }
+            std::cout << "(" << optimalPath.size() << " moves)\n";
+        }
+        //std::cout << "Fuel: " << fuel << "/" << maxFuel << std::endl;
         std::cout << std::endl;
     }
-    std::cout << "Goal: " << goalNode << std::endl;
-    std::cout << "Moves: " << moves << std::endl;
-    if (final || DEBUG_GAME)
-    {
-        std::cout << "Optimal Path:\n";
-        std::ostream_iterator<std::string> output(std::cout, "\n");
-        std::copy(optimalPath.begin(), optimalPath.end(), output);
-        std::cout << "(" << optimalPath.size() << " moves)\n";
-    }
-    //std::cout << "Fuel: " << fuel << "/" << maxFuel << std::endl;
-    std::cout << std::endl;
-}
 
-void Game::mainLoop()
-{
-    while (1)
+    void Game::mainLoop()
     {
-        std::cout << "\nWelcome to " << currentNode << std::endl;
-        std::vector<std::string> neighbors = graph.getNeighbors(currentNode);
-        printStats(false);
-        std::string dest;
-        std::cout << "Enter Destination: ";
-        getline(std::cin, dest);
-        std::vector<std::string>::const_iterator it;
-        StringUtils::CaseInsensitiveComparator comp(dest);
-        while ((it = std::find_if(neighbors.begin(), neighbors.end(), comp)) == neighbors.end())
+        while (1)
         {
-            std::cout << "Invalid Destination. Destination must be a neighbor.\n";
+            std::cout << "\nWelcome to " << adjacencyFile.getCountyNameByFipsCode(currentNodeId) << std::endl;
+            const std::set<int>& neighbors = adjacencyFile.getNeighbors(currentNodeId);
+            std::set<std::string> neighborNames;
+            std::set<int>::const_iterator it;
+            for (it=neighbors.begin(); it!=neighbors.end(); ++it)
+            {
+                std::string name = adjacencyFile.getCountyNameByFipsCode(*it);
+                neighborNames.insert(name);
+            }
+            printStats(false);
+            std::string dest;
             std::cout << "Enter Destination: ";
-            std::cin >> dest;
-            comp.setMatchTarget(dest);
-        }
-        currentNode = *it;
-        ++moves;
-        if (currentNode == goalNode)
-        {
-            std::cout << "Goal Reached!!!\nFinal Stats:\n";
-            printStats(true);
-            break;
+            getline(std::cin, dest);
+            std::set<std::string>::const_iterator jt;
+            StringUtils::CaseInsensitiveComparator comp(dest);
+            while ((jt = std::find_if(neighborNames.begin(), neighborNames.end(), comp)) == neighborNames.end())
+            {
+                std::cout << "Invalid Destination. Destination must be a neighbor.\n";
+                std::cout << "Enter Destination: ";
+                std::cin >> dest;
+                comp.setMatchTarget(dest);
+            }
+            currentNodeId = adjacencyFile.getFipsCodeByCountyName(*jt);
+            ++moves;
+            if (currentNodeId == goalNodeId)
+            {
+                std::cout << "Goal Reached!!!\nFinal Stats:\n";
+                printStats(true);
+                break;
+            }
         }
     }
 }

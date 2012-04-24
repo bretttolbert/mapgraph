@@ -10,7 +10,7 @@
 #include <cmath>
 #include <ctime>
 
-//#include "Game.h"
+#include "Game.h"
 #include "TravelingSalesmanProblem.h"
 #include "Graph.h"
 #include "UsCountiesSvgFile.h"
@@ -179,8 +179,8 @@ namespace GraphGame
 
         if (mode == MODE_GAME)
         {
-            //Game(adjacencyFile, fmt, start, goal);
-            log << "Temporarily disabled\n";
+            std::cout << "Starting game mode...\n";
+            Game(start, goal);
         }
         else if (mode == MODE_BFS)
         {
@@ -214,15 +214,19 @@ namespace GraphGame
             std::vector<int>::const_iterator it;
             for (it=path.begin(); it!=path.end(); ++it)
             {
-                std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
-                log << countyName << " (" << *it << "), ";
-                if (it == path.begin())
+                std::vector<int>::const_iterator jt;
+                for (jt=path.begin(); jt!=path.end(); ++it)
                 {
-                    svg.markCountyByFips(*it, "red");
-                }
-                else
-                {
-                    svg.markCountyByFips(*it, "gray");
+                    std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
+                    log << countyName << " (" << *it << "), ";
+                    if (it == path.begin())
+                    {
+                        svg.markCountyByFips(*it, "red");
+                    }
+                    else
+                    {
+                        svg.markCountyByFips(*it, "gray");
+                    }
                 }
             }
             log << "\n(" << path.size() << " moves)\n"; 

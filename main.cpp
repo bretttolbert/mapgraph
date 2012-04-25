@@ -13,7 +13,7 @@
 #include "Game.h"
 #include "TravelingSalesmanProblem.h"
 #include "Graph.h"
-#include "UsCountiesSvgFile.h"
+#include "USCountiesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 
 namespace GraphGame

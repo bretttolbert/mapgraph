@@ -1,3 +1,10 @@
+Compiling from source:
+
+	git clone git@github.com:bretttolbert/graphgame.git
+	cd graphgame
+	git clone git://github.com/leethomason/tinyxml2.git
+	make
+
 Usage:
 
 -m <mode>               Set mode. Posible include:

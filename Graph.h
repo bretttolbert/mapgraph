@@ -5,6 +5,7 @@
 #include <vector>
 #include <set>
 #include <queue>
+#include <algorithm>
 #include <iterator>
 #include <fstream>
 
@@ -35,10 +36,10 @@ namespace GraphGame
             Node* parent; //used by pathfinding algorithms
         };
 
-        Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList);
+        Graph(const typename AdjacencyListFile<T>::AdjacencyList& adjacencyList);
         ~Graph();
 
-        Node* Graph::findNodeByValue(const T& value);
+        Node* findNodeByValue(const T& value);
 
         /** 
          * Uses breadth first search to find path from start to goal 
@@ -56,10 +57,10 @@ namespace GraphGame
 
     template <typename T>
     inline
-    Graph<T>::Graph(typename const AdjacencyListFile<T>::AdjacencyList& adjacencyList)
+    Graph<T>::Graph(const typename AdjacencyListFile<T>::AdjacencyList& adjacencyList)
     {
         //create a node for each adjacency list entry
-        AdjacencyListFile<T>::AdjacencyList::const_iterator it;
+        typename AdjacencyListFile<T>::AdjacencyList::const_iterator it;
         for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
         {
             //create node
@@ -76,7 +77,7 @@ namespace GraphGame
                 log << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
                 exit(1);
             }
-            std::vector<T>::const_iterator jt;
+            typename std::set<T>::const_iterator jt;
             for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
             {
                 Node* adjacentNode = findNodeByValue(*jt);
@@ -97,7 +98,7 @@ namespace GraphGame
     inline
     Graph<T>::~Graph()
     {
-        NodeSet::iterator it;
+        typename NodeSet::iterator it;
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
             Node* node = *it;
@@ -111,7 +112,7 @@ namespace GraphGame
     {
         Graph<T>::Node temp;
         temp.value = value;
-        Graph<T>::NodeSet::const_iterator it = nodes.find(&temp);
+        typename Graph<T>::NodeSet::const_iterator it = nodes.find(&temp);
         if (it != nodes.end())
         {
             return *it;
@@ -174,7 +175,7 @@ namespace GraphGame
             }
             else
             {
-                std::vector<Node*>::const_iterator it;
+                typename std::vector<Node*>::const_iterator it;
                 for (it=currentNode->adjacentNodes.begin(); it!=currentNode->adjacentNodes.end(); ++it)
                 {
                     Graph<T>::Node* adjacentNode = *it;
@@ -198,7 +199,7 @@ namespace GraphGame
             }
         }
         //reset node color and parent
-        Graph<T>::NodeSet::const_iterator it;
+        typename Graph<T>::NodeSet::const_iterator it;
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
             Graph<T>::Node* node = *it;

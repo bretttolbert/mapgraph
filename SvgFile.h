@@ -1,7 +1,7 @@
 #ifndef SVGFILE_H
 #define SVGFILE_H
 
-#include "tinyxml2\tinyxml2.h"
+#include "tinyxml2/tinyxml2.h"
 
 namespace GraphGame
 {

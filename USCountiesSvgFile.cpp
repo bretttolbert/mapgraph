@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include <fstream>
+#include <iostream>
 #include <string>
 
 #include "USCountiesSvgFile.h"
@@ -8,14 +8,13 @@
 
 namespace GraphGame
 {
-    extern std::ofstream log;
     extern bool showWarnings;
 
     USCountiesSvgFile::USCountiesSvgFile()
     {
         if (doc.LoadFile(USCOUNTIES_SVGFILE_FILENAME) != tinyxml2::XML_SUCCESS)
         {
-            log << "failed to open " << USCOUNTIES_SVGFILE_FILENAME << std::endl;
+            std::cout << "failed to open " << USCOUNTIES_SVGFILE_FILENAME << std::endl;
             exit(1);
         }
     }

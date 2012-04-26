@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -32,7 +31,6 @@ namespace GraphGame
      * Application Globals
      */
     bool showWarnings = false;
-    std::ofstream log;
 
     //returns hex code for a random color
     std::string randomColor();
@@ -47,7 +45,7 @@ namespace GraphGame
 
         if (argc == 1)
         {
-            log << "Usage: ?\n";
+            std::cout << "Usage: ?\n";
             return 1;
         }
 
@@ -75,13 +73,13 @@ namespace GraphGame
                     }
                     else
                     {
-                        log << "Invalid mode \"" << argv[i] << "\"\n";
+                        std::cout << "Invalid mode \"" << argv[i] << "\"\n";
                         return 1;
                     }
                 }
                 else
                 {
-                    log << "Error: Expected mode after -m flag\n";
+                    std::cout << "Error: Expected mode after -m flag\n";
                     return 1;
                 }
             }
@@ -94,7 +92,7 @@ namespace GraphGame
                 }
                 else
                 {
-                    log << "Error: Expected filename\n";
+                    std::cout << "Error: Expected filename\n";
                     return 1;
                 }
                 if (++i < argc)
@@ -109,13 +107,13 @@ namespace GraphGame
                     }
                     else
                     {
-                        log << "Invalid format \"" << argv[i] << "\"\n";
+                        std::cout << "Invalid format \"" << argv[i] << "\"\n";
                         return 1;
                     }
                 }
                 else
                 {
-                    log << "Error: Expected file format specifier\n";
+                    std::cout << "Error: Expected file format specifier\n";
                     return 1;
                 }
             }
@@ -128,7 +126,7 @@ namespace GraphGame
                 }
                 else
                 {
-                    log << "Error: Expected value after -s flag\n";
+                    std::cout << "Error: Expected value after -s flag\n";
                     return 1;
                 }
             }
@@ -140,7 +138,7 @@ namespace GraphGame
                 }
                 else
                 {
-                    log << "Error: Expected value after -g flag\n";
+                    std::cout << "Error: Expected value after -g flag\n";
                     return 1;
                 }
             }
@@ -150,14 +148,14 @@ namespace GraphGame
             }
             else
             {
-                log << "Unrecognized argument \"" << argv[i] << "\"\n";
+                std::cout << "Unrecognized argument \"" << argv[i] << "\"\n";
                 return 1;
             }
         }
 
         if (mode == MODE_UNDEFINED)
         {
-            log << "Error: Mode not specified\n";
+            std::cout << "Error: Mode not specified\n";
             return 1;
         }
 
@@ -166,12 +164,12 @@ namespace GraphGame
         {
             if (adjacencyFile == NULL)
             {
-                log << "Error: No adjacency file specified\n";
+                std::cout << "Error: No adjacency file specified\n";
                 return 1;
             }
             else if (fmt == UNDEFINED)
             {
-                log << "Error: Adjacency file format not specified\n";
+                std::cout << "Error: Adjacency file format not specified\n";
                 return 1;
             }
         }
@@ -206,11 +204,11 @@ namespace GraphGame
             {
                 goalFips = adjacencyListFile.getFipsCodeByCountyName(goal);
             }
-            log << "Performing BFS from " << start << " to " << goal << "...\n";
-            log << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
-            log << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
+            std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
+            std::cout << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
+            std::cout << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
             std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
-            log << "Optimal Path:\n";
+            std::cout << "Optimal Path:\n";
             std::vector<int>::const_iterator it;
             for (it=path.begin(); it!=path.end(); ++it)
             {
@@ -218,7 +216,7 @@ namespace GraphGame
                 for (jt=path.begin(); jt!=path.end(); ++it)
                 {
                     std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
-                    log << countyName << " (" << *it << "), ";
+                    std::cout << countyName << " (" << *it << "), ";
                     if (it == path.begin())
                     {
                         svg.markCountyByFips(*it, "red");
@@ -229,17 +227,17 @@ namespace GraphGame
                     }
                 }
             }
-            log << "\n(" << path.size() << " moves)\n"; 
+            std::cout << "\n(" << path.size() << " moves)\n"; 
             svg.saveFile("output.svg");
         }
         else if (mode == MODE_TSP)
         {
-            log << "Traveling Salesman Problem\n";
+            std::cout << "Traveling Salesman Problem\n";
             TravelingSalesmanProblem tsp;
         }
         else if (mode == MODE_TEST)
         {
-            log << "Test stub\n";
+            std::cout << "Test stub\n";
         }
         return 0;
     }
@@ -258,9 +256,7 @@ namespace GraphGame
 
 int main(int argc, char *argv[])
 {
-    GraphGame::log.open("output.txt", std::ios::out);
     srand((unsigned int)time(NULL));
     GraphGame::parseCommandLineArgs(argc,argv);
-    GraphGame::log.close();
     return 0;
 }

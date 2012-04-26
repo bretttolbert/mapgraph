@@ -3,7 +3,6 @@
 
 namespace GraphGame
 {
-    extern std::ofstream log;
     extern bool showWarnings;
 
     TravelingSalesmanProblem::TravelingSalesmanProblem()
@@ -21,7 +20,7 @@ namespace GraphGame
                 washingtons.push_back(*it);
             }
         }
-        log << "found " << washingtons.size() << " Washingtons\n";
+        std::cout << "found " << washingtons.size() << " Washingtons\n";
         std::vector<std::pair<int,std::string> >::const_iterator jt;
         for (jt=washingtons.begin(); jt!=washingtons.end(); ++jt)
         {
@@ -45,16 +44,16 @@ namespace GraphGame
     {
         std::string start = adjacencyListFile.getCountyNameByFipsCode(startFips);
         std::string goal = adjacencyListFile.getCountyNameByFipsCode(goalFips);
-        log << "Performing BFS from " << start << " to " << goal << "...\n";
-        log << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
-        log << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
+        std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
+        std::cout << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
+        std::cout << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
         std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
-        log << "Optimal Path:\n";
+        std::cout << "Optimal Path:\n";
         std::vector<int>::const_iterator it;
         for (it=path.begin(); it!=path.end(); ++it)
         {
             std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
-            log << countyName << " (" << *it << "), ";
+            std::cout << countyName << " (" << *it << "), ";
             if (countyName.find("Washington") != std::string::npos)
             {
                 svg.markCountyByFips(*it, "red");
@@ -64,6 +63,6 @@ namespace GraphGame
                 svg.markCountyByFips(*it, "gray");
             }
         }
-        log << "\n(" << path.size() << " moves)\n"; 
+        std::cout << "\n(" << path.size() << " moves)\n"; 
     }
 }

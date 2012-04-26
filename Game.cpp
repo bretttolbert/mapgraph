@@ -13,7 +13,6 @@
 
 namespace GraphGame
 {
-    extern std::ofstream log;
     extern bool showWarnings;
 
     Game::Game(const std::string& start, 

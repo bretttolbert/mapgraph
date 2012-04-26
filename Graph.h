@@ -7,14 +7,13 @@
 #include <queue>
 #include <algorithm>
 #include <iterator>
-#include <fstream>
+#include <iostream>
 
 #include "AdjacencyListFile.h"
 
 namespace GraphGame
 {
     #define DEBUG_GRAPH 0
-    extern std::ofstream log;
     extern bool showWarnings;
 
     template <typename T>
@@ -74,7 +73,7 @@ namespace GraphGame
             Node* node = findNodeByValue(it->first);
             if (node == NULL)
             {
-                log << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
+                std::cout << "Error: node is NULL - findNodeByValue returned NULL for " << it->first << "\n";
                 exit(1);
             }
             typename std::set<T>::const_iterator jt;
@@ -83,7 +82,7 @@ namespace GraphGame
                 Node* adjacentNode = findNodeByValue(*jt);
                 if (adjacentNode == NULL && showWarnings)
                 {
-                    log << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
+                    std::cout << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
                 }
                 else
                 {
@@ -91,7 +90,7 @@ namespace GraphGame
                 }
             }
         }
-        log << "Done.\n";
+        std::cout << "Done.\n";
     }
 
     template <typename T>
@@ -152,7 +151,7 @@ namespace GraphGame
             q.pop();
             if (DEBUG_GRAPH)
             {
-                log << "examining " << currentNode->value << std::endl;
+                std::cout << "examining " << currentNode->value << std::endl;
             }
             if (currentNode->value == goalNodeValue)
             {
@@ -166,10 +165,10 @@ namespace GraphGame
                 std::reverse(path.begin(),path.end());
                 if (DEBUG_GRAPH)
                 {
-                    log << "found it\npath taken: ";
-                    std::ostream_iterator<int> output(log, " ");
+                    std::cout << "found it\npath taken: ";
+                    std::ostream_iterator<int> output(std::cout, " ");
                     std::copy(path.begin(), path.end(), output);
-                    log << std::endl;
+                    std::cout << std::endl;
                 }
                 break;
             }
@@ -181,15 +180,15 @@ namespace GraphGame
                     Graph<T>::Node* adjacentNode = *it;
                     if (adjacentNode == NULL)
                     {
-                        log << "Error: adjacentNode is NULL\n";
-                        log << "currentNode = " << currentNode->value << std::endl;
+                        std::cout << "Error: adjacentNode is NULL\n";
+                        std::cout << "currentNode = " << currentNode->value << std::endl;
                         exit(1);
                     }
                     if (adjacentNode->color != Node::WHITE)
                     {
                         if (DEBUG_GRAPH)
                         {
-                            log << "enqueuing neighbor " << adjacentNode->value << std::endl;
+                            std::cout << "enqueuing neighbor " << adjacentNode->value << std::endl;
                         }
                         adjacentNode->parent = currentNode;
                         q.push(adjacentNode);

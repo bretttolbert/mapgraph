@@ -1,4 +1,4 @@
-#include <fstream>
+#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <sstream>
@@ -9,12 +9,11 @@
 
 namespace GraphGame
 {
-    extern std::ofstream log;
     extern bool showWarnings;
 
     USCountiesAdjacencyListFile::USCountiesAdjacencyListFile()
     {
-        log << "Loading adjacency list file...\n";
+        std::cout << "Loading adjacency list file...\n";
         std::ifstream file;
         file.open(USCOUNTIES_ADJACENCY_LIST_FILENAME, std::ios::in);
         if (file.is_open())
@@ -61,8 +60,8 @@ namespace GraphGame
                     }
                     else
                     {
-                        log << "Parser Error on line " << lineNum << ".\n";
-                        log << "Expected 4 columns but found " << tokens.size() << std::endl;
+                        std::cout << "Parser Error on line " << lineNum << ".\n";
+                        std::cout << "Expected 4 columns but found " << tokens.size() << std::endl;
                         exit(1);
                     }
                 }
@@ -82,7 +81,7 @@ namespace GraphGame
         AdjacencyList::const_iterator it = adjacencyList.find(temp);
         if (it == adjacencyList.end())
         {
-            log << "Error: invalid nodeId\n";
+            std::cout << "Error: invalid nodeId\n";
             exit(1);
         }
         return it->second;

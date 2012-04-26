@@ -115,19 +115,23 @@ namespace GraphGame
                 neighborNames.insert(name);
             }
             printStats(false);
-            std::string dest;
+			if (moves == 0)
+			{
+				std::cout << "Tip: You do not have to enter the destination exactly. "
+						  << "For example, to choose \"Montgomery County, AL\", simply enter \"mont\".\n";
+			}
+            std::string input;
             std::cout << "Enter Destination: ";
-            getline(std::cin, dest);
+            getline(std::cin, input);
             std::set<std::string>::const_iterator jt;
-            StringUtils::CaseInsensitiveComparator comp(dest);
-            while ((jt = std::find_if(neighborNames.begin(), neighborNames.end(), comp)) == neighborNames.end())
+			std::string match;
+			while (!validateInput(neighborNames, input, match))
             {
                 std::cout << "Invalid Destination. Destination must be a neighbor.\n";
                 std::cout << "Enter Destination: ";
-                std::cin >> dest;
-                comp.setMatchTarget(dest);
+                std::cin >> input;
             }
-            currentNodeId = adjacencyFile.getFipsCodeByCountyName(*jt);
+            currentNodeId = adjacencyFile.getFipsCodeByCountyName(match);
             ++moves;
             if (currentNodeId == goalNodeId)
             {
@@ -137,4 +141,22 @@ namespace GraphGame
             }
         }
     }
+
+	bool Game::validateInput(const std::set<std::string>& choices, const std::string& input, std::string& match)
+	{
+		std::string linput(input);
+		std::transform(linput.begin(), linput.end(), linput.begin(), ::tolower);
+		std::set<std::string>::const_iterator it;
+		for (it=choices.begin(); it!=choices.end(); ++it)
+		{
+			std::string lchoice(*it);
+			std::transform(lchoice.begin(), lchoice.end(), lchoice.begin(), ::tolower);
+			if (lchoice.find(linput) != std::string::npos)
+			{
+				match = *it;
+				return true;
+			}
+		}
+		return false;
+	}
 }

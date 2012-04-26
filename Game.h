@@ -9,7 +9,7 @@
 
 namespace GraphGame
 {
-#define DEBUG_GAME 1
+#define DEBUG_GAME 0
     class Game
     {
     public:
@@ -20,6 +20,9 @@ namespace GraphGame
         void chooseGoalNode();
         void printStats(bool final);
     private:
+		bool validateInput(const std::set<std::string>& choices, 
+						   const std::string& input,
+						   std::string& match);
         USCountiesAdjacencyListFile adjacencyFile;
         USCountiesSvgFile svg;
         Graph<int> graph;

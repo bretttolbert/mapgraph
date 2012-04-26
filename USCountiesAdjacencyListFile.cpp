@@ -74,7 +74,7 @@ namespace GraphGame
         return adjacencyList;
     }
 
-    const std::set<int>& USCountiesAdjacencyListFile::getNeighbors(int nodeId) const
+    const std::set<int>& USCountiesAdjacencyListFile::getNeighbors(const int nodeId) const
     {
         AdjacencyListEntry temp;
         temp.first = nodeId;
@@ -87,46 +87,21 @@ namespace GraphGame
         return it->second;
     }
 
-    const USCountiesAdjacencyListFile::CountyFipsMap& USCountiesAdjacencyListFile::getCounties()
+    std::string USCountiesAdjacencyListFile::nodeIdToString(const int fipsCode) const
     {
-        return counties;
-    }
-
-    std::string USCountiesAdjacencyListFile::getCountyNameByFipsCode(int fipsCode)
-    {
-        return counties[fipsCode];
-    }
-
-    std::string USCountiesAdjacencyListFile::getCountyNameByFipsCode(const std::string& fipsCode)
-    {
-        return counties[atoi(fipsCode.c_str())];
-    }
-
-    std::set<std::string> USCountiesAdjacencyListFile::getCountyNamesByFipsCodes(const std::set<int>& fipsCodes)
-    {
-        std::set<std::string> names;
-        std::set<int>::const_iterator it;
-        for (it=fipsCodes.begin(); it!=fipsCodes.end(); ++it)
+        CountyFipsMap::const_iterator it = counties.find(fipsCode);
+        if (it != counties.end())
         {
-            int fipsCode = *it;
-            names.insert(counties[fipsCode]);
+            return it->second;
         }
-        return names;
-    }
-
-    std::vector<std::string> USCountiesAdjacencyListFile::getCountyNamesByFipsCodes(const std::vector<int>& fipsCodes)
-    {
-        std::vector<std::string> names;
-        std::vector<int>::const_iterator it;
-        for (it=fipsCodes.begin(); it!=fipsCodes.end(); ++it)
+        else
         {
-            int fipsCode = *it;
-            names.push_back(counties[fipsCode]);
+            std::cout << "Error: Invalid fipsCode \"" << fipsCode << "\"\n";
+            return "";
         }
-        return names;
     }
 
-    int USCountiesAdjacencyListFile::getFipsCodeByCountyName(const std::string& countyName)
+    int USCountiesAdjacencyListFile::stringToNodeId(const std::string& countyName) const
     {
         int result = 0;
         CountyFipsMap::const_iterator it;
@@ -141,11 +116,16 @@ namespace GraphGame
         return result;
     }
 
-    int USCountiesAdjacencyListFile::getRandomFipsCode()
+    int USCountiesAdjacencyListFile::getRandomNodeId() const
     {
         CountyFipsMap::const_iterator it = counties.begin();
         std::advance(it, rand() % counties.size());
         return it->first;
+    }
+
+    const USCountiesAdjacencyListFile::CountyFipsMap& USCountiesAdjacencyListFile::getCounties()
+    {
+        return counties;
     }
 
     std::string USCountiesAdjacencyListFile::fipsToString(int fips)

@@ -23,15 +23,12 @@ namespace GraphGame
         typedef std::map<int,std::string> CountyFipsMap;
         USCountiesAdjacencyListFile();
         virtual const AdjacencyListFile<int>::AdjacencyList& getAdjacencyList() const;
-        virtual const std::set<int>& getNeighbors(int nodeId) const;
+        virtual const std::set<int>& getNeighbors(const int nodeId) const;
+        virtual std::string nodeIdToString(const int fipsCode) const;
+        virtual int stringToNodeId(const std::string& countyName) const;
+        virtual int getRandomNodeId() const;
         const CountyFipsMap& getCounties();
-        std::string getCountyNameByFipsCode(int fipsCode);
-        std::string getCountyNameByFipsCode(const std::string& fipsCode);
-        std::set<std::string> getCountyNamesByFipsCodes(const std::set<int>& fipsCodes);
-        std::vector<std::string> getCountyNamesByFipsCodes(const std::vector<int>& fipsCodes);
-        int getFipsCodeByCountyName(const std::string& countyName);
-        int getRandomFipsCode();
-        static std::string fipsToString(int fips);
+        static std::string fipsToString(int fips); //converts fips to numeric string, left padded with zeros
     private:
         CountyFipsMap counties; //key: county fips code, value: county name
         //to save memory, the adjacency list contains only fips codes

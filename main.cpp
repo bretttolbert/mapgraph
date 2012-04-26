@@ -188,21 +188,21 @@ namespace GraphGame
             int startFips, goalFips;
             if (start.empty())
             {
-                startFips = adjacencyListFile.getRandomFipsCode();
-                start = adjacencyListFile.getCountyNameByFipsCode(startFips);
+                startFips = adjacencyListFile.getRandomNodeId();
+                start = adjacencyListFile.nodeIdToString(startFips);
             }
             else
             {
-                startFips = adjacencyListFile.getFipsCodeByCountyName(start);
+                startFips = adjacencyListFile.stringToNodeId(start);
             }
             if (goal.empty())
             {
-                goalFips = adjacencyListFile.getRandomFipsCode();
-                goal = adjacencyListFile.getCountyNameByFipsCode(goalFips);
+                goalFips = adjacencyListFile.getRandomNodeId();
+                goal = adjacencyListFile.nodeIdToString(goalFips);
             }
             else
             {
-                goalFips = adjacencyListFile.getFipsCodeByCountyName(goal);
+                goalFips = adjacencyListFile.stringToNodeId(goal);
             }
             std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
             std::cout << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
@@ -215,7 +215,7 @@ namespace GraphGame
                 std::vector<int>::const_iterator jt;
                 for (jt=path.begin(); jt!=path.end(); ++it)
                 {
-                    std::string countyName = adjacencyListFile.getCountyNameByFipsCode(*it);
+                    std::string countyName = adjacencyListFile.nodeIdToString(*it);
                     std::cout << countyName << " (" << *it << "), ";
                     if (it == path.begin())
                     {

@@ -42,6 +42,12 @@ namespace GraphGame
             goalNodeId = adjacencyFile.stringToNodeId(goal);
         }
         optimalPath = graph.breadthFirstSearch(startNodeId, goalNodeId);
+        //mark optimalPath on svg
+        std::vector<int>::const_iterator it;
+        for (it=optimalPath.begin(); it!=optimalPath.end(); ++it)
+        {
+            svg.markCountyByFips(*it, "red");
+        }
         mainLoop();
     }
 
@@ -94,6 +100,7 @@ namespace GraphGame
                 std::cout << adjacencyFile.nodeIdToString(*it) << "\n";
             }
             std::cout << "(" << optimalPath.size() << " moves)\n";
+            svg.saveFile("output.svg");
         }
         //std::cout << "Fuel: " << fuel << "/" << maxFuel << std::endl;
         std::cout << std::endl;
@@ -130,6 +137,8 @@ namespace GraphGame
                 std::cin >> input;
             }
             currentNodeId = adjacencyFile.stringToNodeId(match);
+            svg.markCountyByFips(currentNodeId, "green");
+            svg.saveFile("output.svg"); //save it each time in case user aborts
             ++moves;
             if (currentNodeId == goalNodeId)
             {

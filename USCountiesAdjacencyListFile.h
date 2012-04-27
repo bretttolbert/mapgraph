@@ -5,29 +5,16 @@
 #include <map>
 #include <string>
 
-#include "AdjacencyListFile.h"
+#include "IntegerIdAdjacencyListFile.h"
 
 namespace GraphGame
 {
     #define USCOUNTIES_ADJACENCY_LIST_FILENAME "US_county_adjacency_2010.txt"
 
-    struct USCountiesNodeValue
-    {
-        std::string name;
-        int fips;
-    };
-
-    class USCountiesAdjacencyListFile : public AdjacencyListFile<int>
+    class USCountiesAdjacencyListFile : public IntegerIdAdjacencyListFile
     {
     public:
-        typedef std::map<int,std::string> CountyFipsMap;
         USCountiesAdjacencyListFile();
-        virtual const AdjacencyListFile<int>::AdjacencyList& getAdjacencyList() const;
-        virtual const std::set<int>& getNeighbors(const int nodeId) const;
-        virtual std::string nodeIdToString(const int fipsCode) const;
-        virtual int stringToNodeId(const std::string& countyName) const;
-        virtual int getRandomNodeId() const;
-        const CountyFipsMap& getCounties();
 
         /**
          * Converts fips to numeric string, left padded with zeros
@@ -49,9 +36,7 @@ namespace GraphGame
          */ 
         int getRandomCountyFromStates(const std::set<std::string>& states) const;
     private:
-        CountyFipsMap counties; //key: county fips code, value: county name
-        //to save memory, the adjacency list contains only fips codes
-        AdjacencyList adjacencyList;
+
     };
 }
 #endif

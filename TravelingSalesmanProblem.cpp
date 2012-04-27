@@ -10,10 +10,11 @@ namespace GraphGame
         USCountiesAdjacencyListFile adjacencyListFile;
         USCountiesSvgFile svg;
         Graph<int> graph(adjacencyListFile.getAdjacencyList());
-        const USCountiesAdjacencyListFile::CountyFipsMap& counties = adjacencyListFile.getCounties();
+        const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeIdToNodeStringMap = 
+            adjacencyListFile.getNodeIdToNodeStringMap();
         std::vector<std::pair<int,std::string> > washingtons;
-        USCountiesAdjacencyListFile::CountyFipsMap::const_iterator it;
-        for (it=counties.begin(); it!=counties.end(); ++it)
+        IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
+        for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
         {
             if (it->second.find("Washington") != std::string::npos)
             {

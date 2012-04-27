@@ -53,7 +53,7 @@ namespace GraphGame
 
     void Game::chooseStartNode()
     {
-        startNodeId = adjacencyFile.getRandomNodeId();
+        startNodeId = adjacencyFile.getRandomCountyFromState("AL");
         /*
         std::vector<std::string> candidates = graph.getNodeValues();
         startNode = candidates[rand() % candidates.size()];
@@ -62,7 +62,7 @@ namespace GraphGame
 
     void Game::chooseGoalNode()
     {
-        goalNodeId = adjacencyFile.getRandomNodeId();
+        goalNodeId = adjacencyFile.getRandomCountyFromState("AL");
         /*
         std::vector<std::string> candidates = graph.getNodeValues();
         std::vector<std::string> nonCandidates = graph.getNeighbors(currentNode);

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iomanip>
+#include <cassert>
 
 #include "USCountiesAdjacencyListFile.h"
 #include "StringUtils.h"
@@ -134,5 +135,46 @@ namespace GraphGame
         std::ostringstream oss;
         oss << std::setfill('0') << std::setw(5) << fips;
         return oss.str();
+    }
+
+    void USCountiesAdjacencyListFile::getCountiesInState(const std::string& state, 
+                                                         std::set<int>& countiesInState) const
+    {
+        CountyFipsMap::const_iterator it;
+        for (it=counties.begin(); it!=counties.end(); ++it)
+        {
+            int countyFips = it->first;
+            std::string countyName = it->second;
+            //we expect county name to contain state abbreviation, e.g. "Madison County, AL"
+            size_t commaPos = countyName.find(',');
+            assert(commaPos != std::string::npos);
+            size_t statePos = countyName.find(state, commaPos+1);
+            if (statePos != std::string::npos)
+            {
+                countiesInState.insert(countyFips);
+            }
+        }
+    }
+
+    int USCountiesAdjacencyListFile::getRandomCountyFromState(const std::string& state) const
+    {
+        std::set<int> countiesInState;
+        getCountiesInState(state, countiesInState);
+        std::set<int>::const_iterator it = countiesInState.begin();
+        std::advance(it, rand() % countiesInState.size());
+        return *it;
+    }
+
+    int USCountiesAdjacencyListFile::getRandomCountyFromStates(const std::set<std::string>& states) const
+    {
+        std::set<int> candidates;
+        std::set<std::string>::const_iterator it;
+        for (it=states.begin(); it!=states.end(); ++it)
+        {
+            getCountiesInState(*it, candidates);
+        }
+        std::set<int>::const_iterator jt;
+        std::advance(jt, rand() % candidates.size());
+        return *jt;
     }
 }

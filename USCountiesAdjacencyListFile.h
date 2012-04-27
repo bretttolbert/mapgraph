@@ -28,7 +28,26 @@ namespace GraphGame
         virtual int stringToNodeId(const std::string& countyName) const;
         virtual int getRandomNodeId() const;
         const CountyFipsMap& getCounties();
-        static std::string fipsToString(int fips); //converts fips to numeric string, left padded with zeros
+
+        /**
+         * Converts fips to numeric string, left padded with zeros
+         */
+        static std::string fipsToString(int fips); 
+
+        /**
+         * Inserts all counties in the specified state into the supplied set
+         */
+        void getCountiesInState(const std::string& state, std::set<int>& countiesInState) const;
+
+        /**
+         * Returns a random county from the specified state
+         */
+        int getRandomCountyFromState(const std::string& state) const;
+
+        /**
+         * Returns a random county from the specified states
+         */ 
+        int getRandomCountyFromStates(const std::set<std::string>& states) const;
     private:
         CountyFipsMap counties; //key: county fips code, value: county name
         //to save memory, the adjacency list contains only fips codes

@@ -1,5 +1,5 @@
 CC_FLAGS = -c -Wall -fpermissive
-OBJ = main.o StringUtils.o Game.o SvgFile.o IntegerIdAdjacencyListFile.o USCountiesAdjacencyListFile.o USCountiesSvgFile.o TravelingSalesmanProblem.o tinyxml2.o
+OBJ = main.o StringUtils.o Game.o SvgFile.o IntegerIdAdjacencyListFile.o CsvAdjacencyListFile.o USCountiesAdjacencyListFile.o USCountiesSvgFile.o TravelingSalesmanProblem.o tinyxml2.o
 
 all: graphgame
 
@@ -20,6 +20,9 @@ SvgFile.o: SvgFile.cpp
 
 IntegerIdAdjacencyListFile.o: IntegerIdAdjacencyListFile.cpp
 	g++ $(CC_FLAGS) IntegerIdAdjacencyListFile.cpp
+
+CsvAdjacencyListFile.o: CsvAdjacencyListFile.cpp
+	g++ $(CC_FLAGS) CsvAdjacencyListFile.cpp
 
 USCountiesAdjacencyListFile.o: USCountiesAdjacencyListFile.cpp
 	g++ $(CC_FLAGS) USCountiesAdjacencyListFile.cpp

@@ -17,7 +17,7 @@ namespace GraphGame
 
     Game::Game(const std::string& start, 
              const std::string& goal) :
-        adjacencyFile(),
+        statesAdjacencyFile("48US.txt"),
         graph(adjacencyFile.getAdjacencyList()),
         //maxFuel(10),
         //fuel(10),

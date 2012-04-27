@@ -6,6 +6,7 @@
 #include "Graph.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "USCountiesSvgFile.h"
+#include "CsvAdjacencyListFile.h"
 
 namespace GraphGame
 {
@@ -24,6 +25,7 @@ namespace GraphGame
 						   const std::string& input,
 						   std::string& match);
         USCountiesAdjacencyListFile adjacencyFile;
+        CsvAdjacencyListFile statesAdjacencyFile;
         USCountiesSvgFile svg;
         Graph<int> graph;
         //int maxFuel;

@@ -182,6 +182,7 @@ namespace GraphGame
         }
         else if (mode == MODE_BFS)
         {
+            std::cout << "Starting breadth first search mode...\n";
             USCountiesAdjacencyListFile adjacencyListFile;
             USCountiesSvgFile svg;
             Graph<int> graph(adjacencyListFile.getAdjacencyList());
@@ -212,19 +213,15 @@ namespace GraphGame
             std::vector<int>::const_iterator it;
             for (it=path.begin(); it!=path.end(); ++it)
             {
-                std::vector<int>::const_iterator jt;
-                for (jt=path.begin(); jt!=path.end(); ++it)
+                std::string countyName = adjacencyListFile.nodeIdToString(*it);
+                std::cout << countyName << " (" << *it << "), ";
+                if (it == path.begin())
                 {
-                    std::string countyName = adjacencyListFile.nodeIdToString(*it);
-                    std::cout << countyName << " (" << *it << "), ";
-                    if (it == path.begin())
-                    {
-                        svg.markCountyByFips(*it, "red");
-                    }
-                    else
-                    {
-                        svg.markCountyByFips(*it, "gray");
-                    }
+                    svg.markCountyByFips(*it, "red");
+                }
+                else
+                {
+                    svg.markCountyByFips(*it, "gray");
                 }
             }
             std::cout << "\n(" << path.size() << " moves)\n"; 

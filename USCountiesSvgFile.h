@@ -5,7 +5,7 @@
 
 namespace GraphGame
 {
-    #define US_COUNTIES_SVG_FILENAME "USA_Counties_with_FIPS_and_names.svg"
+    #define US_COUNTIES_SVG_FILENAME "svg/USA_Counties_with_FIPS_and_names.svg"
 
     class USCountiesSvgFile : public SvgFile
     {

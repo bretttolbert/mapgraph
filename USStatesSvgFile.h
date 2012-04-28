@@ -6,7 +6,7 @@
 
 namespace GraphGame
 {
-    #define US_STATES_SVG_FILENAME "Map_of_USA_without_state_names.svg"
+    #define US_STATES_SVG_FILENAME "svg/Map_of_USA_without_state_names.svg"
 
     class USStatesSvgFile : public SvgFile
     {

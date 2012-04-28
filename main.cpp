@@ -18,6 +18,7 @@
 #include "USStatesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
+#include "Demos.h"
 
 namespace GraphGame
 {
@@ -26,8 +27,9 @@ namespace GraphGame
     {
         MODE_UNDEFINED,
         MODE_GAME,
-        MODE_BFS,
-        MODE_TSP,
+        MODE_BFS_DEMO,
+        MODE_TSP_DEMO,
+        MODE_BIPARTITE_DEMO,
         MODE_TEST
     };
 
@@ -42,9 +44,6 @@ namespace GraphGame
      * Application Globals
      */
     bool showWarnings = false;
-
-    //returns hex code for a random color
-    std::string randomColor();
 
     int parseCommandLineArgs(int argc, char *argv[])
     {
@@ -72,17 +71,21 @@ namespace GraphGame
                     {
                         mode = MODE_GAME;
                     }
-                    else if (strcmp(argv[i], "bfs") == 0)
+                    else if (strcmp(argv[i], "bfs-demo") == 0)
                     {
-                        mode = MODE_BFS;
+                        mode = MODE_BFS_DEMO;
+                    }
+                    else if (strcmp(argv[i], "tsp-demo") == 0)
+                    {
+                        mode = MODE_TSP_DEMO;
+                    }
+                    else if (strcmp(argv[i], "bipartite-demo") == 0)
+                    {
+                        mode = MODE_BIPARTITE_DEMO;
                     }
                     else if (strcmp(argv[i], "test") == 0)
                     {
                         mode = MODE_TEST;
-                    }
-                    else if (strcmp(argv[i], "tsp") == 0)
-                    {
-                        mode = MODE_TSP;
                     }
                     else
                     {
@@ -230,99 +233,24 @@ namespace GraphGame
                 }
             }
         }
-        else if (mode == MODE_BFS)
+        else if (mode == MODE_BFS_DEMO)
         {
-            std::cout << "Starting breadth first search mode...\n";
-            USCountiesAdjacencyListFile adjacencyListFile;
-            USCountiesSvgFile svg;
-            Graph<int> graph(adjacencyListFile.getAdjacencyList());
-            int startFips, goalFips;
-            if (start.empty())
-            {
-                startFips = adjacencyListFile.getRandomNodeId();
-                start = adjacencyListFile.nodeIdToString(startFips);
-            }
-            else
-            {
-                startFips = adjacencyListFile.stringToNodeId(start);
-            }
-            if (goal.empty())
-            {
-                goalFips = adjacencyListFile.getRandomNodeId();
-                goal = adjacencyListFile.nodeIdToString(goalFips);
-            }
-            else
-            {
-                goalFips = adjacencyListFile.stringToNodeId(goal);
-            }
-            std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
-            std::cout << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
-            std::cout << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
-            std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
-            std::cout << "Optimal Path:\n";
-            std::vector<int>::const_iterator it;
-            for (it=path.begin(); it!=path.end(); ++it)
-            {
-                std::string countyName = adjacencyListFile.nodeIdToString(*it);
-                std::cout << countyName << " (" << *it << "), ";
-                if (it == path.begin())
-                {
-                    svg.markCountyByFips(*it, "red");
-                }
-                else
-                {
-                    svg.markCountyByFips(*it, "gray");
-                }
-            }
-            std::cout << "\n(" << path.size() << " moves)\n"; 
-            svg.saveFile("output.svg");
+            breadthFirstSearch_Demo(start, goal);
         }
-        else if (mode == MODE_TSP)
+        else if (mode == MODE_TSP_DEMO)
         {
             std::cout << "Traveling Salesman Problem\n";
             TravelingSalesmanProblem tsp;
         }
+        else if (mode == MODE_BIPARTITE_DEMO)
+        {
+            isBipartite_Demo();
+        }
         else if (mode == MODE_TEST)
         {
             std::cout << "Test stub\n";
-
-            //mark each state with a random color
-            CsvAdjacencyListFile statesAdjacencyFile("48US.txt");
-            USStatesSvgFile statesSvg;
-            const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& statesMap = 
-                statesAdjacencyFile.getNodeIdToNodeStringMap();
-            IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator state_it;
-            for (state_it=statesMap.begin(); state_it!=statesMap.end(); ++state_it)
-            {
-                statesSvg.markStateByAbbreviation(state_it->second, randomColor());
-                statesSvg.saveFile("states.svg");
-            }
-
-/*
-            //mark each county with a random color
-            USCountiesAdjacencyListFile countiesAdjacencyFile;
-            USCountiesSvgFile countiesSvg;
-            const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& countiesMap = 
-                countiesAdjacencyFile.getNodeIdToNodeStringMap();
-            IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator county_it;
-            for (county_it=countiesMap.begin(); county_it!=countiesMap.end(); ++county_it)
-            {
-                countiesSvg.markCountyByFips(county_it->first, randomColor());
-                countiesSvg.saveFile("counties.svg");
-            }
-*/
         }
         return 0;
-    }
-
-    std::string randomColor()
-    {
-        std::ostringstream oss;
-        oss << '#' << std::hex << std::setfill('0')
-            << std::setw(2) << (rand() % 256)
-            << std::setw(2) << (rand() % 256)
-            << std::setw(2) << (rand() % 256);
-        return oss.str();
     }
 }
 

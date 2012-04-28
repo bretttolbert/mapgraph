@@ -60,9 +60,10 @@ namespace GraphGame
          * different color than it has, we abort and conclude that the graph cannot be 
          * two-colored and hence it is not bipartite (it must contain an odd cycle).
          */
-        bool isBipartite() const;
-    private:
-        Node* getRandomNode() const;
+        bool isBipartite();
+
+        Node* getRandomNode();
+
         struct NodeComparator
         {
             bool operator() (const Node* a, const Node* b);
@@ -227,9 +228,9 @@ namespace GraphGame
 
     template <typename T>
     inline
-    bool Graph<T>::isBipartite() const
+    bool Graph<T>::isBipartite()
     {
-        Graph<T>::Node* startNode = getRandomNode();
+        Node* startNode = getRandomNode();
         std::queue<Graph<T>::Node*> q;
         startNode->color = Node::COLOR_RED;
         q.push(startNode);
@@ -237,10 +238,10 @@ namespace GraphGame
         {
             Node* currentNode = q.front();
             q.pop();
-            typename std::vector<Node*>::const_iterator it;
+            typename std::vector<Node*>::iterator it;
             for (it=currentNode->neighbors.begin(); it!=currentNode->neighbors.end(); ++it)
             {
-                Graph<T>::Node* adjacentNode = *it;
+                Node* adjacentNode = *it;
                 if (adjacentNode == NULL)
                 {
                     std::cout << "Error: adjacentNode is NULL\n";
@@ -258,6 +259,8 @@ namespace GraphGame
                     {
                         adjacentNode->color = Node::COLOR_RED;
                     }
+                    //enqueue neighbor node
+                    q.push(adjacentNode);
                 }
                 else
                 {
@@ -269,29 +272,25 @@ namespace GraphGame
                         return false;
                     }
                 }
-                //enqueue neighbor node
-                adjacentNode->parent = currentNode;
-                q.push(adjacentNode);
             }
         }
-        //reset node color and parent
+        //reset node color
         typename Graph<T>::NodeSet::const_iterator it;
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
             Graph<T>::Node* node = *it;
             node->color = Graph<T>::Node::COLOR_BLACK;
-            node->parent = NULL;
         }
         return true;
     }
 
     template <typename T>
     inline
-    typename Graph<T>::Node* Graph<T>::getRandomNode() const
+    typename Graph<T>::Node* Graph<T>::getRandomNode()
     {
-        typename Graph<T>::NodeSet::const_iterator it = nodes.begin();
+        typename Graph<T>::NodeSet::iterator it = nodes.begin();
         std::advance(it, rand() % nodes.size());
-        return it->first;
+        return *it;
     }
 }
 

@@ -7,25 +7,47 @@ Compiling from source:
 
 Usage:
 
--m <mode>               Set mode. Posible include:
-    game        Navigation game
-    bfs         Breadth first search
-    tsp         Traveling salesman problem
-        Find a path to visit all 31 counties named "Washington" starting
-        from and returning to Washington County, AL. 
-        In a traditional TSP, the distance between each Washington
-        would be given. In this case, we must use another algorithm
-        to find the shortest path between each Washington and then use
-        that path length as the distance for the TSP algorithm.
-    test        Test stub
--s <start>              Specify starting node (optional, defaults to random).
--g <goal>               Specify goal node (optional, defaults to random).
+-m <mode>               Set mode. Modes include:
+    game                
+        Navigation game
+                        Required arguments: -af
+                        Optional arugments: -n1, -n2
+                        -n1 and -n2 may be used to specify start
+                        and goal nodes (respectively). If omitted,
+                        a random node will be chosen.
+                        
+    bfs-demo            
+        Breadth first search demonstration
+                        Required arguments: -af
+                        Optional arugments: -n1, -n2
+                        -n1 and -n2 may be used to specify start
+                        and goal nodes (respectively). If omitted,
+                        a random node will be chosen.
+    tsp-demo            
+        Traveling salesman problem demonstration
+            Finds a path to visit all 31 counties named "Washington" starting
+            from and returning to Washington County, AL. 
+            In a traditional TSP, the distance between each Washington
+            would be given. In this case, we must use another algorithm
+            to find the shortest path between each Washington and then use
+            that path length as the distance for the TSP algorithm.
+                        Required arguments: none
+    bipartite-demo  
+        Demonstration of algorithm to test bipartiteness of a graph.
+                        Required arguments: -af
+    neighbors           
+        Displays the neighbors of a specified node
+                        Required arguments: -n1, -af
+    test                
+        Test stub
+
+-n1 <node>              Specify first node
+-n2 <node>              Specify second node
 -w                      Show warnings (useful for validating adjacency file).
--lf <file>              Specify log file (defaults to "output.txt")
--al preset <preset>     Use preset adjacency list. Presets include:
+-af preset <preset>     Use preset adjacency list. Presets include:
                           us-states - The 48 continental states of the USA
                           us-counties - 3000+ county or county equivalents 
--al <file> <fmt>        Use custom adjacency list file. Must specify adjacency 
+-af <file> <fmt>        Use custom adjacency list file. Must specify adjacency 
                         file and adjacency file format. Possible formats:
    slc            Single Line CSV
      Example file: 48US.txt
@@ -51,12 +73,19 @@ Usage:
 
 Examples:
 
-    -m game -af 48US.txt slcsv
+    -m game -af preset us-states -w
 
-    -m game -af US_county_adjacency_2010.txt mltdusc
+    -m game -n1 "Madison County, AL" -n2 "Covington County, AL" -af preset us-counties -w
 
-    -m bfs -s "Madison County, AL" -g "San Diego County, CA" -af US_county_adjacency_2010.txt mltdusc
+    -m bfs-demo -af preset us-states -w
 
-Ideas: 
-    Different goal - have the user "walk" the graph, attempting to traverse all 48 states with as few moves as possible.
+    -m bfs-demo -n1 "Madison County, AL" -n2 "San Diego County, CA" -af preset us-counties -w
+
+    -m bipartite-demo -af preset us-counties -w
+
+    -m neighbors -n1 "AL" -af preset us-states
+
+    -m neighbors -n1 "Madison County, AL" -af preset us-counties -w
+
+
 

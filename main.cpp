@@ -30,6 +30,7 @@ namespace GraphGame
         MODE_BFS_DEMO,
         MODE_TSP_DEMO,
         MODE_BIPARTITE_DEMO,
+        MODE_NEIGHBORS,
         MODE_TEST
     };
 
@@ -51,7 +52,7 @@ namespace GraphGame
         bool usingAdjacencyFilePreset = false;
         AdjacencyFilePreset adjacencyFilePreset = ADJACENCY_FILE_PRESET_NONE;
         const char* adjacencyFile = NULL; //filename or preset name
-        std::string start, goal;
+        std::string node1, node2;
         const char* svgFile = NULL;
         //AdjacencyFileFormat fmt = UNDEFINED;
 
@@ -82,6 +83,10 @@ namespace GraphGame
                     else if (strcmp(argv[i], "bipartite-demo") == 0)
                     {
                         mode = MODE_BIPARTITE_DEMO;
+                    }
+                    else if (strcmp(argv[i], "neighbors") == 0)
+                    {
+                        mode = MODE_NEIGHBORS;
                     }
                     else if (strcmp(argv[i], "test") == 0)
                     {
@@ -169,27 +174,27 @@ namespace GraphGame
                     return 1;
                 }
             }
-            else if (strcmp(argv[i], "-s") == 0)
+            else if (strcmp(argv[i], "-n1") == 0)
             {
                 if (++i < argc)
                 {
-                    start = argv[i];
+                    node1 = argv[i];
                 }
                 else
                 {
-                    std::cout << "Expected value after -s flag\n";
+                    std::cout << "Expected value after -n1 flag\n";
                     return 1;
                 }
             }
-            else if (strcmp(argv[i], "-g") == 0)
+            else if (strcmp(argv[i], "-n2") == 0)
             {
                 if (++i < argc)
                 {
-                    goal = argv[i];
+                    node2 = argv[i];
                 }
                 else
                 {
-                    std::cout << "Expected value after -g flag\n";
+                    std::cout << "Expected value after -n2 flag\n";
                     return 1;
                 }
             }
@@ -223,10 +228,10 @@ namespace GraphGame
                 switch (adjacencyFilePreset)
                 {
                 case ADJACENCY_FILE_PRESET_US_STATES:
-                    Game(new CsvAdjacencyListFile("48US.txt"), start, goal);
+                    Game(new CsvAdjacencyListFile("48US.txt"), node1, node2);
                     break;
                 case ADJACENCY_FILE_PRESET_US_COUNTIES:
-                    USCountiesGame(start, goal);
+                    USCountiesGame(node1, node2);
                     break;
                 default:
                     assert(false);
@@ -236,6 +241,7 @@ namespace GraphGame
         else if (mode == MODE_BFS_DEMO 
                 || mode == MODE_TSP_DEMO
                 || mode == MODE_BIPARTITE_DEMO
+                || mode == MODE_NEIGHBORS
                 || mode == MODE_TEST)
         {
             IntegerIdAdjacencyListFile* af = NULL;
@@ -264,32 +270,32 @@ namespace GraphGame
                 std::cerr << "Error: No adjacency file specified\n";
                 exit(1);
             }
-            int startId, goalId;
-            if (start.empty())
+            int node1Id, node2Id;
+            if (node1.empty())
             {
-                startId = af->getRandomNodeId();
-                start = af->nodeIdToString(startId);
+                node1Id = af->getRandomNodeId();
+                node1 = af->nodeIdToString(node1Id);
             }
             else
             {
-                startId = af->stringToNodeId(start);
+                node1Id = af->stringToNodeId(node1);
             }
-            if (goal.empty())
+            if (node2.empty())
             {
-                goalId = af->getRandomNodeId();
-                goal = af->nodeIdToString(goalId);
+                node2Id = af->getRandomNodeId();
+                node2 = af->nodeIdToString(node2Id);
             }
             else
             {
-                goalId = af->stringToNodeId(goal);
+                node2Id = af->stringToNodeId(node2);
             }
             
             if (mode == MODE_BFS_DEMO)
             {
                 std::cout << "Starting breadth first search mode...\n";
-                std::cout << "Performing BFS from " << start << " (" << goalId << ") "
-                          << "to " << goal << " (" << goalId << ")...\n";
-                breadthFirstSearch_Demo(af, svg, startId, goalId);
+                std::cout << "Performing BFS from " << node1 << " (" << node1Id << ") "
+                          << "to " << node2 << " (" << node2Id << ")...\n";
+                breadthFirstSearch_Demo(af, svg, node1Id, node2Id);
             }
             else if (mode == MODE_TSP_DEMO)
             {
@@ -299,6 +305,16 @@ namespace GraphGame
             else if (mode == MODE_BIPARTITE_DEMO)
             {
                 isBipartite_Demo(af, svg);
+            }
+            else if (mode == MODE_NEIGHBORS)
+            {
+                std::cout << "Neighbors of " << node1 << " (" << node1Id << "):\n";
+                const std::set<int> neighbors = af->getNeighbors(node1Id);
+                const std::set<int>::const_iterator it;
+                for (it=neighbors.begin(); it!=neighbors.end(); ++it)
+                {
+                    std::cout << af->nodeIdToString(*it) << " (" << *it << ")\n";
+                }
             }
             else if (mode == MODE_TEST)
             {

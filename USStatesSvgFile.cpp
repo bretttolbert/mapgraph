@@ -8,7 +8,8 @@ namespace GraphGame
 {
     extern bool showWarnings;
 
-    USStatesSvgFile::USStatesSvgFile()
+    USStatesSvgFile::USStatesSvgFile(IntegerIdAdjacencyListFile* adjacencyFile_)
+        : adjacencyFile(adjacencyFile_)
     {
         if (doc.LoadFile(US_STATES_SVG_FILENAME) != tinyxml2::XML_SUCCESS)
         {
@@ -36,5 +37,18 @@ namespace GraphGame
             }
         } while ((path = path->NextSiblingElement()) != NULL);
         return false;
+    }
+
+    bool USStatesSvgFile::markNode(int id, const std::string& fill)
+    {
+        std::string stateAbbreviation = adjacencyFile->nodeIdToString(id);
+        if (stateAbbreviation.empty())
+        {
+            return false;
+        }
+        else
+        {
+            return markStateByAbbreviation(stateAbbreviation, fill);
+        }
     }
 }

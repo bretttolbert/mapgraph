@@ -52,4 +52,9 @@ namespace GraphGame
         } while ((path = path->NextSiblingElement()) != NULL);
         return false;
     }
+
+    bool USCountiesSvgFile::markNode(int id, const std::string& fill)
+    {
+        return markCountyByFips(id, fill);
+    }
 }

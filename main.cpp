@@ -244,7 +244,29 @@ namespace GraphGame
         }
         else if (mode == MODE_BIPARTITE_DEMO)
         {
-            isBipartite_Demo();
+            IntegerIdAdjacencyListFile* af = NULL;
+            SvgFile* svg = NULL;
+            if (usingAdjacencyFilePreset)
+            {
+                switch (adjacencyFilePreset)
+                {
+                case ADJACENCY_FILE_PRESET_US_STATES:
+                    std::cout << "Using US States preset\n";
+                    af = new CsvAdjacencyListFile("48US.txt");
+                    svg = new USStatesSvgFile(af);
+                    break;
+                case ADJACENCY_FILE_PRESET_US_COUNTIES:
+                    std::cout << "Using US Counties preset\n";
+                    af = new USCountiesAdjacencyListFile();
+                    svg = new USCountiesSvgFile();
+                    break;
+                default:
+                    assert(false);
+                }
+            }
+            isBipartite_Demo(af, svg);
+            delete af;
+            delete svg;
         }
         else if (mode == MODE_TEST)
         {

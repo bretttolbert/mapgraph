@@ -70,16 +70,14 @@ namespace GraphGame
         svg.saveFile("output/bfs.svg");
     }
 
-    void isBipartite_Demo()
+    void isBipartite_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg)
     {
-        CsvAdjacencyListFile adjacencyFile("48US.txt");
-        USStatesSvgFile svg;
-        Graph<int> g(adjacencyFile.getAdjacencyList());
+        Graph<int> g(af->getAdjacencyList());
         bool isBipartite = true; 
         Graph<int>::Node* startNode = g.getRandomNode();
         std::queue<Graph<int>::Node*> q;
         startNode->color = Graph<int>::Node::COLOR_RED;
-        svg.markStateByAbbreviation(adjacencyFile.nodeIdToString(startNode->value), "red");
+        svg->markNode(startNode->value, "red");
         q.push(startNode);
         int step = 0;
         while (q.size() > 0)
@@ -102,19 +100,19 @@ namespace GraphGame
                     if (currentNode->color == Graph<int>::Node::COLOR_RED)
                     {
                         adjacentNode->color = Graph<int>::Node::COLOR_BLUE;
-                        svg.markStateByAbbreviation(adjacencyFile.nodeIdToString(adjacentNode->value), "blue");
+                        svg->markNode(adjacentNode->value, "blue");
                     }
                     else
                     {
                         adjacentNode->color = Graph<int>::Node::COLOR_RED;
-                        svg.markStateByAbbreviation(adjacencyFile.nodeIdToString(adjacentNode->value), "red");
+                        svg->markNode(adjacentNode->value, "red");
                     }
                     //enqueue neighbor node
                     q.push(adjacentNode);
                     //save svg
                     std::ostringstream oss;
-                    oss << "output/bipartite_" << ++step << ".svg";
-                    svg.saveFile(oss.str().c_str());
+                    oss << "output/bipartite-demo/bipartite_" << ++step << ".svg";
+                    svg->saveFile(oss.str().c_str());
                 }
                 else
                 {
@@ -144,14 +142,14 @@ namespace GraphGame
         {
             std::cout << "Graph is not bipartite.\n";
         }
-        svg.saveFile("output/bipartite_final.svg");
+        svg->saveFile("output/bipartite-demo/bipartite_final.svg");
     }
 
     void markEachStateWithRandomColor_Demo()
     {
         //mark each state with a random color
         CsvAdjacencyListFile statesAdjacencyFile("48US.txt");
-        USStatesSvgFile statesSvg;
+        USStatesSvgFile statesSvg(&statesAdjacencyFile);
         const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& statesMap = 
             statesAdjacencyFile.getNodeIdToNodeStringMap();
         IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator state_it;

@@ -12,6 +12,7 @@ namespace GraphGame
     public:
         USCountiesSvgFile();
         bool markCountyByFips(int fips, const std::string& fill);
+        virtual bool markNode(int id, const std::string& fill);
     private:
     
     };

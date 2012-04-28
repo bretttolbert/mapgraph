@@ -29,6 +29,7 @@ namespace GraphGame
                     ++lineNum;
                     std::vector<std::string> tokens = StringUtils::split(line, ',');
                     nodeIdToNodeStringMap[lineNum] = tokens[0];
+                    //std::cout << "\"" << tokens[0] << "\",";
                     lines.push_back(tokens);
                 }
             }

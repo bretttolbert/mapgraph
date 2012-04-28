@@ -2,6 +2,7 @@
 #define US_STATES_SVG_FILE_H
 
 #include "SvgFile.h"
+#include "IntegerIdAdjacencyListFile.h"
 
 namespace GraphGame
 {
@@ -10,10 +11,12 @@ namespace GraphGame
     class USStatesSvgFile : public SvgFile
     {
     public:
-        USStatesSvgFile();
+        USStatesSvgFile(IntegerIdAdjacencyListFile* adjacencyFile);
+        USStatesSvgFile() { }
         bool markStateByAbbreviation(const std::string& abbreviation, const std::string& fill);
+        virtual bool markNode(int id, const std::string& fill);
     private:
-    
+        IntegerIdAdjacencyListFile* adjacencyFile;
     };
 }
 #endif

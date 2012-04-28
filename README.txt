@@ -23,8 +23,8 @@ Usage:
 -w                      Show warnings (useful for validating adjacency file).
 -lf <file>              Specify log file (defaults to "output.txt")
 -al preset <preset>     Use preset adjacency list. Presets include:
-                          usstates - The 48 continental states of the USA
-                          uscounties - 3000+ county or county equivalents 
+                          us-states - The 48 continental states of the USA
+                          us-counties - 3000+ county or county equivalents 
 -al <file> <fmt>        Use custom adjacency list file. Must specify adjacency 
                         file and adjacency file format. Possible formats:
    slc            Single Line CSV

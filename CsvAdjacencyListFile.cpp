@@ -50,8 +50,9 @@ namespace GraphGame
             int nodeId = stringToNodeId(nodeStr);
             AdjacencyListEntry entry;
             entry.first = nodeId;
-            std::vector<std::string>::const_iterator token_it;
-            for (token_it=tokens.begin(); token_it!=tokens.end(); ++token_it)
+            std::vector<std::string>::const_iterator token_it = tokens.begin();
+            std::advance(token_it, 1);
+            for (; token_it!=tokens.end(); ++token_it)
             {
                 std::string neighborNodeStr = *token_it;
                 int neighborNodeId = stringToNodeId(neighborNodeStr);

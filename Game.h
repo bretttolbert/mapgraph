@@ -4,6 +4,7 @@
 #include <string>
 
 #include "Graph.h"
+#include "IntegerIdAdjacencyListFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "USCountiesSvgFile.h"
 #include "CsvAdjacencyListFile.h"
@@ -14,22 +15,22 @@ namespace GraphGame
     class Game
     {
     public:
-        Game(const std::string& start, 
+        Game(IntegerIdAdjacencyListFile* adjacencyFile,
+             const std::string& start, 
              const std::string& goal);
-        void mainLoop();
-        void chooseStartNode();
-        void chooseGoalNode();
-        void printStats(bool final);
-    private:
+        ~Game();
+        virtual void mainLoop();
+        virtual void displayChoicesAndGetInput();
+        virtual bool processInput();
+        virtual void chooseStartNode();
+        virtual void chooseGoalNode();
+        virtual void printStats(bool final);
+    protected:
 		bool validateInput(const std::set<std::string>& choices, 
 						   const std::string& input,
 						   std::string& match);
-        USCountiesAdjacencyListFile adjacencyFile;
-        CsvAdjacencyListFile statesAdjacencyFile;
-        USCountiesSvgFile svg;
+        IntegerIdAdjacencyListFile* adjacencyFile;
         Graph<int> graph;
-        //int maxFuel;
-        //int fuel;
         int startNodeId;
         int currentNodeId;
         int goalNodeId;

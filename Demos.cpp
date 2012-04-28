@@ -19,6 +19,7 @@
 #include "USStatesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
+#include "Utils.h"
 
 namespace GraphGame
 {
@@ -27,7 +28,7 @@ namespace GraphGame
     {
         Graph<int> graph(af->getAdjacencyList());
         std::vector<int> path = graph.breadthFirstSearch(startId,goalId);
-        std::cout << "Optimal Path:\n";
+        std::cout << "Path:\n";
         std::vector<int>::const_iterator it;
         for (it=path.begin(); it!=path.end(); ++it)
         {
@@ -37,7 +38,11 @@ namespace GraphGame
             {
                 if (it == path.begin())
                 {
-                    svg->markNode(*it, "red");
+                    svg->markNode(*it, "#009900");
+                }
+                else if (next(it) == path.end())
+                {
+                    svg->markNode(*it, "#CC0000");
                 }
                 else
                 {
@@ -45,7 +50,7 @@ namespace GraphGame
                 }
             }
         }
-        std::cout << "\n(" << path.size() << " moves)\n"; 
+        std::cout << "\n(" << (path.size()-1) << " moves)\n"; 
         if (svg) svg->saveFile("output/bfs.svg");
     }
 

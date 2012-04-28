@@ -309,7 +309,7 @@ namespace GraphGame
             else if (mode == MODE_NEIGHBORS)
             {
                 //create graph just for validation purposes
-                Graph<int> g(af->getAdjacencyFile());
+                Graph<int> g(af->getAdjacencyList());
                 std::cout << "Neighbors of " << node1 << " (" << node1Id << "):\n";
                 const std::set<int> neighbors = af->getNeighbors(node1Id);
                 const std::set<int>::const_iterator it;

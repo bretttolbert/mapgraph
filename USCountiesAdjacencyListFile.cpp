@@ -67,6 +67,11 @@ namespace GraphGame
                     }
                 }
             }
+            //insert last entry
+            if (entry.first != 0)
+            {
+                adjacencyList.insert(entry);
+            }
         }
     }
 

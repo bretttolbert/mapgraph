@@ -18533,14 +18533,6 @@ Lipscomb County, TX	48295	Beaver County, OK	40007
 		Lipscomb County, TX	48295
 		Ochiltree County, TX	48357
 		Roberts County, TX	48393
-		Atascosa County, TX	48013
-		Bee County, TX	48025
-		Duval County, TX	48131
-		Jim Wells County, TX	48249
-		Karnes County, TX	48255
-		Live Oak County, TX	48297
-		McMullen County, TX	48311
-		San Patricio County, TX	48409
 Live Oak County, TX	48297	Karnes County, TX	48255
 		Bee County, TX	48025
 		San Patricio County, TX	48409

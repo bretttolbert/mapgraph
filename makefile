@@ -1,5 +1,5 @@
 CC_FLAGS = -c -Wall -fpermissive
-OBJ = main.o StringUtils.o Game.o USCountiesGame.o SvgFile.o IntegerIdAdjacencyListFile.o CsvAdjacencyListFile.o USCountiesAdjacencyListFile.o USCountiesSvgFile.o TravelingSalesmanProblem.o tinyxml2.o
+OBJ = main.o StringUtils.o Game.o USCountiesGame.o SvgFile.o USCountiesSvgFile.o USStatesSvgFile.o IntegerIdAdjacencyListFile.o CsvAdjacencyListFile.o USCountiesAdjacencyListFile.o TravelingSalesmanProblem.o tinyxml2.o
 
 all: graphgame
 
@@ -21,6 +21,12 @@ USCountiesGame.o: USCountiesGame.cpp
 SvgFile.o: SvgFile.cpp
 	g++ $(CC_FLAGS) SvgFile.cpp
 
+USCountiesSvgFile.o: USCountiesSvgFile.cpp
+	g++ $(CC_FLAGS) USCountiesSvgFile.cpp
+
+USStatesSvgFile.o: USStatesSvgFile.cpp
+	g++ $(CC_FLAGS) USStatesSvgFile.cpp
+
 IntegerIdAdjacencyListFile.o: IntegerIdAdjacencyListFile.cpp
 	g++ $(CC_FLAGS) IntegerIdAdjacencyListFile.cpp
 
@@ -29,9 +35,6 @@ CsvAdjacencyListFile.o: CsvAdjacencyListFile.cpp
 
 USCountiesAdjacencyListFile.o: USCountiesAdjacencyListFile.cpp
 	g++ $(CC_FLAGS) USCountiesAdjacencyListFile.cpp
-
-USCountiesSvgFile.o: USCountiesSvgFile.cpp
-	g++ $(CC_FLAGS) USCountiesSvgFile.cpp
 
 TravelingSalesmanProblem.o: TravelingSalesmanProblem.cpp
 	g++ $(CC_FLAGS) TravelingSalesmanProblem.cpp

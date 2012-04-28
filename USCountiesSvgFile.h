@@ -1,11 +1,11 @@
-#ifndef USCOUNTIES_SVGFILE_H
-#define USCOUNTIES_SVGFILE_H
+#ifndef US_COUNTIES_SVG_FILE_H
+#define US_COUNTIES_SVG_FILE_H
 
 #include "SvgFile.h"
 
 namespace GraphGame
 {
-    #define USCOUNTIES_SVGFILE_FILENAME "USA_Counties_with_FIPS_and_names.svg"
+    #define US_COUNTIES_SVG_FILENAME "USA_Counties_with_FIPS_and_names.svg"
 
     class USCountiesSvgFile : public SvgFile
     {

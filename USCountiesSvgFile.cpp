@@ -12,9 +12,9 @@ namespace GraphGame
 
     USCountiesSvgFile::USCountiesSvgFile()
     {
-        if (doc.LoadFile(USCOUNTIES_SVGFILE_FILENAME) != tinyxml2::XML_SUCCESS)
+        if (doc.LoadFile(US_COUNTIES_SVG_FILENAME) != tinyxml2::XML_SUCCESS)
         {
-            std::cout << "failed to open " << USCOUNTIES_SVGFILE_FILENAME << std::endl;
+            std::cerr << "Error: Failed to open " << US_COUNTIES_SVG_FILENAME << std::endl;
             exit(1);
         }
     }
@@ -32,7 +32,7 @@ namespace GraphGame
             {
                 continue;
             }
-            if (fipsStr == countyFips)
+            else if (fipsStr == countyFips)
             {
                 std::string style = path->Attribute("style");
                 std::vector<std::string> tokens = StringUtils::split(style, ';');

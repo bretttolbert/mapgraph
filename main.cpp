@@ -15,6 +15,7 @@
 #include "TravelingSalesmanProblem.h"
 #include "Graph.h"
 #include "USCountiesSvgFile.h"
+#include "USStatesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
 
@@ -284,6 +285,32 @@ namespace GraphGame
         else if (mode == MODE_TEST)
         {
             std::cout << "Test stub\n";
+
+            //mark each state with a random color
+            CsvAdjacencyListFile statesAdjacencyFile("48US.txt");
+            USStatesSvgFile statesSvg;
+            const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& statesMap = 
+                statesAdjacencyFile.getNodeIdToNodeStringMap();
+            IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator state_it;
+            for (state_it=statesMap.begin(); state_it!=statesMap.end(); ++state_it)
+            {
+                statesSvg.markStateByAbbreviation(state_it->second, randomColor());
+                statesSvg.saveFile("states.svg");
+            }
+
+/*
+            //mark each county with a random color
+            USCountiesAdjacencyListFile countiesAdjacencyFile;
+            USCountiesSvgFile countiesSvg;
+            const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& countiesMap = 
+                countiesAdjacencyFile.getNodeIdToNodeStringMap();
+            IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator county_it;
+            for (county_it=countiesMap.begin(); county_it!=countiesMap.end(); ++county_it)
+            {
+                countiesSvg.markCountyByFips(county_it->first, randomColor());
+                countiesSvg.saveFile("counties.svg");
+            }
+*/
         }
         return 0;
     }

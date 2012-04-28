@@ -233,16 +233,10 @@ namespace GraphGame
                 }
             }
         }
-        else if (mode == MODE_BFS_DEMO)
-        {
-            breadthFirstSearch_Demo(start, goal);
-        }
-        else if (mode == MODE_TSP_DEMO)
-        {
-            std::cout << "Traveling Salesman Problem\n";
-            TravelingSalesmanProblem tsp;
-        }
-        else if (mode == MODE_BIPARTITE_DEMO)
+        else if (mode == MODE_BFS_DEMO 
+                || mode == MODE_TSP_DEMO
+                || mode == MODE_BIPARTITE_DEMO
+                || mode == MODE_TEST)
         {
             IntegerIdAdjacencyListFile* af = NULL;
             SvgFile* svg = NULL;
@@ -261,16 +255,62 @@ namespace GraphGame
                     svg = new USCountiesSvgFile();
                     break;
                 default:
-                    assert(false);
+                    std::cerr << "Error: No adjacency file specified\n";
+                    exit(1);
                 }
             }
-            isBipartite_Demo(af, svg);
+            else
+            {
+                std::cerr << "Error: No adjacency file specified\n";
+                exit(1);
+            }
+            int startId, goalId;
+            if (start.empty())
+            {
+                startId = af->getRandomNodeId();
+                start = af->nodeIdToString(startId);
+            }
+            else
+            {
+                startId = af->stringToNodeId(start);
+            }
+            if (goal.empty())
+            {
+                goalId = af->getRandomNodeId();
+                goal = af->nodeIdToString(goalId);
+            }
+            else
+            {
+                goalId = af->stringToNodeId(goal);
+            }
+            
+            if (mode == MODE_BFS_DEMO)
+            {
+                std::cout << "Starting breadth first search mode...\n";
+                std::cout << "Performing BFS from " << start << " (" << goalId << ") "
+                          << "to " << goal << " (" << goalId << ")...\n";
+                breadthFirstSearch_Demo(af, svg, startId, goalId);
+            }
+            else if (mode == MODE_TSP_DEMO)
+            {
+                std::cout << "Traveling Salesman Problem\n";
+                TravelingSalesmanProblem tsp;
+            }
+            else if (mode == MODE_BIPARTITE_DEMO)
+            {
+                isBipartite_Demo(af, svg);
+            }
+            else if (mode == MODE_TEST)
+            {
+                std::cout << "Test stub\n";
+            }
+            else
+            {
+                assert(false);
+            }
+
             delete af;
             delete svg;
-        }
-        else if (mode == MODE_TEST)
-        {
-            std::cout << "Test stub\n";
         }
         return 0;
     }

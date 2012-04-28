@@ -64,6 +64,12 @@ namespace GraphGame
 
         Node* getRandomNode();
 
+        /**
+         * This should be called in between algorithms to reset all the color of all nodes to "black"
+         * and reset the parent pointer of all nodes to NULL
+         */
+        void resetNodes();
+
         struct NodeComparator
         {
             bool operator() (const Node* a, const Node* b);
@@ -215,14 +221,7 @@ namespace GraphGame
                 }
             }
         }
-        //reset node color and parent
-        typename Graph<T>::NodeSet::const_iterator it;
-        for (it=nodes.begin(); it!=nodes.end(); ++it)
-        {
-            Graph<T>::Node* node = *it;
-            node->color = Graph<T>::Node::COLOR_BLACK;
-            node->parent = NULL;
-        }
+        resetNodes();
         return path;
     }
 
@@ -274,13 +273,7 @@ namespace GraphGame
                 }
             }
         }
-        //reset node color
-        typename Graph<T>::NodeSet::const_iterator it;
-        for (it=nodes.begin(); it!=nodes.end(); ++it)
-        {
-            Graph<T>::Node* node = *it;
-            node->color = Graph<T>::Node::COLOR_BLACK;
-        }
+        resetNodes();
         return true;
     }
 
@@ -291,6 +284,19 @@ namespace GraphGame
         typename Graph<T>::NodeSet::iterator it = nodes.begin();
         std::advance(it, rand() % nodes.size());
         return *it;
+    }
+
+    template <typename T>
+    inline
+    void Graph<T>::resetNodes()
+    {
+        typename Graph<T>::NodeSet::const_iterator it;
+        for (it=nodes.begin(); it!=nodes.end(); ++it)
+        {
+            Graph<T>::Node* node = *it;
+            node->color = Graph<T>::Node::COLOR_BLACK;
+            node->parent = NULL;
+        }
     }
 }
 

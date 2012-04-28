@@ -6,10 +6,10 @@
 
 namespace GraphGame
 {
-    void breadthFirstSearch_Demo(const std::string& start, const std::string& goal);
+    void breadthFirstSearch_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg, 
+                                 int start, int goal);
     void isBipartite_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg);
-    void markEachStateWithRandomColor_Demo();
-    void markEachCountyWithRandomColor_Demo();
+    void markEachNodeWithRandomColor_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg);
     std::string randomColor();
 }
 

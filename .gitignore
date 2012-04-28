@@ -3,6 +3,7 @@
 graphgame
 output.svg
 output.txt
+output/
 tinyxml2/
 *~
 

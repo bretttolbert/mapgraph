@@ -6099,23 +6099,12 @@ Worth County, IA	19195	Cerro Gordo County, IA	19033
 		Worth County, IA	19195
 		Freeborn County, MN	27047
 		Mower County, MN	27099
-Wright County, IA	19197	Cerro Gordo County, IA	19033
+Wright County, IA	19197	Hancock County, IA	19081
 		Franklin County, IA	19069
 		Hamilton County, IA	19079
-		Hancock County, IA	19081
-		Hardin County, IA	19083
 		Humboldt County, IA	19091
-		Kossuth County, IA	19109
 		Webster County, IA	19187
 		Wright County, IA	19197
-		Allen County, KS	20001
-		Anderson County, KS	20003
-		Bourbon County, KS	20011
-		Coffey County, KS	20031
-		Linn County, KS	20107
-		Neosho County, KS	20133
-		Wilson County, KS	20205
-		Woodson County, KS	20207
 Allen County, KS	20001	Anderson County, KS	20003
 		Linn County, KS	20107
 		Bourbon County, KS	20011
@@ -9652,12 +9641,6 @@ Washington County, MN	27163	Anoka County, MN	27003
 		Pierce County, WI	55093
 		Polk County, WI	55095
 		St. Croix County, WI	55109
-		Blue Earth County, MN	27013
-		Brown County, MN	27015
-		Cottonwood County, MN	27033
-		Jackson County, MN	27063
-		Martin County, MN	27091
-		Watonwan County, MN	27165
 Watonwan County, MN	27165	Brown County, MN	27015
 		Blue Earth County, MN	27013
 		Martin County, MN	27091

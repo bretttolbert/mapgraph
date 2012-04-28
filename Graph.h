@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+#include <cmath>
 
 #include "AdjacencyListFile.h"
 
@@ -25,12 +26,16 @@ namespace GraphGame
         public:
             enum Color
             {
-                BLACK, WHITE, RED, GREEN, BLUE
+                COLOR_BLACK, 
+                COLOR_WHITE, 
+                COLOR_RED, 
+                COLOR_GREEN, 
+                COLOR_BLUE
             };
             Node();
             bool operator<(const Node &other) const;
             T value;
-            std::vector<Node*> adjacentNodes;
+            std::vector<Node*> neighbors;
             Color color; //used in various ways by different searching and traversal algorithms
             Node* parent; //used by pathfinding algorithms
         };
@@ -45,7 +50,19 @@ namespace GraphGame
          * Returns vector of values representing path taken
          */
         std::vector<T> breadthFirstSearch(T startNodeValue, T goalNodeValue);
+
+        /**
+         * Uses a greedy algorithm to quickly determine whether a graph is bipartite.
+         * From http://en.wikipedia.org/wiki/Bipartite_graph:
+         * Pick any vertex and assign it the color red. Then proceed by coloring all its 
+         * neighbors blue. For every colored vertex, color all its neighbor with the opposite 
+         * color. If there are any collisions, meaning we want to color a vertex with a 
+         * different color than it has, we abort and conclude that the graph cannot be 
+         * two-colored and hence it is not bipartite (it must contain an odd cycle).
+         */
+        bool isBipartite() const;
     private:
+        Node* getRandomNode() const;
         struct NodeComparator
         {
             bool operator() (const Node* a, const Node* b);
@@ -67,7 +84,7 @@ namespace GraphGame
             node->value = it->first;
             nodes.insert(node);
         }
-        //populate adjacentNodes of each node
+        //populate neighbors of each node
         for (it=adjacencyList.begin(); it!=adjacencyList.end(); ++it)
         {
             Node* node = findNodeByValue(it->first);
@@ -86,7 +103,7 @@ namespace GraphGame
                 }
                 else
                 {
-                    node->adjacentNodes.push_back(adjacentNode);
+                    node->neighbors.push_back(adjacentNode);
                 }
             }
         }
@@ -125,7 +142,7 @@ namespace GraphGame
     template <typename T>
     inline
     Graph<T>::Node::Node() : 
-        color(BLACK), 
+        color(COLOR_BLACK), 
         parent(NULL) 
     { }
 
@@ -143,7 +160,7 @@ namespace GraphGame
         std::vector<T> path;
         Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
         std::queue<Graph<T>::Node*> q;
-        startNode->color = Node::WHITE; //white=marked, black=unmarked (default)
+        startNode->color = Node::COLOR_WHITE; //white=marked, black=unmarked (default)
         q.push(startNode);
         while (q.size() > 0)
         {
@@ -166,7 +183,7 @@ namespace GraphGame
                 if (DEBUG_GRAPH)
                 {
                     std::cout << "found it\npath taken: ";
-                    std::ostream_iterator<int> output(std::cout, " ");
+                    std::ostream_iterator<T> output(std::cout, " ");
                     std::copy(path.begin(), path.end(), output);
                     std::cout << std::endl;
                 }
@@ -175,7 +192,7 @@ namespace GraphGame
             else
             {
                 typename std::vector<Node*>::const_iterator it;
-                for (it=currentNode->adjacentNodes.begin(); it!=currentNode->adjacentNodes.end(); ++it)
+                for (it=currentNode->neighbors.begin(); it!=currentNode->neighbors.end(); ++it)
                 {
                     Graph<T>::Node* adjacentNode = *it;
                     if (adjacentNode == NULL)
@@ -184,7 +201,7 @@ namespace GraphGame
                         std::cout << "currentNode = " << currentNode->value << std::endl;
                         exit(1);
                     }
-                    if (adjacentNode->color != Node::WHITE)
+                    if (adjacentNode->color != Node::COLOR_WHITE)
                     {
                         if (DEBUG_GRAPH)
                         {
@@ -192,7 +209,7 @@ namespace GraphGame
                         }
                         adjacentNode->parent = currentNode;
                         q.push(adjacentNode);
-                        adjacentNode->color = Node::WHITE;
+                        adjacentNode->color = Node::COLOR_WHITE;
                     }
                 }
             }
@@ -202,10 +219,79 @@ namespace GraphGame
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
             Graph<T>::Node* node = *it;
-            node->color = Graph<int>::Node::BLACK;
+            node->color = Graph<T>::Node::COLOR_BLACK;
             node->parent = NULL;
         }
         return path;
+    }
+
+    template <typename T>
+    inline
+    bool Graph<T>::isBipartite() const
+    {
+        Graph<T>::Node* startNode = getRandomNode();
+        std::queue<Graph<T>::Node*> q;
+        startNode->color = Node::COLOR_RED;
+        q.push(startNode);
+        while (q.size() > 0)
+        {
+            Node* currentNode = q.front();
+            q.pop();
+            typename std::vector<Node*>::const_iterator it;
+            for (it=currentNode->neighbors.begin(); it!=currentNode->neighbors.end(); ++it)
+            {
+                Graph<T>::Node* adjacentNode = *it;
+                if (adjacentNode == NULL)
+                {
+                    std::cout << "Error: adjacentNode is NULL\n";
+                    std::cout << "currentNode = " << currentNode->value << std::endl;
+                    exit(1);
+                }
+                if (adjacentNode->color == Node::COLOR_BLACK)
+                {
+                    //mark it as opposite color
+                    if (currentNode->color == Node::COLOR_RED)
+                    {
+                        adjacentNode->color = Node::COLOR_BLUE;
+                    }
+                    else
+                    {
+                        adjacentNode->color = Node::COLOR_RED;
+                    }
+                }
+                else
+                {
+                    //adjacent node has already been marked
+                    //verify that it's a different color than current node.
+                    //if it isn't, then the graph is not bipartite
+                    if (adjacentNode->color == currentNode->color)
+                    {
+                        return false;
+                    }
+                }
+                //enqueue neighbor node
+                adjacentNode->parent = currentNode;
+                q.push(adjacentNode);
+            }
+        }
+        //reset node color and parent
+        typename Graph<T>::NodeSet::const_iterator it;
+        for (it=nodes.begin(); it!=nodes.end(); ++it)
+        {
+            Graph<T>::Node* node = *it;
+            node->color = Graph<T>::Node::COLOR_BLACK;
+            node->parent = NULL;
+        }
+        return true;
+    }
+
+    template <typename T>
+    inline
+    typename Graph<T>::Node* Graph<T>::getRandomNode() const
+    {
+        typename Graph<T>::NodeSet::const_iterator it = nodes.begin();
+        std::advance(it, rand() % nodes.size());
+        return it->first;
     }
 }
 

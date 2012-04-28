@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
+#include <iterator>
+#include <cstdlib>
 
 #include "CsvAdjacencyListFile.h"
 #include "StringUtils.h"
@@ -34,11 +37,6 @@ namespace GraphGame
         {
             std::cerr << "Error: Failed to open file \"" << filename << "\"\n";
         }
-        IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
-        for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
-        {
-            std::cout << it->first << ": " << it->second << std::endl;
-        }
         file.close();
 
         //now iterate over the lines to populate adjacency list with node IDs
@@ -56,6 +54,11 @@ namespace GraphGame
             {
                 std::string neighborNodeStr = *token_it;
                 int neighborNodeId = stringToNodeId(neighborNodeStr);
+                if (neighborNodeId == 0)
+                {
+                    std::cerr << "Error: Failed to find node ID for \"" << neighborNodeStr << "\"\n";
+                    exit(1);
+                }
                 entry.second.insert(neighborNodeId);
             }
             adjacencyList.insert(entry);

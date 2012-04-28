@@ -92,7 +92,7 @@ namespace GraphGame
         while (1)
         {
             displayChoicesAndGetInput();
-            if (!processInput())
+            if (processInput())
             {
                 break;
             }

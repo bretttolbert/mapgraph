@@ -16,6 +16,7 @@
 #include "Graph.h"
 #include "USCountiesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
+#include "CsvAdjacencyListFile.h"
 
 namespace GraphGame
 {
@@ -296,7 +297,6 @@ namespace GraphGame
             << std::setw(2) << (rand() % 256);
         return oss.str();
     }
-
 }
 
 int main(int argc, char *argv[])

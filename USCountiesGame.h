@@ -2,6 +2,7 @@
 #define US_COUNTIES_GAME_H
 
 #include "Game.h"
+#include "CsvAdjacencyListFile.h"
 
 namespace GraphGame
 {
@@ -10,6 +11,7 @@ namespace GraphGame
     public:
         USCountiesGame(const std::string& start,
                        const std::string& goal);
+        ~USCountiesGame();
         virtual void chooseStartNode();
         virtual void chooseGoalNode();
         virtual void mainLoop();
@@ -18,7 +20,6 @@ namespace GraphGame
         virtual void printStats(bool final);
     protected:
         CsvAdjacencyListFile statesAdjacencyFile;
-        USCountiesSvgFile svg;
     };
 }
 

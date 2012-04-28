@@ -227,14 +227,20 @@ namespace GraphGame
             {
                 switch (adjacencyFilePreset)
                 {
-                case ADJACENCY_FILE_PRESET_US_STATES:
-                    Game(new CsvAdjacencyListFile("48US.txt"), node1, node2);
-                    break;
-                case ADJACENCY_FILE_PRESET_US_COUNTIES:
-                    USCountiesGame(node1, node2);
-                    break;
-                default:
-                    assert(false);
+                    case ADJACENCY_FILE_PRESET_US_STATES:
+                    {
+                        IntegerIdAdjacencyListFile* af = new CsvAdjacencyListFile("48US.txt");
+                        USStatesSvgFile* svg = new USStatesSvgFile(af);
+                        Game(af, svg, node1, node2);
+                        break;
+                    }
+                    case ADJACENCY_FILE_PRESET_US_COUNTIES:
+                    {
+                        USCountiesGame(node1, node2);
+                        break;
+                    }
+                    default:
+                        assert(false);
                 }
             }
         }

@@ -1,13 +1,21 @@
 #include "USCountiesGame.h"
+#include "USCountiesAdjacencyListFile.h"
+#include "USCountiesSvgFile.h"
 
 namespace GraphGame
 {
     USCountiesGame::USCountiesGame(const std::string& start, 
                                    const std::string& goal) :
-        Game::Game(new USCountiesAdjacencyListFile(), start, goal),
+        Game::Game(new USCountiesAdjacencyListFile(), 
+                   new USCountiesSvgFile(), start, goal),
         statesAdjacencyFile("48US.txt")
     {
         
+    }
+
+    USCountiesGame::~USCountiesGame()
+    {
+        delete adjacencyFile;
     }
 
     void USCountiesGame::chooseStartNode()
@@ -22,10 +30,6 @@ namespace GraphGame
 
     void USCountiesGame::printStats(bool final)
     {
-        if (final || DEBUG_GAME)
-        {
-            svg.saveFile("output.svg");
-        }
         Game::printStats(final);
     }
 
@@ -33,12 +37,6 @@ namespace GraphGame
     {
 		if (moves == 0)
 		{
-            //mark optimalPath on svg
-            std::vector<int>::const_iterator it;
-            for (it=optimalPath.begin(); it!=optimalPath.end(); ++it)
-            {
-                svg.markCountyByFips(*it, "red");
-            }
 			std::cout << "Tip: You do not have to enter the destination exactly. "
 					  << "For example, to choose \"Montgomery County, AL\", simply enter \"mont\".\n";
 		}
@@ -52,7 +50,6 @@ namespace GraphGame
 
     bool USCountiesGame::processInput()
     {
-        svg.markCountyByFips(currentNodeId, "green");
         return Game::processInput();
     }
 }

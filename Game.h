@@ -5,9 +5,7 @@
 
 #include "Graph.h"
 #include "IntegerIdAdjacencyListFile.h"
-#include "USCountiesAdjacencyListFile.h"
-#include "USCountiesSvgFile.h"
-#include "CsvAdjacencyListFile.h"
+#include "SvgFile.h"
 
 namespace GraphGame
 {
@@ -16,6 +14,7 @@ namespace GraphGame
     {
     public:
         Game(IntegerIdAdjacencyListFile* adjacencyFile,
+             SvgFile* svg,
              const std::string& start, 
              const std::string& goal);
         ~Game();
@@ -30,6 +29,7 @@ namespace GraphGame
 						   const std::string& input,
 						   std::string& match);
         IntegerIdAdjacencyListFile* adjacencyFile;
+        SvgFile* svg;
         Graph<int> graph;
         int startNodeId;
         int currentNodeId;

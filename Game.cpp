@@ -10,15 +10,18 @@
 
 #include "Game.h"
 #include "StringUtils.h"
+#include "Utils.h"
 
 namespace GraphGame
 {
     extern bool showWarnings;
 
     Game::Game(IntegerIdAdjacencyListFile* adjacencyFile_,
+               SvgFile* svg_,
                const std::string& start, 
                const std::string& goal) :
         adjacencyFile(adjacencyFile_),
+        svg(svg_),
         graph(adjacencyFile->getAdjacencyList()),
         moves(0),
         printNeighbors(true)
@@ -47,6 +50,10 @@ namespace GraphGame
     Game::~Game()
     {
         delete adjacencyFile;
+        if (svg)
+        {
+            delete svg;
+        }
     }
 
     void Game::chooseStartNode()
@@ -83,12 +90,33 @@ namespace GraphGame
                 std::cout << adjacencyFile->nodeIdToString(*it) << "\n";
             }
             std::cout << "(" << optimalPath.size() << " moves)\n";
+            if (svg) svg->saveFile("output/game-output.svg");
         }
         std::cout << std::endl;
     }
 
     void Game::mainLoop()
     {
+		if (svg)
+		{
+            //mark optimalPath on svg
+            std::vector<int>::const_iterator it;
+            for (it=optimalPath.begin(); it!=optimalPath.end(); ++it)
+            {
+                if (it == optimalPath.begin())
+                {
+                    svg->markNode(*it, "#009900");
+                }
+                else if (next(it) == optimalPath.end())
+                {
+                    svg->markNode(*it, "#CC0000");
+                }
+                else
+                {
+                    svg->markNode(*it, "gray");
+                }
+            }
+        }
         while (1)
         {
             displayChoicesAndGetInput();
@@ -136,6 +164,7 @@ namespace GraphGame
         }
         else
         {
+            if (svg) svg->markNode(currentNodeId, "blue");
             return false;
         }
     }

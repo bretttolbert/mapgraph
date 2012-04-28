@@ -19,6 +19,7 @@
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
 #include "Demos.h"
+#include "StringUtils.h"
 
 namespace GraphGame
 {
@@ -284,7 +285,17 @@ namespace GraphGame
             }
             else
             {
-                node1Id = af->stringToNodeId(node1);
+                std::string match;
+                if (!(node1Id = af->nodeSearch(node1, match)))
+                {
+                    std::cerr << "No matching node found for \"" << node1 << "\"\n";
+                    exit(1);
+                }
+                else
+                {
+                    std::cout << "Found match for \"" << node1 << "\": " << match << " (" << node1Id << ")\n";
+                    node1 = match;
+                }
             }
             if (node2.empty())
             {
@@ -293,7 +304,17 @@ namespace GraphGame
             }
             else
             {
-                node2Id = af->stringToNodeId(node2);
+                std::string match;
+                if (!(node2Id = af->nodeSearch(node2, match)))
+                {
+                    std::cerr << "No matching node found for \"" << node2 << "\"\n";
+                    exit(1);
+                }
+                else
+                {
+                    std::cout << "Found match for \"" << node2 << "\": " << match << " (" << node2Id << ")\n";
+                    node2 = match;
+                }
             }
             
             if (mode == MODE_BFS_DEMO)

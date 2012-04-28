@@ -31,8 +31,19 @@ namespace GraphGame
          * Returns the node ID for given the string representation of the node.
          * For example, if this is an ajdacency list of US County FIPS codes,
          * this method would return the FIPS code for a given county name.
+         * Returns 0 if no exact match is found.
          */
         virtual int stringToNodeId(const std::string& str) const;   
+
+        /**
+         * Searches for a node that best matches the given query string.
+         * This is done by splitting the query string into tokens and scoring
+         * each candidate based on the number of tokens matched.
+         * Returns 0 if no matching results are found.
+         * If multiple nodes are tied for the highest score, it returns the 
+         * first one found (the node with the lowest numerical ID).
+         */
+        virtual int nodeSearch(const std::string& query, std::string& result);
 
         virtual const NodeIdToNodeStringMap& getNodeIdToNodeStringMap() const;
 

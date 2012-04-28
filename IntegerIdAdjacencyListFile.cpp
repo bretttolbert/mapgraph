@@ -18,7 +18,7 @@ namespace GraphGame
         AdjacencyList::const_iterator it = adjacencyList.find(temp);
         if (it == adjacencyList.end())
         {
-            std::cout << "Error: invalid nodeId\n";
+            std::cerr << "Error: invalid nodeId\n";
             exit(1);
         }
         return it->second;
@@ -33,7 +33,7 @@ namespace GraphGame
         }
         else
         {
-            std::cout << "Error: Invalid nodeId \"" << nodeId << "\"\n";
+            std::cerr << "Error: Invalid nodeId \"" << nodeId << "\"\n";
             return "";
         }
     }

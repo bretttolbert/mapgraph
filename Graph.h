@@ -11,11 +11,11 @@
 #include <cmath>
 
 #include "AdjacencyListFile.h"
+#include "GraphGame.h"
 
 namespace GraphGame
 {
     #define DEBUG_GRAPH 0
-    extern bool showWarnings;
 
     template <typename T>
     class Graph
@@ -104,7 +104,7 @@ namespace GraphGame
             for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
             {
                 Node* adjacentNode = findNodeByValue(*jt);
-                if (adjacentNode == NULL && showWarnings)
+                if (adjacentNode == NULL && GraphGame::showWarnings)
                 {
                     std::cout << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
                 }
@@ -133,7 +133,7 @@ namespace GraphGame
     inline
     typename Graph<T>::Node* Graph<T>::findNodeByValue(const T& value)
     {
-        Graph<T>::Node temp;
+        typename Graph<T>::Node temp;
         temp.value = value;
         typename Graph<T>::NodeSet::const_iterator it = nodes.find(&temp);
         if (it != nodes.end())
@@ -165,8 +165,8 @@ namespace GraphGame
     typename std::vector<T> Graph<T>::breadthFirstSearch(T startNodeValue, T goalNodeValue)
     {
         std::vector<T> path;
-        Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
-        std::queue<Graph<T>::Node*> q;
+        typename Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
+        std::queue<typename Graph<T>::Node*> q;
         startNode->color = Node::COLOR_WHITE; //white=marked, black=unmarked (default)
         q.push(startNode);
         while (q.size() > 0)
@@ -180,7 +180,7 @@ namespace GraphGame
             if (currentNode->value == goalNodeValue)
             {
                 //populate path vector
-                Graph<T>::Node *node = currentNode;
+                typename Graph<T>::Node *node = currentNode;
                 while (node != NULL)
                 {
                     path.push_back(node->value);
@@ -201,7 +201,7 @@ namespace GraphGame
                 typename std::vector<Node*>::const_iterator it;
                 for (it=currentNode->neighbors.begin(); it!=currentNode->neighbors.end(); ++it)
                 {
-                    Graph<T>::Node* adjacentNode = *it;
+                    typename Graph<T>::Node* adjacentNode = *it;
                     if (adjacentNode == NULL)
                     {
                         std::cout << "Error: adjacentNode is NULL\n";
@@ -229,8 +229,8 @@ namespace GraphGame
     inline
     bool Graph<T>::isBipartite()
     {
-        Node* startNode = getRandomNode();
-        std::queue<Graph<T>::Node*> q;
+        typename Graph<T>::Node* startNode = getRandomNode();
+        std::queue<typename Graph<T>::Node*> q;
         startNode->color = Node::COLOR_RED;
         q.push(startNode);
         while (q.size() > 0)
@@ -293,7 +293,7 @@ namespace GraphGame
         typename Graph<T>::NodeSet::const_iterator it;
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
-            Graph<T>::Node* node = *it;
+            typename Graph<T>::Node* node = *it;
             node->color = Graph<T>::Node::COLOR_BLACK;
             node->parent = NULL;
         }

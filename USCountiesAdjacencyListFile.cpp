@@ -7,16 +7,16 @@
 
 #include "USCountiesAdjacencyListFile.h"
 #include "StringUtils.h"
+#include "GraphGame.h"
 
 namespace GraphGame
 {
-    extern bool showWarnings;
-
     USCountiesAdjacencyListFile::USCountiesAdjacencyListFile()
     {
         std::cout << "Loading adjacency list file...\n";
         std::ifstream file;
-        file.open(USCOUNTIES_ADJACENCY_LIST_FILENAME, std::ios::in);
+        std::string filepath = GraphGame::absolutePath(USCOUNTIES_ADJACENCY_LIST_FILENAME);
+        file.open(filepath.c_str(), std::ios::in);
         if (file.is_open())
         {
             int lineNum = 0;
@@ -72,6 +72,12 @@ namespace GraphGame
             {
                 adjacencyList.insert(entry);
             }
+            file.close();
+        }
+        else
+        {
+            std::cerr << "Error: failed to open \"" << filepath << "\"\n";
+            exit(1);
         }
     }
 

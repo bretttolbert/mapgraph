@@ -1,6 +1,7 @@
 #include "USCountiesGame.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "USCountiesSvgFile.h"
+#include "GraphGame.h"
 
 namespace GraphGame
 {
@@ -8,7 +9,7 @@ namespace GraphGame
                                    const std::string& goal) :
         Game::Game(new USCountiesAdjacencyListFile(), 
                    new USCountiesSvgFile(), start, goal),
-        statesAdjacencyFile("48US.txt")
+        statesAdjacencyFile(GraphGame::absolutePath("48US.txt"))
     {
         
     }

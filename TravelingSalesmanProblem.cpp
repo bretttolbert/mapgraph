@@ -1,10 +1,9 @@
 #include <fstream>
 #include "TravelingSalesmanProblem.h"
+#include "GraphGame.h"
 
 namespace GraphGame
 {
-    extern bool showWarnings;
-
     TravelingSalesmanProblem::TravelingSalesmanProblem()
     {
         USCountiesAdjacencyListFile adjacencyListFile;
@@ -67,3 +66,4 @@ namespace GraphGame
         std::cout << "\n(" << path.size() << " moves)\n"; 
     }
 }
+

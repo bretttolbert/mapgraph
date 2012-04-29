@@ -5,16 +5,16 @@
 #include "USCountiesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h" //for fipsToString
 #include "StringUtils.h"
+#include "GraphGame.h"
 
 namespace GraphGame
 {
-    extern bool showWarnings;
-
     USCountiesSvgFile::USCountiesSvgFile()
     {
-        if (doc.LoadFile(US_COUNTIES_SVG_FILENAME) != tinyxml2::XML_SUCCESS)
+        std::string filepath = GraphGame::absolutePath(US_COUNTIES_SVG_FILENAME);
+        if (doc.LoadFile(filepath.c_str()) != tinyxml2::XML_SUCCESS)
         {
-            std::cerr << "Error: Failed to open " << US_COUNTIES_SVG_FILENAME << std::endl;
+            std::cerr << "Error: Failed to open " << filepath << std::endl;
             exit(1);
         }
     }

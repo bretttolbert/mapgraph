@@ -8,14 +8,13 @@
 #include <queue>
 #include <set>
 
+#include "GraphGame.h"
 #include "Game.h"
 #include "StringUtils.h"
 #include "Utils.h"
 
 namespace GraphGame
 {
-    extern bool showWarnings;
-
     Game::Game(IntegerIdAdjacencyListFile* adjacencyFile_,
                SvgFile* svg_,
                const std::string& start, 

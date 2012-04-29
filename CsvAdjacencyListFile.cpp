@@ -33,12 +33,14 @@ namespace GraphGame
                     lines.push_back(tokens);
                 }
             }
+            file.close();
         }
         else
         {
             std::cerr << "Error: Failed to open file \"" << filename << "\"\n";
+            exit(1);
         }
-        file.close();
+
 
         //now iterate over the lines to populate adjacency list with node IDs
         std::vector<std::vector<std::string> >::const_iterator line_it;

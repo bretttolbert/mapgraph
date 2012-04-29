@@ -58,22 +58,26 @@ namespace GraphGame
     int IntegerIdAdjacencyListFile::nodeSearch(const std::string& query, std::string& result)
     {
         //search nodes for anything resembling node1
-        //first split node1 into tokens using space as the delimeter
+        //first split node1 into tokens (words) using space as the delimeter
         std::string lquery(query);
         std::transform(lquery.begin(), lquery.end(), lquery.begin(), ::tolower);
-        std::vector<std::string> tokens = StringUtils::split(lquery, ' ');
+        std::vector<std::string> queryTokens = StringUtils::split(lquery, ' ');
         //filter out tokens containing 'county'
         std::vector<std::string> goodTokens;
         std::vector<std::string>::const_iterator it;
-        for (it=tokens.begin(); it!=tokens.end(); ++it)
+        for (it=queryTokens.begin(); it!=queryTokens.end(); ++it)
         {
             std::string token = *it;
             if (token.find("county") == std::string::npos)
             {
+                while (token[token.size()-1] == ',')
+                {
+                    token.erase(token.size()-1);
+                }
                 goodTokens.push_back(token);
             }
         }
-        tokens = goodTokens;
+        queryTokens = goodTokens;
         int highestScoreSoFar = 0;
         int highestScoreNodeId = 0;
         
@@ -90,14 +94,32 @@ namespace GraphGame
                 return node_it->first;
             }
             int nodeScore = 0;
-            //check if nodeStr contains any of the tokens
-            std::vector<std::string>::const_iterator token_it;
-            for (token_it=tokens.begin(); token_it!=tokens.end(); ++token_it)
+            //split current node into tokens
+            std::vector<std::string> nodeTokens = StringUtils::split(lnode, ' ');
+            std::vector<std::string>::const_iterator node_token_it;
+            for (node_token_it=nodeTokens.begin();
+                 node_token_it!=nodeTokens.end();
+                 ++node_token_it)
             {
-                std::string token = *token_it;
-                if (lnode.find(token) != std::string::npos)
+                std::string nodeToken = *node_token_it;
+                std::vector<std::string>::const_iterator query_it;
+                for (query_it=queryTokens.begin(); 
+                     query_it!=queryTokens.end(); ++query_it)
                 {
-                    nodeScore++;
+                    std::string queryToken = *query_it;
+                    //check for exact token match
+                    if (nodeToken == queryToken)
+                    {
+                        nodeScore += queryToken.size() * 50;
+                    }
+                    else if (nodeToken.find(queryToken) != std::string::npos)
+                    {
+                        int percentMatch = (int)floor(((queryToken.size() / (float)nodeToken.size()) * 100) + 0.5);
+                        //std::cout << "queryToken=\"" << queryToken << "\" "
+                        //          << "nodeToken=\"" << nodeToken << "\" "
+                        //          << "percentMatch=" << percentMatch << std::endl;
+                        nodeScore += percentMatch * queryToken.size();
+                    }
                 }
             }
             if (nodeScore > highestScoreSoFar)

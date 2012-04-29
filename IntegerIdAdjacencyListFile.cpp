@@ -59,15 +59,15 @@ namespace GraphGame
     {
         //search nodes for anything resembling node1
         //first split node1 into tokens using space as the delimeter
-        std::vector<std::string> tokens = StringUtils::split(query, ' ');
-        //refine the list of tokens by converting each to lowercase and skipping
-        //tokens containing 'county'
+        std::string lquery(query);
+        std::transform(lquery.begin(), lquery.end(), lquery.begin(), ::tolower);
+        std::vector<std::string> tokens = StringUtils::split(lquery, ' ');
+        //filter out tokens containing 'county'
         std::vector<std::string> goodTokens;
         std::vector<std::string>::const_iterator it;
         for (it=tokens.begin(); it!=tokens.end(); ++it)
         {
             std::string token = *it;
-            std::transform(token.begin(), token.end(), token.begin(), ::tolower);
             if (token.find("county") == std::string::npos)
             {
                 goodTokens.push_back(token);
@@ -81,10 +81,15 @@ namespace GraphGame
         for (node_it=nodeIdToNodeStringMap.begin(); 
              node_it!=nodeIdToNodeStringMap.end(); ++node_it)
         {
-            std::string node = node_it->second;
-            int nodeScore = 0;
-            std::string lnode(node);
+            std::string lnode = node_it->second;
             std::transform(lnode.begin(), lnode.end(), lnode.begin(), ::tolower);
+            //check for exact match (overrides scoring)
+            if (lnode == lquery)
+            {
+                result = node_it->second;
+                return node_it->first;
+            }
+            int nodeScore = 0;
             //check if nodeStr contains any of the tokens
             std::vector<std::string>::const_iterator token_it;
             for (token_it=tokens.begin(); token_it!=tokens.end(); ++token_it)
@@ -97,7 +102,7 @@ namespace GraphGame
             }
             if (nodeScore > highestScoreSoFar)
             {
-                //std::cout << "New highest score: " << node << " (" << nodeScore << ")\n"; 
+                //std::cout << "New highest score: " << node_it->second << " (" << nodeScore << ")\n"; 
                 highestScoreSoFar = nodeScore;
                 highestScoreNodeId = node_it->first;
             }

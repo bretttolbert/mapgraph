@@ -5,6 +5,8 @@ output.svg
 output.txt
 output/
 tinyxml2/
+cgi/graphgame.cgi
+cgi/out.txt
 *~
 
 # Compiled source #

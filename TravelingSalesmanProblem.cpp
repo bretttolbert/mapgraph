@@ -33,7 +33,7 @@ namespace GraphGame
                 }
             }
         }
-        svg.saveFile("output.svg");
+        svg.saveFile("output/output.svg");
     }
 
     void TravelingSalesmanProblem::performBfsAndUpdateSvg(USCountiesAdjacencyListFile& adjacencyListFile,

@@ -10,11 +10,18 @@
 
 int main(int argc, char** argv)
 {
-    std::cout << "Content-Type: text/plain;charset=us-ascii\n\n";
+    std::cout << "Content-Type: text/html;charset=us-ascii\n\n";
+    std::cout << "<!DOCTYPE html>\n";
+    std::cout << "<html>\n";
+    std::cout << "<head>\n";
+    std::cout << "<title>graphgame</title>\n";
+    std::cout << "</head>\n";
+    std::cout << "<body>\n";
+    std::cout << "<textarea rows=\"30\" cols=\"80\">";
+
     if (!getenv("QUERY_STRING"))
     {
         std::cout << "Error: failed to get QUERY_STRING\n";
-        exit(1);
     }
     std::string rawQuery = getenv("QUERY_STRING");
 #if DEBUG
@@ -29,7 +36,6 @@ int main(int argc, char** argv)
         if (paramTokens.size() != 2)
         {
             std::cout << "Parser Error: paramsTokens.size() != 2\n";
-            exit(1);
         }
         params[paramTokens[0]] = StringUtils::urldecode(paramTokens[1]);
     }
@@ -70,5 +76,10 @@ int main(int argc, char** argv)
     {
         std::cout << "Error: Processor is not available.\n";
     }
+    std::cout << "</textarea>\n";
+    //std::cout << "<br>\n";
+    std::cout << "<img src=\"output/output.svg\" width=\"" << (555*2) << "\" height=\"" << (352*2) << "\" />\n";
+    std::cout << "</body>\n";
+    std::cout << "</html>\n";
     return 0;
 }

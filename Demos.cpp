@@ -51,7 +51,7 @@ namespace GraphGame
             }
         }
         std::cout << "\n(" << (path.size()-1) << " moves)\n"; 
-        if (svg) svg->saveFile("output/bfs.svg");
+        if (svg) svg->saveFile("output/output.svg");
     }
 
     void isBipartite_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg)
@@ -122,7 +122,7 @@ namespace GraphGame
         {
             std::cout << "Graph is not bipartite.\n";
         }
-        if (svg) svg->saveFile("output/bipartite-demo/bipartite_final.svg");
+        if (svg) svg->saveFile("output/output.svg");
         g.resetNodes();
     }
 
@@ -135,7 +135,7 @@ namespace GraphGame
         for (it=nodeMap.begin(); it!=nodeMap.end(); ++it)
         {
             svg->markNode(it->first, randomColor());
-            svg->saveFile("output/states_marked_with_random_colors.svg");
+            svg->saveFile("output/output.svg");
         }
     }
 

@@ -4,25 +4,27 @@
 
 namespace GraphGame
 {
-    TravelingSalesmanProblem::TravelingSalesmanProblem()
-        : graph(adjacencyListFile.getAdjacencyList()),
-          nodeIdToNodeStringMap(adjacencyListFile.getNodeIdToNodeStringMap())
+    TravelingSalesmanProblem::TravelingSalesmanProblem(
+                                 IntegerIdAdjacencyListFile* af_, 
+                                 SvgFile* svg_,
+                                 const std::vector<int>& targetNodeIds)
+        : af(af_),
+          svg(svg_),
+          graph(af->getAdjacencyList()),
+          nodeIdToNodeStringMap(af->getNodeIdToNodeStringMap())
     {
-        IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
-        for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
+        std::vector<int>::const_iterator idIter;
+        for (idIter=targetNodeIds.begin(); idIter!=targetNodeIds.end(); ++idIter)
         {
-            if (it->second.find("Washington") != std::string::npos)
-            {
                 TargetNode* targetNode = new TargetNode();
-                targetNode->nodeId = it->first;
-                targetNode->nodeString = it->second;
+                targetNode->nodeId = *idIter;
+                targetNode->nodeString = af->nodeIdToString(*idIter);
                 targetNode->visited = false;
-                targetNodes.insert(targetNode);
-            }
+                targetNodes.push_back(targetNode);
         }
-        std::cout << "Found " << targetNodes.size() << " Washingtons\n";
+
         std::vector<int> fullPath;        
-        std::set<TargetNode*>::const_iterator jt = targetNodes.begin();
+        std::vector<TargetNode*>::const_iterator jt = targetNodes.begin();
         TargetNode* startNode = *jt;
         TargetNode* currentNode = startNode;
         while (1)
@@ -30,7 +32,7 @@ namespace GraphGame
             std::vector<int> path;
             TargetNode* nearestTargetNode = NULL;
             std::vector<int> shortestPath;
-            std::cout << "marking " << currentNode->nodeString << " as visisted\n";
+            std::cout << currentNode->nodeString << "\n";
             currentNode->visited = true;
             bool foundUnvisitedNode = false;
             for (jt=targetNodes.begin(); jt!=targetNodes.end(); ++jt)
@@ -40,13 +42,11 @@ namespace GraphGame
                 if (!targetNode->visited)
                 {
                     foundUnvisitedNode = true;
-                    std::cout << "found unvisited node " << targetNode->nodeString << std::endl;
                     std::vector<int> path = graph.breadthFirstSearch(currentNode->nodeId, targetNode->nodeId);
                     if (nearestTargetNode == NULL || path.size() < shortestPath.size())
                     {
                         nearestTargetNode = targetNode;
                         shortestPath = path;
-                        std::cout << "new shortest path is to " << nearestTargetNode->nodeString << std::endl;
                     }
                 }
             }
@@ -55,7 +55,8 @@ namespace GraphGame
                 //no more nodes to visit, return to start node
                 std::vector<int> path = graph.breadthFirstSearch(currentNode->nodeId, startNode->nodeId);
                 markPath(path);
-                svg.markNode(startNode->nodeId, "purple");
+                svg->markNode(startNode->nodeId, "purple");
+                std::cout << startNode->nodeString << "\n";
                 break;
             }
             else
@@ -64,12 +65,12 @@ namespace GraphGame
                 markPath(shortestPath);
             }
         }
-        svg.saveFile("output/output.svg");
+        svg->saveFile("output/output.svg");
     }
 
     TravelingSalesmanProblem::~TravelingSalesmanProblem()
     {
-        std::set<TargetNode*>::iterator it;
+        std::vector<TargetNode*>::iterator it;
         for (it=targetNodes.begin(); it!=targetNodes.end(); ++it)
         {
             TargetNode* targetNode = *it;
@@ -82,19 +83,31 @@ namespace GraphGame
         std::vector<int>::const_iterator it;
         for (it=path.begin(); it!=path.end(); ++it)
         {
-            std::string nodeString = adjacencyListFile.nodeIdToString(*it);
-            if (it != path.begin())
+            if (getTargetNodeById(*it) != NULL)
             {
-                if (nodeString.find("Washington") != std::string::npos)
-                {
-                    svg.markNode(*it, "red");
-                }
-                else
-                {
-                    svg.markNode(*it, "gray");
-                }
+                svg->markNode(*it, "red");
+            }
+            else
+            {
+                svg->markNode(*it, "gray");
             }
         }
+    }
+
+    TravelingSalesmanProblem::TargetNode* TravelingSalesmanProblem::getTargetNodeById(int id)
+    {
+        TargetNode* result = NULL;
+        std::vector<TargetNode*>::iterator it;
+        for (it=targetNodes.begin(); it!=targetNodes.end(); ++it)
+        {
+            TargetNode* node = *it;
+            if (node->nodeId == id)
+            {
+                result = node;
+                break;
+            }
+        }
+        return result;
     }
 }
 

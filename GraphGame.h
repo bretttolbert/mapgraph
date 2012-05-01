@@ -24,6 +24,12 @@ namespace GraphGame
         ADJACENCY_FILE_PRESET_US_COUNTIES
     };
 
+    enum NodesPreset
+    {
+        NODES_PRESET_NONE,
+        NODES_PRESET_WASHINGTONS
+    };
+
     #define GRAPH_GAME_ROOT "/var/www/graphgame"
 
     class GraphGame

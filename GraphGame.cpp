@@ -38,8 +38,13 @@ namespace GraphGame
     {
         Mode mode = MODE_UNDEFINED;
         bool usingAdjacencyFilePreset = false;
+        bool usingNodesPreset = false;
+        bool usingRandomNodes = false;
+        unsigned int numberOfRandomNodes = 0;
         AdjacencyFilePreset adjacencyFilePreset = ADJACENCY_FILE_PRESET_NONE;
-        const char* adjacencyFile = NULL; //filename or preset name
+        NodesPreset nodesPreset = NODES_PRESET_NONE;
+        const char* adjacencyFile = NULL; //filename
+        const char* nodesString = NULL; //';' delimited nodes string
         std::string node1, node2;
         const char* svgFile = NULL;
         //AdjacencyFileFormat fmt = UNDEFINED;
@@ -190,6 +195,53 @@ namespace GraphGame
                     return 1;
                 }
             }
+            else if (strcmp(argv[i], "-nn") == 0)
+            {
+                if (++i < argc)
+                {
+                    if (strcmp(argv[i], "preset") == 0)
+                    {
+                        usingNodesPreset = true;
+                    }
+                    else if (strcmp(argv[i], "random") == 0)
+                    {
+                        usingRandomNodes = true;
+                    }
+                    else
+                    {
+                        nodesString = argv[i];
+                    }
+                }
+                else
+                {
+                    std::cerr << "Expected ';' delimited nodes string or preset\n";
+                    return 1;
+                }
+                if (++i < argc)
+                {
+                    if (usingNodesPreset)
+                    {
+                        if (strcmp(argv[i], "washingtons") == 0)
+                        {
+                            nodesPreset = NODES_PRESET_WASHINGTONS;
+                        }
+                        else
+                        {
+                            std::cerr << "Unrecognized preset \"" << argv[i] << "\"\n";
+                            return 1;
+                        }
+                    }
+                    else if (usingRandomNodes)
+                    {
+                        numberOfRandomNodes = atoi(argv[i]);
+                    }
+                    else
+                    {
+                        std::cerr << "Not implemented\n";
+                        return 1;
+                    }
+                }
+            }
             else if (strcmp(argv[i], "-w") == 0)
             {
                 showWarnings = true;
@@ -269,6 +321,7 @@ namespace GraphGame
                 std::cerr << "Error: No adjacency file specified\n";
                 exit(1);
             }
+
             int node1Id, node2Id;
             if (node1.empty())
             {
@@ -308,6 +361,62 @@ namespace GraphGame
                     node2 = match;
                 }
             }
+
+            std::vector<int> nodes; //for -nn option
+            if (usingNodesPreset)
+            {
+                switch (nodesPreset)
+                {
+                case NODES_PRESET_WASHINGTONS:
+                    {
+                        const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeIdToNodeStringMap
+                            = af->getNodeIdToNodeStringMap();
+                        IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
+                        for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
+                        {
+                            if (it->second.find("Washington") != std::string::npos)
+                            {
+                                nodes.push_back(it->first);
+                            }
+                        }
+                        std::cout << "Found " << nodes.size() << " Washingtons\n";
+                        break;
+                    }
+                default:
+                    std::cerr << "Invalid preset\n";
+                    exit(1);
+                }
+            }
+            else if (usingRandomNodes)
+            {
+                std::set<int> nodesSet;
+                while (nodesSet.size() < numberOfRandomNodes)
+                {
+                    nodesSet.insert(af->getRandomNodeId());
+                }
+                nodes.resize(numberOfRandomNodes);
+                std::copy(nodesSet.begin(), nodesSet.end(), nodes.begin());
+            }
+            else if (nodesString != NULL)
+            {
+                std::vector<std::string> nodeStrings = StringUtils::split(nodesString, ';');
+                std::vector<std::string>::const_iterator it;
+                for (it=nodeStrings.begin(); it!=nodeStrings.end(); ++it)
+                {
+                    int matchId;
+                    std::string match;
+                    if (!(matchId = af->nodeSearch(*it, match)))
+                    {
+                        std::cerr << "No matching node found for \"" << *it << "\"\n";
+                        exit(1);
+                    }
+                    else
+                    {
+                        std::cout << "Found match for \"" << *it << "\": " << match << " (" << matchId << ")\n";
+                        nodes.push_back(matchId);
+                    }
+                }
+            }
             
             if (mode == MODE_BFS_DEMO)
             {
@@ -319,7 +428,17 @@ namespace GraphGame
             else if (mode == MODE_TSP_DEMO)
             {
                 std::cout << "Traveling Salesman Problem\n";
-                TravelingSalesmanProblem tsp;
+                if (nodesString == NULL && !usingNodesPreset && !usingRandomNodes)
+                {
+                    std::cerr << "Error: Missing required argument -nn\n";
+                    exit(1);
+                }
+                else if (nodes.size() < 3)
+                {
+                    std::cerr << "Error: Must specify at least three nodes to run tsp-demo\n";
+                    exit(1);
+                }
+                TravelingSalesmanProblem tsp(af, svg, nodes);
             }
             else if (mode == MODE_BIPARTITE_DEMO)
             {

@@ -1,9 +1,13 @@
 #ifndef TRAVELING_SALESMAN_PROBLEM_H
 #define TRAVELING_SALESMAN_PROBLEM_H
 
+#include <set>
+#include <vector>
+
 #include "USCountiesAdjacencyListFile.h"
 #include "USCountiesSvgFile.h"
 #include "Graph.h"
+#include "IntegerIdAdjacencyListFile.h"
 
 namespace GraphGame
 {
@@ -11,12 +15,20 @@ namespace GraphGame
     {
     public:
         TravelingSalesmanProblem();
-        void performBfsAndUpdateSvg(USCountiesAdjacencyListFile& adjacencyListFile,
-                                    USCountiesSvgFile& svg,
-                                    Graph<int>& graph,
-                                    int startFips, 
-                                    int goalFips);
+        ~TravelingSalesmanProblem();
     private:
+        struct TargetNode
+        {
+            int nodeId;
+            std::string nodeString;
+            bool visited;
+        };
+        std::set<TargetNode*> targetNodes;
+        USCountiesSvgFile svg;
+        USCountiesAdjacencyListFile adjacencyListFile;
+        Graph<int> graph;
+        const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeIdToNodeStringMap;
+        void markPath(const std::vector<int>& path);
     };
 }
 

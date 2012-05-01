@@ -5,65 +5,96 @@
 namespace GraphGame
 {
     TravelingSalesmanProblem::TravelingSalesmanProblem()
+        : graph(adjacencyListFile.getAdjacencyList()),
+          nodeIdToNodeStringMap(adjacencyListFile.getNodeIdToNodeStringMap())
     {
-        USCountiesAdjacencyListFile adjacencyListFile;
-        USCountiesSvgFile svg;
-        Graph<int> graph(adjacencyListFile.getAdjacencyList());
-        const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeIdToNodeStringMap = 
-            adjacencyListFile.getNodeIdToNodeStringMap();
-        std::vector<std::pair<int,std::string> > washingtons;
         IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
         for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
         {
             if (it->second.find("Washington") != std::string::npos)
             {
-                washingtons.push_back(*it);
+                TargetNode* targetNode = new TargetNode();
+                targetNode->nodeId = it->first;
+                targetNode->nodeString = it->second;
+                targetNode->visited = false;
+                targetNodes.insert(targetNode);
             }
         }
-        std::cout << "found " << washingtons.size() << " Washingtons\n";
-        std::vector<std::pair<int,std::string> >::const_iterator jt;
-        for (jt=washingtons.begin(); jt!=washingtons.end(); ++jt)
+        std::cout << "Found " << targetNodes.size() << " Washingtons\n";
+        std::vector<int> fullPath;        
+        std::set<TargetNode*>::const_iterator jt = targetNodes.begin();
+        TargetNode* startNode = *jt;
+        TargetNode* currentNode = startNode;
+        while (1)
         {
-            std::vector<std::pair<int,std::string> >::const_iterator kt;
-            for (kt = washingtons.begin(); kt!=washingtons.end(); ++kt)
+            std::vector<int> path;
+            TargetNode* nearestTargetNode = NULL;
+            std::vector<int> shortestPath;
+            std::cout << "marking " << currentNode->nodeString << " as visisted\n";
+            currentNode->visited = true;
+            bool foundUnvisitedNode = false;
+            for (jt=targetNodes.begin(); jt!=targetNodes.end(); ++jt)
             {
-                if (jt != kt)
+                //find nearest unvisited node
+                TargetNode* targetNode = *jt;
+                if (!targetNode->visited)
                 {
-                    performBfsAndUpdateSvg(adjacencyListFile, svg, graph, jt->first, kt->first);
+                    foundUnvisitedNode = true;
+                    std::cout << "found unvisited node " << targetNode->nodeString << std::endl;
+                    std::vector<int> path = graph.breadthFirstSearch(currentNode->nodeId, targetNode->nodeId);
+                    if (nearestTargetNode == NULL || path.size() < shortestPath.size())
+                    {
+                        nearestTargetNode = targetNode;
+                        shortestPath = path;
+                        std::cout << "new shortest path is to " << nearestTargetNode->nodeString << std::endl;
+                    }
                 }
+            }
+            if (!foundUnvisitedNode)
+            {
+                //no more nodes to visit, return to start node
+                std::vector<int> path = graph.breadthFirstSearch(currentNode->nodeId, startNode->nodeId);
+                markPath(path);
+                svg.markNode(startNode->nodeId, "purple");
+                break;
+            }
+            else
+            {
+                currentNode = nearestTargetNode;
+                markPath(shortestPath);
             }
         }
         svg.saveFile("output/output.svg");
     }
 
-    void TravelingSalesmanProblem::performBfsAndUpdateSvg(USCountiesAdjacencyListFile& adjacencyListFile,
-                                USCountiesSvgFile& svg,
-                                Graph<int>& graph,
-                                int startFips, 
-                                int goalFips)
+    TravelingSalesmanProblem::~TravelingSalesmanProblem()
     {
-        std::string start = adjacencyListFile.nodeIdToString(startFips);
-        std::string goal = adjacencyListFile.nodeIdToString(goalFips);
-        std::cout << "Performing BFS from " << start << " to " << goal << "...\n";
-        std::cout << "Start: " << start << " (" << USCountiesAdjacencyListFile::fipsToString(startFips) << ")\n";
-        std::cout << "Goal: " << goal << " (" << USCountiesAdjacencyListFile::fipsToString(goalFips) << ")\n";
-        std::vector<int> path = graph.breadthFirstSearch(startFips,goalFips);
-        std::cout << "Optimal Path:\n";
+        std::set<TargetNode*>::iterator it;
+        for (it=targetNodes.begin(); it!=targetNodes.end(); ++it)
+        {
+            TargetNode* targetNode = *it;
+            delete targetNode;
+        }
+    }
+
+    void TravelingSalesmanProblem::markPath(const std::vector<int>& path)
+    {
         std::vector<int>::const_iterator it;
         for (it=path.begin(); it!=path.end(); ++it)
         {
-            std::string countyName = adjacencyListFile.nodeIdToString(*it);
-            std::cout << countyName << " (" << *it << "), ";
-            if (countyName.find("Washington") != std::string::npos)
+            std::string nodeString = adjacencyListFile.nodeIdToString(*it);
+            if (it != path.begin())
             {
-                svg.markCountyByFips(*it, "red");
-            }
-            else
-            {
-                svg.markCountyByFips(*it, "gray");
+                if (nodeString.find("Washington") != std::string::npos)
+                {
+                    svg.markNode(*it, "red");
+                }
+                else
+                {
+                    svg.markNode(*it, "gray");
+                }
             }
         }
-        std::cout << "\n(" << path.size() << " moves)\n"; 
     }
 }
 

@@ -34,7 +34,8 @@ namespace GraphGame
         for (it=path.begin(); it!=path.end(); ++it)
         {
             std::string nodeStr = af->nodeIdToString(*it);
-            std::cout << nodeStr << " (" << *it << "), ";
+            std::cout << nodeStr << " (" << 
+                USCountiesAdjacencyListFile::fipsToString(*it) << ")\n";
             if (svg)
             {
                 if (it == path.begin())
@@ -51,7 +52,7 @@ namespace GraphGame
                 }
             }
         }
-        std::cout << "\n(" << (path.size()-1) << " moves)\n"; 
+        std::cout << "(" << (path.size()-1) << " moves)\n"; 
         if (svg) svg->saveFile("output/output.svg");
     }
 

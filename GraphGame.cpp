@@ -217,28 +217,31 @@ namespace GraphGame
                     std::cerr << "Expected ';' delimited nodes string or preset\n";
                     return 1;
                 }
-                if (++i < argc)
+                if (usingNodesPreset || usingRandomNodes)
                 {
-                    if (usingNodesPreset)
+                    if (++i < argc)
                     {
-                        if (strcmp(argv[i], "washingtons") == 0)
+                        if (usingNodesPreset)
                         {
-                            nodesPreset = NODES_PRESET_WASHINGTONS;
+                            if (strcmp(argv[i], "washingtons") == 0)
+                            {
+                                nodesPreset = NODES_PRESET_WASHINGTONS;
+                            }
+                            else
+                            {
+                                std::cerr << "Unrecognized preset \"" << argv[i] << "\"\n";
+                                return 1;
+                            }
+                        }
+                        else if (usingRandomNodes)
+                        {
+                            numberOfRandomNodes = atoi(argv[i]);
                         }
                         else
                         {
-                            std::cerr << "Unrecognized preset \"" << argv[i] << "\"\n";
+                            std::cerr << "Not implemented\n";
                             return 1;
                         }
-                    }
-                    else if (usingRandomNodes)
-                    {
-                        numberOfRandomNodes = atoi(argv[i]);
-                    }
-                    else
-                    {
-                        std::cerr << "Not implemented\n";
-                        return 1;
                     }
                 }
             }

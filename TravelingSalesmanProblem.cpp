@@ -32,7 +32,6 @@ namespace GraphGame
             std::vector<int> path;
             TargetNode* nearestTargetNode = NULL;
             std::vector<int> shortestPath;
-            std::cout << currentNode->nodeString << "\n";
             currentNode->visited = true;
             bool foundUnvisitedNode = false;
             for (jt=targetNodes.begin(); jt!=targetNodes.end(); ++jt)
@@ -54,17 +53,27 @@ namespace GraphGame
             {
                 //no more nodes to visit, return to start node
                 std::vector<int> path = graph.breadthFirstSearch(currentNode->nodeId, startNode->nodeId);
-                markPath(path);
-                svg->markNode(startNode->nodeId, "purple");
-                std::cout << startNode->nodeString << "\n";
+                fullPath.insert(fullPath.end(), path.begin(), path.end());
                 break;
             }
             else
             {
                 currentNode = nearestTargetNode;
-                markPath(shortestPath);
+                fullPath.insert(fullPath.end(), shortestPath.begin(), shortestPath.end());
             }
         }
+        markPath(fullPath);
+        svg->markNode(startNode->nodeId, "blue");
+        std::cout << "Path:\n";
+        std::vector<int>::const_iterator pathIter;
+        for (pathIter=fullPath.begin(); pathIter!=fullPath.end(); ++pathIter)
+        {
+            int nodeId = *pathIter;
+            std::string nodeString = af->nodeIdToString(nodeId);
+            std::cout << nodeString << " (" << 
+                USCountiesAdjacencyListFile::fipsToString(nodeId) << ")\n";
+        }
+        std::cout << "(" << (fullPath.size()-1) << " moves)\n";
         svg->saveFile("output/output.svg");
     }
 

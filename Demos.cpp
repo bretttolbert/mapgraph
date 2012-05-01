@@ -11,6 +11,7 @@
 #include <cassert>
 
 #include "Demos.h"
+#include "GraphGame.h"
 #include "Game.h"
 #include "USCountiesGame.h"
 #include "TravelingSalesmanProblem.h"
@@ -126,8 +127,9 @@ namespace GraphGame
         g.resetNodes();
     }
 
-    void markEachNodeWithRandomColor_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg)
+    void randomColoring(IntegerIdAdjacencyListFile* af, SvgFile* svg)
     {
+        std::cout << "Generating random coloring...\n";
         //mark each node with a random color
         const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeMap = 
             af->getNodeIdToNodeStringMap();
@@ -137,6 +139,28 @@ namespace GraphGame
             svg->markNode(it->first, randomColor());
             svg->saveFile("output/output.svg");
         }
+        std::cout << "Done.\n";
+    }
+
+    void showNeighbors(IntegerIdAdjacencyListFile* af, SvgFile* svg, int nodeId)
+    {
+        if (GraphGame::showWarnings)
+        {
+            //create graph just for validation purposes
+            Graph<int> g(af->getAdjacencyList());
+        }
+        svg->markNode(nodeId, "red");
+        std::string nodeStr = af->nodeIdToString(nodeId);
+        std::cout << "Neighbors of " << nodeStr << " (" << nodeId << "):\n";
+        const std::set<int> neighbors = af->getNeighbors(nodeId);
+        const std::set<int>::const_iterator it;
+        for (it=neighbors.begin(); it!=neighbors.end(); ++it)
+        {
+            int neighborId = *it;
+            svg->markNode(neighborId, "blue");
+            std::cout << af->nodeIdToString(neighborId) << " (" << neighborId << ")\n";
+        }
+        svg->saveFile("output/output.svg");
     }
 
     std::string randomColor()

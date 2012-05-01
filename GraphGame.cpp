@@ -76,6 +76,10 @@ namespace GraphGame
                     {
                         mode = MODE_NEIGHBORS;
                     }
+                    else if (strcmp(argv[i], "random-coloring") == 0)
+                    {
+                        mode = MODE_RANDOM_COLORING;
+                    }
                     else if (strcmp(argv[i], "test") == 0)
                     {
                         mode = MODE_TEST;
@@ -236,6 +240,7 @@ namespace GraphGame
                 || mode == MODE_TSP_DEMO
                 || mode == MODE_BIPARTITE_DEMO
                 || mode == MODE_NEIGHBORS
+                || mode == MODE_RANDOM_COLORING
                 || mode == MODE_TEST)
         {
             IntegerIdAdjacencyListFile* af = NULL;
@@ -322,15 +327,11 @@ namespace GraphGame
             }
             else if (mode == MODE_NEIGHBORS)
             {
-                //create graph just for validation purposes
-                Graph<int> g(af->getAdjacencyList());
-                std::cout << "Neighbors of " << node1 << " (" << node1Id << "):\n";
-                const std::set<int> neighbors = af->getNeighbors(node1Id);
-                const std::set<int>::const_iterator it;
-                for (it=neighbors.begin(); it!=neighbors.end(); ++it)
-                {
-                    std::cout << af->nodeIdToString(*it) << " (" << *it << ")\n";
-                }
+                showNeighbors(af, svg, node1Id);
+            }
+            else if (mode == MODE_RANDOM_COLORING)
+            {
+                randomColoring(af, svg);
             }
             else if (mode == MODE_TEST)
             {

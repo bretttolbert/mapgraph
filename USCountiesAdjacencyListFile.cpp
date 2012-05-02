@@ -13,7 +13,7 @@ namespace GraphGame
 {
     USCountiesAdjacencyListFile::USCountiesAdjacencyListFile()
     {
-        std::cout << "Loading adjacency list file...\n";
+        //std::cout << "Loading adjacency list file...\n";
         std::ifstream file;
         std::string filepath = GraphGame::absolutePath(USCOUNTIES_ADJACENCY_LIST_FILENAME);
         file.open(filepath.c_str(), std::ios::in);

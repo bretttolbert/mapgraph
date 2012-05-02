@@ -13,7 +13,7 @@ namespace GraphGame
     CsvAdjacencyListFile::CsvAdjacencyListFile(const std::string& filename)
     {
         std::vector<std::vector<std::string> > lines;
-        std::cout << "Loading adjacency list file...\n";
+        //std::cout << "Loading adjacency list file...\n";
         std::ifstream file;
         //iterate over the file once to populate node id to node string map
         file.open(filename.c_str(), std::ios::in);

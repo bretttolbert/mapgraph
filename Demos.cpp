@@ -56,73 +56,82 @@ namespace GraphGame
         if (svg) svg->saveFile("output/output.svg");
     }
 
-    void isBipartite_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg)
+    void greedyColoring(IntegerIdAdjacencyListFile* af, SvgFile* svg)
     {
+        std::cout << "Greedy coloring...\n";
+        std::set<Graph<int>::Node::Color> availableColors;
+        availableColors.insert(Graph<int>::Node::COLOR_RED);
+        availableColors.insert(Graph<int>::Node::COLOR_GREEN);
+        availableColors.insert(Graph<int>::Node::COLOR_BLUE);
+        availableColors.insert(Graph<int>::Node::COLOR_PURPLE);
+        availableColors.insert(Graph<int>::Node::COLOR_ORANGE);
+
         Graph<int> g(af->getAdjacencyList());
-        bool isBipartite = true; 
-        Graph<int>::Node* startNode = g.getRandomNode();
-        std::queue<Graph<int>::Node*> q;
-        startNode->color = Graph<int>::Node::COLOR_RED;
-        if (svg) svg->markNode(startNode->value, "red");
-        q.push(startNode);
-        int step = 0;
-        while (q.size() > 0)
+        Graph<int>::NodeSet& nodes = g.nodes;
+        Graph<int>::NodeSet::iterator it;
+        for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
-            Graph<int>::Node* currentNode = q.front();
-            q.pop();
-            std::vector<Graph<int>::Node*>::iterator it;
-            for (it=currentNode->neighbors.begin(); it!=currentNode->neighbors.end(); ++it)
+            Graph<int>::Node* currentNode = *it;
+            //determine colors of neighbors (can't use these)
+            std::set<Graph<int>::Node::Color> neighborColors;
+            std::vector<Graph<int>::Node*>& neighbors = currentNode->neighbors;
+            std::vector<Graph<int>::Node*>::iterator jt;
+            for (jt=neighbors.begin(); jt!=neighbors.end(); ++jt)
             {
-                Graph<int>::Node* adjacentNode = *it;
-                if (adjacentNode == NULL)
+                Graph<int>::Node* neighborNode = *jt;
+                if (neighborNode->color != Graph<int>::Node::COLOR_BLACK)
                 {
-                    std::cout << "Error: adjacentNode is NULL\n";
-                    std::cout << "currentNode = " << currentNode->value << std::endl;
-                    exit(1);
+                    neighborColors.insert(neighborNode->color);
                 }
-                if (adjacentNode->color == Graph<int>::Node::COLOR_BLACK)
+            }
+            std::set<Graph<int>::Node::Color> candidateColors;
+            std::set<Graph<int>::Node::Color>::iterator kt;
+            for (kt=availableColors.begin(); kt!=availableColors.end(); ++kt)
+            {
+                if (neighborColors.count(*kt) == 0)
                 {
-                    //mark it as opposite color
-                    if (currentNode->color == Graph<int>::Node::COLOR_RED)
-                    {
-                        adjacentNode->color = Graph<int>::Node::COLOR_BLUE;
-                        if (svg) svg->markNode(adjacentNode->value, "blue");
-                    }
-                    else
-                    {
-                        adjacentNode->color = Graph<int>::Node::COLOR_RED;
-                        if (svg) svg->markNode(adjacentNode->value, "red");
-                    }
-                    //enqueue neighbor node
-                    q.push(adjacentNode);
-                    //save svg
-                    if (svg)
-                    {
-                        std::ostringstream oss;
-                        oss << "output/bipartite-demo/bipartite_" << ++step << ".svg";
-                        svg->saveFile(oss.str().c_str());
-                    }
+                    candidateColors.insert(*kt);
                 }
-                else
+            }
+            if (candidateColors.size() == 0)
+            {
+                std::cerr << "No colors available, greedy coloring failed.\n";
+                exit(1);
+            }
+            else
+            {
+                currentNode->color = *(candidateColors.begin());
+                if (svg)
                 {
-                    //adjacent node has already been marked
-                    //verify that it's a different color than current node.
-                    //if it isn't, then the graph is not bipartite
-                    if (adjacentNode->color == currentNode->color)
+                    switch (currentNode->color)
                     {
-                        isBipartite = false;
+                    case Graph<int>::Node::COLOR_BLACK:
+                        svg->markNode(currentNode->value, "black");
                         break;
+                    case Graph<int>::Node::COLOR_WHITE:
+                        svg->markNode(currentNode->value, "white");
+                        break;
+                    case Graph<int>::Node::COLOR_RED:
+                        svg->markNode(currentNode->value, "red");
+                        break;
+                    case Graph<int>::Node::COLOR_GREEN:
+                        svg->markNode(currentNode->value, "green");
+                        break;
+                    case Graph<int>::Node::COLOR_BLUE:
+                        svg->markNode(currentNode->value, "blue");
+                        break;
+                    case Graph<int>::Node::COLOR_PURPLE:
+                        svg->markNode(currentNode->value, "purple");
+                        break;
+                    case Graph<int>::Node::COLOR_ORANGE:
+                        svg->markNode(currentNode->value, "orange");
+                        break;
+                    default:
+                        std::cerr << "Unrecognized color\n";
+                        exit(1);
                     }
                 }
             }
-        }
-        if (isBipartite)
-        {
-            std::cout << "Graph is bipartite.\n";
-        }
-        else
-        {
-            std::cout << "Graph is not bipartite.\n";
         }
         if (svg) svg->saveFile("output/output.svg");
         g.resetNodes();

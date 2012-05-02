@@ -73,9 +73,9 @@ namespace GraphGame
                     {
                         mode = MODE_TSP_DEMO;
                     }
-                    else if (strcmp(argv[i], "bipartite-demo") == 0)
+                    else if (strcmp(argv[i], "greedy-coloring") == 0)
                     {
-                        mode = MODE_BIPARTITE_DEMO;
+                        mode = MODE_GREEDY_COLORING;
                     }
                     else if (strcmp(argv[i], "neighbors") == 0)
                     {
@@ -293,7 +293,7 @@ namespace GraphGame
         }
         else if (mode == MODE_BFS_DEMO 
                 || mode == MODE_TSP_DEMO
-                || mode == MODE_BIPARTITE_DEMO
+                || mode == MODE_GREEDY_COLORING
                 || mode == MODE_NEIGHBORS
                 || mode == MODE_RANDOM_COLORING
                 || mode == MODE_TEST)
@@ -443,9 +443,9 @@ namespace GraphGame
                 }
                 TravelingSalesmanProblem tsp(af, svg, nodes);
             }
-            else if (mode == MODE_BIPARTITE_DEMO)
+            else if (mode == MODE_GREEDY_COLORING)
             {
-                isBipartite_Demo(af, svg);
+                greedyColoring(af, svg);
             }
             else if (mode == MODE_NEIGHBORS)
             {

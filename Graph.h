@@ -30,7 +30,9 @@ namespace GraphGame
                 COLOR_WHITE, 
                 COLOR_RED, 
                 COLOR_GREEN, 
-                COLOR_BLUE
+                COLOR_BLUE,
+                COLOR_PURPLE,
+                COLOR_ORANGE
             };
             Node();
             bool operator<(const Node &other) const;

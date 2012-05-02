@@ -11,7 +11,7 @@ namespace GraphGame
         MODE_GAME,
         MODE_BFS_DEMO,
         MODE_TSP_DEMO,
-        MODE_BIPARTITE_DEMO,
+        MODE_GREEDY_COLORING,
         MODE_NEIGHBORS,
         MODE_RANDOM_COLORING,
         MODE_TEST

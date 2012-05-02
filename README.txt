@@ -38,9 +38,10 @@ Usage:
             to find the shortest path between each target node and then use
             that path length as the distance for the TSP algorithm.
 
-    bipartite-demo  
-        Demonstration of algorithm to test bipartiteness of a graph.
-                        Required arguments: -af
+    greedy-coloring  
+        Demonstration of greedy algorithm to attempt proper coloring of a graph
+        using the colors specified with the -c argument.
+                        Required arguments: -af, -c
 
     neighbors           
         Displays the neighbors of a specified node
@@ -103,6 +104,14 @@ Usage:
 -nn preset <preset>     Use a predefined set of nodes. Presets include:
                             washingtons - All 31 counties named "Washington"
                                 To be used with the us-counties adjacency list.
+
+-c <colors>             Specify colors to be used. All of the 147 colors defined in
+                        the following table may be used with the exception of "black":
+                        http://www.w3schools.com/html/html_colornames.asp
+                        Colors should be specified as a ';' delimited string.
+
+-c random <number>      Specify that the given number of colors should be used.
+                        The colors will be generated randomly.
 
 -w                      Show warnings (useful for validating adjacency file).
 

@@ -20,6 +20,7 @@
 #include "USStatesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
+#include "StringUtils.h"
 #include "Utils.h"
 
 namespace GraphGame
@@ -56,15 +57,10 @@ namespace GraphGame
         if (svg) svg->saveFile("output/output.svg");
     }
 
-    void greedyColoring(IntegerIdAdjacencyListFile* af, SvgFile* svg)
+    void greedyColoring(IntegerIdAdjacencyListFile* af, SvgFile* svg, 
+                        const std::set<std::string>& availableColors)
     {
         std::cout << "Greedy coloring...\n";
-        std::set<Graph<int>::Node::Color> availableColors;
-        availableColors.insert(Graph<int>::Node::COLOR_RED);
-        availableColors.insert(Graph<int>::Node::COLOR_GREEN);
-        availableColors.insert(Graph<int>::Node::COLOR_BLUE);
-        availableColors.insert(Graph<int>::Node::COLOR_PURPLE);
-        availableColors.insert(Graph<int>::Node::COLOR_ORANGE);
 
         Graph<int> g(af->getAdjacencyList());
         Graph<int>::NodeSet& nodes = g.nodes;
@@ -73,19 +69,19 @@ namespace GraphGame
         {
             Graph<int>::Node* currentNode = *it;
             //determine colors of neighbors (can't use these)
-            std::set<Graph<int>::Node::Color> neighborColors;
+            std::set<std::string> neighborColors;
             std::vector<Graph<int>::Node*>& neighbors = currentNode->neighbors;
             std::vector<Graph<int>::Node*>::iterator jt;
             for (jt=neighbors.begin(); jt!=neighbors.end(); ++jt)
             {
                 Graph<int>::Node* neighborNode = *jt;
-                if (neighborNode->color != Graph<int>::Node::COLOR_BLACK)
+                if (neighborNode->color != "black")
                 {
                     neighborColors.insert(neighborNode->color);
                 }
             }
-            std::set<Graph<int>::Node::Color> candidateColors;
-            std::set<Graph<int>::Node::Color>::iterator kt;
+            std::set<std::string> candidateColors;
+            std::set<std::string>::const_iterator kt;
             for (kt=availableColors.begin(); kt!=availableColors.end(); ++kt)
             {
                 if (neighborColors.count(*kt) == 0)
@@ -95,41 +91,16 @@ namespace GraphGame
             }
             if (candidateColors.size() == 0)
             {
-                std::cerr << "No colors available, greedy coloring failed.\n";
-                exit(1);
+                std::cerr << "Coloring not possible with given number of colors (" 
+                          << availableColors.size() << "). Greedy coloring failed.\n";
+                break;
             }
             else
             {
                 currentNode->color = *(candidateColors.begin());
                 if (svg)
                 {
-                    switch (currentNode->color)
-                    {
-                    case Graph<int>::Node::COLOR_BLACK:
-                        svg->markNode(currentNode->value, "black");
-                        break;
-                    case Graph<int>::Node::COLOR_WHITE:
-                        svg->markNode(currentNode->value, "white");
-                        break;
-                    case Graph<int>::Node::COLOR_RED:
-                        svg->markNode(currentNode->value, "red");
-                        break;
-                    case Graph<int>::Node::COLOR_GREEN:
-                        svg->markNode(currentNode->value, "green");
-                        break;
-                    case Graph<int>::Node::COLOR_BLUE:
-                        svg->markNode(currentNode->value, "blue");
-                        break;
-                    case Graph<int>::Node::COLOR_PURPLE:
-                        svg->markNode(currentNode->value, "purple");
-                        break;
-                    case Graph<int>::Node::COLOR_ORANGE:
-                        svg->markNode(currentNode->value, "orange");
-                        break;
-                    default:
-                        std::cerr << "Unrecognized color\n";
-                        exit(1);
-                    }
+                    svg->markNode(currentNode->value, currentNode->color);
                 }
             }
         }
@@ -146,7 +117,7 @@ namespace GraphGame
         IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
         for (it=nodeMap.begin(); it!=nodeMap.end(); ++it)
         {
-            svg->markNode(it->first, randomColor());
+            svg->markNode(it->first, StringUtils::randomColor());
             svg->saveFile("output/output.svg");
         }
         std::cout << "Done.\n";
@@ -171,15 +142,5 @@ namespace GraphGame
             std::cout << af->nodeIdToString(neighborId) << " (" << neighborId << ")\n";
         }
         svg->saveFile("output/output.svg");
-    }
-
-    std::string randomColor()
-    {
-        std::ostringstream oss;
-        oss << '#' << std::hex << std::setfill('0')
-            << std::setw(2) << (rand() % 256)
-            << std::setw(2) << (rand() % 256)
-            << std::setw(2) << (rand() % 256);
-        return oss.str();
     }
 }

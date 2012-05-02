@@ -20,6 +20,7 @@ public:
     private:
         std::string matchTarget;
     };
+    static std::string randomColor();
 };
 
 #endif

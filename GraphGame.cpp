@@ -41,12 +41,15 @@ namespace GraphGame
         bool usingNodesPreset = false;
         bool usingRandomNodes = false;
         unsigned int numberOfRandomNodes = 0;
+        bool usingRandomColors = false;
+        unsigned int numberOfRandomColors = 0;
         AdjacencyFilePreset adjacencyFilePreset = ADJACENCY_FILE_PRESET_NONE;
         NodesPreset nodesPreset = NODES_PRESET_NONE;
         const char* adjacencyFile = NULL; //filename
         const char* nodesString = NULL; //';' delimited nodes string
         std::string node1, node2;
         const char* svgFile = NULL;
+        const char* colorsString = NULL; //';' delimited list of colors
         //AdjacencyFileFormat fmt = UNDEFINED;
 
         if (argc == 1)
@@ -245,6 +248,40 @@ namespace GraphGame
                     }
                 }
             }
+            else if (strcmp(argv[i], "-c") == 0)
+            {
+                if (++i < argc)
+                {
+                    if (strcmp(argv[i], "random") == 0)
+                    {
+                        usingRandomColors = true;
+                    }
+                    else
+                    {
+                        colorsString = argv[i];
+                    }
+                }
+                else
+                {
+                    std::cerr << "Expected ';' delimited list of colors\n";
+                    return 1;
+                }
+                if (usingRandomColors)
+                {
+                    if (++i < argc)
+                    {
+                        if (usingRandomColors)
+                        {
+                            numberOfRandomColors = atoi(argv[i]);
+                        }
+                        else
+                        {
+                            std::cerr << "Not implemented\n";
+                            return 1;
+                        }
+                    }
+                }
+            }
             else if (strcmp(argv[i], "-w") == 0)
             {
                 showWarnings = true;
@@ -420,6 +457,29 @@ namespace GraphGame
                     }
                 }
             }
+
+            std::set<std::string> colors;
+            if (usingRandomColors)
+            {
+                while (colors.size() < numberOfRandomColors)
+                {
+                    colors.insert(StringUtils::randomColor());
+                }
+            }
+            else if (colorsString != NULL)
+            {
+                std::vector<std::string> tokens = StringUtils::split(colorsString, ';');
+                std::vector<std::string>::const_iterator it;
+                for (it=tokens.begin(); it!=tokens.end(); ++it)
+                {
+                    colors.insert(*it);
+                }
+            }
+            if (colors.count("black") > 0)
+            {
+                std::cerr << "Error: \"black\" is a reserved color.\n";
+                exit(1);
+            }
             
             if (mode == MODE_BFS_DEMO)
             {
@@ -445,7 +505,7 @@ namespace GraphGame
             }
             else if (mode == MODE_GREEDY_COLORING)
             {
-                greedyColoring(af, svg);
+                greedyColoring(af, svg, colors);
             }
             else if (mode == MODE_NEIGHBORS)
             {

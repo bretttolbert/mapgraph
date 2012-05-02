@@ -24,21 +24,11 @@ namespace GraphGame
         class Node
         {
         public:
-            enum Color
-            {
-                COLOR_BLACK, 
-                COLOR_WHITE, 
-                COLOR_RED, 
-                COLOR_GREEN, 
-                COLOR_BLUE,
-                COLOR_PURPLE,
-                COLOR_ORANGE
-            };
             Node();
             bool operator<(const Node &other) const;
             T value;
             std::vector<Node*> neighbors;
-            Color color; //used in various ways by different searching and traversal algorithms
+            std::string color; //used in various ways by different searching and traversal algorithms
             Node* parent; //used by pathfinding algorithms
         };
 
@@ -151,7 +141,7 @@ namespace GraphGame
     template <typename T>
     inline
     Graph<T>::Node::Node() : 
-        color(COLOR_BLACK), 
+        color("black"), 
         parent(NULL) 
     { }
 
@@ -169,7 +159,7 @@ namespace GraphGame
         std::vector<T> path;
         typename Graph<T>::Node* startNode = findNodeByValue(startNodeValue);
         std::queue<typename Graph<T>::Node*> q;
-        startNode->color = Node::COLOR_WHITE; //white=marked, black=unmarked (default)
+        startNode->color = "white"; //white=marked, black=unmarked (default)
         q.push(startNode);
         while (q.size() > 0)
         {
@@ -210,7 +200,7 @@ namespace GraphGame
                         std::cout << "currentNode = " << currentNode->value << std::endl;
                         exit(1);
                     }
-                    if (adjacentNode->color != Node::COLOR_WHITE)
+                    if (adjacentNode->color != "white")
                     {
                         if (DEBUG_GRAPH)
                         {
@@ -218,7 +208,7 @@ namespace GraphGame
                         }
                         adjacentNode->parent = currentNode;
                         q.push(adjacentNode);
-                        adjacentNode->color = Node::COLOR_WHITE;
+                        adjacentNode->color = "white";
                     }
                 }
             }
@@ -233,7 +223,7 @@ namespace GraphGame
     {
         typename Graph<T>::Node* startNode = getRandomNode();
         std::queue<typename Graph<T>::Node*> q;
-        startNode->color = Node::COLOR_RED;
+        startNode->color = "red";
         q.push(startNode);
         while (q.size() > 0)
         {
@@ -249,16 +239,16 @@ namespace GraphGame
                     std::cout << "currentNode = " << currentNode->value << std::endl;
                     exit(1);
                 }
-                if (adjacentNode->color == Node::COLOR_BLACK)
+                if (adjacentNode->color == "black")
                 {
                     //mark it as opposite color
-                    if (currentNode->color == Node::COLOR_RED)
+                    if (currentNode->color == "red")
                     {
-                        adjacentNode->color = Node::COLOR_BLUE;
+                        adjacentNode->color = "blue";
                     }
                     else
                     {
-                        adjacentNode->color = Node::COLOR_RED;
+                        adjacentNode->color = "red";
                     }
                     //enqueue neighbor node
                     q.push(adjacentNode);
@@ -296,7 +286,7 @@ namespace GraphGame
         for (it=nodes.begin(); it!=nodes.end(); ++it)
         {
             typename Graph<T>::Node* node = *it;
-            node->color = Graph<T>::Node::COLOR_BLACK;
+            node->color = "black";
             node->parent = NULL;
         }
     }

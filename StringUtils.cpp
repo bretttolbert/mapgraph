@@ -1,6 +1,6 @@
 #include "StringUtils.h"
 #include <sstream>
-#include <sstream>
+#include <iomanip>
 #include <algorithm>
 
 std::vector<std::string> StringUtils::split(const std::string& str, char delim)
@@ -89,4 +89,14 @@ void StringUtils::CaseInsensitiveComparator::setMatchTarget(const std::string& s
 {
     matchTarget = strToMatch;
     std::transform(matchTarget.begin(), matchTarget.end(), matchTarget.begin(), ::tolower);
+}
+
+std::string StringUtils::randomColor()
+{
+    std::ostringstream oss;
+    oss << '#' << std::hex << std::setfill('0')
+        << std::setw(2) << (rand() % 256)
+        << std::setw(2) << (rand() % 256)
+        << std::setw(2) << (rand() % 256);
+    return oss.str();
 }

@@ -121,8 +121,7 @@ namespace GraphGame
             {
                 die("Missing required parameter \"af\"");
             }
-            std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
-            std::cout << "{\"nodes\":[";
+
             IntegerIdAdjacencyListFile* af;
             if (params["af"] == "us-states")
             {
@@ -136,18 +135,42 @@ namespace GraphGame
             {
                 die("Unrecognized adjacency file preset");
             }
+
+            std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
+            std::cout << "{\n";
+
             const IntegerIdAdjacencyListFile::NodeIdToNodeStringMap& nodeIdToNodeStringMap
                 = af->getNodeIdToNodeStringMap();
             IntegerIdAdjacencyListFile::NodeIdToNodeStringMap::const_iterator it;
+            std::cout << "  \"nodes\":[";
             for (it=nodeIdToNodeStringMap.begin(); it!=nodeIdToNodeStringMap.end(); ++it)
             {
-                std::cout << "{\"id\":" << it->first << ",\"str\":\"" << it->second << "\"}";
+                std::cout << "{\n";
+                std::cout << "    \"nodeId\":" << it->first << ",\n";
+                std::cout << "    \"nodeString\":" << "\"" << it->second << "\",\n";
+                std::cout << "    \"neighbors\":[";
+                const std::set<int>& neighbors = af->getNeighbors(it->first);
+                std::set<int>::const_iterator jt;
+                for (jt=neighbors.begin(); jt!=neighbors.end(); ++jt)
+                {
+                    std::cout << *jt;
+                    if (next(jt) != neighbors.end())
+                    {
+                        std::cout << ",";
+                    }
+                }
+                std::cout << "]\n";
+                std::cout << "  }";
                 if (next(it) != nodeIdToNodeStringMap.end())
                 {
                     std::cout << ",";
                 }
             }
-            std::cout << "]}\n";
+            std::cout << "]";
+            std::cout << "\n}\n";
+        }
+        else if (params["action"] == "getAdjacencyList")
+        {
         }
         else
         {

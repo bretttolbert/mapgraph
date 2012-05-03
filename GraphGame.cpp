@@ -17,6 +17,7 @@
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
 #include "Demos.h"
+#include "Utils.h"
 #include "StringUtils.h"
 
 namespace GraphGame
@@ -479,6 +480,20 @@ namespace GraphGame
             {
                 std::cerr << "Error: \"black\" is a reserved color.\n";
                 exit(1);
+            }
+            if (!colors.empty())
+            {
+                std::set<std::string>::const_iterator it;
+                std::cout << "Colors: \"";                
+                for (it=colors.begin(); it!=colors.end(); ++it)
+                {
+                    std::cout << *it;
+                    if (next(it) != colors.end())
+                    {
+                        std::cout << ';';
+                    }
+                }
+                std::cout << "\"\n";
             }
             
             if (mode == MODE_BFS_DEMO)

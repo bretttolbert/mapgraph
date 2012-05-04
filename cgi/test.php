@@ -37,6 +37,13 @@ var nodeStringToNodeObjMap = {}; //map of node string to node object
 var svg = null;
 var svgdoc = null;
 var selectedNode = null;
+var startNode = null;
+var goalNode = null;
+<?php if ($af == "us-states") { ?>
+var defaultNodeFill = 'white';
+<?php } else if ($af == "us-counties") { ?>
+var defaultNodeFill = '#d0d0d0';
+<?php } else { die("Unrecognized preset"); } ?>   
 
 function getNodeBySvgElemId(id) {
     var node = null;
@@ -54,9 +61,8 @@ function getSvgElemByNode(node) {
 <?php if ($af == "us-states") { ?>
     svgElem = svgdoc.getElementById(node.nodeString);
 <?php } else if ($af == "us-counties") { ?>
-    var fips = fipsToString(node.nodeId);
-    svgElem = svgdoc.getElementById(fips);
-<?php } else { die("Unrecognized preset"); } ?>   
+    svgElem = svgdoc.getElementById(fipsToString(node.nodeId));
+<?php } else { die("Unrecognized preset"); } ?>
     return svgElem;
 }
 
@@ -66,14 +72,8 @@ function setSvgElemFill(elem, fill) {
 }
 
 function setDefaultSvgElemFill(elem) {
-    var defaultFill = 'white';
-<?php if ($af == "us-states") { ?>
-    defaultFill = 'white';
-<?php } else if ($af == "us-counties") { ?>
-    defaultFill = '#d0d0d0';
-<?php } else { die("Unrecognized preset"); } ?>   
-    $(elem).attr('fill', defaultFill);
-    $(elem).css('fill', defaultFill);   
+    $(elem).attr('fill', defaultNodeFill);
+    $(elem).css('fill', defaultNodeFill);   
 }
 
 $(function(){
@@ -99,9 +99,45 @@ function nodeToString(node) {
     return result;
 }
 
-function selectNode(node) {
-    //unselect current selected node
+
+function updateInfo() {
+    var info = '';
     if (selectedNode != null) {
+        info += 'Selected: ' + nodeToString(selectedNode) + '<br>';
+        info += 'Neighbors: ';
+        for (var i=0; i<selectedNode.neighbors.length; ++i) {
+            var neighbor = nodeIdToNodeObjMap[selectedNode.neighbors[i]];
+            var neighborFillColor = '#e0e0e0';
+            setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
+            info += nodeToString(neighbor);
+            if (i != selectedNode.neighbors.length-1) {
+                info += ', ';
+            }
+        }
+        info += '<br>';
+    }
+    if (startNode != null) {
+        info += 'Start: ' + nodeToString(startNode) + '<br>';
+    }
+    if (goalNode != null) {
+        info += 'Goal: ' + nodeToString(goalNode) + '<br>';
+    }
+    $('#nodeInfo').html(info);  
+}
+
+function selectNode(node) {
+    var selectedNodeFill = $('#fill').val();
+    if (startNode == null) {
+        startNode = node;
+        selectedNodeFill = '#009900';
+    } else if (goalNode == null) {
+        goalNode = node;
+        selectedNodeFill = '#CC0000';
+    }
+    //unselect current selected node
+    if (selectedNode != null
+        && selectedNode != startNode
+        && selectedNode != goalNode) {
         currentSvgElem = getSvgElemByNode(selectedNode);
         setDefaultSvgElemFill(currentSvgElem);
         for (var i=0; i<selectedNode.neighbors.length; ++i) {
@@ -111,19 +147,36 @@ function selectNode(node) {
     }
     //set new selected node and set fill
     selectedNode = node;
-    var info = nodeToString(selectedNode);
-    setSvgElemFill(getSvgElemByNode(node), $('#fill').val());
-    info += '<br>Neighbors: ';
-    for (var i=0; i<node.neighbors.length; ++i) {
-        var neighbor = nodeIdToNodeObjMap[node.neighbors[i]];
-        var neighborFillColor = '#e0e0e0';
-        setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
-        info += nodeToString(neighbor);
-        if (i != node.neighbors.length-1) {
-            info += ', ';
+    setSvgElemFill(getSvgElemByNode(selectedNode), selectedNodeFill);
+    updateInfo();
+}
+
+function bfs() {
+    var q = [];
+    q.push(startNode);
+    while (q.length > 0) {
+        var currentNode = q.shift();
+        if (currentNode == goalNode) {
+            var node = goalNode.parent;
+            while (node != null && node != startNode) {
+                setSvgElemFill(getSvgElemByNode(node), 'gray');
+                node = node.parent;           
+            }
+            return;
+        } else {
+            //enqueue neighbors
+            //console.log('enqueuing neighbors of ' + nodeToString(currentNode));
+            for (var i=0; i<currentNode.neighbors.length; ++i) {
+                var neighbor = nodeIdToNodeObjMap[currentNode.neighbors[i]];
+                if (neighbor.fill == defaultNodeFill) {
+                    neighbor.fill = 'gray';
+                    //setSvgElemFill(getSvgElemByNode(neighbor), 'gray');
+                    neighbor.parent = currentNode;
+                    q.push(neighbor);
+                }
+            }
         }
     }
-    $('#nodeInfo').html(info);  
 }
 
 function ready() {
@@ -140,6 +193,8 @@ function ready() {
         nodeIdToNodeObjMap = {};
         nodeStringToNodeObjMap = [];
         $.each(nodeList, function(key, node) {
+            node.fill = defaultNodeFill;
+            node.parent = null;
             nodeIdToNodeObjMap[node.nodeId] = node;
             nodeStringToNodeObjMap[node.nodeString] = node;
             var svgElem = getSvgElemByNode(node);
@@ -193,6 +248,15 @@ function ready() {
         $('#random').click(function(){
             selectNode(nodeList[Math.floor(Math.random() * nodeList.length)]);
         });
+        $('#bfs').click(function(){
+            if (startNode == null) {
+                alert('Start node not set');
+            } else if (goalNode == null) {
+                alert('Goal node not set');
+            } else {
+                bfs();
+            }
+        });
     })
     .success(function() { console.log("second success"); })
     .error(function(jqXHR, textStatus, errorThrown) {
@@ -212,8 +276,9 @@ function ready() {
 <?php } ?>
 <span id="nodeInfo"></span>
 <br/>
-Fill: <input type="text" id="fill" value="red"/><br/>
+Fill: <input type="text" id="fill" value="salmon"/><br/>
 <input type="button" id="random" value="Select Random"/><br/>
+<input type="button" id="bfs" value="Breadth First Search"/><br/>
 Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a><br/>
 <div id="searchResults"></div>
 </body>

@@ -37,7 +37,7 @@ var nodeStringToNodeObjMap = {}; //map of node string to node object
 var svg = null;
 var svgdoc = null;
 var selectedNodes = [];
-var path = []; //output of a pathfinding algorithm like bfs
+var pathNodes = []; //output of a pathfinding algorithm like bfs
 
 <?php if ($af == "us-states") { ?>
 var defaultNodeFill = 'white';
@@ -111,8 +111,10 @@ function updateInfo() {
         info += nodeToString(node) + ' <b>Neighbors</b>: ';
         for (var j=0; j<node.neighbors.length; ++j) {
             var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+            /*
             var neighborFillColor = '#e0e0e0';
             setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
+            */
             info += nodeToString(neighbor);
             if (j != node.neighbors.length-1) {
                 info += ', ';
@@ -120,7 +122,7 @@ function updateInfo() {
         }
         info += '<br>';
     }
-    $('#nodeInfo').html(info);  
+    $('#info').html(info);  
 }
 
 function selectNode(node) {
@@ -131,10 +133,12 @@ function selectNode(node) {
         selectedNodes.splice(selectedNodeIdx, 1);
         svgElem = getSvgElemByNode(node);
         setDefaultSvgElemFill(svgElem);
+        /*
         for (var i=0; i<node.neighbors.length; ++i) {
             var neighbor = nodeIdToNodeObjMap[node.neighbors[i]];
             setDefaultSvgElemFill(getSvgElemByNode(neighbor));
         }
+        */
     } else {
         selectedNodes.push(node);
         setSvgElemFill(getSvgElemByNode(node), selectedNodeFill);
@@ -143,30 +147,30 @@ function selectNode(node) {
 }
 
 function clearPath() {
-    for (var i in path) {
-        var node = path[i];
+    for (var i in pathNodes) {
+        var node = pathNodes[i];
         setSvgElemFill(getSvgElemByNode(node), defaultNodeFill);
     }
-    path = [];
+    pathNodes = [];
 }
 
-function bfs() {
+function bfs(startNode, goalNode, pathFill) {
     pathDisplayed = true;
     resetNodes();
-    var startNode = selectedNodes[0];
-    var goalNode = selectedNodes[1];
     var q = [];
     q.push(startNode);
     while (q.length > 0) {
         var currentNode = q.shift();
         if (currentNode == goalNode) {
             var node = goalNode.parent;
+            var path = [];
             while (node != null && node != startNode) {
                 path.push(node);
-                setSvgElemFill(getSvgElemByNode(node), 'gray');
+                setSvgElemFill(getSvgElemByNode(node), pathFill);
                 node = node.parent;           
             }
-            return;
+            pathNodes = pathNodes.concat(path);
+            return path;
         } else {
             //enqueue neighbors
             //console.log('enqueuing neighbors of ' + nodeToString(currentNode));
@@ -224,11 +228,11 @@ function ready() {
                     var nodeId = parseInt(this.id, 10);
                     node = nodeIdToNodeObjMap[nodeId];
                 <?php } ?>
-                    $('#nodeInfo').text(node.nodeString + ' (' + node.nodeId + ')');
+                    $('#info').text(node.nodeString + ' (' + node.nodeId + ')');
                 });
 
                 $(svgElem).mouseout(function(){
-                    $('#nodeInfo').text('');
+                    $('#info').text('');
                 });
 */
             } else {
@@ -266,7 +270,16 @@ function ready() {
                 alert('Error: Two node must be selected. ' 
                     + selectedNodes.length + ' nodes are currently selected.');
             } else {
-                bfs();
+                var path1 = bfs(selectedNodes[0], selectedNodes[1], 'orange');
+                var path2 = bfs(selectedNodes[1], selectedNodes[0], 'yellow');
+                var node1Str = nodeToString(selectedNodes[0]);
+                var node2Str = nodeToString(selectedNodes[1]);
+                var info = '<b>BFS Results</b>:<br>'
+                    + node1Str + ' to ' + node2Str 
+                    + ' path length (orange): ' + path1.length + '<br>'
+                    + node2Str + ' to ' + node1Str 
+                    + ' path length (yellow): ' + path2.length + '<br>';
+                $('#info').html($('#info').html() + info);
             }
         });
     })
@@ -287,12 +300,13 @@ function ready() {
 <embed id="svg" src="../svg/USA_Counties_with_FIPS_and_names.svg"></embed>
 <?php } ?>
 <br/>
-<span id="nodeInfo"></span>
+<span id="info"></span>
 <br/>
-Fill: <input type="text" id="fill" value="salmon"/><br/>
-<input type="button" id="random" value="Select Random"/><br/>
-<input type="button" id="bfs" value="Breadth First Search"/><br/>
-Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a><br/>
+Fill: <input type="text" id="fill" value="salmon"/>
+ Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
+ <input type="button" id="random" value="Select Random"/>
+ <input type="button" id="bfs" value="Breadth First Search"/>
+<br/>
 <div id="searchResults"></div>
 </body>
 </html>

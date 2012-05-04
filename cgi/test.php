@@ -36,9 +36,9 @@ var nodeIdToNodeObjMap = {}; //map of node id to node object (for fast lookups)
 var nodeStringToNodeObjMap = {}; //map of node string to node object
 var svg = null;
 var svgdoc = null;
-var selectedNode = null;
-var startNode = null;
-var goalNode = null;
+var selectedNodes = [];
+var path = []; //output of a pathfinding algorithm like bfs
+
 <?php if ($af == "us-states") { ?>
 var defaultNodeFill = 'white';
 <?php } else if ($af == "us-counties") { ?>
@@ -102,56 +102,59 @@ function nodeToString(node) {
 
 function updateInfo() {
     var info = '';
-    if (selectedNode != null) {
-        info += 'Selected: ' + nodeToString(selectedNode) + '<br>';
-        info += 'Neighbors: ';
-        for (var i=0; i<selectedNode.neighbors.length; ++i) {
-            var neighbor = nodeIdToNodeObjMap[selectedNode.neighbors[i]];
+    for (var i=0; i<selectedNodes.length; ++i) {
+        if (i==0) {
+            info += '<b>Selected:</b><br>';
+        }
+        var node = selectedNodes[i];
+        info += '<b>' + (i+1) + '</b>: ';
+        info += nodeToString(node) + ' <b>Neighbors</b>: ';
+        for (var j=0; j<node.neighbors.length; ++j) {
+            var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
             var neighborFillColor = '#e0e0e0';
             setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
             info += nodeToString(neighbor);
-            if (i != selectedNode.neighbors.length-1) {
+            if (j != node.neighbors.length-1) {
                 info += ', ';
             }
         }
         info += '<br>';
-    }
-    if (startNode != null) {
-        info += 'Start: ' + nodeToString(startNode) + '<br>';
-    }
-    if (goalNode != null) {
-        info += 'Goal: ' + nodeToString(goalNode) + '<br>';
     }
     $('#nodeInfo').html(info);  
 }
 
 function selectNode(node) {
     var selectedNodeFill = $('#fill').val();
-    if (startNode == null) {
-        startNode = node;
-        selectedNodeFill = '#009900';
-    } else if (goalNode == null) {
-        goalNode = node;
-        selectedNodeFill = '#CC0000';
-    }
-    //unselect current selected node
-    if (selectedNode != null
-        && selectedNode != startNode
-        && selectedNode != goalNode) {
-        currentSvgElem = getSvgElemByNode(selectedNode);
-        setDefaultSvgElemFill(currentSvgElem);
-        for (var i=0; i<selectedNode.neighbors.length; ++i) {
-            var neighbor = nodeIdToNodeObjMap[selectedNode.neighbors[i]];
+    var selectedNodeIdx = selectedNodes.indexOf(node);
+    if (selectedNodeIdx != -1) {
+        //unselect
+        selectedNodes.splice(selectedNodeIdx, 1);
+        svgElem = getSvgElemByNode(node);
+        setDefaultSvgElemFill(svgElem);
+        for (var i=0; i<node.neighbors.length; ++i) {
+            var neighbor = nodeIdToNodeObjMap[node.neighbors[i]];
             setDefaultSvgElemFill(getSvgElemByNode(neighbor));
         }
+    } else {
+        selectedNodes.push(node);
+        setSvgElemFill(getSvgElemByNode(node), selectedNodeFill);
     }
-    //set new selected node and set fill
-    selectedNode = node;
-    setSvgElemFill(getSvgElemByNode(selectedNode), selectedNodeFill);
     updateInfo();
 }
 
+function clearPath() {
+    for (var i in path) {
+        var node = path[i];
+        setSvgElemFill(getSvgElemByNode(node), defaultNodeFill);
+    }
+    path = [];
+}
+
 function bfs() {
+    pathDisplayed = true;
+    resetNodes();
+    var startNode = selectedNodes[0];
+    var goalNode = selectedNodes[1];
     var q = [];
     q.push(startNode);
     while (q.length > 0) {
@@ -159,6 +162,7 @@ function bfs() {
         if (currentNode == goalNode) {
             var node = goalNode.parent;
             while (node != null && node != startNode) {
+                path.push(node);
                 setSvgElemFill(getSvgElemByNode(node), 'gray');
                 node = node.parent;           
             }
@@ -176,6 +180,14 @@ function bfs() {
                 }
             }
         }
+    }
+}
+
+function resetNodes() {
+    for (var i=0; i<nodeList.length; ++i) {
+        var node = nodeList[i];
+        node.fill = defaultNodeFill;
+        node.parent = null;
     }
 }
 
@@ -200,6 +212,7 @@ function ready() {
             var svgElem = getSvgElemByNode(node);
             if (svgElem != null) {
                 $(svgElem).click(function(){
+                    clearPath();
                     selectNode(getNodeBySvgElemId(this.id));             
                 });
 /*
@@ -249,10 +262,9 @@ function ready() {
             selectNode(nodeList[Math.floor(Math.random() * nodeList.length)]);
         });
         $('#bfs').click(function(){
-            if (startNode == null) {
-                alert('Start node not set');
-            } else if (goalNode == null) {
-                alert('Goal node not set');
+            if (selectedNodes.length != 2) {
+                alert('Error: Two node must be selected. ' 
+                    + selectedNodes.length + ' nodes are currently selected.');
             } else {
                 bfs();
             }
@@ -274,6 +286,7 @@ function ready() {
 <?php } else if ($af == "us-counties") { ?>
 <embed id="svg" src="../svg/USA_Counties_with_FIPS_and_names.svg"></embed>
 <?php } ?>
+<br/>
 <span id="nodeInfo"></span>
 <br/>
 Fill: <input type="text" id="fill" value="salmon"/><br/>

@@ -116,7 +116,7 @@ function selectNode(node) {
     info += '<br>Neighbors: ';
     for (var i=0; i<node.neighbors.length; ++i) {
         var neighbor = nodeIdToNodeObjMap[node.neighbors[i]];
-        var neighborFillColor = 'gray';
+        var neighborFillColor = '#e0e0e0';
         setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
         info += nodeToString(neighbor);
         if (i != node.neighbors.length-1) {
@@ -190,6 +190,9 @@ function ready() {
                 $('#search').val('');
             });
         });
+        $('#random').click(function(){
+            selectNode(nodeList[Math.floor(Math.random() * nodeList.length)]);
+        });
     })
     .success(function() { console.log("second success"); })
     .error(function(jqXHR, textStatus, errorThrown) {
@@ -210,6 +213,7 @@ function ready() {
 <span id="nodeInfo"></span>
 <br/>
 Fill: <input type="text" id="fill" value="red"/><br/>
+<input type="button" id="random" value="Select Random"/><br/>
 Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a><br/>
 <div id="searchResults"></div>
 </body>

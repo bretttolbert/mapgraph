@@ -12,6 +12,22 @@ $af = $_REQUEST["af"];
 body {
     font-family: sans-serif;
 }
+a:link {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: red;
+}
+a:active {
+    text-decoration: none;
+    color: red;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -168,6 +184,8 @@ function ready() {
             $('#searchResults').html(results);
             $('#searchResults a').click(function(){
                 selectNode(nodeIdToNodeObjMap[this.id]);
+            });
+            $('#clearSearch').click(function(){
                 $('#searchResults').html('');
                 $('#search').val('');
             });
@@ -192,7 +210,7 @@ function ready() {
 <span id="nodeInfo"></span>
 <br/>
 Fill: <input type="text" id="fill" value="red"/><br/>
-Search: <input type="text" id="search" value=""/><br/>
+Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a><br/>
 <div id="searchResults"></div>
 </body>
 </html>

@@ -260,7 +260,10 @@ function ready() {
                 shuffledNodes[idx1] = shuffledNodes[idx2];
                 shuffledNodes[idx2] = t;
             }
-            var availableColors = ['lightseagreen','lightblue','lightsalmon','beige','plum','lightcoral','teal'];
+            var availableColors = $('#colors').val().split(',');
+            for (var i=0; i<availableColors.length; ++i) {
+                availableColors[i] = $.trim(availableColors[i]);
+            }
             for (var i in shuffledNodes) {
                 var node = shuffledNodes[i];
                 var neighborColors = [];

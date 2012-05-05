@@ -28,6 +28,9 @@ a:active {
     text-decoration: none;
     color: red;
 }
+#colors {
+    width: 400px;
+}
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/GraphGame.js"></script>
@@ -45,9 +48,12 @@ a:active {
 Fill: <input type="text" id="fill" value="salmon"/>
  Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
  <input type="button" id="random" value="Select Random"/>
- <input type="button" id="bfs-demo" value="Breadth First Search"/>
- <input type="button" id="greedy-coloring" value="Greedy Coloring"/>
  <input type="button" id="reset" value="Reset"/>
+<br/>
+<b>Breadth First Search</b> <input type="button" id="bfs-demo" value="Run"/>
+<br/>
+<b>Greedy Coloring</b> <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral,teal" />
+<input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>
 <?php 

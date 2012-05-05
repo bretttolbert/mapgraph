@@ -31,6 +31,9 @@ a:active {
 #colors {
     width: 400px;
 }
+#numTries {
+    width: 50px;
+}
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/GraphGame.js"></script>
@@ -52,7 +55,9 @@ Fill: <input type="text" id="fill" value="salmon"/>
 <br/>
 <b>Breadth First Search</b> <input type="button" id="bfs-demo" value="Run"/>
 <br/>
-<b>Greedy Coloring</b> <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral,teal" />
+<b>Greedy Coloring</b> 
+    <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
+    <input type="text" id="numTries" value="10" />
 <input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>

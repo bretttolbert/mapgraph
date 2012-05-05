@@ -161,6 +161,65 @@ function bfs(startNode, goalNode, pathFill) {
     }
 }
 
+function greedyColoring(maxTries) {
+    if (maxTries == 0) {
+        alert("Greedy coloring failed. Insufficient number of colors.");
+        return;
+    }
+    for (var tryNum=1; tryNum<=maxTries; ++tryNum) {
+        clearSelectedNodes();
+        clearPath();
+        resetNodes(true);
+        var shuffledNodes = [];
+        for (var i=0; i<nodeList.length; ++i) {
+            shuffledNodes.push(nodeList[i]);
+        }
+        for (var i=0; i<shuffledNodes.length; ++i) {
+            var idx1 = Math.floor(Math.random()*nodeList.length);
+            var idx2 = Math.floor(Math.random()*nodeList.length);
+            var t = shuffledNodes[idx1];
+            shuffledNodes[idx1] = shuffledNodes[idx2];
+            shuffledNodes[idx2] = t;
+        }
+        var availableColors = $('#colors').val().split(',');
+        for (var i=0; i<availableColors.length; ++i) {
+            availableColors[i] = $.trim(availableColors[i]);
+        }
+        var coloringFailed = false;
+        for (var i in shuffledNodes) {
+            var node = shuffledNodes[i];
+            var neighborColors = [];
+            for (var j in node.neighbors) {
+                var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+                if (neighbor.fill != defaultNodeFill) {
+                    neighborColors.push(neighbor.fill);
+                }
+            }
+            var remainingColors = [];
+            for (var j in availableColors) {
+                if (neighborColors.indexOf(availableColors[j]) == -1) {
+                    remainingColors.push(availableColors[j]);
+                }
+            }
+            if (remainingColors.length == 0) {
+                coloringFailed = true;
+                continue;
+            } else {
+                var color = remainingColors[0];
+                node.fill = color;
+                setSvgElemFill(getSvgElemByNode(node), color);
+            }
+        }
+        if (!coloringFailed) {
+            //coloring succeeded
+            alert("Greedy coloring succeeded on try " + tryNum);
+            return;
+        }
+    }
+    //coloring failed, no more tries
+    alert("Greedy coloring failed.");
+}
+
 function resetNodes(resetSvg) {
     for (var i=0; i<nodeList.length; ++i) {
         var node = nodeList[i];
@@ -246,48 +305,8 @@ function ready() {
             }
         });
         $('#greedy-coloring').click(function(){
-            clearSelectedNodes();
-            clearPath();
-            resetNodes(true);
-            var shuffledNodes = [];
-            for (var i=0; i<nodeList.length; ++i) {
-                shuffledNodes.push(nodeList[i]);
-            }
-            for (var i=0; i<shuffledNodes.length; ++i) {
-                var idx1 = Math.floor(Math.random()*nodeList.length);
-                var idx2 = Math.floor(Math.random()*nodeList.length);
-                var t = shuffledNodes[idx1];
-                shuffledNodes[idx1] = shuffledNodes[idx2];
-                shuffledNodes[idx2] = t;
-            }
-            var availableColors = $('#colors').val().split(',');
-            for (var i=0; i<availableColors.length; ++i) {
-                availableColors[i] = $.trim(availableColors[i]);
-            }
-            for (var i in shuffledNodes) {
-                var node = shuffledNodes[i];
-                var neighborColors = [];
-                for (var j in node.neighbors) {
-                    var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
-                    if (neighbor.fill != defaultNodeFill) {
-                        neighborColors.push(neighbor.fill);
-                    }
-                }
-                var remainingColors = [];
-                for (var j in availableColors) {
-                    if (neighborColors.indexOf(availableColors[j]) == -1) {
-                        remainingColors.push(availableColors[j]);
-                    }
-                }
-                if (remainingColors.length == 0) {
-                    alert("Greedy coloring failed. Insufficient number of colors.");
-                    return;
-                } else {
-                    var color = remainingColors[0];
-                    node.fill = color;
-                    setSvgElemFill(getSvgElemByNode(node), color);
-                }
-            }
+            var numTries = parseInt($('#numTries').val(), 10);
+            greedyColoring(numTries);
         });
         $('#reset').click(function(){
             clearSelectedNodes();

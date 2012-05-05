@@ -214,7 +214,7 @@ function ready() {
         $('#random').click(function(){
             selectNode(nodeList[Math.floor(Math.random() * nodeList.length)]);
         });
-        $('#bfs').click(function(){
+        $('#bfs-demo').click(function(){
             if (selectedNodes.length != 2) {
                 alert('Error: Two node must be selected. ' 
                     + selectedNodes.length + ' nodes are currently selected.');
@@ -229,6 +229,45 @@ function ready() {
                     + node2Str + ' to ' + node1Str 
                     + ' path length (yellow): ' + path2.length + '<br>';
                 $('#info').html($('#info').html() + info);
+            }
+        });
+        $('#greedy-coloring').click(function(){
+            resetNodes();
+            var shuffledNodes = [];
+            for (var i=0; i<nodeList.length; ++i) {
+                shuffledNodes.push(nodeList[i]);
+            }
+            for (var i=0; i<shuffledNodes.length; ++i) {
+                var idx1 = Math.floor(Math.random()*nodeList.length);
+                var idx2 = Math.floor(Math.random()*nodeList.length);
+                var t = shuffledNodes[idx1];
+                shuffledNodes[idx1] = shuffledNodes[idx2];
+                shuffledNodes[idx2] = t;
+            }
+            var availableColors = ['lightseagreen','lightblue','lightsalmon','beige','plum','lightcoral','red'];
+            for (var i in shuffledNodes) {
+                var node = shuffledNodes[i];
+                var neighborColors = [];
+                for (var j in node.neighbors) {
+                    var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+                    if (neighbor.fill != defaultNodeFill) {
+                        neighborColors.push(neighbor.fill);
+                    }
+                }
+                var remainingColors = [];
+                for (var j in availableColors) {
+                    if (neighborColors.indexOf(availableColors[j]) == -1) {
+                        remainingColors.push(availableColors[j]);
+                    }
+                }
+                if (remainingColors.length == 0) {
+                    alert("Greedy coloring failed. Insufficient number of colors.");
+                    return;
+                } else {
+                    var color = remainingColors[0];
+                    node.fill = color;
+                    setSvgElemFill(getSvgElemByNode(node), color);
+                }
             }
         });
     })

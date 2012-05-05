@@ -45,7 +45,8 @@ a:active {
 Fill: <input type="text" id="fill" value="salmon"/>
  Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
  <input type="button" id="random" value="Select Random"/>
- <input type="button" id="bfs" value="Breadth First Search"/>
+ <input type="button" id="bfs-demo" value="Breadth First Search"/>
+ <input type="button" id="greedy-coloring" value="Greedy Coloring"/>
 <br/>
 <div id="searchResults"></div>
 <?php 

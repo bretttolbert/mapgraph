@@ -47,6 +47,7 @@ Fill: <input type="text" id="fill" value="salmon"/>
  <input type="button" id="random" value="Select Random"/>
  <input type="button" id="bfs-demo" value="Breadth First Search"/>
  <input type="button" id="greedy-coloring" value="Greedy Coloring"/>
+ <input type="button" id="reset" value="Reset"/>
 <br/>
 <div id="searchResults"></div>
 <?php 

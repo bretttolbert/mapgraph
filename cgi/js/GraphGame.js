@@ -93,7 +93,11 @@ function selectNode(node) {
     var selectedNodeIdx = selectedNodes.indexOf(node);
     if (selectedNodeIdx != -1) {
         //unselect
-        selectedNodes.splice(selectedNodeIdx, 1);
+        if (selectedNodes.length = 1) {
+            selectedNodes.pop();
+        } else {
+            selectedNodes.splice(selectedNodeIdx, 1);
+        }
         svgElem = getSvgElemByNode(node);
         setDefaultSvgElemFill(svgElem);
         /*
@@ -109,17 +113,24 @@ function selectNode(node) {
     updateInfo();
 }
 
+function clearSelectedNodes() {
+    for (var i in selectedNodes) {
+        var node = selectedNodes[i];
+        selectNode(node);
+    }
+}
+
 function clearPath() {
     for (var i in pathNodes) {
         var node = pathNodes[i];
-        setSvgElemFill(getSvgElemByNode(node), defaultNodeFill);
+        setDefaultSvgElemFill(getSvgElemByNode(node));
     }
     pathNodes = [];
 }
 
 function bfs(startNode, goalNode, pathFill) {
     pathDisplayed = true;
-    resetNodes();
+    resetNodes(false);
     var q = [];
     q.push(startNode);
     while (q.length > 0) {
@@ -150,11 +161,14 @@ function bfs(startNode, goalNode, pathFill) {
     }
 }
 
-function resetNodes() {
+function resetNodes(resetSvg) {
     for (var i=0; i<nodeList.length; ++i) {
         var node = nodeList[i];
         node.fill = defaultNodeFill;
         node.parent = null;
+        if (resetSvg) {
+            setDefaultSvgElemFill(getSvgElemByNode(node));
+        }
     }
 }
 
@@ -232,7 +246,9 @@ function ready() {
             }
         });
         $('#greedy-coloring').click(function(){
-            resetNodes();
+            clearSelectedNodes();
+            clearPath();
+            resetNodes(true);
             var shuffledNodes = [];
             for (var i=0; i<nodeList.length; ++i) {
                 shuffledNodes.push(nodeList[i]);
@@ -244,7 +260,7 @@ function ready() {
                 shuffledNodes[idx1] = shuffledNodes[idx2];
                 shuffledNodes[idx2] = t;
             }
-            var availableColors = ['lightseagreen','lightblue','lightsalmon','beige','plum','lightcoral','red'];
+            var availableColors = ['lightseagreen','lightblue','lightsalmon','beige','plum','lightcoral','teal'];
             for (var i in shuffledNodes) {
                 var node = shuffledNodes[i];
                 var neighborColors = [];
@@ -269,6 +285,11 @@ function ready() {
                     setSvgElemFill(getSvgElemByNode(node), color);
                 }
             }
+        });
+        $('#reset').click(function(){
+            clearSelectedNodes();
+            clearPath();
+            resetNodes(true);
         });
     })
     .success(function() { console.log("second success"); })

@@ -475,6 +475,137 @@ Winston County, AL	01133	Cullman County, AL	01043
 		Marion County, AL	01093
 		Walker County, AL	01127
 		Winston County, AL	01133
+Aleutians East Borough, AK	02013	Aleutians East Borough, AK	02013
+		Aleutians West Census Area, AK	02016
+		Lake and Peninsula Borough, AK	02164
+Aleutians West Census Area, AK	02016	Aleutians East Borough, AK	02013
+		Aleutians West Census Area, AK	02016
+Anchorage Municipality, AK	02020	Anchorage Municipality, AK	02020
+		Kenai Peninsula Borough, AK	02122
+		Matanuska-Susitna Borough, AK	02170
+		Valdez-Cordova Census Area, AK	02261
+Bethel Census Area, AK	02050	Bethel Census Area, AK	02050
+		Dillingham Census Area, AK	02070
+		Kenai Peninsula Borough, AK	02122
+		Lake and Peninsula Borough, AK	02164
+		Matanuska-Susitna Borough, AK	02170
+		Wade Hampton Census Area, AK	02270
+		Yukon-Koyukuk Census Area, AK	02290
+Bristol Bay Borough, AK	02060	Bristol Bay Borough, AK	02060
+		Dillingham Census Area, AK	02070
+		Lake and Peninsula Borough, AK	02164
+Denali Borough, AK	02068	Denali Borough, AK	02068
+		Fairbanks North Star Borough, AK	02090
+		Matanuska-Susitna Borough, AK	02170
+		Southeast Fairbanks Census Area, AK	02240
+		Yukon-Koyukuk Census Area, AK	02290
+Dillingham Census Area, AK	02070	Bethel Census Area, AK	02050
+		Bristol Bay Borough, AK	02060
+		Dillingham Census Area, AK	02070
+		Lake and Peninsula Borough, AK	02164
+Fairbanks North Star Borough, AK	02090	Denali Borough, AK	02068
+		Fairbanks North Star Borough, AK	02090
+		Southeast Fairbanks Census Area, AK	02240
+		Yukon-Koyukuk Census Area, AK	02290
+Haines Borough, AK	02100	Haines Borough, AK	02100
+		Hoonah-Angoon Census Area, AK	02105
+		Juneau City and Borough, AK	02110
+		Skagway Municipality, AK	02230
+Hoonah-Angoon Census Area, AK	02105	Haines Borough, AK	02100
+		Hoonah-Angoon Census Area, AK	02105
+		Juneau City and Borough, AK	02110
+		Petersburg Census Area, AK	02195
+		Sitka City and Borough, AK	02220
+		Yakutat City and Borough, AK	02282
+Juneau City and Borough, AK	02110	Haines Borough, AK	02100
+		Hoonah-Angoon Census Area, AK	02105
+		Juneau City and Borough, AK	02110
+Kenai Peninsula Borough, AK	02122	Anchorage Municipality, AK	02020
+		Bethel Census Area, AK	02050
+		Kenai Peninsula Borough, AK	02122
+		Kodiak Island Borough, AK	02150
+		Lake and Peninsula Borough, AK	02164
+		Matanuska-Susitna Borough, AK	02170
+		Valdez-Cordova Census Area, AK	02261
+Ketchikan Gateway Borough, AK	02130	Ketchikan Gateway Borough, AK	02130
+		Prince of Wales-Hyder Census Area, AK	02198
+		Wrangell City and Borough, AK	02275
+Kodiak Island Borough, AK	02150	Kenai Peninsula Borough, AK	02122
+		Kodiak Island Borough, AK	02150
+		Lake and Peninsula Borough, AK	02164
+Lake and Peninsula Borough, AK	02164	Aleutians East Borough, AK	02013
+		Bethel Census Area, AK	02050
+		Bristol Bay Borough, AK	02060
+		Dillingham Census Area, AK	02070
+		Kenai Peninsula Borough, AK	02122
+		Kodiak Island Borough, AK	02150
+		Lake and Peninsula Borough, AK	02164
+Matanuska-Susitna Borough, AK	02170	Anchorage Municipality, AK	02020
+		Bethel Census Area, AK	02050
+		Denali Borough, AK	02068
+		Kenai Peninsula Borough, AK	02122
+		Matanuska-Susitna Borough, AK	02170
+		Southeast Fairbanks Census Area, AK	02240
+		Valdez-Cordova Census Area, AK	02261
+		Yukon-Koyukuk Census Area, AK	02290
+Nome Census Area, AK	02180	Nome Census Area, AK	02180
+		Northwest Arctic Borough, AK	02188
+		Wade Hampton Census Area, AK	02270
+		Yukon-Koyukuk Census Area, AK	02290
+North Slope Borough, AK	02185	North Slope Borough, AK	02185
+		Northwest Arctic Borough, AK	02188
+		Yukon-Koyukuk Census Area, AK	02290
+Northwest Arctic Borough, AK	02188	Nome Census Area, AK	02180
+		North Slope Borough, AK	02185
+		Northwest Arctic Borough, AK	02188
+		Yukon-Koyukuk Census Area, AK	02290
+Petersburg Census Area, AK	02195	Hoonah-Angoon Census Area, AK	02105
+		Petersburg Census Area, AK	02195
+		Prince of Wales-Hyder Census Area, AK	02198
+		Sitka City and Borough, AK	02220
+		Wrangell City and Borough, AK	02275
+Prince of Wales-Hyder Census Area, AK	02198	Ketchikan Gateway Borough, AK	02130
+		Petersburg Census Area, AK	02195
+		Prince of Wales-Hyder Census Area, AK	02198
+		Wrangell City and Borough, AK	02275
+Sitka City and Borough, AK	02220	Hoonah-Angoon Census Area, AK	02105
+		Petersburg Census Area, AK	02195
+		Sitka City and Borough, AK	02220
+Skagway Municipality, AK	02230	Haines Borough, AK	02100
+		Skagway Municipality, AK	02230
+Southeast Fairbanks Census Area, AK	02240	Denali Borough, AK	02068
+		Fairbanks North Star Borough, AK	02090
+		Matanuska-Susitna Borough, AK	02170
+		Southeast Fairbanks Census Area, AK	02240
+		Valdez-Cordova Census Area, AK	02261
+		Yukon-Koyukuk Census Area, AK	02290
+Valdez-Cordova Census Area, AK	02261	Anchorage Municipality, AK	02020
+		Kenai Peninsula Borough, AK	02122
+		Matanuska-Susitna Borough, AK	02170
+		Southeast Fairbanks Census Area, AK	02240
+		Valdez-Cordova Census Area, AK	02261
+		Yakutat City and Borough, AK	02282
+Wade Hampton Census Area, AK	02270	Bethel Census Area, AK	02050
+		Nome Census Area, AK	02180
+		Wade Hampton Census Area, AK	02270
+		Yukon-Koyukuk Census Area, AK	02290
+Wrangell City and Borough, AK	02275	Ketchikan Gateway Borough, AK	02130
+		Petersburg Census Area, AK	02195
+		Prince of Wales-Hyder Census Area, AK	02198
+		Wrangell City and Borough, AK	02275
+Yakutat City and Borough, AK	02282	Hoonah-Angoon Census Area, AK	02105
+		Valdez-Cordova Census Area, AK	02261
+		Yakutat City and Borough, AK	02282
+Yukon-Koyukuk Census Area, AK	02290	Bethel Census Area, AK	02050
+		Denali Borough, AK	02068
+		Fairbanks North Star Borough, AK	02090
+		Matanuska-Susitna Borough, AK	02170
+		Nome Census Area, AK	02180
+		North Slope Borough, AK	02185
+		Northwest Arctic Borough, AK	02188
+		Southeast Fairbanks Census Area, AK	02240
+		Wade Hampton Census Area, AK	02270
+		Yukon-Koyukuk Census Area, AK	02290
 Apache County, AZ	04001	Apache County, AZ	04001
 		Graham County, AZ	04009
 		Greenlee County, AZ	04011
@@ -3538,6 +3669,13 @@ Worth County, GA	13321	Colquitt County, GA	13071
 		Tift County, GA	13277
 		Turner County, GA	13287
 		Worth County, GA	13321
+Hawaii County, HI	15001	Hawaii County, HI	15001
+Honolulu County, HI	15003	Honolulu County, HI	15003
+Kalawao County, HI	15005	Kalawao County, HI	15005
+		Maui County, HI	15009
+Kauai County, HI	15007	Kauai County, HI	15007
+Maui County, HI	15009	Kalawao County, HI	15005
+		Maui County, HI	15009
 Ada County, ID	16001	Ada County, ID	16001
 		Boise County, ID	16015
 		Canyon County, ID	16027

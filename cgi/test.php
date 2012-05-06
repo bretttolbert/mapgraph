@@ -48,7 +48,7 @@ a:active {
 <br/>
 <span id="info"></span>
 <br/>
-Fill: <input type="text" id="fill" value="salmon"/>
+Selected Color: <input type="text" id="fill" value="salmon"/>
  Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
  <input type="button" id="random" value="Select Random"/>
  <input type="button" id="reset" value="Reset"/>
@@ -56,8 +56,8 @@ Fill: <input type="text" id="fill" value="salmon"/>
 <b>Breadth First Search</b> <input type="button" id="bfs-demo" value="Run"/>
 <br/>
 <b>Greedy Coloring</b> 
-    <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
-    <input type="text" id="numTries" value="10" />
+    Colors: <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
+    Retry: <input type="text" id="numTries" value="10" />
 <input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>

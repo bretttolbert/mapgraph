@@ -1,5 +1,5 @@
 Data_Item, Item_Description,   Unit, Decimal,   US_Total,     Minimum,    Maximum,   Source
-STATECOU,  FIPS State and County code,   ,     ,               ,            ,           , 
+FIPS, FIPS State and County code,   ,     ,               ,            ,           , 
 PST045211, Resident total population estimate (July 1) 2011,                                                         ABS,    0,      311591917,      568158,   311591917,  CENSUS
 POP010210, Resident total population\, 2010,                                                                         ABS,    0,      308745538,          82,   308745538,  CENSUS
 POP050210, Resident total population\, percent change - April 1\, 2000 to April 1\, 2010,                            PCT,    1,            9.7,       -46.6,       110.4,  CENSUS

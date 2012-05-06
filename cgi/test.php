@@ -34,6 +34,12 @@ a:active {
 #numTries {
     width: 50px;
 }
+#base {
+    width: 30px;
+}
+label {
+    font-size: 10px;
+}
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/GraphGame.js"></script>
@@ -48,19 +54,28 @@ a:active {
 <br/>
 <span id="info"></span>
 <br/>
-Selected Color: <input type="text" id="fill" value="salmon"/>
- Search: <input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
+<label for="fill">Selected Color: </label><input type="text" id="fill" value="salmon"/>
+<label for="search">Search: </label><input type="text" id="search" value=""/><a href="#" id="clearSearch">X</a>
  <input type="button" id="random" value="Select Random"/>
  <input type="button" id="reset" value="Reset"/>
 <br/>
 <b>Breadth First Search</b> <input type="button" id="bfs-demo" value="Run"/>
 <br/>
 <b>Greedy Coloring</b> 
-    Colors: <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
-    Retry: <input type="text" id="numTries" value="10" />
+    <label for="colors">Colors: </label><input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
+    <label for="numTries">Retry: </label><input type="text" id="numTries" value="10" />
 <input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>
+<b>Quick Facts</b>: <select id="quickFactsSel"></select> 
+    <label for="scaleSel">Scale: </label> 
+    <select id="scaleSel">
+        <option value="linear">Linear</option>
+        <option value="logarithmic" selected="selected">Logarithmic</option>
+    </select>
+    <span id="baseSpan"><label for="base">Base: </label><input type="text" id="base" value="2" /></span>
+    <input type="button" value="Visualize" id="visualizeQuickFact" />
+<br/>
 <?php 
 $defaultNodeFill = "white";
 if ($af == "us-states") {
@@ -73,5 +88,6 @@ if ($af == "us-states") {
 echo "<input type=\"hidden\" id=\"af\" value=\"$af\" />\n";
 echo "<input type=\"hidden\" id=\"defaultNodeFill\" value=\"$defaultNodeFill\" />\n";
 ?>
+<textarea id="log" rows="6" cols="80"></textarea>
 </body>
 </html>

@@ -8,6 +8,27 @@ var pathNodes = []; //output of a pathfinding algorithm like bfs
 var defaultNodeFill = 'white'; //may be overriden by hidden input element
 var af; //adjacency file reset name
 
+/*
+var colorScale = ['#ff0000','#ff8000','#ffcd00','#ffff00','#cde600','#80e600','#00ff00','#00ff9a','#00ffff','#00cdff','#0080ff','#0000ff'];
+*/
+var colorScale = ['#0000ff','#0080ff','#00cdff','#00ffff','#00ff9a','#00ff00','#80e600','#cde600','#ffff00','#ffcd00','#ff8000','#ff0000'];
+
+var USStatesAndCountiesQuickFacts = function(){
+    this.dataSet = [];
+    this.dataDict = [];
+    this.getRowByFips = function(fips){
+        for (var i=0; i<this.dataSet.length; ++i) {
+            var row = this.dataSet[i];
+            if (row['FIPS'] == fips) {
+                return row;
+            }
+        }
+        return null;
+    }
+}
+var quickFacts = new USStatesAndCountiesQuickFacts();
+var extrema = {};
+
 function getNodeBySvgElemId(id) {
     var node = null;
     if (af == "us-states") {
@@ -62,39 +83,20 @@ function nodeToString(node) {
     return result;
 }
 
-
-function updateInfo() {
-    var info = '';
-    for (var i=0; i<selectedNodes.length; ++i) {
-        if (i==0) {
-            info += '<b>Selected:</b><br>';
-        }
-        var node = selectedNodes[i];
-        info += '<b>' + (i+1) + '</b>: ';
-        info += nodeToString(node) + ' <b>Neighbors</b>: ';
-        for (var j=0; j<node.neighbors.length; ++j) {
-            var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
-            /*
-            var neighborFillColor = '#e0e0e0';
-            setSvgElemFill(getSvgElemByNode(neighbor), neighborFillColor);
-            */
-            info += nodeToString(neighbor);
-            if (j != node.neighbors.length-1) {
-                info += ', ';
-            }
-        }
-        info += '<br>';
-    }
-    $('#info').html(info);  
+function log(str) {
+    $('#log').val($('#log').val() + str + '\n');
+    $('#log')[0].scrollTop = $('#log')[0].scrollHeight;
 }
 
 function selectNode(node) {
+    var unselected = false;
     var selectedNodeFill = $('#fill').val();
     var selectedNodeIdx = selectedNodes.indexOf(node);
     if (selectedNodeIdx != -1) {
         //unselect
         if (selectedNodes.length = 1) {
             selectedNodes.pop();
+            unselected = true;
         } else {
             selectedNodes.splice(selectedNodeIdx, 1);
         }
@@ -110,7 +112,24 @@ function selectNode(node) {
         selectedNodes.push(node);
         setSvgElemFill(getSvgElemByNode(node), selectedNodeFill);
     }
-    updateInfo();
+    var selectedQuickFact = $('#quickFactsSel').val();
+    var info = '';
+    if (unselected) {
+        info += 'Unselected: ';
+    } else {
+        info += 'Selected: ';
+    }
+    info += nodeToString(node) + ' Neighbors: ';
+    for (var j=0; j<node.neighbors.length; ++j) {
+        var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+        info += nodeToString(neighbor);
+        if (j != node.neighbors.length-1) {
+            info += ', ';
+        }
+    }
+    var quickFactsRow = quickFacts.getRowByFips(fipsToString(node.nodeId));
+    info += ' Quick Facts: ' + quickFactsRow[selectedQuickFact];
+    log(info);
 }
 
 function clearSelectedNodes() {
@@ -231,9 +250,82 @@ function resetNodes(resetSvg) {
     }
 }
 
+function findExtrema() {
+    var selectedQuickFact = $('#quickFactsSel').val();
+    for (var i=0; i<quickFacts.dataSet.length; ++i) {
+        var record = quickFacts.dataSet[i];
+        //only consider records that match a known fips
+        var fips = parseInt(record['FIPS'], 10);
+        if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
+            var val = parseFloat(record[selectedQuickFact]);
+            if (extrema.minVal == undefined || val < extrema.minVal) {
+                extrema.minVal = val;
+                extrema.minNode = nodeIdToNodeObjMap[fips];
+            }
+            if (extrema.maxVal == undefined || val > extrema.maxVal) {
+                extrema.maxVal = val;
+                extrema.maxNode = nodeIdToNodeObjMap[fips];
+            }
+        }
+    }
+    extrema.span = extrema.maxVal - extrema.minVal;
+    if (extrema.minNode != undefined && extrema.maxNode != undefined) {
+        log('Extrema:');
+        log('Min: ' + extrema.minVal + ' ' + nodeToString(extrema.minNode));
+        log('Max: ' + extrema.maxVal + ' ' + nodeToString(extrema.maxNode));
+        log('Span: ' + extrema.span);
+    }
+}
+
+function visualizeQuickFact() {
+    clearSelectedNodes();
+    clearPath();
+    resetNodes(true);
+    var selectedQuickFact = $('#quickFactsSel').val();
+    var scale = $('#scaleSel').val();
+    var base = parseInt($('#base').val(), 10);
+    findExtrema();
+    var highestPct, highestNode, highestVal;
+    for (var i=0; i<quickFacts.dataSet.length; ++i) {
+        var record = quickFacts.dataSet[i];
+        //only consider records that match a known fips
+        var fips = parseInt(record['FIPS'], 10);
+        if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
+            var node = nodeIdToNodeObjMap[fips];
+            var val = parseFloat(record[selectedQuickFact]);
+            var pct = (val - extrema.minVal) / extrema.span;
+            if (highestPct == undefined || pct > highestPct) {
+                highestPct = pct;
+                highestNode = node;
+                highestVal = val;
+            }
+            for (var j=colorScale.length-1; j>=0; --j) {
+                var scalePct;
+                if (scale == 'linear') {
+                    scalePct = j / colorScale.length;
+                } else if (scale == 'logarithmic') {
+                    scalePct = Math.pow(base,j) / Math.pow(base,colorScale.length);
+                }
+                if (pct > scalePct || j==0) {
+                    setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
+                    break;
+                }
+            }
+        }
+    }
+    console.log('highestPct=' + highestPct + ' highestNode: ' + nodeToString(highestNode) + ' highestVal: ' + highestVal);
+}
+
 function ready() {
     af = $('#af').val();
     defaultNodeFill = $('#defaultNodeFill').val();
+    if (af == 'us-counties') {
+        $('#colors').val('lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral');
+        $('#numTries').val('20');
+    } else if (af == 'us-states') {
+        $('#colors').val('lightseagreen,lightblue,lightsalmon,beige');
+        $('#numTries').val('100');
+    }
     //$('#svg').attr('src', '../svg/USA_Counties_with_FIPS_and_names.svg');
     svg = document.getElementById('svg');
     svgdoc = svg.getSVGDocument();
@@ -320,4 +412,46 @@ function ready() {
             console.log("incoming Text " + jqXHR.responseText);
         })
     .complete(function() { console.log("complete"); });
+
+    $.getJSON('graphgame.cgi?action=getUSStatesAndCountiesQuickFactsDataDict', function(data) {
+        quickFacts.dataDict = data.data;
+        for (var i=0; i<quickFacts.dataDict.length; ++i) {
+            var fact = quickFacts.dataDict[i];
+            var opt = document.createElement('option');
+            opt.value = fact['Data_Item'];
+            opt.appendChild(document.createTextNode(fact['Item_Description']));
+            $('#quickFactsSel')[0].appendChild(opt);
+        }
+        $('#quickFactsSel').val('POP010210');
+        //$('#quickFactsSel').change(updateInfo);
+    })
+    .success(function() { console.log("second success"); })
+    .error(function(jqXHR, textStatus, errorThrown) {
+            console.log("error " + textStatus);
+            console.log("incoming Text " + jqXHR.responseText);
+        })
+    .complete(function() { console.log("complete"); });
+
+    $.getJSON('graphgame.cgi?action=getUSStatesAndCountiesQuickFactsDataSet', function(data) {
+        quickFacts.dataSet = data.data;
+    })
+    .success(function() { console.log("second success"); })
+    .error(function(jqXHR, textStatus, errorThrown) {
+            console.log("error " + textStatus);
+            console.log("incoming Text " + jqXHR.responseText);
+        })
+    .complete(function() { console.log("complete"); });
+    
+    $('#visualizeQuickFact').click(function(){
+        visualizeQuickFact();
+    });
+
+    $('#scaleSel').change(function(){
+        var scale = $('#scaleSel').val();
+        if (scale == 'logarithmic') {
+            $('#base').show();
+        } else {
+            $('#base').hide();
+        }
+    });
 }

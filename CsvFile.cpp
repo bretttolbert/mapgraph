@@ -62,7 +62,7 @@ namespace GraphGame
     std::string CsvFile::toJSON() const
     {
         std::string json;
-        json += "{\n\"rows:[\"";
+        json += "{\n\"data\":[\n";
         std::vector<std::vector<std::string> >::const_iterator it;
         for (it=rows.begin(); it!=rows.end(); ++it)
         {

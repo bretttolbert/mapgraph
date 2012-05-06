@@ -5,6 +5,7 @@
 #include <map>
 
 #include "../GraphGame.h"
+#include "../CsvFile.h"
 #include "../CsvAdjacencyListFile.h"
 #include "../USCountiesAdjacencyListFile.h"
 #include "../IntegerIdAdjacencyListFile.h"
@@ -169,8 +170,17 @@ namespace GraphGame
             std::cout << "]";
             std::cout << "\n}\n";
         }
-        else if (params["action"] == "getAdjacencyList")
-        {
+        else if (params["action"] == "getUSStatesAndCountiesQuickFactsDataSet")
+        {            
+            std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
+            CsvFile csv(GraphGame::absolutePath("data/USStatesAndCountiesQuickFacts/DataSet.csv"));
+            std::cout << csv.toJSON() << std::endl;
+        }
+        else if (params["action"] == "getUSStatesAndCountiesQuickFactsDataDict")
+        {            
+            std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
+            CsvFile csv(GraphGame::absolutePath("data/USStatesAndCountiesQuickFacts/DataDict.csv"));
+            std::cout << csv.toJSON() << std::endl;
         }
         else
         {

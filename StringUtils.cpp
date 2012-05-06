@@ -1,7 +1,9 @@
-#include "StringUtils.h"
+#include <iostream>
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+
+#include "StringUtils.h"
 
 std::vector<std::string> StringUtils::split(const std::string& str, char delim)
 {
@@ -72,6 +74,36 @@ bool StringUtils::iequals(std::string s1, std::string s2)
     std::transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
     std::transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
     return (s1 == s2);
+}
+
+std::string StringUtils::strip(const std::string& str, const std::string& charsToStrip)
+{
+    std::string result;
+    size_t goodPos = str.find_first_not_of(charsToStrip);
+    if (goodPos != std::string::npos)
+    {
+        result = str.substr(goodPos);
+        std::reverse(result.begin(), result.end());
+        goodPos = result.find_first_not_of(charsToStrip);
+        if (goodPos != std::string::npos)
+        {
+            result = result.substr(goodPos);
+        }
+        std::reverse(result.begin(), result.end());
+    }
+    return result;
+}
+
+std::string StringUtils::replaceAll(const std::string& str, const std::string& a, const std::string& b)
+{
+    std::string result = str;
+    size_t pos = 0;
+    while((pos = result.find(a, pos)) != std::string::npos) 
+    {
+        result.replace(pos, a.length(), b);
+        pos += b.length();
+    }
+    return result;
 }
 
 StringUtils::CaseInsensitiveComparator::CaseInsensitiveComparator(const std::string& strToMatch)

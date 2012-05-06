@@ -16,6 +16,7 @@
 #include "USStatesSvgFile.h"
 #include "USCountiesAdjacencyListFile.h"
 #include "CsvAdjacencyListFile.h"
+#include "CsvFile.h"
 #include "Demos.h"
 #include "Utils.h"
 #include "StringUtils.h"
@@ -533,6 +534,8 @@ namespace GraphGame
             else if (mode == MODE_TEST)
             {
                 std::cout << "Test stub\n";
+                CsvFile csv(absolutePath("data/USStatesAndCountiesQuickFacts/DataDict.csv"));
+                std::cout << csv.toJSON() << std::endl;
             }
             else
             {

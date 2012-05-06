@@ -30,7 +30,7 @@ namespace GraphGame
         NODES_PRESET_WASHINGTONS
     };
 
-    #define GRAPH_GAME_ROOT "/var/www/graphgame"
+    #define GRAPH_GAME_ROOT "/home/brett/Projects/graphgame"
 
     class GraphGame
     {

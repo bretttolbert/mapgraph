@@ -11,7 +11,9 @@ var af; //adjacency file reset name
 /*
 var colorScale = ['#ff0000','#ff8000','#ffcd00','#ffff00','#cde600','#80e600','#00ff00','#00ff9a','#00ffff','#00cdff','#0080ff','#0000ff'];
 */
-var colorScale = ['#0000ff','#0080ff','#00cdff','#00ffff','#00ff9a','#00ff00','#80e600','#cde600','#ffff00','#ffcd00','#ff8000','#ff0000'];
+//var colorScale = ['#0000ff','#0080ff','#00cdff','#00ffff','#00ff9a','#00ff00','#80e600','#cde600','#ffff00','#ffcd00','#ff8000','#ff0000'];
+var colorScale = ['#d2a3f5','#cea3f5','#caa3f5','#c6a3f5','#c3a3f5','#bfa3f5','#bba3f5','#b7a3f5','#b4a3f5','#b0a3f5','#aca3f5','#a8a3f5','#a4a3f5','#a3a6f5','#a3a9f5','#a3adf5','#a3b1f5','#a3b5f5','#a3b9f5','#a3bcf5','#a3c0f5','#a3c4f5','#a3c8f5','#a3cbf5','#a3cff5','#a3d3f5','#a3d7f5','#a3daf5','#a3def5','#a3e2f5','#a3e6f5','#a3eaf5','#a3edf5','#a3f1f5','#a3f5f5','#a3f5f1','#a3f5ed','#a3f5ea','#a3f5e6','#a3f5e2','#a3f5de','#a3f5da','#a3f5d7','#a3f5d3','#a3f5cf','#a3f5cb','#a3f5c8','#a3f5c4','#a3f5c0','#a3f5bc','#a3f5b9','#a3f5b5','#a3f5b1','#a3f5ad','#a3f5a9','#a3f5a6','#a4f5a3','#a8f5a3','#acf5a3','#b0f5a3','#b4f5a3','#b7f5a3','#bbf5a3','#bff5a3','#c3f5a3','#c6f5a3','#caf5a3','#cef5a3','#d2f5a3','#d5f5a3','#d9f5a3','#ddf5a3','#e1f5a3','#e4f5a3','#e8f5a3','#ecf5a3','#f0f5a3','#f4f5a3','#f5f2a3','#f5efa3','#f5eba3','#f5e7a3','#f5e3a3','#f5dfa3','#f5dca3','#f5d8a3','#f5d4a3','#f5d0a3','#f5cda3','#f5c9a3','#f5c5a3','#f5c1a3','#f5bea3','#f5baa3','#f5b6a3','#f5b2a3','#f5aea3','#f5aba3','#f5a7a3','#f5a3a3'];
+//var colorScale = ['#a3bef5','#a3daf5','#a3f5f5','#a3f5da','#a3f5be','#a3f5a3','#bef5a3','#daf5a3','#f5f5a3','#f5daa3','#f5bea3','#f5a3a3'];
 
 var USStatesAndCountiesQuickFacts = function(){
     this.dataSet = [];
@@ -27,7 +29,7 @@ var USStatesAndCountiesQuickFacts = function(){
     }
 }
 var quickFacts = new USStatesAndCountiesQuickFacts();
-var extrema = {};
+var stats = {};
 
 function getNodeBySvgElemId(id) {
     var node = null;
@@ -62,6 +64,7 @@ function setDefaultSvgElemFill(elem) {
 
 $(function(){
     $('#search').val('');
+    $('#base').hide();
     setTimeout(ready, 500);
 });
 
@@ -181,6 +184,7 @@ function bfs(startNode, goalNode, pathFill) {
 }
 
 function greedyColoring(maxTries) {
+    $('#loaderContainer').show();
     if (maxTries == 0) {
         alert("Greedy coloring failed. Insufficient number of colors.");
         return;
@@ -231,12 +235,14 @@ function greedyColoring(maxTries) {
         }
         if (!coloringFailed) {
             //coloring succeeded
-            alert("Greedy coloring succeeded on try " + tryNum);
+            log("Greedy coloring succeeded on try " + tryNum);
+            $('#loaderContainer').hide();
             return;
         }
     }
     //coloring failed, no more tries
-    alert("Greedy coloring failed.");
+    log("Greedy coloring failed.");
+    $('#loaderContainer').hide();
 }
 
 function resetNodes(resetSvg) {
@@ -250,42 +256,98 @@ function resetNodes(resetSvg) {
     }
 }
 
-function findExtrema() {
+function calculateStats() {
     var selectedQuickFact = $('#quickFactsSel').val();
+    var total = 0;
+    var count = 0;
+    for (var i=0; i<quickFacts.dataSet.length; ++i) {
+        var record = quickFacts.dataSet[i];
+        //only consider records that match a known fips
+        var fips = parseInt(record['FIPS'], 10);
+        if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
+            ++count;
+            var val = parseFloat(record[selectedQuickFact]);
+            total += val;
+            if (stats.minVal == undefined || val < stats.minVal) {
+                stats.minVal = val;
+                stats.minNode = nodeIdToNodeObjMap[fips];
+            }
+            if (stats.maxVal == undefined || val > stats.maxVal) {
+                stats.maxVal = val;
+                stats.maxNode = nodeIdToNodeObjMap[fips];
+            }
+        }
+    }
+    stats.span = stats.maxVal - stats.minVal;
+    stats.mean = total / count;
+    stats.n = count;
+    //now calculate standard deviation
+    // sigma = sqrt(term1 - term2**2)
+    // term1 = sum([i**2 for i in S]) / n
+    // term2 = sum([i for i in S]) / n
+    var term1 = 0;
+    var term2 = 0;
     for (var i=0; i<quickFacts.dataSet.length; ++i) {
         var record = quickFacts.dataSet[i];
         //only consider records that match a known fips
         var fips = parseInt(record['FIPS'], 10);
         if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
             var val = parseFloat(record[selectedQuickFact]);
-            if (extrema.minVal == undefined || val < extrema.minVal) {
-                extrema.minVal = val;
-                extrema.minNode = nodeIdToNodeObjMap[fips];
+            term1 += Math.pow(val,2);
+            term2 += val;
+        }
+    }
+    term1 /= stats.n;
+    term2 /= stats.n;
+    stats.sigma = Math.sqrt(term1 - Math.pow(term2,2));
+
+    //now find max and min std deviations
+    var minStdDeviations; //value which is the most std deviations lower than mean
+    var maxStdDeviations; //value which is the most std deviations higher than mean
+    for (var i=0; i<quickFacts.dataSet.length; ++i) {
+        var record = quickFacts.dataSet[i];
+        //only consider records that match a known fips
+        var fips = parseInt(record['FIPS'], 10);
+        if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
+            var val = parseFloat(record[selectedQuickFact]);
+            var deviationFromMean = val - stats.mean;
+            var stdDeviations = deviationFromMean / stats.sigma;
+            if (minStdDeviations == undefined || stdDeviations < minStdDeviations) {
+                minStdDeviations = stdDeviations;
             }
-            if (extrema.maxVal == undefined || val > extrema.maxVal) {
-                extrema.maxVal = val;
-                extrema.maxNode = nodeIdToNodeObjMap[fips];
+            if (maxStdDeviations == undefined || stdDeviations > maxStdDeviations) {
+                maxStdDeviations = stdDeviations;
             }
         }
     }
-    extrema.span = extrema.maxVal - extrema.minVal;
-    if (extrema.minNode != undefined && extrema.maxNode != undefined) {
-        log('Extrema:');
-        log('Min: ' + extrema.minVal + ' ' + nodeToString(extrema.minNode));
-        log('Max: ' + extrema.maxVal + ' ' + nodeToString(extrema.maxNode));
-        log('Span: ' + extrema.span);
+    stats.minStdDeviations = minStdDeviations;
+    stats.maxStdDeviations = maxStdDeviations;
+    stats.spanInStdDeviations = maxStdDeviations - minStdDeviations;
+
+    if (stats.minNode != undefined && stats.maxNode != undefined) {
+        log('Stats:');
+        log('n: ' + stats.n);
+        log('Min: ' + stats.minVal + ' ' + nodeToString(stats.minNode));
+        log('Max: ' + stats.maxVal + ' ' + nodeToString(stats.maxNode));
+        log('Span: ' + stats.span);
+        log('Mean: ' + stats.mean);
+        log('Sigma: ' + stats.sigma);
+        log('MinStdDeviations: ' + stats.minStdDeviations);
+        log('MaxStdDeviations: ' + stats.maxStdDeviations);
+        log('SpanInStdDeviations: ' + stats.spanInStdDeviations);
     }
 }
 
 function visualizeQuickFact() {
+    $('#loaderContainer').show();
     clearSelectedNodes();
     clearPath();
     resetNodes(true);
     var selectedQuickFact = $('#quickFactsSel').val();
     var scale = $('#scaleSel').val();
     var base = parseInt($('#base').val(), 10);
-    findExtrema();
-    var highestPct, highestNode, highestVal;
+    calculateStats();
+    //var highestPct, highestNode, highestVal;
     for (var i=0; i<quickFacts.dataSet.length; ++i) {
         var record = quickFacts.dataSet[i];
         //only consider records that match a known fips
@@ -293,27 +355,42 @@ function visualizeQuickFact() {
         if (nodeIdToNodeObjMap.hasOwnProperty(fips)) {
             var node = nodeIdToNodeObjMap[fips];
             var val = parseFloat(record[selectedQuickFact]);
-            var pct = (val - extrema.minVal) / extrema.span;
-            if (highestPct == undefined || pct > highestPct) {
-                highestPct = pct;
-                highestNode = node;
-                highestVal = val;
-            }
-            for (var j=colorScale.length-1; j>=0; --j) {
-                var scalePct;
-                if (scale == 'linear') {
-                    scalePct = j / colorScale.length;
-                } else if (scale == 'logarithmic') {
-                    scalePct = Math.pow(base,j) / Math.pow(base,colorScale.length);
+            if (scale == 'stdDeviation') {
+                var deviationFromMean = val - stats.mean;
+                var stdDeviations = deviationFromMean / stats.sigma;
+                //need to go from -3 sigma to 3 sigma
+                var stepWidth = 6 / colorScale.length;
+                var currentStep = -3;
+                for (var j=0; j<colorScale.length; ++j) {
+                    currentStep += stepWidth;
+                    if (stdDeviations < currentStep || j==colorScale.length-1) {
+                        setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
+                        break;
+                    }
                 }
-                if (pct > scalePct || j==0) {
-                    setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
-                    break;
+            } else {
+                var pct = (val - stats.minVal) / stats.span;
+                if (highestPct == undefined || pct > highestPct) {
+                    highestPct = pct;
+                    highestNode = node;
+                    highestVal = val;
+                }
+                for (var j=colorScale.length-1; j>=0; --j) {
+                    var scalePct;
+                    if (scale == 'linear') {
+                        scalePct = j / colorScale.length;
+                    } else if (scale == 'logarithmic') {
+                        scalePct = Math.pow(base,j) / Math.pow(base,colorScale.length);
+                    }
+                    if (pct > scalePct || j==0) {
+                        setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
+                        break;
+                    }
                 }
             }
         }
     }
-    console.log('highestPct=' + highestPct + ' highestNode: ' + nodeToString(highestNode) + ' highestVal: ' + highestVal);
+    $('#loaderContainer').hide();
 }
 
 function ready() {
@@ -350,7 +427,7 @@ function ready() {
                     selectNode(getNodeBySvgElemId(this.id));             
                 });
             } else {
-                console.log("failed to get node element");
+                console.log("Failed to get svg element for " + nodeToString(node));
             }
         });
         $('#search').keyup(function(){
@@ -454,4 +531,6 @@ function ready() {
             $('#base').hide();
         }
     });
+
+    $('#loaderContainer').hide();
 }

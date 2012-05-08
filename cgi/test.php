@@ -40,6 +40,20 @@ a:active {
 label {
     font-size: 10px;
 }
+#loaderContainer {
+    position: absolute;
+    display: table;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+#loaderPosition {
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/GraphGame.js"></script>
@@ -71,7 +85,8 @@ label {
     <label for="scaleSel">Scale: </label> 
     <select id="scaleSel">
         <option value="linear">Linear</option>
-        <option value="logarithmic" selected="selected">Logarithmic</option>
+        <option value="logarithmic">Logarithmic</option>
+        <option value="stdDeviation" selected="selected">Standard Deviation</option>
     </select>
     <span id="baseSpan"><label for="base">Base: </label><input type="text" id="base" value="2" /></span>
     <input type="button" value="Visualize" id="visualizeQuickFact" />
@@ -89,5 +104,15 @@ echo "<input type=\"hidden\" id=\"af\" value=\"$af\" />\n";
 echo "<input type=\"hidden\" id=\"defaultNodeFill\" value=\"$defaultNodeFill\" />\n";
 ?>
 <textarea id="log" rows="6" cols="80"></textarea>
+<div id="loaderContainer">
+    <div id="loaderPosition">
+    <?php
+        $size = 2;
+        $width = 54*$size;
+        $height = 55*$size;
+        echo "<img src=\"img/ajax-loader.gif\" width=\"$width\" height=\"$height\"/>";
+    ?>
+    </div>
+</div>
 </body>
 </html>

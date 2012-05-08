@@ -64,7 +64,7 @@ function setDefaultSvgElemFill(elem) {
 
 $(function(){
     $('#search').val('');
-    $('#base').hide();
+    $('#baseSpan').hide();
     setTimeout(ready, 500);
 });
 
@@ -346,6 +346,8 @@ function visualizeQuickFact() {
     var selectedQuickFact = $('#quickFactsSel').val();
     var scale = $('#scaleSel').val();
     var base = parseInt($('#base').val(), 10);
+    var minSigma = parseInt($('#minSigma').val(), 10);
+    var maxSigma = parseInt($('#maxSigma').val(), 10);
     calculateStats();
     //var highestPct, highestNode, highestVal;
     for (var i=0; i<quickFacts.dataSet.length; ++i) {
@@ -358,9 +360,9 @@ function visualizeQuickFact() {
             if (scale == 'stdDeviation') {
                 var deviationFromMean = val - stats.mean;
                 var stdDeviations = deviationFromMean / stats.sigma;
-                //need to go from -3 sigma to 3 sigma
-                var stepWidth = 6 / colorScale.length;
-                var currentStep = -3;
+                //need to go from minSigma to maxSigma
+                var stepWidth = (maxSigma - minSigma) / colorScale.length;
+                var currentStep = minSigma;
                 for (var j=0; j<colorScale.length; ++j) {
                     currentStep += stepWidth;
                     if (stdDeviations < currentStep || j==colorScale.length-1) {
@@ -526,9 +528,14 @@ function ready() {
     $('#scaleSel').change(function(){
         var scale = $('#scaleSel').val();
         if (scale == 'logarithmic') {
-            $('#base').show();
+            $('#baseSpan').show();
         } else {
-            $('#base').hide();
+            $('#baseSpan').hide();
+        }
+        if (scale == 'stdDeviation') {
+            $('#stdDeviationParamsSpan').show();
+        } else {
+            $('#stdDeviationParamsSpan').hide();
         }
     });
 

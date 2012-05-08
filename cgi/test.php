@@ -31,11 +31,9 @@ a:active {
 #colors {
     width: 400px;
 }
-#numTries {
-    width: 50px;
-}
-#base {
+.SmallNumericField {
     width: 30px;
+    text-align: center;
 }
 label {
     font-size: 10px;
@@ -76,8 +74,10 @@ label {
 <b>Breadth First Search</b> <input type="button" id="bfs-demo" value="Run"/>
 <br/>
 <b>Greedy Coloring</b> 
-    <label for="colors">Colors: </label><input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
-    <label for="numTries">Retry: </label><input type="text" id="numTries" value="10" />
+    <label for="colors">Colors: </label>
+    <input type="text" id="colors" value="lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral" />
+    <label for="numTries">Retry: </label>
+    <input class="SmallNumericField" type="text" id="numTries" value="10" />
 <input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>
@@ -88,7 +88,16 @@ label {
         <option value="logarithmic">Logarithmic</option>
         <option value="stdDeviation" selected="selected">Standard Deviation</option>
     </select>
-    <span id="baseSpan"><label for="base">Base: </label><input type="text" id="base" value="2" /></span>
+    <span id="baseSpan">
+        <label for="base">Base: </label>
+        <input class="SmallNumericField" type="text" id="base" value="2" />
+    </span>
+    <span id="stdDeviationParamsSpan">
+        <input class="SmallNumericField" type="text" id="minSigma" value="-1" />
+        &sigma; <label>to</label>
+        <input class="SmallNumericField" type="text" id="maxSigma" value="1" />
+        &sigma;
+    </span>
     <input type="button" value="Visualize" id="visualizeQuickFact" />
 <br/>
 <?php 

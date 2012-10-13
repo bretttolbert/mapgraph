@@ -1,5 +1,4 @@
-﻿<?php header('Content-type: text/html; charset=utf-8'); ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
 File for experimenting with client side manipulation of SVG.
 -->

@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "CsvAdjacencyListFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     class USCountiesGame : public Game
     {

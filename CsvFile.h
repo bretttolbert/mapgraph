@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace GraphGame
+namespace MapGraph
 {
     /**
      * For standard CSV (Comma Separated Values) files.

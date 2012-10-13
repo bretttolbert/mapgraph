@@ -8,7 +8,7 @@
 #include "CsvAdjacencyListFile.h"
 #include "StringUtils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     CsvAdjacencyListFile::CsvAdjacencyListFile(const std::string& filename)
     {

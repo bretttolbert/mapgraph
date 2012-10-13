@@ -2,11 +2,11 @@
 #include <cmath>
 #include <ctime>
 
-#include "GraphGame.h"
+#include "MapGraph.h"
 
 int main(int argc, char *argv[])
 {
     srand((unsigned int)time(NULL));
-    GraphGame::GraphGame::parseCommandLineArgs(argc,argv);
+    MapGraph::MapGraph::parseCommandLineArgs(argc,argv);
     return 0;
 }

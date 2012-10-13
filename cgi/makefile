@@ -1,16 +1,16 @@
 CC_FLAGS = -c -Wall -fpermissive
-OBJ = main.o GraphGame.o StringUtils.o Game.o Demos.o USCountiesGame.o CsvFile.o SvgFile.o USCountiesSvgFile.o USStatesSvgFile.o IntegerIdAdjacencyListFile.o CsvAdjacencyListFile.o USCountiesAdjacencyListFile.o TravelingSalesmanProblem.o tinyxml2.o
+OBJ = main.o MapGraph.o StringUtils.o Game.o Demos.o USCountiesGame.o CsvFile.o SvgFile.o USCountiesSvgFile.o USStatesSvgFile.o IntegerIdAdjacencyListFile.o CsvAdjacencyListFile.o USCountiesAdjacencyListFile.o TravelingSalesmanProblem.o tinyxml2.o
 
-all: graphgame
+all: mapgraph
 
-graphgame: $(OBJ)
-	g++ $(OBJ) -o graphgame.cgi
+mapgraph: $(OBJ)
+	g++ $(OBJ) -o mapgraph.cgi
 
 main.o: main.cpp
 	g++ $(CC_FLAGS) main.cpp
 
-GraphGame.o: ../GraphGame.cpp
-	g++ $(CC_FLAGS) ../GraphGame.cpp
+MapGraph.o: ../MapGraph.cpp
+	g++ $(CC_FLAGS) ../MapGraph.cpp
 
 StringUtils.o: ../StringUtils.cpp
 	g++ $(CC_FLAGS) ../StringUtils.cpp
@@ -52,4 +52,4 @@ tinyxml2.o:	../tinyxml2/tinyxml2.cpp
 	g++ $(CC_FLAGS) ../tinyxml2/tinyxml2.cpp
 
 clean:
-	rm -rf *o graphgame.cgi
+	rm -rf *o mapgraph.cgi

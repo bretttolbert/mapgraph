@@ -11,9 +11,9 @@
 #include <cmath>
 
 #include "AdjacencyListFile.h"
-#include "GraphGame.h"
+#include "MapGraph.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     #define DEBUG_GRAPH 0
 
@@ -96,7 +96,7 @@ namespace GraphGame
             for (jt=it->second.begin(); jt!=it->second.end(); ++jt)
             {
                 Node* adjacentNode = findNodeByValue(*jt);
-                if (adjacentNode == NULL && GraphGame::showWarnings)
+                if (adjacentNode == NULL && MapGraph::showWarnings)
                 {
                     std::cout << "Warning: No entry was found for \"" << *jt << "\" although it was specified as a neighbor of \"" << it->first << "\".\n";
                 }

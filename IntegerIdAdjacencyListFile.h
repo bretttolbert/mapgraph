@@ -6,7 +6,7 @@
 
 #include "AdjacencyListFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     /**
      * Type of adjacency list file which uses integer IDs to respresent each node

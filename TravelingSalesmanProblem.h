@@ -9,7 +9,7 @@
 #include "USCountiesAdjacencyListFile.h"
 #include "USCountiesSvgFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     class TravelingSalesmanProblem
     {

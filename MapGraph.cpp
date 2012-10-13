@@ -7,7 +7,7 @@
 #include <cstring>
 #include <cassert>
 
-#include "GraphGame.h"
+#include "MapGraph.h"
 #include "Game.h"
 #include "USCountiesGame.h"
 #include "TravelingSalesmanProblem.h"
@@ -21,13 +21,13 @@
 #include "Utils.h"
 #include "StringUtils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
-    bool GraphGame::showWarnings = false;
+    bool MapGraph::showWarnings = false;
 
-    std::string GraphGame::absolutePath(const char* relativePath)
+    std::string MapGraph::absolutePath(const char* relativePath)
     {
-        std::string result = GRAPH_GAME_ROOT;
+        std::string result = MAP_GRAPH_ROOT;
         if (result[result.size()-1] != '/')
         {
             result += '/';
@@ -36,7 +36,7 @@ namespace GraphGame
         return result;
     }
 
-    int GraphGame::parseCommandLineArgs(int argc, char *argv[])
+    int MapGraph::parseCommandLineArgs(int argc, char *argv[])
     {
         Mode mode = MODE_UNDEFINED;
         bool usingAdjacencyFilePreset = false;

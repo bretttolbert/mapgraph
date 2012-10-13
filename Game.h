@@ -7,7 +7,7 @@
 #include "IntegerIdAdjacencyListFile.h"
 #include "SvgFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
 #define DEBUG_GAME 0
     class Game

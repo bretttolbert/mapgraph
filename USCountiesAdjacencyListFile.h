@@ -7,7 +7,7 @@
 
 #include "IntegerIdAdjacencyListFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     #define USCOUNTIES_ADJACENCY_LIST_FILENAME "US_county_adjacency_2010.txt"
 

@@ -3,7 +3,7 @@
 
 #include <set>
 
-namespace GraphGame
+namespace MapGraph
 {
     template <typename T>
     class AdjacencyListFile

@@ -1,11 +1,11 @@
-# graphgame ignore #
+# mapgraph ignore #
 ####################
-graphgame
+mapgraph
 output.svg
 output.txt
 output/
 tinyxml2/
-cgi/graphgame.cgi
+cgi/mapgraph.cgi
 cgi/out.txt
 *~
 

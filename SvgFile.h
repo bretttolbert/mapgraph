@@ -5,7 +5,7 @@
 
 #include "tinyxml2/tinyxml2.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     class SvgFile
     {

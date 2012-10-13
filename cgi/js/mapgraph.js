@@ -413,7 +413,7 @@ function ready() {
         return;
     }
 
-    $.getJSON('graphgame.cgi?action=getNodes&af='+af, function(data) {
+    $.getJSON('js/nodes-'+af+'.js', function(data) {
         nodeList = data.nodes;
         nodeIdToNodeObjMap = {};
         nodeStringToNodeObjMap = [];
@@ -492,7 +492,7 @@ function ready() {
         })
     .complete(function() { console.log("complete"); });
 
-    $.getJSON('graphgame.cgi?action=getUSStatesAndCountiesQuickFactsDataDict', function(data) {
+    $.getJSON('js/us-states-and-counties-quick-facts-data-dict.js', function(data) {
         quickFacts.dataDict = data.data;
         for (var i=0; i<quickFacts.dataDict.length; ++i) {
             var fact = quickFacts.dataDict[i];
@@ -511,7 +511,7 @@ function ready() {
         })
     .complete(function() { console.log("complete"); });
 
-    $.getJSON('graphgame.cgi?action=getUSStatesAndCountiesQuickFactsDataSet', function(data) {
+    $.getJSON('js/us-states-and-counties-quick-facts-data-set.js', function(data) {
         quickFacts.dataSet = data.data;
     })
     .success(function() { console.log("second success"); })

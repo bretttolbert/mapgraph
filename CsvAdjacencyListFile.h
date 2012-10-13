@@ -3,7 +3,7 @@
 
 #include "IntegerIdAdjacencyListFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     class CsvAdjacencyListFile : public IntegerIdAdjacencyListFile
     {

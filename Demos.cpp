@@ -11,7 +11,7 @@
 #include <cassert>
 
 #include "Demos.h"
-#include "GraphGame.h"
+#include "MapGraph.h"
 #include "Game.h"
 #include "USCountiesGame.h"
 #include "TravelingSalesmanProblem.h"
@@ -23,7 +23,7 @@
 #include "StringUtils.h"
 #include "Utils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     void breadthFirstSearch_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg,
                                  int startId, int goalId)
@@ -125,7 +125,7 @@ namespace GraphGame
 
     void showNeighbors(IntegerIdAdjacencyListFile* af, SvgFile* svg, int nodeId)
     {
-        if (GraphGame::showWarnings)
+        if (MapGraph::showWarnings)
         {
             //create graph just for validation purposes
             Graph<int> g(af->getAdjacencyList());

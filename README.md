@@ -1,7 +1,7 @@
 Compiling from source:
 
-	git clone git@github.com:bretttolbert/graphgame.git
-	cd graphgame
+	git clone git@github.com:bretttolbert/mapgraph.git
+	cd mapgraph
 	git clone git://github.com/leethomason/tinyxml2.git
 	make
 

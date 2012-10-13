@@ -7,15 +7,15 @@
 
 #include "USCountiesAdjacencyListFile.h"
 #include "StringUtils.h"
-#include "GraphGame.h"
+#include "MapGraph.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     USCountiesAdjacencyListFile::USCountiesAdjacencyListFile()
     {
         //std::cout << "Loading adjacency list file...\n";
         std::ifstream file;
-        std::string filepath = GraphGame::absolutePath(USCOUNTIES_ADJACENCY_LIST_FILENAME);
+        std::string filepath = MapGraph::absolutePath(USCOUNTIES_ADJACENCY_LIST_FILENAME);
         file.open(filepath.c_str(), std::ios::in);
         if (file.is_open())
         {

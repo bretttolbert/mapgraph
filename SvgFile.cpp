@@ -1,6 +1,6 @@
 #include "SvgFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     SvgFile::SvgFile()
     {

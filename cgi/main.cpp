@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 
-#include "../GraphGame.h"
+#include "../MapGraph.h"
 #include "../CsvFile.h"
 #include "../CsvAdjacencyListFile.h"
 #include "../USCountiesAdjacencyListFile.h"
@@ -14,7 +14,7 @@
 
 #define DEBUG 0
 
-namespace GraphGame
+namespace MapGraph
 {
     void die(const std::string& errorMsg)
     {
@@ -78,13 +78,13 @@ namespace GraphGame
             std::cout << "<!DOCTYPE html>\n";
             std::cout << "<html>\n";
             std::cout << "<head>\n";
-            std::cout << "<title>graphgame</title>\n";
+            std::cout << "<title>mapgraph</title>\n";
             std::cout << "</head>\n";
             std::cout << "<body>\n";
             std::cout << "<textarea rows=\"30\" cols=\"80\">";
             if (system(NULL))
             {
-                std::string cmd = "../graphgame ";
+                std::string cmd = "../mapgraph ";
                 cmd += params["args"] + " > out.txt 2>&1";
         #if DEBUG
                 std::cout << "cmd: " << cmd << std::endl;
@@ -126,7 +126,7 @@ namespace GraphGame
             IntegerIdAdjacencyListFile* af;
             if (params["af"] == "us-states")
             {
-                af = new CsvAdjacencyListFile(GraphGame::absolutePath("48US.txt"));
+                af = new CsvAdjacencyListFile(MapGraph::absolutePath("48US.txt"));
             }
             else if (params["af"] == "us-counties")
             {
@@ -173,13 +173,13 @@ namespace GraphGame
         else if (params["action"] == "getUSStatesAndCountiesQuickFactsDataSet")
         {            
             std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
-            CsvFile csv(GraphGame::absolutePath("data/USStatesAndCountiesQuickFacts/DataSet.csv"));
+            CsvFile csv(MapGraph::absolutePath("data/USStatesAndCountiesQuickFacts/DataSet.csv"));
             std::cout << csv.toJSON() << std::endl;
         }
         else if (params["action"] == "getUSStatesAndCountiesQuickFactsDataDict")
         {            
             std::cout << "Content-Type: application/json;charset=us-ascii\n\n";
-            CsvFile csv(GraphGame::absolutePath("data/USStatesAndCountiesQuickFacts/DataDict.csv"));
+            CsvFile csv(MapGraph::absolutePath("data/USStatesAndCountiesQuickFacts/DataDict.csv"));
             std::cout << csv.toJSON() << std::endl;
         }
         else
@@ -196,6 +196,6 @@ int main(int argc, char** argv)
     {
         queryStringOverride = argv[1];
     }
-    GraphGame::runCgi(queryStringOverride);
+    MapGraph::runCgi(queryStringOverride);
     return 0;
 }

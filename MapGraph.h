@@ -1,9 +1,9 @@
-#ifndef GRAPH_GAME_H
-#define GRAPH_GAME_H
+#ifndef MAP_GRAPH_H
+#define MAP_GRAPH_H
 
 #include <string>
 
-namespace GraphGame
+namespace MapGraph
 {
     enum Mode
     {
@@ -30,9 +30,9 @@ namespace GraphGame
         NODES_PRESET_WASHINGTONS
     };
 
-    #define GRAPH_GAME_ROOT "/var/www/graphgame"
+    #define MAP_GRAPH_ROOT "c:/wamp/www/projects/mapgraph"
 
-    class GraphGame
+    class MapGraph
     {
     public:
         static bool showWarnings;
@@ -41,4 +41,4 @@ namespace GraphGame
     };
 }
 
-#endif
+#endif // MAP_GRAPH_H

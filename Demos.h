@@ -4,7 +4,7 @@
 #include "IntegerIdAdjacencyListFile.h"
 #include "SvgFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     void breadthFirstSearch_Demo(IntegerIdAdjacencyListFile* af, SvgFile* svg, 
                                  int start, int goal);

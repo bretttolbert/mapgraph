@@ -1,13 +1,15 @@
+﻿<?php header('Content-type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html>
 <!--
 File for experimenting with client side manipulation of SVG.
 -->
 <html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <head>
 <?php
 $af = $_REQUEST["af"];
 ?>
-<title>graphgame</title>
+<title>mapgraph</title>
 <style type="text/css">
 body {
     font-family: sans-serif;
@@ -54,7 +56,7 @@ label {
 }
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/GraphGame.js"></script>
+<script type="text/javascript" src="js/mapgraph.js"></script>
 </head>
 <body>
 <!-- width="1110" height="704" -->

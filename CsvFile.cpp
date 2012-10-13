@@ -6,7 +6,7 @@
 #include "StringUtils.h"
 #include "Utils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     CsvFile::CsvFile(const std::string& filename)
     {

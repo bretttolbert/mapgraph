@@ -4,7 +4,7 @@
 #include "SvgFile.h"
 #include "IntegerIdAdjacencyListFile.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     #define US_STATES_SVG_FILENAME "svg/Map_of_USA_without_state_names.svg"
 

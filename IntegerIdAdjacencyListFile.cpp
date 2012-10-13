@@ -6,7 +6,7 @@
 #include "IntegerIdAdjacencyListFile.h"
 #include "StringUtils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     const AdjacencyListFile<int>::AdjacencyList& IntegerIdAdjacencyListFile::getAdjacencyList() const
     {

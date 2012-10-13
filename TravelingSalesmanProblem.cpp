@@ -1,8 +1,8 @@
 #include <fstream>
 #include "TravelingSalesmanProblem.h"
-#include "GraphGame.h"
+#include "MapGraph.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     TravelingSalesmanProblem::TravelingSalesmanProblem(
                                  IntegerIdAdjacencyListFile* af_, 

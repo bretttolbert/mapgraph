@@ -8,12 +8,12 @@
 #include <queue>
 #include <set>
 
-#include "GraphGame.h"
+#include "MapGraph.h"
 #include "Game.h"
 #include "StringUtils.h"
 #include "Utils.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     Game::Game(IntegerIdAdjacencyListFile* adjacencyFile_,
                SvgFile* svg_,

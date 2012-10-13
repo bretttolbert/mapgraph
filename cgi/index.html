@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>graphgame</title>
+<title>mapgraph</title>
 <style type="text/css">
 body {
     font-family: sans-serif;
@@ -12,68 +12,68 @@ body {
 </style>
 </head>
 <body>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m tsp-demo -af preset us-counties -nn preset washingtons -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m tsp-demo -af preset us-counties -nn random 100 -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m tsp-demo -af preset us-states -nn &quot;fl;ny;tx;ca;mt&quot; -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m greedy-coloring -af preset us-states -c &quot;lightseagreen;lightblue;lightsalmon;beige;plum&quot; -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m greedy-coloring -af preset us-states -c random 5 -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m greedy-coloring -af preset us-counties -c &quot;lightseagreen;lightblue;lightsalmon;beige;plum;lightcoral;teal&quot; -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m greedy-coloring -af preset us-counties -c random 7 -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m bfs-demo -af preset us-counties -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m bfs-demo -af preset us-counties -n1 &quot;madison, al&quot; -n2 &quot;san diego&quot; -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m neighbors -af preset us-counties -n1 &quot;madison, al&quot; -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value="-m neighbors -af preset us-counties -w"/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<form action="graphgame.cgi">
+<form action="mapgraph.cgi">
 <input type="text" id="args" name="args" value=""/>
 <input type="hidden" name="action" value="cli"/>
 <input type="submit" value="submit" />
 </form>
-<a href="../README.txt">readme</a> <a href="https://github.com/bretttolbert/graphgame">github</a> 
- <a href="test.php?af=us-states">test.php (us-states)</a>
- <a href="test.php?af=us-counties">test.php (us-counties)</a>
+<a href="../README.txt">readme</a> <a href="https://github.com/bretttolbert/mapgraph">github</a> 
+ <a href="map.php?af=us-states">map.php (us-states)</a>
+ <a href="map.php?af=us-counties">map.php (us-counties)</a>
 </body>
 </html>

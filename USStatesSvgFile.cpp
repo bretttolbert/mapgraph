@@ -3,14 +3,14 @@
 #include <string>
 
 #include "USStatesSvgFile.h"
-#include "GraphGame.h"
+#include "MapGraph.h"
 
-namespace GraphGame
+namespace MapGraph
 {
     USStatesSvgFile::USStatesSvgFile(IntegerIdAdjacencyListFile* adjacencyFile_)
         : adjacencyFile(adjacencyFile_)
     {
-        std::string filepath = GraphGame::absolutePath(US_STATES_SVG_FILENAME);
+        std::string filepath = MapGraph::absolutePath(US_STATES_SVG_FILENAME);
         if (doc.LoadFile(filepath.c_str()) != tinyxml2::XML_SUCCESS)
         {
             std::cerr << "Error: Failed to open " << filepath << std::endl;

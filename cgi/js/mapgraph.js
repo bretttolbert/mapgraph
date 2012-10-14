@@ -1,3 +1,15 @@
+var nodeData = null; //node JSON data
+var nodeIdToNodeObjMap = {}; //map of node id to node object (for fast lookups)
+var nodeStringIdToNodeObjMap = {}; //map of node sid to node object (for reverse lookups)
+var svg = null; //svg <embed> element
+var svgdoc = null; //svg document
+var selectedNodes = [];
+var pathNodes = []; //output of a pathfinding algorithm like bfs
+var defaultNodeFill = 'white'; //may be overriden by hidden input element
+var af; //adjacency file reset name
+var hoverFill = 'red';
+var isMouseOverKosovo = false; //Kosovo kludge
+
 function initToolTip() {
     var toolTip = $('#toolTip');
     toolTip.hide();
@@ -17,18 +29,6 @@ function updateToolTipPos(x,y) {
     $('#toolTip').css('left', x);
     $('#toolTip').css('top', y + 50);
 }
-
-var nodeData = null; //node JSON data
-var nodeIdToNodeObjMap = {}; //map of node id to node object (for fast lookups)
-var nodeStringIdToNodeObjMap = {}; //map of node sid to node object (for reverse lookups)
-var svg = null; //svg <embed> element
-var svgdoc = null; //svg document
-var selectedNodes = [];
-var pathNodes = []; //output of a pathfinding algorithm like bfs
-var defaultNodeFill = 'white'; //may be overriden by hidden input element
-var af; //adjacency file reset name
-var hoverFill = 'red';
-var isMouseOverKosovo = false; //Kosovo kludge
 
 /*
 var colorScale = ['#ff0000','#ff8000','#ffcd00','#ffff00','#cde600','#80e600','#00ff00','#00ff9a','#00ffff','#00cdff','#0080ff','#0000ff'];
@@ -507,9 +507,7 @@ function ready() {
                     $('#toolTip').html(toolTipTxt);
                     $('#toolTip').show();
                     //set hover fill
-                    if (!isNodeSelected(node)) {
-                        setSvgElemFill(this.id, hoverFill);
-                    }
+                    setSvgElemFill(this.id, hoverFill);
                 });
                 $(svgElem).mouseout(function(evt){
                     node = getNodeBySvgElemId(this.id);
@@ -520,7 +518,10 @@ function ready() {
                     $('#toolTip').html("");
                     $('#toolTip').hide();
                     //unset hover fill
-                    if (!isNodeSelected(node)) {
+                    if (isNodeSelected(node)) {
+                        var selectedNodeFill = $('#fill').val();
+                        setSvgElemFill(this.id, selectedNodeFill);
+                    } else {
                         setDefaultSvgElemFill(this.id);
                     }
                 });

@@ -825,6 +825,11 @@
     "s":"Norfolk Island",
     "n":[]
   },{
+    "id":566,
+    "sid":"ng",
+    "s":"Nigeria",
+    "n":[]
+  },{
     "id":558,
     "sid":"ni",
     "s":"Nicaragua",

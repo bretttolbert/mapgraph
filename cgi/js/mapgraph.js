@@ -28,6 +28,7 @@ var pathNodes = []; //output of a pathfinding algorithm like bfs
 var defaultNodeFill = 'white'; //may be overriden by hidden input element
 var af; //adjacency file reset name
 var hoverFill = 'red';
+var isMouseOverKosovo = false; //Kosovo kludge
 
 /*
 var colorScale = ['#ff0000','#ff8000','#ffcd00','#ffff00','#cde600','#80e600','#00ff00','#00ff9a','#00ffff','#00cdff','#0080ff','#0000ff'];
@@ -144,6 +145,10 @@ function isNodeSelected(node) {
 }
 
 function selectNode(node) {
+    //Kosovo kludge
+    if (af == 'world-countries' && (node.sid == 'rs' || node.s == 'Serbia') && isMouseOverKosovo) {
+        return; //ignore select
+    }
     var unselected = false;
     var selectedNodeFill = $('#fill').val();
     var selectedNodeIdx = selectedNodes.indexOf(node);
@@ -486,6 +491,14 @@ function ready() {
                 });
                 $(svgElem).mouseover(function(evt){
                     node = getNodeBySvgElemId(this.id);
+                    //Kosovo kludge
+                    if (af == 'world-countries') {
+                        if (node.sid == 'xk' || node.s == 'Kosovo') {
+                            isMouseOverKosovo = true;
+                        } else if (isMouseOverKosovo && (node.sid == 'rs' || node.s == 'Serbia')) {
+                            return; //don't show Serbia tooltip
+                        }
+                    }
                     var toolTipTxt = node.s + "<br>(id=" + leftPad(node.id, nodeData.columnInfo.id.digits);
                     if (node.hasOwnProperty('sid')) {
                         toolTipTxt += ' sid=' + node.sid;
@@ -500,6 +513,10 @@ function ready() {
                 });
                 $(svgElem).mouseout(function(evt){
                     node = getNodeBySvgElemId(this.id);
+                    //Kosovo kludge
+                    if (af == 'world-countries' && (node.sid == 'xk' || node.s == 'Kosovo')) {
+                        isMouseOverKosovo = false;
+                    }
                     $('#toolTip').html("");
                     $('#toolTip').hide();
                     //unset hover fill

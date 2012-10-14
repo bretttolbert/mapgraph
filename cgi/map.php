@@ -63,8 +63,16 @@ label {
 <embed id="svg" src="../svg/Map_of_USA_without_state_names.svg" />
 <?php } else if ($af == "us-counties") { ?>
 <embed id="svg" src="../svg/USA_Counties_with_FIPS_and_names.svg" />
+<?php } else if ($af == "world-countries") { ?>
+<embed id="svg" src="../svg/BlankMap-World6.svg" />
 <?php } ?>
 <br/>
+<b>Map:</b> 
+<select id="mapSel">
+    <option<?php if ($af == "world-countries") { echo " selected=\"selected\""; } ?>>world-countries</option>
+    <option<?php if ($af == "us-states") { echo " selected=\"selected\""; } ?>>us-states</option>
+    <option<?php if ($af == "us-counties") { echo " selected=\"selected\""; } ?>>us-counties</option>
+</select>
 <span id="info"></span>
 <br/>
 <label for="fill">Selected Color: </label><input type="text" id="fill" value="salmon"/>
@@ -82,6 +90,8 @@ label {
 <input type="button" id="greedy-coloring" value="Run"/>
 <br/>
 <div id="searchResults"></div>
+
+<?php if ($af == "us-counties") { ?>
 <b>Quick Facts</b>: <select id="quickFactsSel"></select> 
     <label for="scaleSel">Scale: </label> 
     <select id="scaleSel">
@@ -101,12 +111,15 @@ label {
     </span>
     <input type="button" value="Visualize" id="visualizeQuickFact" />
 <br/>
+<?php } ?>
 <?php 
 $defaultNodeFill = "white";
 if ($af == "us-states") {
     $defaultNodeFill = "white";
 } else if ($af == "us-counties") {
     $defaultNodeFill = "#d0d0d0";
+} else if ($af == "world-countries") {
+    $defaultNodeFill = "#e0e0e0";
 } else {
     die("Unrecognized preset");
 }
@@ -123,6 +136,9 @@ echo "<input type=\"hidden\" id=\"defaultNodeFill\" value=\"$defaultNodeFill\" /
         echo "<img src=\"img/ajax-loader.gif\" width=\"$width\" height=\"$height\"/>";
     ?>
     </div>
+</div>
+<div id="toolTip">
+
 </div>
 </body>
 </html>

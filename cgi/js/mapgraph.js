@@ -1,6 +1,26 @@
-var nodeList = []; //list of all node objects
+function initToolTip() {
+    var toolTip = $('#toolTip');
+    toolTip.hide();
+    toolTip.css({
+        'position':'absolute',
+        'left':'0',
+        'top':'0',
+        'border':'1px solid black',
+        'background-color': 'white',
+        });
+    $('window').mousemove(function(evt){
+        updateToolTipPos(evt.pageX, evt.pageY);
+    });
+}
+
+function updateToolTipPos(x,y) {
+    $('#toolTip').css('left', x);
+    $('#toolTip').css('top', y + 50);
+}
+
+var nodeData = null; //node JSON data
 var nodeIdToNodeObjMap = {}; //map of node id to node object (for fast lookups)
-var nodeStringToNodeObjMap = {}; //map of node string to node object
+var nodeStringIdToNodeObjMap = {}; //map of node sid to node object (for reverse lookups)
 var svg = null; //svg <embed> element
 var svgdoc = null; //svg document
 var selectedNodes = [];
@@ -31,40 +51,66 @@ var USStatesAndCountiesQuickFacts = function(){
 var quickFacts = new USStatesAndCountiesQuickFacts();
 var stats = {};
 
-function getNodeBySvgElemId(id) {
+function getNodeBySvgElemId(svgId) {
     var node = null;
-    if (af == "us-states") {
-        node = nodeStringToNodeObjMap[id];
-    } else if (af == "us-counties") {
-        var nodeId = parseInt(id, 10);
-        node = nodeIdToNodeObjMap[nodeId];
+    if (nodeData.svgIdSource == "sid") {
+        node = nodeStringIdToNodeObjMap[svgId];
+    } else if (nodeData.svgIdSource == "id") {
+        var id = parseInt(svgId, 10);
+        node = nodeIdToNodeObjMap[id];
+    } else {
+        throw 'Error: Invalid svgIdSource (' + nodeData.svgIdSource + ')';
     }
     return node;
 }
 
 function getSvgElemByNode(node) {
     var svgElem = null;
-    if (af == "us-states") {
-        svgElem = svgdoc.getElementById(node.nodeString);
-    } else if (af == "us-counties") {
-        svgElem = svgdoc.getElementById(fipsToString(node.nodeId));
+    if (nodeData.svgIdSource == "sid") {
+        svgElem = svgdoc.getElementById(node.sid);
+    } else if (nodeData.svgIdSource == "id") {
+        svgElem = svgdoc.getElementById(fipsToString(node.id));
+    } else {
+        throw 'Error: Invalid svgIdSource (' + nodeData.svgIdSource + ')';
     }
     return svgElem;
 }
 
-function setSvgElemFill(elem, fill) {
-    $(elem).attr('fill', fill);
-    $(elem).css('fill', fill);
+function getSvgElemIdByNode(node) {
+    var svgElemId = "";
+    if (nodeData.svgIdSource == "sid") {
+        svgElemId = node.sid;
+    } else if (nodeData.svgIdSource == "id") {
+        if (af == 'us-counties') {
+            svgElem = fipsToString(node.id);
+        } else {
+            svgElm = node.id.toString();
+        }
+    } else {
+        throw 'Error: Invalid svgIdSource (' + nodeData.svgIdSource + ')';
+    }
+    return svgElemId;    
 }
 
-function setDefaultSvgElemFill(elem) {
-    $(elem).attr('fill', defaultNodeFill);
-    $(elem).css('fill', defaultNodeFill);   
+function setSvgElemFill(svgElemId, fill) {
+    var elem = $('#'+svgElemId, svgdoc);
+    elem.css('fill', fill);
+    elem.attr('fill', fill);
+    elem.children().css('fill', fill);
+    elem.children().attr('fill', fill);
+}
+
+function setDefaultSvgElemFill(svgElemId) {
+    setSvgElemFill(svgElemId, defaultNodeFill);
 }
 
 $(function(){
     $('#search').val('');
     $('#baseSpan').hide();
+    $('#mapSel').change(function(){
+        window.location = 'map.php?af=' + $(this).val();
+    });
+    initToolTip();
     setTimeout(ready, 500);
 });
 
@@ -77,18 +123,31 @@ function fipsToString(fips) {
 }
 
 function nodeToString(node) {
-    var result = node.nodeString;
-    if (af == "us-states") {
-        result += ' (' + node.nodeId + ')';
-    } else if (af == "us-counties") {
-        result += ' (' + fipsToString(node.nodeId) + ')';
+    var result = node.s;
+    
+    result += ' (id=';
+    if (af == "us-counties") {
+        result += fipsToString(node.id);
+    } else {
+        result += node.id;
     }
+    
+    if (node.hasOwnProperty('sid')) {
+        result += ' sid=' + node.sid;
+    }
+    result += ')';
+    
     return result;
 }
 
 function log(str) {
     $('#log').val($('#log').val() + str + '\n');
     $('#log')[0].scrollTop = $('#log')[0].scrollHeight;
+}
+
+function isNodeSelected(node) {
+    var selectedNodeIdx = selectedNodes.indexOf(node);
+    return  (selectedNodeIdx != -1);
 }
 
 function selectNode(node) {
@@ -103,17 +162,16 @@ function selectNode(node) {
         } else {
             selectedNodes.splice(selectedNodeIdx, 1);
         }
-        svgElem = getSvgElemByNode(node);
-        setDefaultSvgElemFill(svgElem);
+        setDefaultSvgElemFill(getSvgElemIdByNode(node));
         /*
-        for (var i=0; i<node.neighbors.length; ++i) {
-            var neighbor = nodeIdToNodeObjMap[node.neighbors[i]];
-            setDefaultSvgElemFill(getSvgElemByNode(neighbor));
+        for (var i=0; i<node.n.length; ++i) {
+            var neighbor = nodeIdToNodeObjMap[node.n[i]];
+            setDefaultSvgElemFill(getSvgElemIdByNode(neighbor));
         }
         */
     } else {
         selectedNodes.push(node);
-        setSvgElemFill(getSvgElemByNode(node), selectedNodeFill);
+        setSvgElemFill(getSvgElemIdByNode(node), selectedNodeFill);
     }
     var selectedQuickFact = $('#quickFactsSel').val();
     var info = '';
@@ -123,15 +181,17 @@ function selectNode(node) {
         info += 'Selected: ';
     }
     info += nodeToString(node) + ' Neighbors: ';
-    for (var j=0; j<node.neighbors.length; ++j) {
-        var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+    for (var j=0; j<node.n.length; ++j) {
+        var neighbor = nodeIdToNodeObjMap[node.n[j]];
         info += nodeToString(neighbor);
-        if (j != node.neighbors.length-1) {
+        if (j != node.n.length-1) {
             info += ', ';
         }
     }
-    var quickFactsRow = quickFacts.getRowByFips(fipsToString(node.nodeId));
-    info += ' Quick Facts: ' + quickFactsRow[selectedQuickFact];
+    if (af == 'us-counties') {
+        var quickFactsRow = quickFacts.getRowByFips(fipsToString(node.nodeId));
+        info += ' Quick Facts: ' + quickFactsRow[selectedQuickFact];
+    }
     log(info);
 }
 
@@ -145,7 +205,7 @@ function clearSelectedNodes() {
 function clearPath() {
     for (var i in pathNodes) {
         var node = pathNodes[i];
-        setDefaultSvgElemFill(getSvgElemByNode(node));
+        setDefaultSvgElemFill(getSvgElemIdByNode(node));
     }
     pathNodes = [];
 }
@@ -162,19 +222,19 @@ function bfs(startNode, goalNode, pathFill) {
             var path = [];
             while (node != null && node != startNode) {
                 path.push(node);
-                setSvgElemFill(getSvgElemByNode(node), pathFill);
-                node = node.parent;           
+                setSvgElemFill(getSvgElemIdByNode(node), pathFill);
+                node = node.parent;   
             }
             pathNodes = pathNodes.concat(path);
             return path;
         } else {
             //enqueue neighbors
             //console.log('enqueuing neighbors of ' + nodeToString(currentNode));
-            for (var i=0; i<currentNode.neighbors.length; ++i) {
-                var neighbor = nodeIdToNodeObjMap[currentNode.neighbors[i]];
+            for (var i=0; i<currentNode.n.length; ++i) {
+                var neighbor = nodeIdToNodeObjMap[currentNode.n[i]];
                 if (neighbor.fill == defaultNodeFill) {
                     neighbor.fill = 'gray';
-                    //setSvgElemFill(getSvgElemByNode(neighbor), 'gray');
+                    //setSvgElemFill(getSvgElemIdByNode(neighbor), 'gray');
                     neighbor.parent = currentNode;
                     q.push(neighbor);
                 }
@@ -193,13 +253,14 @@ function greedyColoring(maxTries) {
         clearSelectedNodes();
         clearPath();
         resetNodes(true);
+        var numNodes = nodeData.nodes.length;
         var shuffledNodes = [];
-        for (var i=0; i<nodeList.length; ++i) {
-            shuffledNodes.push(nodeList[i]);
+        for (var i=0; i<numNodes; ++i) {
+            shuffledNodes.push(nodeData.nodes[i]);
         }
-        for (var i=0; i<shuffledNodes.length; ++i) {
-            var idx1 = Math.floor(Math.random()*nodeList.length);
-            var idx2 = Math.floor(Math.random()*nodeList.length);
+        for (var i=0; i<numNodes; ++i) {
+            var idx1 = Math.floor(Math.random()*numNodes);
+            var idx2 = Math.floor(Math.random()*numNodes);
             var t = shuffledNodes[idx1];
             shuffledNodes[idx1] = shuffledNodes[idx2];
             shuffledNodes[idx2] = t;
@@ -212,8 +273,8 @@ function greedyColoring(maxTries) {
         for (var i in shuffledNodes) {
             var node = shuffledNodes[i];
             var neighborColors = [];
-            for (var j in node.neighbors) {
-                var neighbor = nodeIdToNodeObjMap[node.neighbors[j]];
+            for (var j in node.n) {
+                var neighbor = nodeIdToNodeObjMap[node.n[j]];
                 if (neighbor.fill != defaultNodeFill) {
                     neighborColors.push(neighbor.fill);
                 }
@@ -246,12 +307,12 @@ function greedyColoring(maxTries) {
 }
 
 function resetNodes(resetSvg) {
-    for (var i=0; i<nodeList.length; ++i) {
-        var node = nodeList[i];
+    for (var i=0; i<nodeData.nodes.length; ++i) {
+        var node = nodeData.nodes[i];
         node.fill = defaultNodeFill;
         node.parent = null;
         if (resetSvg) {
-            setDefaultSvgElemFill(getSvgElemByNode(node));
+            setDefaultSvgElemFill(getSvgElemIdByNode(node));
         }
     }
 }
@@ -398,12 +459,12 @@ function visualizeQuickFact() {
 function ready() {
     af = $('#af').val();
     defaultNodeFill = $('#defaultNodeFill').val();
-    if (af == 'us-counties') {
-        $('#colors').val('lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral');
-        $('#numTries').val('20');
-    } else if (af == 'us-states') {
+    if (af == 'us-states') {
         $('#colors').val('lightseagreen,lightblue,lightsalmon,beige');
         $('#numTries').val('100');
+    } else {
+        $('#colors').val('lightseagreen,lightblue,lightsalmon,beige,plum,lightcoral');
+        $('#numTries').val('20');
     }
     //$('#svg').attr('src', '../svg/USA_Counties_with_FIPS_and_names.svg');
     svg = document.getElementById('svg');
@@ -414,19 +475,47 @@ function ready() {
     }
 
     $.getJSON('js/nodes-'+af+'.js', function(data) {
-        nodeList = data.nodes;
+        nodeData = data;
         nodeIdToNodeObjMap = {};
-        nodeStringToNodeObjMap = [];
-        $.each(nodeList, function(key, node) {
+        nodeStringIdToNodeObjMap = [];
+        $.each(nodeData.nodes, function(key, node) {
             node.fill = defaultNodeFill;
             node.parent = null;
-            nodeIdToNodeObjMap[node.nodeId] = node;
-            nodeStringToNodeObjMap[node.nodeString] = node;
+            nodeIdToNodeObjMap[node.id] = node;
+            if (node.hasOwnProperty('sid')) {
+                nodeStringIdToNodeObjMap[node.sid] = node;
+            }
             var svgElem = getSvgElemByNode(node);
             if (svgElem != null) {
                 $(svgElem).click(function(){
                     clearPath();
                     selectNode(getNodeBySvgElemId(this.id));             
+                });
+                $(svgElem).mouseover(function(evt){
+                    node = getNodeBySvgElemId(this.id);
+                    var toolTipTxt = node.s + "<br>(id=" + node.id;
+                    if (node.hasOwnProperty('sid')) {
+                        toolTipTxt += ' sid=' + node.sid;
+                    }
+                    toolTipTxt += ')';
+                    $('#toolTip').html(toolTipTxt);
+                    $('#toolTip').show();
+                    //set hover fill
+                    if (!isNodeSelected(node)) {
+                        setSvgElemFill(this.id, '#dddddd');
+                    }
+                });
+                $(svgElem).mouseout(function(evt){
+                    node = getNodeBySvgElemId(this.id);
+                    $('#toolTip').html("");
+                    $('#toolTip').hide();
+                    //unset hover fill
+                    if (!isNodeSelected(node)) {
+                        setDefaultSvgElemFill(this.id);
+                    }
+                });
+                $(svgElem).mousemove(function(evt){
+                    updateToolTipPos(evt.pageX, evt.pageY);
                 });
             } else {
                 console.log("Failed to get svg element for " + nodeToString(node));
@@ -434,12 +523,12 @@ function ready() {
         });
         $('#search').keyup(function(){
             var query = this.value.toLowerCase();
-            if (query.length < nodeList.length.toString(10).length-1) {
+            if (query.length < nodeData.nodes.length.toString(10).length-1) {
                 return;
             }
             var results = '';
-            for (var i in nodeList) {
-                var node = nodeList[i];
+            for (var i in nodeData.nodes) {
+                var node = nodeData.nodes[i];
                 var nodeDesc = nodeToString(node);
                 if (nodeDesc.toLowerCase().indexOf(query) != -1) {
                     results += '<a href="#" id="' + node.nodeId + '">'
@@ -456,7 +545,7 @@ function ready() {
             });
         });
         $('#random').click(function(){
-            selectNode(nodeList[Math.floor(Math.random() * nodeList.length)]);
+            selectNode(nodeData.nodes[Math.floor(Math.random() * nodeData.nodes.length)]);
         });
         $('#bfs-demo').click(function(){
             if (selectedNodes.length != 2) {
@@ -467,12 +556,12 @@ function ready() {
                 var path2 = bfs(selectedNodes[1], selectedNodes[0], 'yellow');
                 var node1Str = nodeToString(selectedNodes[0]);
                 var node2Str = nodeToString(selectedNodes[1]);
-                var info = '<b>BFS Results</b>:<br>'
+                var info = 'BFS Results:\n'
                     + node1Str + ' to ' + node2Str 
-                    + ' path length (orange): ' + path1.length + '<br>'
+                    + ' path length (orange): ' + path1.length + '\n'
                     + node2Str + ' to ' + node1Str 
-                    + ' path length (yellow): ' + path2.length + '<br>';
-                $('#info').html($('#info').html() + info);
+                    + ' path length (yellow): ' + path2.length + '\n';
+                log(info);
             }
         });
         $('#greedy-coloring').click(function(){
@@ -492,52 +581,54 @@ function ready() {
         })
     .complete(function() { console.log("complete"); });
 
-    $.getJSON('js/us-states-and-counties-quick-facts-data-dict.js', function(data) {
-        quickFacts.dataDict = data.data;
-        for (var i=0; i<quickFacts.dataDict.length; ++i) {
-            var fact = quickFacts.dataDict[i];
-            var opt = document.createElement('option');
-            opt.value = fact['Data_Item'];
-            opt.appendChild(document.createTextNode(fact['Item_Description']));
-            $('#quickFactsSel')[0].appendChild(opt);
-        }
-        $('#quickFactsSel').val('POP010210');
-        //$('#quickFactsSel').change(updateInfo);
-    })
-    .success(function() { console.log("second success"); })
-    .error(function(jqXHR, textStatus, errorThrown) {
-            console.log("error " + textStatus);
-            console.log("incoming Text " + jqXHR.responseText);
+    if (af == 'us-counties') {
+        $.getJSON('js/us-states-and-counties-quick-facts-data-dict.js', function(data) {
+            quickFacts.dataDict = data.data;
+            for (var i=0; i<quickFacts.dataDict.length; ++i) {
+                var fact = quickFacts.dataDict[i];
+                var opt = document.createElement('option');
+                opt.value = fact['Data_Item'];
+                opt.appendChild(document.createTextNode(fact['Item_Description']));
+                $('#quickFactsSel')[0].appendChild(opt);
+            }
+            $('#quickFactsSel').val('POP010210');
+            //$('#quickFactsSel').change(updateInfo);
         })
-    .complete(function() { console.log("complete"); });
+        .success(function() { console.log("second success"); })
+        .error(function(jqXHR, textStatus, errorThrown) {
+                console.log("error " + textStatus);
+                console.log("incoming Text " + jqXHR.responseText);
+            })
+        .complete(function() { console.log("complete"); });
 
-    $.getJSON('js/us-states-and-counties-quick-facts-data-set.js', function(data) {
-        quickFacts.dataSet = data.data;
-    })
-    .success(function() { console.log("second success"); })
-    .error(function(jqXHR, textStatus, errorThrown) {
-            console.log("error " + textStatus);
-            console.log("incoming Text " + jqXHR.responseText);
+        $.getJSON('js/us-states-and-counties-quick-facts-data-set.js', function(data) {
+            quickFacts.dataSet = data.data;
         })
-    .complete(function() { console.log("complete"); });
-    
-    $('#visualizeQuickFact').click(function(){
-        visualizeQuickFact();
-    });
+        .success(function() { console.log("second success"); })
+        .error(function(jqXHR, textStatus, errorThrown) {
+                console.log("error " + textStatus);
+                console.log("incoming Text " + jqXHR.responseText);
+            })
+        .complete(function() { console.log("complete"); });
+        
+        $('#visualizeQuickFact').click(function(){
+            visualizeQuickFact();
+        });
 
-    $('#scaleSel').change(function(){
-        var scale = $('#scaleSel').val();
-        if (scale == 'logarithmic') {
-            $('#baseSpan').show();
-        } else {
-            $('#baseSpan').hide();
-        }
-        if (scale == 'stdDeviation') {
-            $('#stdDeviationParamsSpan').show();
-        } else {
-            $('#stdDeviationParamsSpan').hide();
-        }
-    });
+        $('#scaleSel').change(function(){
+            var scale = $('#scaleSel').val();
+            if (scale == 'logarithmic') {
+                $('#baseSpan').show();
+            } else {
+                $('#baseSpan').hide();
+            }
+            if (scale == 'stdDeviation') {
+                $('#stdDeviationParamsSpan').show();
+            } else {
+                $('#stdDeviationParamsSpan').hide();
+            }
+        });
+    }
 
     $('#loaderContainer').hide();
 }

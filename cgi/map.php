@@ -116,12 +116,9 @@ label {
 $defaultNodeFill = "white";
 if ($af == "us-states") {
     $defaultNodeFill = "white";
-} else if ($af == "us-counties") {
-    $defaultNodeFill = "#d0d0d0";
-} else if ($af == "world-countries") {
-    $defaultNodeFill = "#e0e0e0";
 } else {
-    die("Unrecognized preset");
+    $defaultNodeFill = "#d0d0d0";
+    //$defaultNodeFill = "red";
 }
 echo "<input type=\"hidden\" id=\"af\" value=\"$af\" />\n";
 echo "<input type=\"hidden\" id=\"defaultNodeFill\" value=\"$defaultNodeFill\" />\n";

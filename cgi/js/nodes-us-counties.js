@@ -1,11 +1,11 @@
 {
   "svgFilename":"USA_Counties_with_FIPS_and_names.svg",
   "svgIdSource":"id",
-  "columnDescriptions":
+  "columnInfo":
   {
-      "id":"FIPS County Code",
-      "s":"County Name, State",
-      "n":"Neighboring County IDs"
+      "id":{"description":"FIPS County Code","digits":5},
+      "s":{"description":"County Name, State"},
+      "n":{"description:":"Neighboring County IDs"}
   },
   "nodes":[{
     "id":1001,

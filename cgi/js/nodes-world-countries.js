@@ -1,12 +1,12 @@
 ﻿{
   "svgFilename":"BlankMap-World6.svg",
   "svgIdSource":"sid",
-  "columnDescriptions":
+  "columnInfo":
   {
-      "id":"ISO 3166-1 numeric country code",
-      "sid":"ISO 3166-1 alpha-2 country code",
-      "s":"Country Name (common name)",
-      "n":"Neighboring Country IDs"
+      "id":{"description":"ISO 3166-1 numeric country code","digits":3},
+      "sid":{"description":"ISO 3166-1 alpha-2 country code"},
+      "s":{"description":"Country Name (common name)"},
+      "n":{"description":"Neighboring Country IDs"}
   },
   "nodes":[
   {
@@ -1035,6 +1035,11 @@
     "s":"Somalia",
     "n":[]
   },{
+    "id":740,
+    "sid":"sr",
+    "s":"Suriname",
+    "n":[]
+  },{
     "id":728,
     "sid":"ss",
     "s":"South Sudan",
@@ -1219,6 +1224,12 @@
     "sid":"ws",
     "s":"Samoa",
     "n":[]
+  },{
+    "id":689,
+    "sid":"xk",
+    "s":"Kosovo",
+    "n":[],
+    "remark":"XK is being used by the EU as a temporary country code for Kosovo. 689 is a non-standard country code (I made it up)"
   },{
     "id":887,
     "sid":"ye",

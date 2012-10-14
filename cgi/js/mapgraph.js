@@ -27,6 +27,7 @@ var selectedNodes = [];
 var pathNodes = []; //output of a pathfinding algorithm like bfs
 var defaultNodeFill = 'white'; //may be overriden by hidden input element
 var af; //adjacency file reset name
+var hoverFill = 'red';
 
 /*
 var colorScale = ['#ff0000','#ff8000','#ffcd00','#ffff00','#cde600','#80e600','#00ff00','#00ff9a','#00ffff','#00cdff','#0080ff','#0000ff'];
@@ -69,7 +70,8 @@ function getSvgElemByNode(node) {
     if (nodeData.svgIdSource == "sid") {
         svgElem = svgdoc.getElementById(node.sid);
     } else if (nodeData.svgIdSource == "id") {
-        svgElem = svgdoc.getElementById(fipsToString(node.id));
+        var svgElemId = leftPad(node.id, nodeData.columnInfo.id.digits);
+        svgElem = svgdoc.getElementById(svgElemId);
     } else {
         throw 'Error: Invalid svgIdSource (' + nodeData.svgIdSource + ')';
     }
@@ -81,11 +83,7 @@ function getSvgElemIdByNode(node) {
     if (nodeData.svgIdSource == "sid") {
         svgElemId = node.sid;
     } else if (nodeData.svgIdSource == "id") {
-        if (af == 'us-counties') {
-            svgElem = fipsToString(node.id);
-        } else {
-            svgElm = node.id.toString();
-        }
+        svgElemId = leftPad(node.id, nodeData.columnInfo.id.digits);
     } else {
         throw 'Error: Invalid svgIdSource (' + nodeData.svgIdSource + ')';
     }
@@ -114,9 +112,9 @@ $(function(){
     setTimeout(ready, 500);
 });
 
-function fipsToString(fips) {
-    var str = fips.toString(10);
-    while (str.length < 5) {
+function leftPad(val, digits) {
+    var str = val.toString(10);
+    while (str.length < digits) {
         str = '0' + str;
     }
     return str;
@@ -125,12 +123,7 @@ function fipsToString(fips) {
 function nodeToString(node) {
     var result = node.s;
     
-    result += ' (id=';
-    if (af == "us-counties") {
-        result += fipsToString(node.id);
-    } else {
-        result += node.id;
-    }
+    result += ' (id=' + leftPad(node.id, nodeData.columnInfo.id.digits);
     
     if (node.hasOwnProperty('sid')) {
         result += ' sid=' + node.sid;
@@ -493,7 +486,7 @@ function ready() {
                 });
                 $(svgElem).mouseover(function(evt){
                     node = getNodeBySvgElemId(this.id);
-                    var toolTipTxt = node.s + "<br>(id=" + node.id;
+                    var toolTipTxt = node.s + "<br>(id=" + leftPad(node.id, nodeData.columnInfo.id.digits);
                     if (node.hasOwnProperty('sid')) {
                         toolTipTxt += ' sid=' + node.sid;
                     }
@@ -502,7 +495,7 @@ function ready() {
                     $('#toolTip').show();
                     //set hover fill
                     if (!isNodeSelected(node)) {
-                        setSvgElemFill(this.id, '#dddddd');
+                        setSvgElemFill(this.id, hoverFill);
                     }
                 });
                 $(svgElem).mouseout(function(evt){

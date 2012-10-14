@@ -1,12 +1,12 @@
 {
   "svgFilename":"Map_of_USA_without_state_names.svg",
   "svgIdSource":"sid",
-  "columnDescriptions":
+  "columnInfo":
   {
-      "id":"Arbitrary Numeric ID",
-      "sid":"Two-letter State Abbreviation",
-      "s":"State Name",
-      "n":"Neighboring State IDs"
+      "id":{"description":"Arbitrary Numeric ID","digits":2},
+      "sid":{"description":"Two-letter State Abbreviation"},
+      "s":{"description":"State Name"},
+      "n":{"description":"Neighboring State IDs"}
   },
   "nodes":[
   {

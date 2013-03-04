@@ -1,14 +1,5 @@
 # mapgraph ignore #
 ####################
-mapgraph
-output.svg
-output.txt
-output/
-tinyxml2/
-cgi/mapgraph.cgi
-cgi/out.txt
-svg/BlankMap-World6 - Copy.svg
-svg/BlankMap-World6 - mod kosovo.svg
 *~
 
 # Compiled source #

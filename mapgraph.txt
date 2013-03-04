@@ -1,0 +1,20 @@
+Ideas for use:
+    1. As a single-choice menu. 
+        MapGraph is initialized with an action URL. 
+        User clicks specified node and is redirected to the action URL with a param to indicate which node was selected.
+
+    2. As a multiple-choice menu.
+        MapGraph is intialized with an action URL.
+        User clicks one or more nodes and a "Submit" button. 
+        
+    3. As a dynamic graph - manual coloring
+        MapGraph is initialized with one or more named data sets. 
+        Each data set has a name, e.g. "2013 Population Density".
+        For each data set, each node has a data value and a fill color. 
+        A select box is generated allowing the user to dynamically select the desired data set. 
+        When user hovers over a node, the node name and data value is displayed.
+        
+    4. As a dynamic graph - automatic coloring
+        Same as 4, but MapGraph automatically generates the fill colors based on the data.
+        By default, it will use a color scale which goes from purple, blue, teal, green, yellow, orange, red.
+        Using normal distribution.

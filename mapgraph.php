@@ -89,18 +89,21 @@ var nodeClickCallback = function(node) {
 function calculateSelectedDataItemStats() {
     var total = 0;
     var minVal, maxVal, minNodeId, maxNodeId;
-    var n = datasetData.data.length;
-    for (var i=0; i<n; ++i) {
+    var n = 0;
+    for (var i=0; i<datasetData.data.length; ++i) {
         var record = datasetData.data[i];
         var val = record[selectedDataItemId];
-        total += val;
-        if (minVal == undefined || val < minVal) {
-            minVal = val;
-            minNodeId = record[datasetData.nodeIdSource];
-        }
-        if (maxVal == undefined || val > maxVal) {
-            maxVal = val;
-            maxNodeId = record[datasetData.nodeIdSource];
+        if (val != undefined) {
+            total += val;
+            if (minVal == undefined || val < minVal) {
+                minVal = val;
+                minNodeId = record[datasetData.nodeIdSource];
+            }
+            if (maxVal == undefined || val > maxVal) {
+                maxVal = val;
+                maxNodeId = record[datasetData.nodeIdSource];
+            }
+            n += 1;
         }
     }
     selectedDataItemStats.n = n;
@@ -118,11 +121,13 @@ function calculateSelectedDataItemStats() {
     // term2 = sum([i for i in S]) / n
     var term1 = 0;
     var term2 = 0;
-    for (var i=0; i<n; ++i) {
+    for (var i=0; i<datasetData.data.length; ++i) {
         var record = datasetData.data[i];
         var val = record[selectedDataItemId];
-        term1 += Math.pow(val,2);
-        term2 += val;
+        if (val != undefined) {
+            term1 += Math.pow(val,2);
+            term2 += val;
+        }
     }
     term1 /= n;
     term2 /= n;
@@ -131,16 +136,18 @@ function calculateSelectedDataItemStats() {
     //now find max and min std deviations
     var minStdDeviations; //value which is the most std deviations lower than mean
     var maxStdDeviations; //value which is the most std deviations higher than mean
-    for (var i=0; i<n; ++i) {
+    for (var i=0; i<datasetData.data.length; ++i) {
         var record = datasetData.data[i];
         var val = record[selectedDataItemId];
-        var deviationFromMean = val - selectedDataItemStats.mean;
-        var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
-        if (minStdDeviations == undefined || stdDeviations < minStdDeviations) {
-            minStdDeviations = stdDeviations;
-        }
-        if (maxStdDeviations == undefined || stdDeviations > maxStdDeviations) {
-            maxStdDeviations = stdDeviations;
+        if (val != undefined) {
+            var deviationFromMean = val - selectedDataItemStats.mean;
+            var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
+            if (minStdDeviations == undefined || stdDeviations < minStdDeviations) {
+                minStdDeviations = stdDeviations;
+            }
+            if (maxStdDeviations == undefined || stdDeviations > maxStdDeviations) {
+                maxStdDeviations = stdDeviations;
+            }
         }
     }
     selectedDataItemStats.minStdDeviations = minStdDeviations;
@@ -185,17 +192,19 @@ function visualizeSelectedDataItem() {
         var record = datasetData.data[i];
         var node = getNodeById(record[datasetData.nodeIdSource]);
         var val = record[selectedDataItemId];
-        var deviationFromMean = val - selectedDataItemStats.mean;
-        var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
-        //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
-        //need to go from minSigma to maxSigma
-        var stepWidth = (maxSigma - minSigma) / colorScale.length;
-        var currentStep = minSigma;
-        for (var j=0; j<colorScale.length; ++j) {
-            currentStep += stepWidth;
-            if (stdDeviations < currentStep || j==colorScale.length-1) {
-                setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
-                break;
+        if (val != undefined) {
+            var deviationFromMean = val - selectedDataItemStats.mean;
+            var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
+            //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
+            //need to go from minSigma to maxSigma
+            var stepWidth = (maxSigma - minSigma) / colorScale.length;
+            var currentStep = minSigma;
+            for (var j=0; j<colorScale.length; ++j) {
+                currentStep += stepWidth;
+                if (stdDeviations < currentStep || j==colorScale.length-1) {
+                    setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
+                    break;
+                }
             }
         }
     }
@@ -265,7 +274,11 @@ function svgLoadCallback() {
     $('#datasetSel').change(function(){
         var selectedMap = $('#mapSel option:selected').text();
         var selectedDataset = $('#datasetSel option:selected').text();
-        window.location = 'mapgraph.php?map=' + selectedMap + '&mode=graph&dataset=' + selectedDataset;
+        if (selectedDataset == 'none') {
+            window.location = 'mapgraph.php?map=' + selectedMap;
+        } else {
+            window.location = 'mapgraph.php?map=' + selectedMap + '&mode=graph&dataset=' + selectedDataset;
+        }
     });
 }
 

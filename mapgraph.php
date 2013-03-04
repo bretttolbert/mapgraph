@@ -67,14 +67,14 @@ var nodeMousoverCallback = function(node) {
         var html = node['s'];
         $('#toolTip').html(html);
         $('#toolTip').show();
-        setSvgElemFill(getSvgElemByNode(node), mapData['hoverNodeFill']);
+        setSvgElemFill(getSvgElemByNode(node), mapData.hoverNodeFill);
     }
 }
 
 var nodeMouseoutCallback = function(node) {
     return function() {
         $('#toolTip').hide();
-        setSvgElemFill(getSvgElemByNode(node), mapData['defaultNodeFill']);
+        setSvgElemFill(getSvgElemByNode(node), mapData.defaultNodeFill);
     }
 }
 
@@ -82,6 +82,13 @@ var nodeClickCallback = function(node) {
     return function() {
         var url = 'http://en.wikipedia.org/wiki/' + node.s.replace(' ','_');
         window.open(url);
+    }
+}
+
+function resetDefaultNodeFill() {
+    for (var i=0; i<mapData.nodes.length; ++i) {
+        var node = mapData.nodes[i];
+        setSvgElemFill(getSvgElemByNode(node), mapData.defaultNodeFill);
     }
 }
 
@@ -176,7 +183,13 @@ function calculateSelectedDataItemStats() {
     log('SpanInStdDeviations: ' + selectedDataItemStats.spanInStdDeviations);
 }
 
+var firstPlot = true;
 function visualizeSelectedDataItem() {
+    if (firstPlot) {
+        firstPlot = false;
+    } else {
+        resetDefaultNodeFill();
+    }
     //$('#loaderContainer').show();
     //clearSelectedNodes();
     //clearPath();

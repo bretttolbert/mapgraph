@@ -34,26 +34,22 @@ function getNodeById(nodeId) {
 
 function getSvgElemIdByNode(node) {
     var svgElemId = "";
-    if (mapData.svgIdSource == "sid") {
-        svgElemId = node.sid;
-    } else if (mapData.svgIdSource == "id") {
+    if (mapData.svgIdSource == "id") {
         svgElemId = leftPad(node.id, mapData.nodeMetadata.id.digits);
     } else {
-        throw 'Error: Invalid svgIdSource (' + mapData.svgIdSource + ')';
+        svgElemId = node[mapData.svgIdSource];
     }
-    return svgElemId;    
+    return svgElemId;
 }
 
 function getSvgElemByNode(node) {
     var svgElem = null;
-    if (mapData.svgIdSource == "sid") {
-        var svgElemId = node.sid;
-        return svgElemIdToSvgElemMap[svgElemId];
-    } else if (mapData.svgIdSource == "id") {
+    if (mapData.svgIdSource == "id") {
         var svgElemId = leftPad(node.id, mapData.nodeMetadata.id.digits);
         return svgElemIdToSvgElemMap[svgElemId];
     } else {
-        throw 'Error: Invalid svgIdSource (' + mapData.svgIdSource + ')';
+        var svgElemId = node[mapData.svgIdSource];
+        return svgElemIdToSvgElemMap[svgElemId];
     }
     return svgElem;
 }

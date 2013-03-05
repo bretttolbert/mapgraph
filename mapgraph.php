@@ -64,7 +64,10 @@ function setSvgElemFill(svgElem, fill) {
 
 var nodeMousoverCallback = function(node) {
     return function() {
-        var html = node['s'];
+        var html = node.s;
+        if (node.hasOwnProperty('val')) {
+            html += '<br/>' + node.val;
+        }
         $('#toolTip').html(html);
         $('#toolTip').show();
         setSvgElemFill(getSvgElemByNode(node), mapData.hoverNodeFill);
@@ -74,7 +77,11 @@ var nodeMousoverCallback = function(node) {
 var nodeMouseoutCallback = function(node) {
     return function() {
         $('#toolTip').hide();
-        setSvgElemFill(getSvgElemByNode(node), mapData.defaultNodeFill);
+        var fill = mapData.defaultNodeFill;
+        if (node.hasOwnProperty('fill')) {
+            fill = node.fill;
+        }
+        setSvgElemFill(getSvgElemByNode(node), fill);
     }
 }
 
@@ -206,6 +213,7 @@ function visualizeSelectedDataItem() {
         var node = getNodeById(record[datasetData.nodeIdSource]);
         var val = record[selectedDataItemId];
         if (val != undefined) {
+            node.val = val;
             var deviationFromMean = val - selectedDataItemStats.mean;
             var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
             //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
@@ -215,7 +223,8 @@ function visualizeSelectedDataItem() {
             for (var j=0; j<colorScale.length; ++j) {
                 currentStep += stepWidth;
                 if (stdDeviations < currentStep || j==colorScale.length-1) {
-                    setSvgElemFill(getSvgElemByNode(node), colorScale[j]);
+                    node.fill = colorScale[j];
+                    setSvgElemFill(getSvgElemByNode(node), node.fill);
                     break;
                 }
             }

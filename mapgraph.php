@@ -92,10 +92,12 @@ var nodeClickCallback = function(node) {
     }
 }
 
-function resetDefaultNodeFill() {
+function resetNodes() {
     for (var i=0; i<mapData.nodes.length; ++i) {
         var node = mapData.nodes[i];
         setSvgElemFill(getSvgElemByNode(node), mapData.defaultNodeFill);
+        delete node.fill;
+        delete node.val;
     }
 }
 
@@ -195,7 +197,7 @@ function visualizeSelectedDataItem() {
     if (firstPlot) {
         firstPlot = false;
     } else {
-        resetDefaultNodeFill();
+        resetNodes();
     }
     //$('#loaderContainer').show();
     //clearSelectedNodes();

@@ -62,11 +62,15 @@ function setSvgElemFill(svgElem, fill) {
     elem.children().attr('fill', fill);
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var nodeMousoverCallback = function(node) {
     return function() {
         var html = node.s;
         if (node.hasOwnProperty('val')) {
-            html += '<br/>' + node.val;
+            html += '<br/>' + numberWithCommas(node.val);
         }
         $('#toolTip').html(html);
         $('#toolTip').show();
@@ -323,6 +327,26 @@ function updateToolTipPos(x,y) {
     $('#toolTip').css('top', y + 50);
 }
 
+<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
+function generateScale() {
+    var html = '';
+    //html += '<div style="float:left">Scale: </div>';
+    for (var i=0; i<colorScale.length; i+=10) {
+        html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[i] + '">';
+        if (i==0) {
+            html += '&le;-1&sigma;';
+        } else if (i==50) {
+            html += 'x&#772;';
+        }
+        html += '</div>';
+    }
+    html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
+    html += '&ge;1&sigma;';
+    html += '</div>';
+    $('#scale').html(html);
+}
+<?php } ?>
+
 $(function() {
     $('#svgEmbed')[0].addEventListener('load', svgLoadCallback, false);
     initToolTip();
@@ -331,12 +355,28 @@ $(function() {
     } else {
         log('Google Chrome detected');
     }
+<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
+    generateScale();
+<?php } ?>
 });
 </script>
+<style type="text/css">
+.ScaleSwatch {
+    width: 50px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    padding-top: 10px;
+}
+</style>
 </head>
 <body>
 <div id="toolTip"></div>
 <embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
+<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
+<div id="scale"></div>
+<br/><br/>
+<?php } ?>
 <br/>
 <?php
 //map select

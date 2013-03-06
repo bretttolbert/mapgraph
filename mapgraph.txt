@@ -18,3 +18,29 @@ Ideas for use:
         Same as 4, but MapGraph automatically generates the fill colors based on the data.
         By default, it will use a color scale which goes from purple, blue, teal, green, yellow, orange, red.
         Using normal distribution.
+
+
+Brainstorming about how to create some sort of scale:
+	Using us-states quick-facts resident total population 2011 estimate for testing
+Stats:
+n: 51
+total: 311591917
+Min: 568158 (Wyoming)
+Max: 37691912 (California)
+Span: 37123754
+Mean: 6109645.431372549
+Sigma: 6839105.749514355
+MinStdDeviations: -0.810264913913058
+MaxStdDeviations: 4.617894169990003
+SpanInStdDeviations: 5.428159083903061
+
+>>> mean - sigma
+-729460.3181418059
+
+//compute the value which correponds to the lowest possible fill color on the scale. 
+//Values lower than this may exist, but they will still get the same fill color (the lowest possible fill color on the scale). 
+var scaleExtremeMin = mean - (minSigma * sigma);
+//compute the value which correponds to the highest possible fill color on the scale. 
+//Values higher than this may exist, but they will still get the same fill color (the highest possible fill color on the scale).
+var scaleExtremeMax = mean + (maxSigma * sigma);
+

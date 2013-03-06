@@ -205,9 +205,9 @@ function calculateSelectedDataItemStats() {
     log('SpanInStdDeviations: ' + selectedDataItemStats.spanInStdDeviations);
     
     var html = '';
-    html += 'n = ' + fmtnum(selectedDataItemStats.n) + '<br/>';
-    html += 'x&#772; = ' + fmtnum(selectedDataItemStats.mean) + '<br/>';
-    html += '&sigma; = ' + fmtnum(selectedDataItemStats.sigma) + '<br/>';
+    html += '<a href="http://www.tc3.edu/instruct/sbrown/stat/symbol.htm" class="HiddenHyperlink">n</a> = ' + fmtnum(selectedDataItemStats.n) + '<br/>';
+    html += '<a href="http://en.wikipedia.org/wiki/Mean" class="HiddenHyperlink">&mu;</a> = ' + fmtnum(selectedDataItemStats.mean) + '<br/>';
+    html += '<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a> = ' + fmtnum(selectedDataItemStats.sigma) + '<br/>';
     html += 'min = ' + fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')' + '<br/>';
     html += 'max = ' + fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')' + '<br/>';
     $('#stats').html(html);
@@ -263,7 +263,7 @@ function generateScale() {
     for (var i=0; i<colorScale.length; i+=10) {
         html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[i] + '">';
         if (i==0) {
-            html += '&le;-1&sigma;';
+            html += '-1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a>';
             if (selectedDataItemStats.sigma != undefined) {
                 var scaleExtremeMin = selectedDataItemStats.mean - selectedDataItemStats.sigma;
                 //if (scaleExtremeMin < selectedDataItemStats.min) {
@@ -272,7 +272,7 @@ function generateScale() {
                 html += '<br/><br/>(' + fmtnum(scaleExtremeMin) + ')';
             }
         } else if (i==50) {
-            html += 'x&#772;';
+            html += '<a href="http://en.wikipedia.org/wiki/Mean" class="HiddenHyperlink">&mu;</a>';
             if (selectedDataItemStats.sigma != undefined) {
                 html += '<br/><br/>(' + fmtnum(selectedDataItemStats.mean) + ')';
             }
@@ -280,7 +280,7 @@ function generateScale() {
         html += '</div>';
     }
     html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
-    html += '&ge;1&sigma;';
+    html += '1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a>';
     var scaleExtremeMax = selectedDataItemStats.mean + selectedDataItemStats.sigma;
     //if (scaleExtremeMax > selectedDataItemStats.max) {
     //    scaleExtremeMax = selectedDataItemStats.max;
@@ -400,6 +400,10 @@ $(function() {
     float: left;
     text-align: center;
     padding-top: 15px;
+}
+.HiddenHyperlink {
+    text-decoration: none;
+    color: black;
 }
 </style>
 </head>

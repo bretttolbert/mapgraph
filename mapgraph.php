@@ -62,14 +62,14 @@ function setSvgElemFill(svgElem, fill) {
     elem.children().attr('fill', fill);
 }
 
-function numberWithCommas(x) {
+function fmtnum(x) {
     var x = x.toString();
     var intPart = x;
     var fractionalPart = '';
     var decimalPos = x.indexOf('.');
     if (decimalPos != -1) {
         intPart = x.substr(0, decimalPos);
-        fractionalPart = '.' + x.substr(decimalPos+1);
+        fractionalPart = '.' + x.substr(decimalPos+1, 3);
     }
     intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return intPart + fractionalPart;
@@ -79,7 +79,7 @@ var nodeMousoverCallback = function(node) {
     return function() {
         var html = node.s;
         if (node.hasOwnProperty('val')) {
-            html += '<br/>' + numberWithCommas(node.val);
+            html += '<br/>' + fmtnum(node.val);
         }
         $('#toolTip').html(html);
         $('#toolTip').show();
@@ -117,19 +117,19 @@ function resetNodes() {
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 function calculateSelectedDataItemStats() {
     var total = 0;
-    var minVal, maxVal, minNodeId, maxNodeId;
+    var min, max, minNodeId, maxNodeId;
     var n = 0;
     for (var i=0; i<datasetData.data.length; ++i) {
         var record = datasetData.data[i];
         var val = record[selectedDataItemId];
         if (val != undefined) {
             total += val;
-            if (minVal == undefined || val < minVal) {
-                minVal = val;
+            if (min == undefined || val < min) {
+                min = val;
                 minNodeId = record[datasetData.nodeIdSource];
             }
-            if (maxVal == undefined || val > maxVal) {
-                maxVal = val;
+            if (max == undefined || val > max) {
+                max = val;
                 maxNodeId = record[datasetData.nodeIdSource];
             }
             n += 1;
@@ -137,11 +137,11 @@ function calculateSelectedDataItemStats() {
     }
     selectedDataItemStats.n = n;
     selectedDataItemStats.total = total;
-    selectedDataItemStats.minVal = minVal;
-    selectedDataItemStats.maxVal = maxVal;
+    selectedDataItemStats.min = min;
+    selectedDataItemStats.max = max;
     selectedDataItemStats.minNodeId = minNodeId;
     selectedDataItemStats.maxNodeId = maxNodeId;
-    selectedDataItemStats.span = maxVal - minVal;
+    selectedDataItemStats.span = max - min;
     selectedDataItemStats.mean = total / n;
     
     //now calculate standard deviation
@@ -195,14 +195,23 @@ function calculateSelectedDataItemStats() {
     log('Stats:');
     log('n: ' + selectedDataItemStats.n);
     log('total: ' + selectedDataItemStats.total);
-    log('Min: ' + selectedDataItemStats.minVal + ' (' + minNode.s + ')');
-    log('Max: ' + selectedDataItemStats.maxVal + ' (' + maxNode.s + ')');
+    log('Min: ' + selectedDataItemStats.min + ' (' + minNode.s + ')');
+    log('Max: ' + selectedDataItemStats.max + ' (' + maxNode.s + ')');
     log('Span: ' + selectedDataItemStats.span);
     log('Mean: ' + selectedDataItemStats.mean);
     log('Sigma: ' + selectedDataItemStats.sigma);
     log('MinStdDeviations: ' + selectedDataItemStats.minStdDeviations);
     log('MaxStdDeviations: ' + selectedDataItemStats.maxStdDeviations);
     log('SpanInStdDeviations: ' + selectedDataItemStats.spanInStdDeviations);
+    
+    var html = '';
+    html += 'n = ' + fmtnum(selectedDataItemStats.n) + '<br/>';
+    html += 'x&#772; = ' + fmtnum(selectedDataItemStats.mean) + '<br/>';
+    html += '&sigma; = ' + fmtnum(selectedDataItemStats.sigma) + '<br/>';
+    html += 'min = ' + fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')' + '<br/>';
+    html += 'max = ' + fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')' + '<br/>';
+    $('#stats').html(html);
+    generateScale();
 }
 
 var firstPlot = true;
@@ -246,6 +255,41 @@ function visualizeSelectedDataItem() {
         }
     }
     //$('#loaderContainer').hide();
+}
+
+function generateScale() {
+    var html = '';
+    //html += '<div style="float:left">Scale: </div>';
+    for (var i=0; i<colorScale.length; i+=10) {
+        html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[i] + '">';
+        if (i==0) {
+            html += '&le;-1&sigma;';
+            if (selectedDataItemStats.sigma != undefined) {
+                var scaleExtremeMin = selectedDataItemStats.mean - selectedDataItemStats.sigma;
+                //if (scaleExtremeMin < selectedDataItemStats.min) {
+                //    scaleExtremeMin = selectedDataItemStats.min;
+                //}
+                html += '<br/><br/>(' + fmtnum(scaleExtremeMin) + ')';
+            }
+        } else if (i==50) {
+            html += 'x&#772;';
+            if (selectedDataItemStats.sigma != undefined) {
+                html += '<br/><br/>(' + fmtnum(selectedDataItemStats.mean) + ')';
+            }
+        }
+        html += '</div>';
+    }
+    html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
+    html += '&ge;1&sigma;';
+    var scaleExtremeMax = selectedDataItemStats.mean + selectedDataItemStats.sigma;
+    //if (scaleExtremeMax > selectedDataItemStats.max) {
+    //    scaleExtremeMax = selectedDataItemStats.max;
+    //}
+    if (selectedDataItemStats.sigma != undefined) {
+        html += '<br/><br/>(' + fmtnum(selectedDataItemStats.mean + selectedDataItemStats.sigma) + ')';
+    }
+    html += '</div>';
+    $('#scale').html(html);
 }
 <?php } ?>
 
@@ -336,26 +380,6 @@ function updateToolTipPos(x,y) {
     $('#toolTip').css('top', y + 50);
 }
 
-<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
-function generateScale() {
-    var html = '';
-    //html += '<div style="float:left">Scale: </div>';
-    for (var i=0; i<colorScale.length; i+=10) {
-        html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[i] + '">';
-        if (i==0) {
-            html += '&le;-1&sigma;';
-        } else if (i==50) {
-            html += 'x&#772;';
-        }
-        html += '</div>';
-    }
-    html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
-    html += '&ge;1&sigma;';
-    html += '</div>';
-    $('#scale').html(html);
-}
-<?php } ?>
-
 $(function() {
     $('#svgEmbed')[0].addEventListener('load', svgLoadCallback, false);
     initToolTip();
@@ -371,11 +395,11 @@ $(function() {
 </script>
 <style type="text/css">
 .ScaleSwatch {
-    width: 50px;
+    width: 100px;
     height: 30px;
     float: left;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 </style>
 </head>
@@ -384,7 +408,8 @@ $(function() {
 <embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 <div id="scale"></div>
-<br/><br/>
+<br/><br/><br/><br/>
+<div id="stats"></div>
 <?php } ?>
 <br/>
 <?php

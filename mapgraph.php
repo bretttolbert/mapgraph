@@ -63,7 +63,16 @@ function setSvgElemFill(svgElem, fill) {
 }
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    var x = x.toString();
+    var intPart = x;
+    var fractionalPart = '';
+    var decimalPos = x.indexOf('.');
+    if (decimalPos != -1) {
+        intPart = x.substr(0, decimalPos);
+        fractionalPart = '.' + x.substr(decimalPos+1);
+    }
+    intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return intPart + fractionalPart;
 }
 
 var nodeMousoverCallback = function(node) {

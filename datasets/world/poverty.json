@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "World Development Indicators - poverty",
+    "name": "World Development Indicators (2012) - Poverty",
     "nodeIdSource": "id",
     "data": [
         {

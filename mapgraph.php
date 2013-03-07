@@ -329,9 +329,11 @@ function svgLoadCallback() {
     //load data set
     $.getJSON('datasets/<?php echo $_REQUEST['map'] . '/' . $_REQUEST['dataset']; ?>.min.json', function(respData) {
         datasetData = respData;
-        html = datasetData['name'];
+        var html = '';
         if (datasetData.hasOwnProperty('sourceUrl')) {
-            html += ' <a href="' + datasetData.sourceUrl + '">[source]</a>'
+            html += ' Source: <a href="' + datasetData.sourceUrl + '" class="HiddenHyperlink">' + datasetData['name'] + '</a>'
+        } else {
+            html += ' Source: ' + datasetData['name'];
         }
         $('#datasetInfo').html(html);
         var html = 'Data Item: <select>';

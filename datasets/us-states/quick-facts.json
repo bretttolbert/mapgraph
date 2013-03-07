@@ -1,6 +1,6 @@
 {
     "id": "quick-facts",
-    "name": "United States Census - State & County QuickFacts",
+    "name": "United States Census (2010) - State & County QuickFacts",
     "sourceUrl": "http://quickfacts.census.gov/qfd/download_data.html",
     "data": [
         {

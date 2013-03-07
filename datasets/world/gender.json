@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "World Development Indicators - Gender",
+    "name": "World Development Indicators (2012) - Gender",
     "nodeIdSource": "id",
     "data": [
         {

@@ -1649,7 +1649,7 @@ datasets = [
     },
     {
         'id': 'poverty',
-        'name': 'poverty',
+        'name': 'Poverty',
         'indicators': [
             {
                 'Indicator Name': 'Income share held by highest 10%',
@@ -2165,7 +2165,7 @@ with codecs.open(world_map_data_file_path, 'r', encoding='utf-8') as mapfile:
             reader = csv.reader(csvfile)
             data = { 'nodeIdSource': 'id', 'metadata': [{'Data_Item':'id','Item_Description':'ISO 3166-1 numeric country code'}], 'data': [] }
             data['id'] = dataset['id']
-            data['name'] = 'World Development Indicators - {0}'.format(dataset['name'])
+            data['name'] = 'World Development Indicators (2012) - {0}'.format(dataset['name'])
             data['sourceUrl'] = 'http://data.worldbank.org/data-catalog/world-development-indicators'
             data_count = 0
             no_data_count = 0

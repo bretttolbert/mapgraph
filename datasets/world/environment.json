@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "World Development Indicators - Environment",
+    "name": "World Development Indicators (2012) - Environment",
     "nodeIdSource": "id",
     "data": [
         {

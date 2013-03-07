@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Private Sector",
+    "name": "World Development Indicators - Private Sector",
     "nodeIdSource": "id",
     "data": [
         {

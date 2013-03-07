@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Aid Effectiveness",
+    "name": "World Development Indicators - Aid Effectiveness",
     "nodeIdSource": "id",
     "data": [
         {

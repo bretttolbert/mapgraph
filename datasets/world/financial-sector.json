@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Financial Sector",
+    "name": "World Development Indicators - Financial Sector",
     "nodeIdSource": "id",
     "data": [
         {

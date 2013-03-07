@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Economic Policy & External Debt",
+    "name": "World Development Indicators - Economic Policy & External Debt",
     "nodeIdSource": "id",
     "data": [
         {

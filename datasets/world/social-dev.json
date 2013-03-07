@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Social Development",
+    "name": "World Development Indicators - Social Development",
     "nodeIdSource": "id",
     "data": [
         {

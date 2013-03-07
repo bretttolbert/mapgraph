@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Infrastructure",
+    "name": "World Development Indicators - Infrastructure",
     "nodeIdSource": "id",
     "data": [
         {

@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Education",
+    "name": "World Development Indicators - Education",
     "nodeIdSource": "id",
     "data": [
         {

@@ -1,6 +1,6 @@
 {
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
-    "name": "Energy & Mining",
+    "name": "World Development Indicators - Energy & Mining",
     "nodeIdSource": "id",
     "data": [
         {

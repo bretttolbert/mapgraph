@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Climate Change",
     "nodeIdSource": "id",
     "data": [
         {
@@ -7574,6 +7576,7 @@
             "SE.ENR.PRSC.FM.ZS": 94.377
         }
     ],
+    "id": "climate-change",
     "metadata": [
         {
             "Data_Item": "id",

@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Education",
     "nodeIdSource": "id",
     "data": [
         {
@@ -8275,6 +8277,7 @@
             "SE.ENR.PRSC.FM.ZS": 94.377
         }
     ],
+    "id": "edcuation",
     "metadata": [
         {
             "Data_Item": "id",

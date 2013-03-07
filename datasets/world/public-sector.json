@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Public Sector",
     "nodeIdSource": "id",
     "data": [
         {
@@ -2749,6 +2751,7 @@
             "id": 716
         }
     ],
+    "id": "public-sector",
     "metadata": [
         {
             "Data_Item": "id",

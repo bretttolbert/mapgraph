@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Agriculture & Rural Development",
     "nodeIdSource": "id",
     "data": [
         {
@@ -4380,6 +4382,7 @@
             "AG.LND.CROP.ZS": 0.310197751066305
         }
     ],
+    "id": "agriculture-and-rural-dev",
     "metadata": [
         {
             "Data_Item": "id",

@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Social Development",
     "nodeIdSource": "id",
     "data": [
         {
@@ -4548,6 +4550,7 @@
             "SE.ENR.PRSC.FM.ZS": 94.377
         }
     ],
+    "id": "social-dev",
     "metadata": [
         {
             "Data_Item": "id",

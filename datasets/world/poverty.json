@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "poverty",
     "nodeIdSource": "id",
     "data": [
         {
@@ -2591,6 +2593,7 @@
             "id": 716
         }
     ],
+    "id": "poverty",
     "metadata": [
         {
             "Data_Item": "id",

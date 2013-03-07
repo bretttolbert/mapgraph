@@ -1,5 +1,6 @@
 {
     "nodeIdSource": "FIPS",
+    "sourceUrl": "http://www.erh.noaa.gov/cae/svrwx/tornadobystate.htm",
     "data": [
         {
             "avg-tornadoes-per-10000sqmi": 4.53,
@@ -302,6 +303,7 @@
             "FIPS": 56
         }
     ],
+    "name": "U.S. Reported Tornadoes and Average Number of Deaths per Year 1961-1990",
     "metadata": [
         {
             "Data_Item": "FIPS",

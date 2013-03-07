@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Science & Technology",
     "nodeIdSource": "id",
     "data": [
         {
@@ -2397,6 +2399,7 @@
             "id": 716
         }
     ],
+    "id": "science-and-tech",
     "metadata": [
         {
             "Data_Item": "id",

@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Private Sector",
     "nodeIdSource": "id",
     "data": [
         {
@@ -5342,6 +5344,7 @@
             "IC.TAX.PAYM": 49.0
         }
     ],
+    "id": "private-sector",
     "metadata": [
         {
             "Data_Item": "id",

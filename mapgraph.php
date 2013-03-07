@@ -329,6 +329,11 @@ function svgLoadCallback() {
     //load data set
     $.getJSON('datasets/<?php echo $_REQUEST['map'] . '/' . $_REQUEST['dataset']; ?>.min.json', function(respData) {
         datasetData = respData;
+        html = datasetData['name'];
+        if (datasetData.hasOwnProperty('sourceUrl')) {
+            html += ' <a href="' + datasetData.sourceUrl + '">[source]</a>'
+        }
+        $('#datasetInfo').html(html);
         var html = 'Data Item: <select>';
         for (var i=0; i<datasetData.metadata.length; ++i) {
             var node = datasetData.metadata[i];
@@ -452,6 +457,7 @@ while (($entry = $d->read()) !== false) {
 }
 $d->close();
 echo '</select>';
+echo '<span id="datasetInfo" style="font-size:12px"></span>';
 ?>
 <br/>
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>

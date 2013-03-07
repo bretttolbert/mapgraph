@@ -1,6 +1,7 @@
 {
     "id": "quick-facts",
     "name": "United States Census - State & County QuickFacts",
+    "sourceUrl": "http://quickfacts.census.gov/qfd/download_data.html",
     "data": [
         {
             "AFN120207": 6426342,

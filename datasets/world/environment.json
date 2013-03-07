@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Environment",
     "nodeIdSource": "id",
     "data": [
         {
@@ -4581,6 +4583,7 @@
             "EE.BOD.WRKR.KG": 0.1971546
         }
     ],
+    "id": "environment",
     "metadata": [
         {
             "Data_Item": "id",

@@ -19,6 +19,8 @@ map_data_file_path = '../maps/us-states/map.json' #path to map.json for the "us-
 with codecs.open(map_data_file_path, 'r', encoding='utf-8') as mapfile:
     mapdata = json.loads(mapfile.read())
     data = { 'nodeIdSource': 'FIPS', 'metadata': [{'Data_Item':'FIPS','Item_Description':'FIPS state code'}], 'data': [] }
+    data['name'] = 'U.S. Reported Tornadoes and Average Number of Deaths per Year 1961-1990'
+    data['sourceUrl'] = 'http://www.erh.noaa.gov/cae/svrwx/tornadobystate.htm'
     data['metadata'].append({'Data_Item':'avg-tornadoes-per-yr','Item_Description':'Average Number of Tornadoes per Year'})
     data['metadata'].append({'Data_Item':'avg-deaths-per-yr','Item_Description':'Average Number of Deaths per Year'})
     data['metadata'].append({'Data_Item':'avg-tornadoes-per-10000sqmi','Item_Description':'Average Number of Tornadoes Per 10,000 Sq Mi'})

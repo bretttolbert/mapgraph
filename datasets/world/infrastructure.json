@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Infrastructure",
     "nodeIdSource": "id",
     "data": [
         {
@@ -5110,6 +5112,7 @@
             "TX.VAL.ICTG.ZS.UN": 0.0396916927
         }
     ],
+    "id": "infrastructure",
     "metadata": [
         {
             "Data_Item": "id",

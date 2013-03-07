@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Labor & Social Protection",
     "nodeIdSource": "id",
     "data": [
         {
@@ -4338,6 +4340,7 @@
             "SL.TLF.TOTL.IN": 6616907.14473404
         }
     ],
+    "id": "labor-and-social-protection",
     "metadata": [
         {
             "Data_Item": "id",

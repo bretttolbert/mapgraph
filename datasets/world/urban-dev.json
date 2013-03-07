@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Urban Development",
     "nodeIdSource": "id",
     "data": [
         {
@@ -3301,6 +3303,7 @@
             "SH.STA.ACSN.UR": 52.0
         }
     ],
+    "id": "urban-dev",
     "metadata": [
         {
             "Data_Item": "id",

@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Financial Sector",
     "nodeIdSource": "id",
     "data": [
         {
@@ -4861,6 +4863,7 @@
             "BX.TRF.PWKR.CD.DT": 43685417.18
         }
     ],
+    "id": "financial-sector",
     "metadata": [
         {
             "Data_Item": "id",

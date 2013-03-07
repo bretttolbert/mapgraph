@@ -1,4 +1,6 @@
 {
+    "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators",
+    "name": "Economic Policy & External Debt",
     "nodeIdSource": "id",
     "data": [
         {
@@ -6991,6 +6993,7 @@
             "BX.TRF.PWKR.CD.DT": 43685417.18
         }
     ],
+    "id": "eco-policy-and-ext-debt",
     "metadata": [
         {
             "Data_Item": "id",

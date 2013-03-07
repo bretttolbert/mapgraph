@@ -4,6 +4,21 @@
 <!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+/** 
+ * bretttolbert.com Google Analytics tracking code 
+ * (Please remove this if you cloned my GitHub project)
+ */
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32786342-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript">
 var svg = null;
 var svgdoc = null;
 var mapData = null;
@@ -434,6 +449,10 @@ $(function() {
 </style>
 </head>
 <body>
+<a href="/">[home]</a> 
+<a href="/my-projects/">[projects]</a>
+<a href="/my-projects/mapgraph/">[mapgraph]</a><br/><br/>
+
 <embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 <div id="scale"></div>

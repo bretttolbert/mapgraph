@@ -216,6 +216,7 @@ function calculateSelectedDataItemStats() {
 
 var firstPlot = true;
 function visualizeSelectedDataItem() {
+    $('#loader').show();
     if (firstPlot) {
         firstPlot = false;
     } else {
@@ -254,7 +255,7 @@ function visualizeSelectedDataItem() {
             }
         }
     }
-    //$('#loaderContainer').hide();
+    $('#loader').hide();
 }
 
 function generateScale() {
@@ -349,10 +350,13 @@ function svgLoadCallback() {
             log('selectedDataItemId=' + selectedDataItemId);
             visualizeSelectedDataItem();
         });
+        setTimeout(function(){$('#loader').hide()}, 100);
     });
     <?php } else { ?>
         alert('Error: No data set specified.');
     <?php } ?>
+<?php } else { ?>
+    $('#loader').hide();
 <?php } ?>
 
     $('#mapSel').change(function(){
@@ -388,6 +392,7 @@ function updateToolTipPos(x,y) {
 }
 
 $(function() {
+    $('#loader').show();
     $('#svgEmbed')[0].addEventListener('load', svgLoadCallback, false);
     initToolTip();
     if (!window.chrome) {
@@ -412,10 +417,23 @@ $(function() {
     text-decoration: none;
     color: black;
 }
+#loader {
+    position: absolute;
+    display: table;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+#loaderImage {
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
 </style>
 </head>
 <body>
-<div id="toolTip"></div>
 <embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 <div id="scale"></div>
@@ -465,5 +483,16 @@ echo '<span id="datasetInfo" style="font-size:12px"></span>';
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 <div id="dataItemSel"></div>
 <?php } ?>
+<div id="toolTip"></div>
+<div id="loader">
+    <div id="loaderImage">
+    <?php
+        $size = 2;
+        $width = 54*$size;
+        $height = 55*$size;
+        echo "<img src=\"img/ajax-loader.gif\" width=\"$width\" height=\"$height\"/>";
+    ?>
+    </div>
+</div>
 </body>
 </html>

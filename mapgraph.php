@@ -206,12 +206,11 @@ function calculateSelectedDataItemStats() {
     log('MaxStdDeviations: ' + selectedDataItemStats.maxStdDeviations);
     log('SpanInStdDeviations: ' + selectedDataItemStats.spanInStdDeviations);
     
-
-    $("#statsValue_n").textContext = fmtnum(selectedDataItemStats.n);
-    $("#statsValue_mu").textContext = fmtnum(selectedDataItemStats.mean);
-    $("#statsValue_sigma").textContext = fmtnum(selectedDataItemStats.sigma);
-    $("#statsValue_min").textContext = fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')';
-    $("#statsValue_max").textContext = fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')';
+    $("#statsValue_n").text(fmtnum(selectedDataItemStats.n));
+    $("#statsValue_mu").text(fmtnum(selectedDataItemStats.mean));
+    $("#statsValue_sigma").text(fmtnum(selectedDataItemStats.sigma));
+    $("#statsValue_min").text(fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')');
+    $("#statsValue_max").text(fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')');
 
     generateScale();
 }

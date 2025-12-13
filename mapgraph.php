@@ -477,21 +477,29 @@ $(function() {
     <option>none</option>
     <?php
     $path = 'datasets/' . $_REQUEST['map'];
+    $files = array();
     $d = dir($path);
     while (($entry = $d->read()) !== false) {
         if ($entry != '.' && $entry != '..' && is_file($path . '/' . $entry)) {
-            $extPos = strpos($entry, '.min.json');
-            if ($extPos !== false) {
-                $entry = substr($entry, 0, $extPos);
-                if ($entry == $_REQUEST['dataset']) {
-                    echo '<option selected="selected">' . $entry . '</option>';        
-                } else {
-                    echo '<option>' . $entry . '</option>';
-                }
-            }
+            array_push($files, $entry);
         }
     }
     $d->close();
+
+    rsort($files);
+    foreach ($files as $file) {
+        echo "$file <br>";
+        $extPos = strpos($file, '.min.json');
+        if ($extPos !== false) {
+            $basename = substr($file, 0, $extPos);
+            if ($basename == $_REQUEST['dataset']) {
+                echo '<option selected="selected">' . $basename . '</option>';        
+            } else {
+                echo '<option>' . $basename . '</option>';
+            }
+        }
+    }
+
     ?>
     </select>
     </div> <!-- /dataSetSelContainer -->

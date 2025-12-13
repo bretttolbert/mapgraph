@@ -331,12 +331,18 @@ function svgLoadCallback() {
     <?php if (isset($_REQUEST['dataset'])) { ?>
 
     const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    let urlParams = new URLSearchParams(queryString);
 
     function updateSelectedDataItem(dataItem) {
         selectedDataItemId = dataItem;
         log('selectedDataItemId=' + selectedDataItemId);
         visualizeSelectedDataItem();
+        const queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        if (urlParams.get("dataitem") != dataItem) {
+            urlParams.set("dataitem", dataItem);
+            window.location.search = urlParams;
+        }
     }
 
     //load data set

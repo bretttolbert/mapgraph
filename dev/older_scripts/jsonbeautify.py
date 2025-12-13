@@ -1,0 +1,10 @@
+import sys
+import simplejson as json
+import codecs
+if len(sys.argv) != 2:
+    print 'Usage: jsonbeautify.py infile > outfile'
+else:
+    fname = sys.argv[1]
+    with codecs.open(fname, 'r', encoding='utf-8') as f:
+        data = json.loads(f.read())
+        print json.dumps(data, sort_keys=False, indent=4, separators=(',',': '))

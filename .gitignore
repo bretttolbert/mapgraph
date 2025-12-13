@@ -37,3 +37,18 @@ untracked/
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Python #
+#######################
+.eggs
+*.egg-info
+.tox/
+__pycache__
+dist
+build
+.coverage
+coverage.xml
+.vscode
+verbecc/data/models/*.zip
+*.log
+*.log.*

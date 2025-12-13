@@ -73,7 +73,7 @@ def main():
 
     if dataset == "*" or dataset == "2020-census-pop-CD118":
         convert_csv_json(
-            csv_filename="source_data/DECENNIALCD1182020.P1_2025-12-12T192416/DECENNIALCD1182020.P1-Data.csv",
+            csv_filename="source_data/uscensus/DECENNIALCD1182020.P1_2025-12-12T192416/DECENNIALCD1182020.P1-Data.csv",
             skiprows=1,
             csv_columns_geo_name=["Geographic Area Name"],
             data_item_defs=[
@@ -98,7 +98,7 @@ def main():
         # But I didn't want to break the existing pattern which is compatible with
         # other CSV files that don't contain FIPS codes.
         convert_csv_json(
-            csv_filename="source_data/co-est2024-alldata.csv",
+            csv_filename="source_data/uscensus/co-est2024-alldata.csv",
             skiprows=0,
             csv_columns_geo_name=["STNAME", "CTYNAME"],
             data_item_defs=[
@@ -113,6 +113,37 @@ def main():
             dataset_name="2024-census-pop-est",
             dataset_long_name="U.S. Census Bureau, 2024 populuation est, counties",
             dataset_source_url="https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/totals/",
+            dry_run=dry_run,
+        )
+    if dataset == "*" or dataset == "worldbank-gini":
+
+        """
+        WIP - not yet working
+        Need to get 3-digit numberic country code etc.
+        See convert_WDI_Data_csv.py
+
+        {
+            "Data_Item": "id",
+            "Item_Description": "ISO 3166-1 numeric country code"
+        },
+        """
+
+        convert_csv_json(
+            csv_filename="source_data/worldbank/API_SI.POV.GINI_DS2_en_csv_v2_1105585/API_SI.POV.GINI_DS2_en_csv_v2_1105585.csv",
+            skiprows=4,
+            csv_columns_geo_name=["Country Name"],
+            data_item_defs=[
+                DataItemDef(
+                    csv_column="",
+                    json_data_item="gini",
+                    json_item_description="World Bank Gini Index",
+                )
+            ],
+            default_data_item="2024-population-est",
+            map_name="world",
+            dataset_name="worldbank-gini",
+            dataset_long_name="World Bank, Poverty and Inequality Platform, indicator: Gini index",
+            dataset_source_url="https://data.worldbank.org/indicator/SI.POV.GINI",
             dry_run=dry_run,
         )
 

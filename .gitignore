@@ -52,3 +52,7 @@ coverage.xml
 verbecc/data/models/*.zip
 *.log
 *.log.*
+
+# Extremely Large Files #
+WDI*.zip
+WDI*.csv

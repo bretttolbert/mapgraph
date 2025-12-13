@@ -437,7 +437,7 @@ $(function() {
     <div id="statsContainer">
         <table>
             <tr>
-                <th><a href="http://www.tc3.edu/instruct/sbrown/stat/symbol.htm" class="subtle-link">n</a></th>
+                <th><a href="/assets/projects/mapgraph/doc/A_Brief_Survey_of_Statistical_Symbols.pdf" class="subtle-link">n</a></th>
                 <th><a href="http://en.wikipedia.org/wiki/Mean" class="subtle-link">&mu;</a></span></th>
                 <th><a href="http://en.wikipedia.org/wiki/Standard_deviation" class="subtle-link">&sigma;</a></span></th>
                 <th>min</th>

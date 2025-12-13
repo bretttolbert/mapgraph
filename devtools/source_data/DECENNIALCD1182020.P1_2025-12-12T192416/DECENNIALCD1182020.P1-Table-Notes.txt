@@ -1,0 +1,16 @@
+
+=============================================================================================================
+Notes
+=============================================================================================================
+
+Note: For information on data collection, confidentiality protection, nonsampling error, subject definitions, and guidance on using the data, visit the <a href=\"https://www.census.gov/programs-surveys/decennial-census/technical-documentation/complete-technical-documents.html#118\">2020 Census 118th Congressional District Summary File (CD118) Technical Documentation<\/a> webpage.<br/><br/>
+
+-------------------------------------------------------------------------------------------------------------
+
+To protect respondent confidentiality, data have undergone disclosure avoidance methods which add \"statistical noise\" - small, random additions or subtractions - to the data so that no one can reliably link the published data to a specific person or household. The Census Bureau encourages data users to aggregate small populations and geographies to improve accuracy and diminish implausible results.<br/><br/>
+
+-------------------------------------------------------------------------------------------------------------
+
+Source: U.S. Census Bureau, 2020 Census 118th Congressional District Summary File (CD118)<br/><br/>
+
+-------------------------------------------------------------------------------------------------------------

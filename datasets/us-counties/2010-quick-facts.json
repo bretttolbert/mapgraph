@@ -170248,5 +170248,6 @@
             "Unit": "RTE"
         }
     ],
-    "nodeIdSource": "FIPS"
+    "nodeIdSource": "FIPS",
+    "defaultDataItem": "POP010210"
 }

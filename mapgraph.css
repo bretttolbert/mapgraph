@@ -1,0 +1,107 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 24pt;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  width: 0px;
+  border: 1px solid white;
+  padding: 4px;
+  text-align: center;
+}
+
+select {
+  width: 100%; /* Makes it responsive to the parent container's width */
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Adds rounded corners */
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box; /* Ensures padding/border are included in width calculation */
+  margin-top: 1em;
+}
+
+@media screen and (min-width: 1024px) {
+  /* Desktop-only CSS rules go here */
+
+    select {
+        width: 512px;
+    }
+}
+
+.scale-swatch {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.subtle-link {
+    text-decoration: none;
+    color: white;
+}
+
+#toolTipContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid white;
+    background-color: black;
+    display: none;
+}
+
+#scaleContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.scale-extrema {
+    font-size: small;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#statsContainer {
+    margin-top: 5px;
+}
+
+#outerContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#loaderContainer {
+    position: absolute;
+    display: table;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#loaderImageContainer {
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#datasetInfoContainer {
+    margin-top: 1em;
+}

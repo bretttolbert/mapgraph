@@ -80,15 +80,15 @@ var nodeMousoverCallback = function(node) {
         if (node.hasOwnProperty('val')) {
             html += '<br/>' + fmtnum(node.val);
         }
-        $('#toolTip').html(html);
-        $('#toolTip').show();
+        $('#toolTipContainer').html(html);
+        $('#toolTipContainer').show();
         setSvgElemFill(getSvgElemByNode(node), mapData.hoverNodeFill);
     }
 }
 
 var nodeMouseoutCallback = function(node) {
     return function() {
-        $('#toolTip').hide();
+        $('#toolTipContainer').hide();
         var fill = mapData.defaultNodeFill;
         if (node.hasOwnProperty('fill')) {
             fill = node.fill;
@@ -115,6 +115,9 @@ function resetNodes() {
 
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
 function calculateSelectedDataItemStats() {
+    if (selectedDataItemId == null) {
+        throw new Error("calculateSelectedDataItemStats: selectedDataItemId is null");
+    }
     var total = 0;
     var min, max, minNodeId, maxNodeId;
     var n = 0;
@@ -203,93 +206,94 @@ function calculateSelectedDataItemStats() {
     log('MaxStdDeviations: ' + selectedDataItemStats.maxStdDeviations);
     log('SpanInStdDeviations: ' + selectedDataItemStats.spanInStdDeviations);
     
-    var html = '';
-    html += '<a href="http://www.tc3.edu/instruct/sbrown/stat/symbol.htm" class="HiddenHyperlink">n</a> = ' + fmtnum(selectedDataItemStats.n) + '<br/>';
-    html += '<a href="http://en.wikipedia.org/wiki/Mean" class="HiddenHyperlink">&mu;</a> = ' + fmtnum(selectedDataItemStats.mean) + '<br/>';
-    html += '<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a> = ' + fmtnum(selectedDataItemStats.sigma) + '<br/>';
-    html += 'min = ' + fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')' + '<br/>';
-    html += 'max = ' + fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')' + '<br/>';
-    $('#stats').html(html);
+
+    $("#statsValue_n").textContext = fmtnum(selectedDataItemStats.n);
+    $("#statsValue_mu").textContext = fmtnum(selectedDataItemStats.mean);
+    $("#statsValue_sigma").textContext = fmtnum(selectedDataItemStats.sigma);
+    $("#statsValue_min").textContext = fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')';
+    $("#statsValue_max").textContext = fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')';
+
     generateScale();
 }
 
 var firstPlot = true;
+
 function visualizeSelectedDataItem() {
-    $('#loader').show();
-    if (firstPlot) {
-        firstPlot = false;
+    if (selectedDataItemId == null) {
+        throw new Error("visualizeSelectedDataItem: selectedDataItemId is null");
     } else {
-        resetNodes();
-    }
-    //$('#loaderContainer').show();
-    //clearSelectedNodes();
-    //clearPath();
-    //resetNodes(true);
-    //var selectedQuickFact = $('#quickFactsSel').val();
-    //var scale = $('#scaleSel').val();
-    //var base = parseInt($('#base').val(), 10);
-    var minSigma = -1; //var minSigma = parseInt($('#minSigma').val(), 10);
-    var maxSigma = 1; //var maxSigma = parseInt($('#maxSigma').val(), 10);
-    calculateSelectedDataItemStats();
-    //var highestPct, highestNode, highestVal;
-    for (var i=0; i<datasetData.data.length; ++i) {
-        var record = datasetData.data[i];
-        var node = getNodeById(record[datasetData.nodeIdSource]);
-        var val = record[selectedDataItemId];
-        if (val != undefined) {
-            node.val = val;
-            var deviationFromMean = val - selectedDataItemStats.mean;
-            var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
-            //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
-            //need to go from minSigma to maxSigma
-            var stepWidth = (maxSigma - minSigma) / colorScale.length;
-            var currentStep = minSigma;
-            for (var j=0; j<colorScale.length; ++j) {
-                currentStep += stepWidth;
-                if (stdDeviations < currentStep || j==colorScale.length-1) {
-                    node.fill = colorScale[j];
-                    setSvgElemFill(getSvgElemByNode(node), node.fill);
-                    break;
+        $('#loaderContainer').show();
+        if (firstPlot) {
+            firstPlot = false;
+        } else {
+            resetNodes();
+        }
+        //$('#loaderContainer').show();
+        //clearSelectedNodes();
+        //clearPath();
+        //resetNodes(true);
+        //var selectedQuickFact = $('#quickFactsSel').val();
+        //var scale = $('#scaleSel').val();
+        //var base = parseInt($('#base').val(), 10);
+        var minSigma = -1; //var minSigma = parseInt($('#minSigma').val(), 10);
+        var maxSigma = 1; //var maxSigma = parseInt($('#maxSigma').val(), 10);
+        calculateSelectedDataItemStats();
+        //var highestPct, highestNode, highestVal;
+        for (var i=0; i<datasetData.data.length; ++i) {
+            var record = datasetData.data[i];
+            var node = getNodeById(record[datasetData.nodeIdSource]);
+            var val = record[selectedDataItemId];
+            if (val != undefined) {
+                node.val = val;
+                var deviationFromMean = val - selectedDataItemStats.mean;
+                var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
+                //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
+                //need to go from minSigma to maxSigma
+                var stepWidth = (maxSigma - minSigma) / colorScale.length;
+                var currentStep = minSigma;
+                for (var j=0; j<colorScale.length; ++j) {
+                    currentStep += stepWidth;
+                    if (stdDeviations < currentStep || j==colorScale.length-1) {
+                        node.fill = colorScale[j];
+                        setSvgElemFill(getSvgElemByNode(node), node.fill);
+                        break;
+                    }
                 }
             }
         }
+        $('#loaderContainer').hide();
     }
-    $('#loader').hide();
 }
 
 function generateScale() {
     var html = '';
-    //html += '<div style="float:left">Scale: </div>';
     for (var i=0; i<colorScale.length; i+=10) {
-        html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[i] + '">';
+        html += '<div class="scale-swatch" style="background-color: ' + colorScale[i] + '">';
         if (i==0) {
-            html += '-1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a>';
+            html += '-1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="subtle-link">&sigma;</a>';
             if (selectedDataItemStats.sigma != undefined) {
                 var scaleExtremeMin = selectedDataItemStats.mean - selectedDataItemStats.sigma;
-                //if (scaleExtremeMin < selectedDataItemStats.min) {
-                //    scaleExtremeMin = selectedDataItemStats.min;
-                //}
-                html += '<br/><br/>(' + fmtnum(scaleExtremeMin) + ')';
+                html += '<div class="scale-extrema">(' + fmtnum(scaleExtremeMin) + ')</div>';
             }
         } else if (i==50) {
-            html += '<a href="http://en.wikipedia.org/wiki/Mean" class="HiddenHyperlink">&mu;</a>';
+            html += '<a href="http://en.wikipedia.org/wiki/Mean" class="subtle-link">&mu;</a>';
             if (selectedDataItemStats.sigma != undefined) {
-                html += '<br/><br/>(' + fmtnum(selectedDataItemStats.mean) + ')';
+                html += '<div class="scale-extrema">(' + fmtnum(selectedDataItemStats.mean) + ')</div>';
             }
         }
         html += '</div>';
     }
-    html += '<div class="ScaleSwatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
-    html += '1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="HiddenHyperlink">&sigma;</a>';
+    html += '<div class="scale-swatch" style="background-color: ' + colorScale[colorScale.length-1] + '">';
+    html += '1<a href="http://en.wikipedia.org/wiki/Standard_deviation" class="subtle-link">&sigma;</a>';
     var scaleExtremeMax = selectedDataItemStats.mean + selectedDataItemStats.sigma;
     //if (scaleExtremeMax > selectedDataItemStats.max) {
     //    scaleExtremeMax = selectedDataItemStats.max;
     //}
     if (selectedDataItemStats.sigma != undefined) {
-        html += '<br/><br/>(' + fmtnum(selectedDataItemStats.mean + selectedDataItemStats.sigma) + ')';
+        html += '<div class="scale-extrema">(' + fmtnum(selectedDataItemStats.mean + selectedDataItemStats.sigma) + ')</div>';
     }
     html += '</div>';
-    $('#scale').html(html);
+    $('#scaleContainer').html(html);
 }
 <?php } ?>
 
@@ -326,36 +330,62 @@ function svgLoadCallback() {
     
 <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
     <?php if (isset($_REQUEST['dataset'])) { ?>
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    function updateSelectedDataItem(dataItem) {
+        selectedDataItemId = dataItem;
+        log('selectedDataItemId=' + selectedDataItemId);
+        visualizeSelectedDataItem();
+    }
+
     //load data set
     $.getJSON('datasets/<?php echo $_REQUEST['map'] . '/' . $_REQUEST['dataset']; ?>.min.json', function(respData) {
         datasetData = respData;
-        var html = '';
+        let html = '';
         if (datasetData.hasOwnProperty('sourceUrl')) {
-            html += ' Source: <a href="' + datasetData.sourceUrl + '" class="HiddenHyperlink">' + datasetData['name'] + '</a>'
+            html += '<a href="' + datasetData.sourceUrl + '" class="subtle-link">' + datasetData['name'] + '</a>'
         } else {
-            html += ' Source: ' + datasetData['name'];
+            html += '' + datasetData['name'];
         }
-        $('#datasetInfo').html(html);
-        var html = 'Data Item: <select>';
-        for (var i=0; i<datasetData.metadata.length; ++i) {
-            var node = datasetData.metadata[i];
-            s = node['Data_Item'] + ' ' + node['Item_Description']
-            html += '<option value="' + node['Data_Item'] + '">' + s + '</option>';
+        let defaultDataItem = "";
+        if ('defaultDataItem' in datasetData) {
+            defaultDataItem = datasetData['defaultDataItem'];
+        }
+        $('#datasetSource').html(html);
+        html = 'Data Item: <select id="dataItemSel">';
+        for (let i=0; i<datasetData.metadata.length; ++i) {
+            let node = datasetData.metadata[i];
+            let dataItem = node['Data_Item'];
+            let itemDesc = node['Item_Description'];
+            let selected = "";
+            if ((urlParams.has('dataitem') && urlParams.get('dataitem') == dataItem) 
+             || (defaultDataItem.length > 0 && defaultDataItem == dataItem)) {
+                selected = 'selected="selected" '
+                selectedDataItemId = dataItem;
+                log('selectedDataItemId=' + selectedDataItemId);
+            }
+            html += '<option '+ selected 
+                + 'value="' + dataItem + '">' 
+                + dataItem + ' (' + itemDesc + ")"
+                + '</option>';
         }
         html += '</select><br/>';
-        $('#dataItemSel').html(html);
+        $('#dataItemSelContainer').html(html);
         $('#dataItemSel').change(function(){
-            selectedDataItemId = $('#dataItemSel option:selected').val();
-            log('selectedDataItemId=' + selectedDataItemId);
-            visualizeSelectedDataItem();
+            updateSelectedDataItem($('#dataItemSel option:selected').val());
         });
-        setTimeout(function(){$('#loader').hide()}, 100);
+        setTimeout(function(){$('#loaderContainer').hide()}, 100);
+        if (selectedDataItemId != null) {
+            visualizeSelectedDataItem();
+        }
     });
     <?php } else { ?>
         alert('Error: No data set specified.');
     <?php } ?>
 <?php } else { ?>
-    $('#loader').hide();
+    $('#loaderContainer').hide();
 <?php } ?>
 
     $('#mapSel').change(function(){
@@ -374,24 +404,17 @@ function svgLoadCallback() {
 }
 
 function initToolTip() {
-    var toolTip = $('#toolTip');
+    var toolTip = $('#toolTipContainer');
     toolTip.hide();
-    toolTip.css({
-        'position':'absolute',
-        'left':'0',
-        'top':'0',
-        'border':'1px solid black',
-        'background-color': 'white',
-    });
 }
 
 function updateToolTipPos(x,y) {
-    $('#toolTip').css('left', x);
-    $('#toolTip').css('top', y + 50);
+    $('#toolTipContainer').css('left', x);
+    $('#toolTipContainer').css('top', y + 50);
 }
 
 $(function() {
-    $('#loader').show();
+    $('#loaderContainer').show();
     $('#svgEmbed')[0].addEventListener('load', svgLoadCallback, false);
     initToolTip();
     if (!window.chrome) {
@@ -404,94 +427,97 @@ $(function() {
 <?php } ?>
 });
 </script>
-<style type="text/css">
-.ScaleSwatch {
-    width: 100px;
-    height: 30px;
-    float: left;
-    text-align: center;
-    padding-top: 15px;
-}
-.HiddenHyperlink {
-    text-decoration: none;
-    color: black;
-}
-#loader {
-    position: absolute;
-    display: table;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
-#loaderImage {
-    display: table-cell;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-}
-</style>
+<link rel="stylesheet" href="mapgraph.css">
 </head>
 <body>
-<embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
-<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
-<div id="scale"></div>
-<br/><br/><br/><br/>
-<div id="stats"></div>
-<?php } ?>
-<br/>
-<?php
-//map select
-echo 'Map: <select name="map" id="mapSel">';
-$d = dir("maps");
-while (($entry = $d->read()) !== false) {
-    if ($entry != '.' && $entry != '..' && is_dir("maps/" . $entry)) {
-        if ($entry == $_REQUEST['map']) {
-            echo '<option selected="selected">' . $entry . '</option>';        
-        } else {
-            echo '<option>' . $entry . '</option>';
-        }
-    }
-}
-$d->close();
-echo '</select><br/>';
+<div id="outerContainer">
+    <embed id="svgEmbed" src="maps/<?php echo $_REQUEST["map"]; ?>/map.svg" />
 
-//dataset select
-echo 'Data Set: <select name="dataset" id="datasetSel">';
-echo '<option>none</option>';
-$path = 'datasets/' . $_REQUEST['map'];
-$d = dir($path);
-while (($entry = $d->read()) !== false) {
-    if ($entry != '.' && $entry != '..' && is_file($path . '/' . $entry)) {
-        $extPos = strpos($entry, '.min.json');
-        if ($extPos !== false) {
-            $entry = substr($entry, 0, $extPos);
-            if ($entry == $_REQUEST['dataset']) {
+    <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
+    <div id="scaleContainer"></div>
+    <div id="statsContainer">
+        <table>
+            <tr>
+                <th><a href="http://www.tc3.edu/instruct/sbrown/stat/symbol.htm" class="subtle-link">n</a></th>
+                <th><a href="http://en.wikipedia.org/wiki/Mean" class="subtle-link">&mu;</a></span></th>
+                <th><a href="http://en.wikipedia.org/wiki/Standard_deviation" class="subtle-link">&sigma;</a></span></th>
+                <th>min</th>
+                <th>max</th>
+            </tr>
+            <tr>
+                <td><span id="statsValue_n">0</span></td>
+                <td><span id="statsValue_mu">0</span></td>
+                <td><span id="statsValue_sigma">0</span></td>
+                <td><span id="statsValue_min">0</span></td>
+                <td><span id="statsValue_max">0</span></td>
+            </tr>
+        </table>
+    </div> <!-- statsContainer -->
+    <?php } ?>
+
+    <div id="mapSelContainer">
+    Map: <select name="map" id="mapSel">
+    <?php
+    $d = dir("maps");
+    while (($entry = $d->read()) !== false) {
+        if ($entry != '.' && $entry != '..' && is_dir("maps/" . $entry)) {
+            if ($entry == $_REQUEST['map']) {
                 echo '<option selected="selected">' . $entry . '</option>';        
             } else {
                 echo '<option>' . $entry . '</option>';
             }
         }
     }
-}
-$d->close();
-echo '</select>';
-echo '<span id="datasetInfo" style="font-size:12px"></span>';
-?>
-<br/>
-<?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
-<div id="dataItemSel"></div>
-<?php } ?>
-<div id="toolTip"></div>
-<div id="loader">
-    <div id="loaderImage">
-    <?php
-        $size = 2;
-        $width = 54*$size;
-        $height = 55*$size;
-        echo "<img src=\"img/ajax-loader.gif\" width=\"$width\" height=\"$height\"/>";
+    $d->close();
     ?>
+    </select>
+    </div> <!-- /mapSelContainer -->
+
+    <div id="dataSetSelContainer">
+    Data Set: <select name="dataset" id="datasetSel">
+    <option>none</option>
+    <?php
+    $path = 'datasets/' . $_REQUEST['map'];
+    $d = dir($path);
+    while (($entry = $d->read()) !== false) {
+        if ($entry != '.' && $entry != '..' && is_file($path . '/' . $entry)) {
+            $extPos = strpos($entry, '.min.json');
+            if ($extPos !== false) {
+                $entry = substr($entry, 0, $extPos);
+                if ($entry == $_REQUEST['dataset']) {
+                    echo '<option selected="selected">' . $entry . '</option>';        
+                } else {
+                    echo '<option>' . $entry . '</option>';
+                }
+            }
+        }
+    }
+    $d->close();
+    ?>
+    </select>
+    </div> <!-- /dataSetSelContainer -->
+
+    <?php if (isset($_REQUEST['mode']) && $_REQUEST['mode'] == 'graph') {  ?>
+    <div id="dataItemSelContainer"></div> <!-- /dataItemSelContainer -->
+    <?php } ?>
+
+    <div id="toolTipContainer"></div>
+
+    <div id="loaderContainer">
+        <div id="loaderImageContainer">
+        <?php
+            $size = 2;
+            $width = 54*$size;
+            $height = 55*$size;
+            echo "<img src=\"img/ajax-loader.gif\" width=\"$width\" height=\"$height\"/>";
+        ?>
+        </div> <!-- /loaderImageContainer -->
+    </div> <!-- /loaderContainer -->
+
+    <div id="datasetInfoContainer">
+        Source: <span id="datasetSource">0</span>
     </div>
-</div>
+
+</div> <!-- /outerContainer -->
 </body>
 </html>

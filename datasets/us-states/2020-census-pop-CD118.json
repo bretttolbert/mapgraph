@@ -3,7 +3,7 @@
     "metadata": [
         {
             "Data_Item": "FIPS",
-            "Item_Description": "FIPS state code"
+            "Item_Description": "FIPS code"
         },
         {
             "Data_Item": "population",
@@ -216,6 +216,7 @@
             "population": 576851.0
         }
     ],
-    "name": "US Census 2020 QuickFacts Data",
-    "sourceUrl": "http://www.erh.noaa.gov/cae/svrwx/tornadobystate.htm"
+    "name": "U.S. Census Bureau, 2020 Census 118th Congressional District Summary File (CD118)",
+    "sourceUrl": "https://data.census.gov/table/DECENNIALCD1182020.P1",
+    "defaultDataItem": "population"
 }

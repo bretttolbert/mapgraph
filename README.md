@@ -4,7 +4,7 @@
 
 ## Demo
 
-Live demo: [bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties)
+Live demo: [bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2024-census-pop-est](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2024-census-pop-est)
 
 ## Features
 

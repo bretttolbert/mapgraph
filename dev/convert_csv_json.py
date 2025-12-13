@@ -20,6 +20,7 @@ def convert_csv_json(
     skiprows: int,
     csv_columns_geo_name: List[str],
     data_item_defs: List[DataItemDef],
+    default_data_item: str,
     map_name: str,
     dataset_name: str,
     dataset_long_name: str,
@@ -35,6 +36,7 @@ def convert_csv_json(
     }
     data["name"] = dataset_long_name
     data["sourceUrl"] = dataset_source_url
+    data["defaultDataItem"] = default_data_item
     metadata: Metadata = cast(Metadata, data["metadata"])
     for did in data_item_defs:
         metadata.append(
@@ -61,13 +63,13 @@ def convert_csv_json(
         else:
             print(f"Warning: Failed to find FIPS for geo name '{geo_name}'")
     if not dry_run:
-        write_json(data, out_path, dataset_name, min=False)
-        write_json(data, out_path, dataset_name, min=True)
+        write_json(data, out_path, dataset_name, minify=False)
+        write_json(data, out_path, dataset_name, minify=True)
 
 
 def main():
     dry_run = False
-    dataset = "2024-census-pop-est"
+    dataset = "*"
 
     if dataset == "*" or dataset == "2020-census-pop-CD118":
         convert_csv_json(
@@ -81,6 +83,7 @@ def main():
                     json_item_description="Total Population",
                 )
             ],
+            default_data_item="population",
             map_name="us-states",
             dataset_name="2020-census-pop-CD118",
             dataset_long_name="U.S. Census Bureau, 2020 Census 118th Congressional District Summary File (CD118)",
@@ -105,6 +108,7 @@ def main():
                     json_item_description="2024 Population Estimate",
                 )
             ],
+            default_data_item="2024-population-est",
             map_name="us-counties",
             dataset_name="2024-census-pop-est",
             dataset_long_name="U.S. Census Bureau, 2024 populuation est, counties",

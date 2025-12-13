@@ -12501,5 +12501,6 @@
         }
     ],
     "name": "U.S. Census Bureau, 2024 populuation est, counties",
-    "sourceUrl": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/totals/"
+    "sourceUrl": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/counties/totals/",
+    "defaultDataItem": "2024-population-est"
 }

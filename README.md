@@ -12,9 +12,6 @@ Live demo: [bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counti
 - Opens Wikipdia page on mouse click. 
 - Visualization of US census data. Sandbox for graph traversal algorithms (each county is a node)
 
-![Screenshot](thumbnail.png?raw=true "Screenshot")
-
-
 ## datasets
 
 * map: us-counties
@@ -35,3 +32,10 @@ Live demo: [bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counti
     * dataset: Tornado data
 * map: world
     * datasets: 2012 World Development Indicators
+
+# Screenhots
+
+![2024_US_Counties_Population_Est](/doc/screenshots/2024_US_Counties_Population_Est.png)
+![old_thumbnail](/doc/screenshots/old_thumbnail.png)
+![2013_Alabama_Population](/doc/screenshots/2013_Alabama_Population.png)
+![2024_Alabama_Est_Population](/doc/screenshots/2024_Alabama_Est_Population.png)

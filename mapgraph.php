@@ -368,8 +368,7 @@ function svgLoadCallback() {
             if ((urlParams.has('dataitem') && urlParams.get('dataitem') == dataItem) 
              || (defaultDataItem.length > 0 && defaultDataItem == dataItem)) {
                 selected = 'selected="selected" '
-                selectedDataItemId = dataItem;
-                log('selectedDataItemId=' + selectedDataItemId);
+                updateSelectedDataItem(dataItem);
             }
             html += '<option '+ selected 
                 + 'value="' + dataItem + '">' 
@@ -382,9 +381,9 @@ function svgLoadCallback() {
             updateSelectedDataItem($('#dataItemSel option:selected').val());
         });
         setTimeout(function(){$('#loaderContainer').hide()}, 100);
-        if (selectedDataItemId != null) {
-            visualizeSelectedDataItem();
-        }
+        //if (selectedDataItemId != null) {
+        //    visualizeSelectedDataItem();
+        //}
     });
     <?php } else { ?>
         alert('Error: No data set specified.');

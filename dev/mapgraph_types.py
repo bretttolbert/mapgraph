@@ -1,7 +1,8 @@
 from typing import cast, Dict, Any, List, Union
 
-Data = Dict[str, Any]
 Metadata = List[Dict[str, str]]
+
+Data = Dict[str, Any]
 
 
 class DataItemDef:

@@ -24,13 +24,6 @@
     ],
     "data": [
         {
-            "id": 533,
-            "EN.URB.LCTY.UR.ZS": 27.678673283710346,
-            "EN.URB.MCTY.TL.ZS": 22.808251247189588,
-            "SP.URB.TOTL": 47865.0,
-            "SP.URB.TOTL.IN.ZS": 44.474
-        },
-        {
             "id": 4,
             "EN.URB.LCTY.UR.ZS": 40.66434012373236,
             "EN.URB.MCTY.TL.ZS": 11.087132626697016,
@@ -39,7 +32,7 @@
         },
         {
             "id": 8,
-            "EN.URB.LCTY.UR.ZS": 29.756701676848934,
+            "EN.URB.LCTY.UR.ZS": 29.75670167684893,
             "SP.URB.TOTL": 1774817.0,
             "SP.URB.TOTL.IN.ZS": 65.38
         },
@@ -85,6 +78,11 @@
             "EN.URB.MCTY.TL.ZS": 36.1807153453107,
             "SP.URB.TOTL": 1939286.0,
             "SP.URB.TOTL.IN.ZS": 63.929
+        },
+        {
+            "id": 533,
+            "SP.URB.TOTL": 47865.0,
+            "SP.URB.TOTL.IN.ZS": 44.474
         },
         {
             "id": 36,
@@ -133,7 +131,7 @@
         {
             "id": 112,
             "EN.URB.LCTY.UR.ZS": 27.865180943311792,
-            "EN.URB.MCTY.TL.ZS": 22.605628467374494,
+            "EN.URB.MCTY.TL.ZS": 22.60562846737449,
             "SP.URB.TOTL": 7409724.0,
             "SP.URB.TOTL.IN.ZS": 81.125
         },
@@ -203,14 +201,14 @@
         {
             "id": 100,
             "EN.URB.LCTY.UR.ZS": 25.93469775484002,
-            "EN.URB.MCTY.TL.ZS": 19.979312161972178,
+            "EN.URB.MCTY.TL.ZS": 19.979312161972175,
             "SP.URB.TOTL": 4964546.0,
             "SP.URB.TOTL.IN.ZS": 77.037
         },
         {
             "id": 854,
             "EN.URB.LCTY.UR.ZS": 43.00707703744429,
-            "EN.URB.MCTY.TL.ZS": 14.263727706330107,
+            "EN.URB.MCTY.TL.ZS": 14.263727706330108,
             "SP.URB.TOTL": 7810189.0,
             "SP.URB.TOTL.IN.ZS": 33.166
         },
@@ -241,7 +239,7 @@
         },
         {
             "id": 124,
-            "EN.URB.LCTY.UR.ZS": 19.000695247186478,
+            "EN.URB.LCTY.UR.ZS": 19.00069524718648,
             "EN.URB.MCTY.TL.ZS": 43.93412815968883,
             "SP.URB.TOTL": 33848393.0,
             "SP.URB.TOTL.IN.ZS": 81.98
@@ -273,14 +271,14 @@
         },
         {
             "id": 156,
-            "EN.URB.LCTY.UR.ZS": 3.2342137650122673,
+            "EN.URB.LCTY.UR.ZS": 3.2342137650122678,
             "EN.URB.MCTY.TL.ZS": 32.01034965134229,
             "SP.URB.TOTL": 923498574.0,
             "SP.URB.TOTL.IN.ZS": 65.544
         },
         {
             "id": 170,
-            "EN.URB.LCTY.UR.ZS": 26.670726150109637,
+            "EN.URB.LCTY.UR.ZS": 26.67072615010964,
             "EN.URB.MCTY.TL.ZS": 44.534026663924685,
             "SP.URB.TOTL": 43711637.0,
             "SP.URB.TOTL.IN.ZS": 82.652
@@ -307,7 +305,7 @@
         {
             "id": 188,
             "EN.URB.LCTY.UR.ZS": 34.74739311343168,
-            "EN.URB.MCTY.TL.ZS": 28.898362739307316,
+            "EN.URB.MCTY.TL.ZS": 28.89836273930732,
             "SP.URB.TOTL": 4266392.0,
             "SP.URB.TOTL.IN.ZS": 83.167
         },
@@ -376,7 +374,7 @@
         {
             "id": 218,
             "EN.URB.LCTY.UR.ZS": 27.07691303212327,
-            "EN.URB.MCTY.TL.ZS": 28.562434362082982,
+            "EN.URB.MCTY.TL.ZS": 28.562434362082985,
             "SP.URB.TOTL": 11793320.0,
             "SP.URB.TOTL.IN.ZS": 65.029
         },
@@ -408,7 +406,7 @@
         },
         {
             "id": 233,
-            "EN.URB.LCTY.UR.ZS": 47.486964568818436,
+            "EN.URB.LCTY.UR.ZS": 47.48696456881844,
             "SP.URB.TOTL": 960651.0,
             "SP.URB.TOTL.IN.ZS": 70.019
         },
@@ -419,7 +417,7 @@
         },
         {
             "id": 231,
-            "EN.URB.LCTY.UR.ZS": 18.253559956374218,
+            "EN.URB.LCTY.UR.ZS": 18.253559956374215,
             "EN.URB.MCTY.TL.ZS": 4.31897475633135,
             "SP.URB.TOTL": 31246661.0,
             "SP.URB.TOTL.IN.ZS": 23.661
@@ -461,7 +459,7 @@
         },
         {
             "id": 270,
-            "EN.URB.LCTY.UR.ZS": 27.563690012248077,
+            "EN.URB.LCTY.UR.ZS": 27.56369001224808,
             "SP.URB.TOTL": 1796200.0,
             "SP.URB.TOTL.IN.ZS": 65.08
         },
@@ -481,7 +479,7 @@
         },
         {
             "id": 288,
-            "EN.URB.LCTY.UR.ZS": 18.943250239830917,
+            "EN.URB.LCTY.UR.ZS": 18.94325023983092,
             "EN.URB.MCTY.TL.ZS": 19.242357267960934,
             "SP.URB.TOTL": 20606184.0,
             "SP.URB.TOTL.IN.ZS": 59.854
@@ -494,7 +492,7 @@
         {
             "id": 300,
             "EN.URB.LCTY.UR.ZS": 37.4954209243255,
-            "EN.URB.MCTY.TL.ZS": 30.365292254498954,
+            "EN.URB.MCTY.TL.ZS": 30.365292254498957,
             "SP.URB.TOTL": 8413270.0,
             "SP.URB.TOTL.IN.ZS": 80.984
         },
@@ -523,7 +521,7 @@
         {
             "id": 324,
             "EN.URB.LCTY.UR.ZS": 38.33463455954768,
-            "EN.URB.MCTY.TL.ZS": 14.765352392461157,
+            "EN.URB.MCTY.TL.ZS": 14.765352392461155,
             "SP.URB.TOTL": 5683101.0,
             "SP.URB.TOTL.IN.ZS": 38.517
         },
@@ -547,8 +545,8 @@
         },
         {
             "id": 340,
-            "EN.URB.LCTY.UR.ZS": 24.442084843565652,
-            "EN.URB.MCTY.TL.ZS": 14.865187046051421,
+            "EN.URB.LCTY.UR.ZS": 24.44208484356565,
+            "EN.URB.MCTY.TL.ZS": 14.86518704605142,
             "SP.URB.TOTL": 6583976.0,
             "SP.URB.TOTL.IN.ZS": 60.818
         },
@@ -561,7 +559,7 @@
         },
         {
             "id": 348,
-            "EN.URB.LCTY.UR.ZS": 25.442858600498514,
+            "EN.URB.LCTY.UR.ZS": 25.442858600498518,
             "EN.URB.MCTY.TL.ZS": 18.618830128355963,
             "SP.URB.TOTL": 6997606.0,
             "SP.URB.TOTL.IN.ZS": 73.179
@@ -588,7 +586,7 @@
         {
             "id": 364,
             "EN.URB.LCTY.UR.ZS": 13.515821433921069,
-            "EN.URB.MCTY.TL.ZS": 25.154153092653658,
+            "EN.URB.MCTY.TL.ZS": 25.154153092653655,
             "SP.URB.TOTL": 71146301.0,
             "SP.URB.TOTL.IN.ZS": 77.698
         },
@@ -614,7 +612,7 @@
         {
             "id": 376,
             "EN.URB.LCTY.UR.ZS": 48.49337802991455,
-            "EN.URB.MCTY.TL.ZS": 56.967857715752324,
+            "EN.URB.MCTY.TL.ZS": 56.96785771575232,
             "SP.URB.TOTL": 9270806.0,
             "SP.URB.TOTL.IN.ZS": 92.946
         },
@@ -655,7 +653,7 @@
         {
             "id": 404,
             "EN.URB.LCTY.UR.ZS": 32.67675402114753,
-            "EN.URB.MCTY.TL.ZS": 12.468594585460577,
+            "EN.URB.MCTY.TL.ZS": 12.468594585460576,
             "SP.URB.TOTL": 16957535.0,
             "SP.URB.TOTL.IN.ZS": 30.049
         },
@@ -724,7 +722,7 @@
         },
         {
             "id": 434,
-            "EN.URB.LCTY.UR.ZS": 19.724112263928575,
+            "EN.URB.LCTY.UR.ZS": 19.72411226392857,
             "EN.URB.MCTY.TL.ZS": 16.155429945144462,
             "SP.URB.TOTL": 6045575.0,
             "SP.URB.TOTL.IN.ZS": 81.907
@@ -736,7 +734,7 @@
         },
         {
             "id": 440,
-            "EN.URB.LCTY.UR.ZS": 27.198868858963994,
+            "EN.URB.LCTY.UR.ZS": 27.198868858963998,
             "SP.URB.TOTL": 1990910.0,
             "SP.URB.TOTL.IN.ZS": 68.936
         },
@@ -748,7 +746,7 @@
         },
         {
             "id": 450,
-            "EN.URB.LCTY.UR.ZS": 30.719487906608695,
+            "EN.URB.LCTY.UR.ZS": 30.71948790660869,
             "EN.URB.MCTY.TL.ZS": 12.665952050739564,
             "SP.URB.TOTL": 13179471.0,
             "SP.URB.TOTL.IN.ZS": 41.231
@@ -775,7 +773,7 @@
         {
             "id": 466,
             "EN.URB.LCTY.UR.ZS": 26.55259251109604,
-            "EN.URB.MCTY.TL.ZS": 12.462194010726515,
+            "EN.URB.MCTY.TL.ZS": 12.462194010726517,
             "SP.URB.TOTL": 11488784.0,
             "SP.URB.TOTL.IN.ZS": 46.934
         },
@@ -803,8 +801,8 @@
         },
         {
             "id": 484,
-            "EN.URB.LCTY.UR.ZS": 21.008376180454917,
-            "EN.URB.MCTY.TL.ZS": 42.442968515441734,
+            "EN.URB.LCTY.UR.ZS": 21.00837618045492,
+            "EN.URB.MCTY.TL.ZS": 42.44296851544173,
             "SP.URB.TOTL": 107125438.0,
             "SP.URB.TOTL.IN.ZS": 81.862
         },
@@ -838,7 +836,7 @@
         },
         {
             "id": 504,
-            "EN.URB.LCTY.UR.ZS": 15.803133929848693,
+            "EN.URB.LCTY.UR.ZS": 15.803133929848691,
             "EN.URB.MCTY.TL.ZS": 22.587970176233803,
             "SP.URB.TOTL": 24997624.0,
             "SP.URB.TOTL.IN.ZS": 65.643
@@ -917,7 +915,7 @@
         },
         {
             "id": 807,
-            "EN.URB.LCTY.UR.ZS": 57.415871500975825,
+            "EN.URB.LCTY.UR.ZS": 57.41587150097583,
             "SP.URB.TOTL": 1072942.0,
             "SP.URB.TOTL.IN.ZS": 59.868
         },
@@ -936,7 +934,7 @@
         {
             "id": 512,
             "EN.URB.LCTY.UR.ZS": 35.65961480815826,
-            "EN.URB.MCTY.TL.ZS": 31.736342709263855,
+            "EN.URB.MCTY.TL.ZS": 31.73634270926385,
             "SP.URB.TOTL": 4700463.0,
             "SP.URB.TOTL.IN.ZS": 88.998
         },
@@ -961,7 +959,7 @@
         },
         {
             "id": 598,
-            "EN.URB.LCTY.UR.ZS": 28.638545303940415,
+            "EN.URB.LCTY.UR.ZS": 28.63854530394041,
             "SP.URB.TOTL": 1468018.0,
             "SP.URB.TOTL.IN.ZS": 13.88
         },
@@ -1051,7 +1049,7 @@
         },
         {
             "id": 682,
-            "EN.URB.LCTY.UR.ZS": 26.011623715754094,
+            "EN.URB.LCTY.UR.ZS": 26.01162371575409,
             "EN.URB.MCTY.TL.ZS": 50.70840514579488,
             "SP.URB.TOTL": 30065601.0,
             "SP.URB.TOTL.IN.ZS": 85.171
@@ -1112,7 +1110,7 @@
         },
         {
             "id": 706,
-            "EN.URB.LCTY.UR.ZS": 29.565219748347886,
+            "EN.URB.LCTY.UR.ZS": 29.56521974834789,
             "EN.URB.MCTY.TL.ZS": 14.344749010621252,
             "SP.URB.TOTL": 9223050.0,
             "SP.URB.TOTL.IN.ZS": 48.519
@@ -1126,14 +1124,14 @@
         },
         {
             "id": 728,
-            "EN.URB.LCTY.UR.ZS": 18.615890724617756,
+            "EN.URB.LCTY.UR.ZS": 18.61589072461776,
             "SP.URB.TOTL": 2574999.0,
             "SP.URB.TOTL.IN.ZS": 21.56
         },
         {
             "id": 724,
             "EN.URB.LCTY.UR.ZS": 16.9898676059695,
-            "EN.URB.MCTY.TL.ZS": 25.601087808121175,
+            "EN.URB.MCTY.TL.ZS": 25.60108780812117,
             "SP.URB.TOTL": 39925214.0,
             "SP.URB.TOTL.IN.ZS": 81.802
         },
@@ -1172,7 +1170,7 @@
         },
         {
             "id": 752,
-            "EN.URB.LCTY.UR.ZS": 18.284898384858998,
+            "EN.URB.LCTY.UR.ZS": 18.284898384859,
             "EN.URB.MCTY.TL.ZS": 16.26917070280743,
             "SP.URB.TOTL": 9404504.0,
             "SP.URB.TOTL.IN.ZS": 88.976
@@ -1180,7 +1178,7 @@
         {
             "id": 756,
             "EN.URB.LCTY.UR.ZS": 21.49511443194614,
-            "EN.URB.MCTY.TL.ZS": 15.976673719203083,
+            "EN.URB.MCTY.TL.ZS": 15.976673719203085,
             "SP.URB.TOTL": 6714777.0,
             "SP.URB.TOTL.IN.ZS": 74.327
         },
@@ -1237,14 +1235,14 @@
         {
             "id": 788,
             "EN.URB.LCTY.UR.ZS": 28.851628042470622,
-            "EN.URB.MCTY.TL.ZS": 20.450034287388018,
+            "EN.URB.MCTY.TL.ZS": 20.450034287388014,
             "SP.URB.TOTL": 8702015.0,
             "SP.URB.TOTL.IN.ZS": 70.88
         },
         {
             "id": 792,
             "EN.URB.LCTY.UR.ZS": 24.090399342315067,
-            "EN.URB.MCTY.TL.ZS": 38.883056178814584,
+            "EN.URB.MCTY.TL.ZS": 38.88305617881458,
             "SP.URB.TOTL": 66613051.0,
             "SP.URB.TOTL.IN.ZS": 77.893
         },
@@ -1308,7 +1306,7 @@
         },
         {
             "id": 860,
-            "EN.URB.LCTY.UR.ZS": 14.306723151273959,
+            "EN.URB.LCTY.UR.ZS": 14.30672315127396,
             "EN.URB.MCTY.TL.ZS": 7.242921765908614,
             "SP.URB.TOTL": 18408555.0,
             "SP.URB.TOTL.IN.ZS": 50.626
@@ -1353,7 +1351,7 @@
         {
             "id": 894,
             "EN.URB.LCTY.UR.ZS": 33.243193944457126,
-            "EN.URB.MCTY.TL.ZS": 15.595711293047005,
+            "EN.URB.MCTY.TL.ZS": 15.595711293047003,
             "SP.URB.TOTL": 9999698.0,
             "SP.URB.TOTL.IN.ZS": 46.914
         },
@@ -1366,6 +1364,6 @@
         }
     ],
     "id": "urban-dev",
-    "name": "World Development Indicators (2012) - Urban Development",
+    "name": "World Development Indicators (2025) - Urban Development",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

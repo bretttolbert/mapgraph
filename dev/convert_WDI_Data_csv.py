@@ -1,8 +1,12 @@
 #!/usr/bin/env python
-import csv
+from typing import cast, List
 import codecs
 import json
-import sys
+from pathlib import Path
+
+import pandas as pd
+
+from mapgraph_types import Data, Metadata
 
 """
 A script for converting subsets of WDI_Data.csv (146 MB) to mapgraph JSON 
@@ -13,82 +17,18 @@ Usage: convert_WDI_Data_csv.py
 """
 
 dry_run = False
+YEAR_DATA_START = 1960
 YEAR = 2025
 wdi_data_csv_path = "source_data/worldbank/WDI_CSV_2025_10_08/WDICSV.csv"
 # path to map.json for the "world" map, used for converting alpha-3 country codes to ISO 3166-1 numeric
 world_map_data_file_path = "../maps/world/map.json"
 # WDI_Data.csv columns:
-columns = {
+column_index = {
     "Country Name": 0,
     "Country Code": 1,
     "Indicator Name": 2,
     "Indicator Code": 3,
-    "1960": 4,
-    "1961": 5,
-    "1962": 6,
-    "1963": 7,
-    "1964": 8,
-    "1965": 9,
-    "1966": 10,
-    "1967": 11,
-    "1968": 12,
-    "1969": 13,
-    "1970": 14,
-    "1971": 15,
-    "1972": 16,
-    "1973": 17,
-    "1974": 18,
-    "1975": 19,
-    "1976": 20,
-    "1977": 21,
-    "1978": 22,
-    "1979": 23,
-    "1980": 24,
-    "1981": 25,
-    "1982": 26,
-    "1983": 27,
-    "1984": 28,
-    "1985": 29,
-    "1986": 30,
-    "1987": 31,
-    "1988": 32,
-    "1989": 33,
-    "1990": 34,
-    "1991": 35,
-    "1992": 36,
-    "1993": 37,
-    "1994": 38,
-    "1995": 39,
-    "1996": 40,
-    "1997": 41,
-    "1998": 42,
-    "1999": 43,
-    "2000": 44,
-    "2001": 45,
-    "2002": 46,
-    "2003": 47,
-    "2004": 48,
-    "2005": 49,
-    "2006": 50,
-    "2007": 51,
-    "2008": 52,
-    "2009": 53,
-    "2010": 54,
-    "2011": 55,
-    "2012": 56,
-    "2013": 57,
-    "2014": 58,
-    "2015": 59,
-    "2016": 60,
-    "2017": 61,
-    "2018": 62,
-    "2019": 63,
-    "2020": 64,
-    "2021": 65,
-    "2022": 66,
-    "2023": 67,
-    "2024": 68,
-    "2025": 69,
+    YEAR_DATA_START: 4,
 }
 
 # indicator groups, per http://data.worldbank.org/indicator
@@ -1713,6 +1653,10 @@ datasets = [
                 "Indicator Name": "Poverty gap at $2 a day (PPP) (%)",
                 "Indicator Code": "SI.POV.GAP2",
             },
+            {
+                "Indicator Name": "Gini index",
+                "Indicator Code": "SI.POV.GINI",
+            },
         ],
     },
     {
@@ -2148,155 +2092,226 @@ datasets = [
     },
 ]
 
+
 with codecs.open(world_map_data_file_path, "r", encoding="utf-8") as mapfile:
     mapdata = json.loads(mapfile.read())
     for dataset in datasets:
         print("generating dataset {0}".format(dataset["id"]))
-        with open(wdi_data_csv_path, "r") as f:
-            reader = csv.reader(f.readlines())
-            data = {
-                "nodeIdSource": "id",
-                "metadata": [
-                    {
-                        "Data_Item": "id",
-                        "Item_Description": "ISO 3166-1 numeric country code",
-                    }
-                ],
-                "data": [],
-            }
-            data["id"] = dataset["id"]
-            data["name"] = "World Development Indicators (2012) - {0}".format(
-                dataset["name"]
-            )
-            data["sourceUrl"] = (
-                "http://data.worldbank.org/data-catalog/world-development-indicators"
-            )
-            data_count = 0
-            no_data_count = 0
-            first_row = True
-            for row in reader:
-                if first_row:
-                    first_row = False
-                else:
-                    data_item = row[columns["Indicator Code"]]
-                    item_description = row[columns["Indicator Name"]]
-                    # check if data item is in dataset
-                    found = False
-                    for indicator in dataset["indicators"]:
-                        if indicator["Indicator Code"] == data_item:
-                            found = True
-                            break
-                    if found:
-                        # check if this has been added to metadata
-                        found = False
-                        for node in data["metadata"]:
-                            if node["Data_Item"] == data_item:
-                                found = True
-                                break
-                        if not found:
-                            data["metadata"].append(
-                                {
-                                    "Data_Item": data_item,
-                                    "Item_Description": item_description,
-                                }
-                            )
-                        name = row[columns["Country Name"]]
-                        sid3 = row[columns["Country Code"]]
-                        # Skip codes that aren't represented in the SVG
-                        # Caribbean small states
-                        # Channel Islands
-                        # East Asia and Pacific
-                        # etc...
-                        if sid3 in (
-                            "CSS",
-                            "CHI",
-                            "EAS",
-                            "EAP",
-                            "EMU",
-                            "ECS",
-                            "ECA",
-                            "EUU",
-                            "HPC",
-                            "HIC",
-                            "NOC",
-                            "OEC",
-                            "LCN",
-                            "LAC",
-                            "LDC",
-                            "LMY",
-                            "LIC",
-                            "LMC",
-                            "MEA",
-                            "MNA",
-                            "MIC",
-                            "NAC",
-                            "INX",
-                            "OED",
-                            "OSS",
-                            "PSS",
-                            "SST",
-                            "SAS",
-                            "SSF",
-                            "SSA",
-                            "UMC",
-                            "WLD",
-                        ):
-                            continue
-                        # convert world bank alpha-3 codes to ISO 3166-1 alpha-3
-                        if sid3 == "ADO":
-                            sid3 = "AND"
-                        elif sid3 == "ARB":
-                            sid3 = "ABW"
-                        elif sid3 == "ZAR":
-                            sid3 = "COD"
-                        elif sid3 == "IMY":
-                            sid3 = "IMN"
-                        elif sid3 == "KSV":
-                            sid3 = "UNK"
-                        elif sid3 == "ROM":
-                            sid3 = "ROU"
-                        elif sid3 == "TMP":
-                            sid3 = "TLS"
-                        elif sid3 == "WBG":
-                            sid3 = "PSE"
-                        # find numeric id from alpha3
-                        id = -1
-                        for node in mapdata["nodes"]:
-                            if node["sid3"] == sid3:
-                                id = node["id"]
-                        if id == -1:
-                            print(
-                                "Warning: failed to find numeric country code for alpha-3 {0} ({1})".format(
-                                    sid3, name
-                                )
-                            )
-                            continue  # skip this row
-                        # determine if we've already created a data node with this id
-                        new_data_node = True
-                        data_node = {"id": id}
-                        for node in data["data"]:
-                            if node["id"] == id:
-                                new_data_node = False
-                                data_node = node
-                                break
-                        year = YEAR
-                        # go backwards until a value is found (get the latest year which for which data is available)
-                        val = ""
-                        while val == "":
-                            column_idx = columns[str(year)]
-                            if column_idx < len(row):
-                                val = row[column_idx]
-                            year -= 1
-                            if year < 1960:
-                                break
+        data: Data = {
+            "nodeIdSource": "id",
+            "metadata": [
+                {
+                    "Data_Item": "id",
+                    "Item_Description": "ISO 3166-1 numeric country code",
+                }
+            ],
+            "data": [],
+        }
+        data["id"] = dataset["id"]
 
-                        if val != "":
-                            data_node[data_item] = float(val)
-                            if new_data_node:
-                                data["data"].append(data_node)
-                            data_count += 1
-                        else:
-                            no_data_count += 1
+        data["name"] = f"World Development Indicators ({YEAR}) - {dataset['name']}"
+        data["sourceUrl"] = (
+            "http://data.worldbank.org/data-catalog/world-development-indicators"
+        )
+        data_count = 0
+        no_data_count = 0
+        # $ file -i WDICSV.csv
+        # WDICSV.csv: text/csv; charset=us-ascii
+        encoding_type = "ascii"
+        skiprows = 0
+        df = pd.read_csv(wdi_data_csv_path, skiprows=skiprows, encoding=encoding_type)
+        for i, row in df.iterrows():
+            data_item = row.iloc[column_index["Indicator Code"]]
+            item_description = row.iloc[column_index["Indicator Name"]]
+            # check if data item is in dataset
+            indicator_found_in_current_dataset = False
+            for indicator in dataset["indicators"]:
+                if indicator["Indicator Code"] == data_item:
+                    indicator_found_in_current_dataset = True
+                    break
+            if indicator_found_in_current_dataset:
+                # check if this has been added to metadata
+                found = False
+                for node in data["metadata"]:
+                    if node["Data_Item"] == data_item:
+                        found = True
+                        break
+                if not found:
+                    data["metadata"].append(
+                        {
+                            "Data_Item": data_item,
+                            "Item_Description": item_description,
+                        }
+                    )
+                wb_name = row.iloc[column_index["Country Name"]]
+                wb_sid3 = row.iloc[column_index["Country Code"]]
+
+                # Skip WB alpha3 codes that can't be converted to ISO and aren't in the SVG
+                # Theses codes are for special groupings of countries
+                # This list is incomplete and arguably serves no purpose other than
+                # to reduce processing and log noise and simplify debugging
+                # TODO: Rewrite to check if wb_sid3 is in the list of all svg sid3s
+                if wb_sid3 in (
+                    "AFE",
+                    "AFW",
+                    "ARB",
+                    "CEB",
+                    "EAR",
+                    "TEA",
+                    "TEC",
+                    "FCS",
+                    "IBC",
+                    "IBD",
+                    "IBT",
+                    "IDB",
+                    "IDX",
+                    "IDA",
+                    "LTE",
+                    "TLA",
+                    "TMN",
+                    "PST",
+                    "PRE",
+                    "TSA",
+                    "TSS",
+                ):
+                    continue
+
+                svg_sid3 = wb_sid3
+                # convert world bank alpha-3 codes to ISO 3166-1 alpha-3 codes used in SVG file (if different)
+                # (note: I updated Kosovo, so it's now 'XKX' in both the WB CSV and in the SVG)
+                if wb_sid3 == "ADO":
+                    svg_sid3 = "AND"
+                elif wb_sid3 == "ZAR":
+                    svg_sid3 = "COD"
+                elif wb_sid3 == "IMY":
+                    svg_sid3 = "IMN"
+                elif wb_sid3 == "KSV":
+                    svg_sid3 = "UNK"
+                elif wb_sid3 == "ROM":
+                    svg_sid3 = "ROU"
+                elif wb_sid3 == "TMP":
+                    svg_sid3 = "TLS"
+                elif wb_sid3 == "WBG":
+                    svg_sid3 = "PSE"
+
+                # Skip ISO alpha3 codes that aren't represented in the SVG
+                # Caribbean small states
+                # Channel Islands
+                # East Asia and Pacific
+                # etc...
+                if svg_sid3 in (
+                    "CSS",
+                    "CHI",
+                    "EAS",
+                    "EAP",
+                    "EMU",
+                    "ECS",
+                    "ECA",
+                    "EUU",
+                    "HPC",
+                    "HIC",
+                    "NOC",
+                    "OEC",
+                    "LCN",
+                    "LAC",
+                    "LDC",
+                    "LMY",
+                    "LIC",
+                    "LMC",
+                    "MEA",
+                    "MNA",
+                    "MIC",
+                    "NAC",
+                    "INX",
+                    "OED",
+                    "OSS",
+                    "PSS",
+                    "SST",
+                    "SAS",
+                    "SSF",
+                    "SSA",
+                    "UMC",
+                    "WLD",
+                ):
+                    continue
+
+                # find numeric id from iso alpha3
+                geo_id = -1
+                for node in mapdata["nodes"]:
+                    if node["sid3"] == svg_sid3:
+                        geo_id = node["id"]
+                if geo_id == -1:
+                    print(
+                        f"Warning: failed to find numeric country code for alpha-3 wb_sid3={wb_sid3} svg_sid3={svg_sid3} ({wb_name})"
+                    )
+                    continue  # skip this row
+                else:
+                    # determine if we've already created a data node with this id
+                    new_data_node = True
+                    data_node: Data = {"id": geo_id}
+                    for node in data["data"]:
+                        if node["id"] == geo_id:
+                            new_data_node = False
+                            data_node = node
+                            break
+
+                    """
+                    Debugging:
+
+                    json has many NaNs after switching to pandas
+                    e.g.
+                    "data": [
+                        {
+                            "id": 4,
+                            "AG.PRD.CROP.XD": NaN,
+
+                    I verified the data is present in the CSV:
+                    AG.PRD.CROP.XD" WDICSV.csv | grep "AFG"
+                    "Afghanistan","AFG","Crop production index (2014-2016 = 100)","AG.PRD.CROP.XD",,"43.24","44.13","43.02","46.91","48.58","47.74","53.23","54.52","56.01","51.11","46.46","54","58.51","60.76","62.45","66.43","55.91","61.85","59.75","58.5","56.84","55.24","53.68","52.44","50.19","48.16","48.22","45.92","43.94","43.93","56.36","53.68","56.4","57.66","58.56","58.94","61.62","63.39","59.18","50.23","52.08","62.38","67.97","60.62","75.85","72.48","82.92","72.17","91.03","87.58","79.35","94.49","93.56","100.31","95.65","104.04","99.21","94.89","115.78","121.77","125.67","121.34",,
+                    
+                    """
+                    # temp debug
+                    if "AG.PRD.CROP.XD" == data_item and "AFG" == wb_sid3:
+                        print("hit AFG AG.PRD.CROP.XD")
+
+                    def is_valid_float(val):
+                        if pd.isna(val):
+                            return False
+                        try:
+                            float(val)
+                            return True
+                        except Exception:
+                            return False
+
+                    # go back in time until a value is found (get the latest year which for which data is available)
+
+                    val = ""
+                    column_idx = (
+                        len(row) - 1
+                    )  # Start with the last column (latest year)
+                    while (
+                        not is_valid_float(val)
+                        and column_idx >= column_index[YEAR_DATA_START]
+                    ):
+                        val = row.iloc[column_idx]
+                        column_idx -= 1
+
+                    if is_valid_float(val):
+                        # make sure it's not already in there somehow?
+                        if data_item in data_node:
+                            print("How?")
+                        data_node[data_item] = val
+                        if new_data_node:
+                            node_list = cast(List[Data], data["data"])
+                            node_list.append(data_node)
+                            data["data"] = node_list
+                        data_count += 1
+                    else:
+                        print(
+                            f"no data found for indicator {data_item} wb_sid3={wb_sid3} svg_sid3={svg_sid3} dataset={dataset['id']}"
+                        )
+                        no_data_count += 1
+
         print("data_count={0}".format(data_count))
         print("no_data_count={0}".format(no_data_count))
         if not dry_run:

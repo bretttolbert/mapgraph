@@ -32,31 +32,22 @@
     ],
     "data": [
         {
-            "id": 533,
-            "EG.USE.COMM.CL.ZS": 1.518380994092998,
-            "EG.USE.CRNW.ZS": 3.019837634613402,
-            "EG.IMP.CONS.ZS": -150.3831215636667,
-            "EG.USE.PCAP.KG.OE": 1780.222858164239,
-            "EG.USE.COMM.FO.ZS": 95.83928334235074,
-            "EG.GDP.PUSE.KO.PP.KD": 9.914072545547759
-        },
-        {
             "id": 8,
             "EG.USE.COMM.CL.ZS": 36.81,
             "EG.USE.CRNW.ZS": 13.408685968819611,
             "EG.IMP.CONS.ZS": 22.70155902004433,
             "EG.USE.PCAP.KG.OE": 781.084494566933,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 23.034704733005942
+            "EG.GDP.PUSE.KO.PP.KD": 23.034704733005945
         },
         {
             "id": 12,
             "EG.USE.COMM.CL.ZS": 0.09,
-            "EG.USE.CRNW.ZS": 0.011494237051088098,
+            "EG.USE.CRNW.ZS": 0.011494237051088,
             "EG.IMP.CONS.ZS": -129.33704406766594,
             "EG.USE.PCAP.KG.OE": 1503.414065780634,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 10.083266202162461
+            "EG.GDP.PUSE.KO.PP.KD": 10.08326620216246
         },
         {
             "id": 24,
@@ -80,7 +71,7 @@
             "EG.IMP.CONS.ZS": 0.4157145302835295,
             "EG.USE.PCAP.KG.OE": 1832.0669000424127,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 14.794754491328577
+            "EG.GDP.PUSE.KO.PP.KD": 14.794754491328575
         },
         {
             "id": 51,
@@ -89,7 +80,7 @@
             "EG.IMP.CONS.ZS": 76.87210864050145,
             "EG.USE.PCAP.KG.OE": 1347.5905574741312,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 13.272709791942967
+            "EG.GDP.PUSE.KO.PP.KD": 13.272709791942969
         },
         {
             "id": 36,
@@ -98,7 +89,7 @@
             "EG.IMP.CONS.ZS": -214.4715402810439,
             "EG.USE.PCAP.KG.OE": 4928.9699381324135,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 12.266489176358945
+            "EG.GDP.PUSE.KO.PP.KD": 12.266489176358943
         },
         {
             "id": 40,
@@ -107,7 +98,7 @@
             "EG.IMP.CONS.ZS": 63.96619802927251,
             "EG.USE.PCAP.KG.OE": 3308.7116704241053,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 19.461983070589895
+            "EG.GDP.PUSE.KO.PP.KD": 19.46198307058989
         },
         {
             "id": 31,
@@ -120,7 +111,7 @@
         },
         {
             "id": 44,
-            "EG.USE.PCAP.KG.OE": 2006.5999875471932,
+            "EG.USE.PCAP.KG.OE": 2006.5999875471928,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 17.839643817938242
         },
@@ -177,7 +168,7 @@
             "EG.USE.COMM.CL.ZS": 0.05,
             "EG.USE.CRNW.ZS": 58.924084543472674,
             "EG.IMP.CONS.ZS": 40.90317038022383,
-            "EG.USE.PCAP.KG.OE": 375.82098364933654,
+            "EG.USE.PCAP.KG.OE": 375.8209836493365,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 9.547963938941718
         },
@@ -194,14 +185,14 @@
             "EG.IMP.CONS.ZS": -67.33390477983619,
             "EG.USE.PCAP.KG.OE": 798.2932200523145,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 12.128009091326161
+            "EG.GDP.PUSE.KO.PP.KD": 12.12800909132616
         },
         {
             "id": 70,
             "EG.USE.COMM.CL.ZS": 9.15,
             "EG.USE.CRNW.ZS": 18.74341571248468,
-            "EG.IMP.CONS.ZS": 24.932041517710633,
-            "EG.USE.PCAP.KG.OE": 2171.0481914264037,
+            "EG.IMP.CONS.ZS": 24.932041517710637,
+            "EG.USE.PCAP.KG.OE": 2171.048191426404,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 9.122314370962313
         },
@@ -221,7 +212,7 @@
             "EG.IMP.CONS.ZS": -13.680896936425352,
             "EG.USE.PCAP.KG.OE": 1481.2243992251776,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 12.881108509543415
+            "EG.GDP.PUSE.KO.PP.KD": 12.881108509543417
         },
         {
             "id": 96,
@@ -235,17 +226,17 @@
         {
             "id": 100,
             "EG.USE.COMM.CL.ZS": 29.77,
-            "EG.USE.CRNW.ZS": 9.667841345763925,
+            "EG.USE.CRNW.ZS": 9.667841345763923,
             "EG.IMP.CONS.ZS": 40.93104581532991,
             "EG.USE.PCAP.KG.OE": 2604.191045054072,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 12.726349121407607
+            "EG.GDP.PUSE.KO.PP.KD": 12.726349121407608
         },
         {
             "id": 854,
             "EG.USE.COMM.CL.ZS": 0.18,
             "EG.USE.CRNW.ZS": 73.97382903762882,
-            "EG.USE.PCAP.KG.OE": 312.92908580422716,
+            "EG.USE.PCAP.KG.OE": 312.9290858042272,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 7.8805500216216195
         },
@@ -289,7 +280,7 @@
             "EG.IMP.CONS.ZS": -177.76264071493333,
             "EG.USE.PCAP.KG.OE": 198.544774520873,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 13.375874788579255
+            "EG.GDP.PUSE.KO.PP.KD": 13.375874788579257
         },
         {
             "id": 152,
@@ -304,7 +295,7 @@
             "id": 156,
             "EG.USE.COMM.CL.ZS": 9.76,
             "EG.USE.CRNW.ZS": 3.160607730929741,
-            "EG.IMP.CONS.ZS": 23.961758827682612,
+            "EG.IMP.CONS.ZS": 23.96175882768261,
             "EG.USE.PCAP.KG.OE": 2850.941529065109,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 7.957748568710168
@@ -316,7 +307,7 @@
             "EG.IMP.CONS.ZS": -141.97167550770723,
             "EG.USE.PCAP.KG.OE": 862.6346819960711,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 21.310292831619833
+            "EG.GDP.PUSE.KO.PP.KD": 21.310292831619837
         },
         {
             "id": 174,
@@ -327,36 +318,36 @@
         {
             "id": 180,
             "EG.USE.COMM.CL.ZS": 2.84,
-            "EG.USE.CRNW.ZS": 92.90407429308975,
-            "EG.IMP.CONS.ZS": 1.5962655346633385,
-            "EG.USE.PCAP.KG.OE": 390.89991123301525,
+            "EG.USE.CRNW.ZS": 92.90407429308976,
+            "EG.IMP.CONS.ZS": 1.5962655346633383,
+            "EG.USE.PCAP.KG.OE": 390.8999112330153,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 3.5442953217957913
+            "EG.GDP.PUSE.KO.PP.KD": 3.5442953217957918
         },
         {
             "id": 178,
             "EG.USE.COMM.CL.ZS": 2.56,
             "EG.USE.CRNW.ZS": 45.63524344640141,
-            "EG.IMP.CONS.ZS": -347.41986542815175,
+            "EG.IMP.CONS.ZS": -347.4198654281517,
             "EG.USE.PCAP.KG.OE": 627.5859661987449,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.887259077807935
+            "EG.GDP.PUSE.KO.PP.KD": 9.887259077807936
         },
         {
             "id": 188,
             "EG.USE.COMM.CL.ZS": 37.71,
             "EG.USE.CRNW.ZS": 7.83721375961741,
             "EG.IMP.CONS.ZS": 60.421477269615885,
-            "EG.USE.PCAP.KG.OE": 1025.1493570508537,
+            "EG.USE.PCAP.KG.OE": 1025.1493570508535,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 25.342286405794415
+            "EG.GDP.PUSE.KO.PP.KD": 25.34228640579441
         },
         {
             "id": 384,
             "EG.USE.COMM.CL.ZS": 1.71,
-            "EG.USE.CRNW.ZS": 61.157017910591826,
+            "EG.USE.CRNW.ZS": 61.15701791059183,
             "EG.IMP.CONS.ZS": 14.378609226628155,
-            "EG.USE.PCAP.KG.OE": 471.77542480223894,
+            "EG.USE.PCAP.KG.OE": 471.7754248022389,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 13.295020528513936
         },
@@ -380,7 +371,7 @@
         {
             "id": 531,
             "EG.USE.COMM.CL.ZS": 2.15,
-            "EG.IMP.CONS.ZS": 236.11900252525294,
+            "EG.IMP.CONS.ZS": 236.1190025252529,
             "EG.USE.PCAP.KG.OE": 5774.970087862037,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 4.777036829739808
@@ -389,7 +380,7 @@
             "id": 196,
             "EG.USE.COMM.CL.ZS": 7.44,
             "EG.USE.CRNW.ZS": 6.39192330965956,
-            "EG.IMP.CONS.ZS": 117.03785835367879,
+            "EG.IMP.CONS.ZS": 117.0378583536788,
             "EG.USE.PCAP.KG.OE": 1672.7857541413823,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 21.50763549305567
@@ -397,7 +388,7 @@
         {
             "id": 203,
             "EG.USE.COMM.CL.ZS": 22.25,
-            "EG.USE.CRNW.ZS": 11.961807915692233,
+            "EG.USE.CRNW.ZS": 11.961807915692232,
             "EG.IMP.CONS.ZS": 41.975145450547465,
             "EG.USE.PCAP.KG.OE": 3509.348048856558,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -421,7 +412,7 @@
             "id": 212,
             "EG.USE.PCAP.KG.OE": 624.5733292663442,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 26.514929672785193
+            "EG.GDP.PUSE.KO.PP.KD": 26.514929672785197
         },
         {
             "id": 214,
@@ -446,7 +437,7 @@
             "EG.USE.COMM.CL.ZS": 2.23,
             "EG.USE.CRNW.ZS": 3.172050377245318,
             "EG.IMP.CONS.ZS": 20.256378579562814,
-            "EG.USE.PCAP.KG.OE": 928.3949474270797,
+            "EG.USE.PCAP.KG.OE": 928.3949474270796,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 17.978757257867393
         },
@@ -457,7 +448,7 @@
             "EG.IMP.CONS.ZS": 59.50544475833792,
             "EG.USE.PCAP.KG.OE": 768.6834294921467,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 14.421564693794533
+            "EG.GDP.PUSE.KO.PP.KD": 14.421564693794531
         },
         {
             "id": 226,
@@ -479,9 +470,9 @@
         {
             "id": 233,
             "EG.USE.COMM.CL.ZS": 2.9,
-            "EG.USE.CRNW.ZS": 30.984755306304233,
-            "EG.IMP.CONS.ZS": 3.7711151984294715,
-            "EG.USE.PCAP.KG.OE": 3089.3933390585175,
+            "EG.USE.CRNW.ZS": 30.984755306304237,
+            "EG.IMP.CONS.ZS": 3.771115198429472,
+            "EG.USE.PCAP.KG.OE": 3089.393339058517,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 13.499905980075573
         },
@@ -498,7 +489,7 @@
             "id": 231,
             "EG.USE.COMM.CL.ZS": 3.15,
             "EG.USE.CRNW.ZS": 87.48511795251255,
-            "EG.IMP.CONS.ZS": 10.792496121342735,
+            "EG.IMP.CONS.ZS": 10.792496121342737,
             "EG.USE.PCAP.KG.OE": 377.9217527310922,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 7.026832269501207
@@ -564,10 +555,10 @@
             "id": 288,
             "EG.USE.COMM.CL.ZS": 6.03,
             "EG.USE.CRNW.ZS": 33.54095578544482,
-            "EG.IMP.CONS.ZS": -22.365652225371772,
+            "EG.IMP.CONS.ZS": -22.36565222537177,
             "EG.USE.PCAP.KG.OE": 359.17937905230576,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 18.732851974620246
+            "EG.GDP.PUSE.KO.PP.KD": 18.73285197462025
         },
         {
             "id": 292,
@@ -604,7 +595,7 @@
             "id": 624,
             "EG.USE.PCAP.KG.OE": 65.47271992975811,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 31.172373373062037
+            "EG.GDP.PUSE.KO.PP.KD": 31.17237337306204
         },
         {
             "id": 328,
@@ -627,7 +618,7 @@
             "EG.IMP.CONS.ZS": 60.56703758580022,
             "EG.USE.PCAP.KG.OE": 593.6295508405369,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 10.895481914807391
+            "EG.GDP.PUSE.KO.PP.KD": 10.895481914807393
         },
         {
             "id": 344,
@@ -668,7 +659,7 @@
         {
             "id": 360,
             "EG.USE.COMM.CL.ZS": 11.51,
-            "EG.USE.CRNW.ZS": 11.105385288407133,
+            "EG.USE.CRNW.ZS": 11.105385288407131,
             "EG.IMP.CONS.ZS": -89.54881628058801,
             "EG.USE.PCAP.KG.OE": 976.9499855437958,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -686,11 +677,11 @@
         {
             "id": 368,
             "EG.USE.COMM.CL.ZS": 0.37,
-            "EG.USE.CRNW.ZS": 0.08523424251138477,
+            "EG.USE.CRNW.ZS": 0.0852342425113847,
             "EG.IMP.CONS.ZS": -274.8773605949805,
-            "EG.USE.PCAP.KG.OE": 1411.5886986739285,
+            "EG.USE.PCAP.KG.OE": 1411.5886986739283,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.516509822810443
+            "EG.GDP.PUSE.KO.PP.KD": 9.516509822810445
         },
         {
             "id": 372,
@@ -723,10 +714,10 @@
             "id": 388,
             "EG.USE.COMM.CL.ZS": 1.63,
             "EG.USE.CRNW.ZS": 6.29851523834333,
-            "EG.IMP.CONS.ZS": 112.57532343492211,
+            "EG.IMP.CONS.ZS": 112.57532343492213,
             "EG.USE.PCAP.KG.OE": 968.879419803617,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 10.395564528950105
+            "EG.GDP.PUSE.KO.PP.KD": 10.395564528950104
         },
         {
             "id": 392,
@@ -735,12 +726,12 @@
             "EG.IMP.CONS.ZS": 87.27988531570267,
             "EG.USE.PCAP.KG.OE": 3039.1412613175344,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 15.089347802564179
+            "EG.GDP.PUSE.KO.PP.KD": 15.08934780256418
         },
         {
             "id": 400,
             "EG.USE.COMM.CL.ZS": 7.69,
-            "EG.USE.CRNW.ZS": 1.1640369408726619,
+            "EG.USE.CRNW.ZS": 1.164036940872662,
             "EG.IMP.CONS.ZS": 96.35232793322956,
             "EG.USE.PCAP.KG.OE": 754.3055031178651,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -759,14 +750,14 @@
             "id": 404,
             "EG.USE.COMM.CL.ZS": 18.67,
             "EG.USE.CRNW.ZS": 61.45149141725217,
-            "EG.IMP.CONS.ZS": 22.374545676311655,
+            "EG.IMP.CONS.ZS": 22.37454567631165,
             "EG.USE.PCAP.KG.OE": 544.9405719665965,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 10.428640212964595
+            "EG.GDP.PUSE.KO.PP.KD": 10.428640212964597
         },
         {
             "id": 296,
-            "EG.USE.PCAP.KG.OE": 107.77128972841635,
+            "EG.USE.PCAP.KG.OE": 107.77128972841636,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 21.21572900428356
         },
@@ -785,7 +776,15 @@
             "EG.IMP.CONS.ZS": 84.60009119863925,
             "EG.USE.PCAP.KG.OE": 5336.924859661565,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.446302817606723
+            "EG.GDP.PUSE.KO.PP.KD": 9.446302817606725
+        },
+        {
+            "id": 689,
+            "EG.USE.COMM.CL.ZS": 0.5191763785084782,
+            "EG.USE.CRNW.ZS": 11.37412005284207,
+            "EG.USE.PCAP.KG.OE": 1219.315220533234,
+            "EG.USE.COMM.FO.ZS": 86.12158200474131,
+            "EG.GDP.PUSE.KO.PP.KD": 7.50482715120787
         },
         {
             "id": 414,
@@ -799,11 +798,11 @@
         {
             "id": 417,
             "EG.USE.COMM.CL.ZS": 22.8,
-            "EG.USE.CRNW.ZS": 0.02972888320265015,
+            "EG.USE.CRNW.ZS": 0.0297288832026501,
             "EG.IMP.CONS.ZS": 33.78156703066863,
             "EG.USE.PCAP.KG.OE": 645.0142461718125,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.518825242527447
+            "EG.GDP.PUSE.KO.PP.KD": 9.518825242527448
         },
         {
             "id": 418,
@@ -827,7 +826,7 @@
             "id": 442,
             "EG.USE.COMM.CL.ZS": 2.55,
             "EG.USE.CRNW.ZS": 11.461950880697982,
-            "EG.IMP.CONS.ZS": 109.58505349742825,
+            "EG.IMP.CONS.ZS": 109.58505349742823,
             "EG.USE.PCAP.KG.OE": 4592.379793250304,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 28.0947245895314
@@ -868,17 +867,17 @@
         {
             "id": 458,
             "EG.USE.COMM.CL.ZS": 2.88,
-            "EG.USE.CRNW.ZS": 1.2367842840277121,
+            "EG.USE.CRNW.ZS": 1.236784284027712,
             "EG.IMP.CONS.ZS": -0.5787266860400219,
             "EG.USE.PCAP.KG.OE": 2867.096519391729,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 11.188723957767115
+            "EG.GDP.PUSE.KO.PP.KD": 11.188723957767117
         },
         {
             "id": 462,
-            "EG.USE.PCAP.KG.OE": 921.4771988325901,
+            "EG.USE.PCAP.KG.OE": 921.47719883259,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 18.926079260833642
+            "EG.GDP.PUSE.KO.PP.KD": 18.92607926083364
         },
         {
             "id": 470,
@@ -898,17 +897,17 @@
         {
             "id": 480,
             "EG.USE.COMM.CL.ZS": 1.48,
-            "EG.USE.CRNW.ZS": 9.053943269388407,
+            "EG.USE.CRNW.ZS": 9.053943269388409,
             "EG.USE.PCAP.KG.OE": 1155.1734824887692,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 22.560016566693673
+            "EG.GDP.PUSE.KO.PP.KD": 22.560016566693676
         },
         {
             "id": 484,
             "EG.USE.COMM.CL.ZS": 5.94,
             "EG.USE.CRNW.ZS": 4.2202879557052135,
             "EG.IMP.CONS.ZS": 21.58435595203991,
-            "EG.USE.PCAP.KG.OE": 1559.7899465719295,
+            "EG.USE.PCAP.KG.OE": 1559.7899465719297,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 14.043671313108554
         },
@@ -919,14 +918,14 @@
             "EG.IMP.CONS.ZS": 81.16588231767624,
             "EG.USE.PCAP.KG.OE": 1296.800890459414,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 12.330712791178065
+            "EG.GDP.PUSE.KO.PP.KD": 12.330712791178064
         },
         {
             "id": 496,
             "EG.USE.COMM.CL.ZS": 1.01,
             "EG.USE.CRNW.ZS": 1.513217196151653,
             "EG.IMP.CONS.ZS": -226.427034086937,
-            "EG.USE.PCAP.KG.OE": 1890.6311392926214,
+            "EG.USE.PCAP.KG.OE": 1890.6311392926211,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 8.098054997996456
         },
@@ -934,25 +933,25 @@
             "id": 499,
             "EG.USE.COMM.CL.ZS": 20.56,
             "EG.USE.CRNW.ZS": 13.927935943060454,
-            "EG.IMP.CONS.ZS": 24.352758007117462,
+            "EG.IMP.CONS.ZS": 24.352758007117465,
             "EG.USE.PCAP.KG.OE": 1722.2152477867749,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 15.703544458397333
+            "EG.GDP.PUSE.KO.PP.KD": 15.703544458397332
         },
         {
             "id": 504,
             "EG.USE.COMM.CL.ZS": 4.92,
-            "EG.USE.CRNW.ZS": 5.5867606510014465,
+            "EG.USE.CRNW.ZS": 5.586760651001447,
             "EG.IMP.CONS.ZS": 93.64488050738878,
             "EG.USE.PCAP.KG.OE": 600.6439128694103,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 14.992318955489393
+            "EG.GDP.PUSE.KO.PP.KD": 14.992318955489392
         },
         {
             "id": 508,
             "EG.USE.COMM.CL.ZS": 11.93,
             "EG.USE.CRNW.ZS": 65.80652924045799,
-            "EG.IMP.CONS.ZS": -106.35242725574527,
+            "EG.IMP.CONS.ZS": -106.35242725574528,
             "EG.USE.PCAP.KG.OE": 358.6376943617493,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 4.11743000302555
@@ -970,10 +969,10 @@
             "id": 516,
             "EG.USE.COMM.CL.ZS": 5.88,
             "EG.USE.CRNW.ZS": 28.825333922198176,
-            "EG.IMP.CONS.ZS": 60.499898540171834,
+            "EG.IMP.CONS.ZS": 60.49989854017184,
             "EG.USE.PCAP.KG.OE": 692.4613564410682,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 14.373506087729849
+            "EG.GDP.PUSE.KO.PP.KD": 14.373506087729847
         },
         {
             "id": 524,
@@ -982,7 +981,7 @@
             "EG.IMP.CONS.ZS": 27.413724871847105,
             "EG.USE.PCAP.KG.OE": 519.9506041034834,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.161230842211735
+            "EG.GDP.PUSE.KO.PP.KD": 9.161230842211737
         },
         {
             "id": 528,
@@ -997,8 +996,8 @@
             "id": 554,
             "EG.USE.COMM.CL.ZS": 39.68,
             "EG.USE.CRNW.ZS": 4.925824661872643,
-            "EG.IMP.CONS.ZS": 31.632961630590156,
-            "EG.USE.PCAP.KG.OE": 3629.1962309617156,
+            "EG.IMP.CONS.ZS": 31.63296163059016,
+            "EG.USE.PCAP.KG.OE": 3629.196230961716,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 13.524622386696633
         },
@@ -1045,7 +1044,7 @@
             "EG.IMP.CONS.ZS": -703.9593057815779,
             "EG.USE.PCAP.KG.OE": 4884.623719175577,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 18.442680057322086
+            "EG.GDP.PUSE.KO.PP.KD": 18.44268005732209
         },
         {
             "id": 512,
@@ -1059,8 +1058,8 @@
         {
             "id": 586,
             "EG.USE.COMM.CL.ZS": 9.25,
-            "EG.USE.CRNW.ZS": 26.777722857415398,
-            "EG.IMP.CONS.ZS": 39.792550938867635,
+            "EG.USE.CRNW.ZS": 26.7777228574154,
+            "EG.IMP.CONS.ZS": 39.79255093886764,
             "EG.USE.PCAP.KG.OE": 470.7234965240247,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 11.739969055953171
@@ -1078,7 +1077,7 @@
             "EG.IMP.CONS.ZS": 171.18649261506414,
             "EG.USE.PCAP.KG.OE": 1062.6992563181743,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 31.836877937645557
+            "EG.GDP.PUSE.KO.PP.KD": 31.83687793764556
         },
         {
             "id": 600,
@@ -1093,7 +1092,7 @@
             "id": 604,
             "EG.USE.COMM.CL.ZS": 10.24,
             "EG.USE.CRNW.ZS": 12.902822117446828,
-            "EG.IMP.CONS.ZS": 12.185965103062049,
+            "EG.IMP.CONS.ZS": 12.185965103062047,
             "EG.USE.PCAP.KG.OE": 826.7056466878462,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 18.82147739764888
@@ -1128,7 +1127,7 @@
         {
             "id": 634,
             "EG.USE.COMM.CL.ZS": 0.12,
-            "EG.USE.CRNW.ZS": 0.014492144611131033,
+            "EG.USE.CRNW.ZS": 0.014492144611131,
             "EG.IMP.CONS.ZS": -396.0725749362389,
             "EG.USE.PCAP.KG.OE": 16683.663609725994,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1146,7 +1145,7 @@
         {
             "id": 643,
             "EG.USE.COMM.CL.ZS": 9.45,
-            "EG.USE.CRNW.ZS": 1.2781225891148817,
+            "EG.USE.CRNW.ZS": 1.2781225891148815,
             "EG.IMP.CONS.ZS": -75.13753584499744,
             "EG.USE.PCAP.KG.OE": 5601.084350851748,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1176,7 +1175,7 @@
         {
             "id": 682,
             "EG.USE.COMM.CL.ZS": 0.09,
-            "EG.USE.CRNW.ZS": 0.003282981791380207,
+            "EG.USE.CRNW.ZS": 0.0032829817913802,
             "EG.IMP.CONS.ZS": -178.2004488122014,
             "EG.USE.PCAP.KG.OE": 7529.601030588629,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1194,7 +1193,7 @@
         {
             "id": 688,
             "EG.USE.COMM.CL.ZS": 7.3,
-            "EG.USE.CRNW.ZS": 10.751378819333347,
+            "EG.USE.CRNW.ZS": 10.751378819333349,
             "EG.IMP.CONS.ZS": 42.55149437174822,
             "EG.USE.PCAP.KG.OE": 2378.0828178526094,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1211,7 +1210,7 @@
             "EG.USE.COMM.CL.ZS": 0.38,
             "EG.USE.CRNW.ZS": 2.211622651196694,
             "EG.IMP.CONS.ZS": 279.6226939820819,
-            "EG.USE.PCAP.KG.OE": 5282.7637359990995,
+            "EG.USE.PCAP.KG.OE": 5282.7637359991,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 24.52414152584465
         },
@@ -1251,7 +1250,7 @@
         {
             "id": 728,
             "EG.USE.COMM.CL.ZS": 0.4,
-            "EG.USE.CRNW.ZS": 26.202956778304415,
+            "EG.USE.CRNW.ZS": 26.20295677830441,
             "EG.IMP.CONS.ZS": -859.5028092532724,
             "EG.USE.PCAP.KG.OE": 69.04336461210559,
             "EG.USE.COMM.FO.ZS": 0.0
@@ -1272,13 +1271,13 @@
             "EG.IMP.CONS.ZS": 60.039580294375625,
             "EG.USE.PCAP.KG.OE": 473.9208256250935,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 27.956283725507678
+            "EG.GDP.PUSE.KO.PP.KD": 27.95628372550768
         },
         {
             "id": 659,
             "EG.USE.PCAP.KG.OE": 1777.0736093863743,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 13.128349955337757
+            "EG.GDP.PUSE.KO.PP.KD": 13.128349955337756
         },
         {
             "id": 662,
@@ -1296,7 +1295,7 @@
             "id": 729,
             "EG.USE.COMM.CL.ZS": 4.99,
             "EG.USE.CRNW.ZS": 64.46869237364777,
-            "EG.IMP.CONS.ZS": 18.856810627327118,
+            "EG.IMP.CONS.ZS": 18.85681062732712,
             "EG.USE.PCAP.KG.OE": 411.7805381791809,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 7.606180864206184
@@ -1313,7 +1312,7 @@
         {
             "id": 752,
             "EG.USE.COMM.CL.ZS": 49.9,
-            "EG.USE.CRNW.ZS": 30.311800842384862,
+            "EG.USE.CRNW.ZS": 30.311800842384866,
             "EG.IMP.CONS.ZS": 27.75240498327449,
             "EG.USE.PCAP.KG.OE": 4288.833339081217,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1350,7 +1349,7 @@
             "id": 834,
             "EG.USE.COMM.CL.ZS": 0.93,
             "EG.USE.CRNW.ZS": 75.95421272951737,
-            "EG.IMP.CONS.ZS": 12.933856252021311,
+            "EG.IMP.CONS.ZS": 12.933856252021313,
             "EG.USE.PCAP.KG.OE": 405.1463148279462,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 8.48684726240318
@@ -1358,7 +1357,7 @@
         {
             "id": 764,
             "EG.USE.COMM.CL.ZS": 1.02,
-            "EG.USE.CRNW.ZS": 18.788830912109546,
+            "EG.USE.CRNW.ZS": 18.788830912109542,
             "EG.IMP.CONS.ZS": 57.514256631787696,
             "EG.USE.PCAP.KG.OE": 1851.272314241671,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1390,14 +1389,14 @@
             "EG.USE.COMM.CL.ZS": 0.0,
             "EG.USE.CRNW.ZS": 0.0836482022765621,
             "EG.IMP.CONS.ZS": -75.45733228773133,
-            "EG.USE.PCAP.KG.OE": 11038.406847223945,
+            "EG.USE.PCAP.KG.OE": 11038.406847223943,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 2.78965979933841
         },
         {
             "id": 788,
             "EG.USE.COMM.CL.ZS": 1.05,
-            "EG.USE.CRNW.ZS": 9.570053617037047,
+            "EG.USE.CRNW.ZS": 9.570053617037049,
             "EG.IMP.CONS.ZS": 53.14002890084025,
             "EG.USE.PCAP.KG.OE": 956.0411188872014,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1415,7 +1414,7 @@
         {
             "id": 795,
             "EG.USE.COMM.CL.ZS": 0.0,
-            "EG.USE.CRNW.ZS": 0.022725137407807607,
+            "EG.USE.CRNW.ZS": 0.0227251374078076,
             "EG.IMP.CONS.ZS": -109.77721144360426,
             "EG.USE.PCAP.KG.OE": 5625.645236866664,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1425,7 +1424,7 @@
             "id": 800,
             "EG.USE.COMM.CL.ZS": 1.93,
             "EG.USE.CRNW.ZS": 89.49411134903649,
-            "EG.IMP.CONS.ZS": 20.489515022751593,
+            "EG.IMP.CONS.ZS": 20.489515022751597,
             "EG.USE.PCAP.KG.OE": 482.8216215366676,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 5.643711826764463
@@ -1437,12 +1436,12 @@
             "EG.IMP.CONS.ZS": 23.59257588316142,
             "EG.USE.PCAP.KG.OE": 1508.2779130002075,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 9.861428862082645
+            "EG.GDP.PUSE.KO.PP.KD": 9.861428862082644
         },
         {
             "id": 784,
             "EG.USE.COMM.CL.ZS": 7.24,
-            "EG.USE.CRNW.ZS": 0.04732376164750395,
+            "EG.USE.CRNW.ZS": 0.0473237616475039,
             "EG.IMP.CONS.ZS": -171.4823713299917,
             "EG.USE.PCAP.KG.OE": 8335.809571626834,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1455,7 +1454,7 @@
             "EG.IMP.CONS.ZS": 44.0436184547282,
             "EG.USE.PCAP.KG.OE": 2127.6084341819046,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 24.676963337917517
+            "EG.GDP.PUSE.KO.PP.KD": 24.67696333791752
         },
         {
             "id": 840,
@@ -1469,7 +1468,7 @@
         {
             "id": 858,
             "EG.USE.COMM.CL.ZS": 17.11,
-            "EG.USE.CRNW.ZS": 40.057092608716324,
+            "EG.USE.CRNW.ZS": 40.05709260871632,
             "EG.IMP.CONS.ZS": 46.206893564302746,
             "EG.USE.PCAP.KG.OE": 1626.0603493557132,
             "EG.USE.COMM.FO.ZS": 0.0,
@@ -1478,11 +1477,11 @@
         {
             "id": 860,
             "EG.USE.COMM.CL.ZS": 1.23,
-            "EG.USE.CRNW.ZS": 0.004056720873362531,
+            "EG.USE.CRNW.ZS": 0.0040567208733625,
             "EG.IMP.CONS.ZS": 1.5475895409820224,
             "EG.USE.PCAP.KG.OE": 1381.804487716765,
             "EG.USE.COMM.FO.ZS": 0.0,
-            "EG.GDP.PUSE.KO.PP.KD": 6.9529095889749355
+            "EG.GDP.PUSE.KO.PP.KD": 6.952909588974936
         },
         {
             "id": 548,
@@ -1503,7 +1502,7 @@
             "EG.USE.COMM.CL.ZS": 11.25,
             "EG.USE.CRNW.ZS": 9.20893645555136,
             "EG.IMP.CONS.ZS": 33.999194783093905,
-            "EG.USE.PCAP.KG.OE": 1023.0571362686973,
+            "EG.USE.PCAP.KG.OE": 1023.0571362686971,
             "EG.USE.COMM.FO.ZS": 0.0,
             "EG.GDP.PUSE.KO.PP.KD": 12.68723265284413
         },
@@ -1511,7 +1510,7 @@
             "id": 887,
             "EG.USE.COMM.CL.ZS": 1.64,
             "EG.USE.CRNW.ZS": 5.310809218694768,
-            "EG.IMP.CONS.ZS": -11.046664431172077,
+            "EG.IMP.CONS.ZS": -11.046664431172076,
             "EG.USE.PCAP.KG.OE": 68.94953451376867,
             "EG.USE.COMM.FO.ZS": 0.0
         },
@@ -1535,6 +1534,6 @@
         }
     ],
     "id": "energy-and-mining",
-    "name": "World Development Indicators (2012) - Energy & Mining",
+    "name": "World Development Indicators (2025) - Energy & Mining",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

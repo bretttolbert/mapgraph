@@ -212,51 +212,6 @@
     ],
     "data": [
         {
-            "id": 533,
-            "SP.ADO.TFRT": 18.788,
-            "SH.STA.BRTC.ZS": 96.0,
-            "SP.DYN.CONU.ZS": 51.322592348553435,
-            "SL.AGR.EMPL.FE.ZS": 14.037043932323215,
-            "SL.AGR.EMPL.MA.ZS": 13.499458831610557,
-            "SL.IND.EMPL.FE.ZS": 11.234060253114086,
-            "SL.IND.EMPL.MA.ZS": 28.17172482604617,
-            "SL.SRV.EMPL.FE.ZS": 74.72888575656256,
-            "SL.SRV.EMPL.MA.ZS": 58.328815327010446,
-            "SP.DYN.TFRT.IN": 1.602,
-            "SE.PRM.GINT.FE.ZS": 108.88554,
-            "SE.PRM.GINT.MA.ZS": 113.00578,
-            "SL.TLF.CACT.FE.ZS": 18.08070149935755,
-            "SL.TLF.CACT.MA.ZS": 70.00400072605208,
-            "SL.TLF.CACT.ZS": 45.34301666992775,
-            "SP.DYN.LE00.FE.IN": 78.779,
-            "SP.DYN.LE00.MA.IN": 73.702,
-            "SE.ADT.1524.LT.FE.ZS": 99.3199996948242,
-            "SE.ADT.1524.LT.MA.ZS": 98.9700012207031,
-            "SH.STA.MMRT": 121.0,
-            "SE.PRM.PRSL.FE.ZS": 85.2162322998047,
-            "SE.PRM.PRSL.MA.ZS": 86.0003280639648,
-            "SH.STA.ANVC.ZS": 81.12748847133842,
-            "SH.HIV.1524.FE.ZS": 0.10082087245736726,
-            "SH.HIV.1524.MA.ZS": 0.10052426501314013,
-            "SE.PRM.CMPT.FE.ZS": 91.9629135131836,
-            "SE.PRM.CMPT.MA.ZS": 95.7413177490234,
-            "SE.SEC.PROG.FE.ZS": 97.27055,
-            "SE.SEC.PROG.MA.ZS": 100.0,
-            "SG.GEN.PARL.ZS": 18.15243738217074,
-            "SE.PRM.REPT.FE.ZS": 6.30288,
-            "SE.PRM.REPT.MA.ZS": 8.31368,
-            "SE.ENR.PRIM.FM.ZS": 0.964263737201691,
-            "SE.ENR.PRSC.FM.ZS": 1.02155995368958,
-            "SE.ENR.SECO.FM.ZS": 1.01760005950928,
-            "SE.ENR.TERT.FM.ZS": 1.56790802162285,
-            "SL.UEM.TOTL.FE.ZS": 17.162007180791598,
-            "SL.UEM.TOTL.MA.ZS": 7.661825760759713,
-            "SL.UEM.1524.FE.ZS": 42.86779988663425,
-            "SL.UEM.1524.MA.ZS": 22.148482339197265,
-            "SL.EMP.VULN.FE.ZS": 19.81565666780616,
-            "SL.EMP.VULN.MA.ZS": 21.881577425602
-        },
-        {
             "id": 4,
             "SP.ADO.TFRT": 64.068,
             "SH.STA.BRTC.ZS": 61.8,
@@ -585,7 +540,7 @@
             "SL.UEM.TOTL.MA.ZS": 7.452,
             "SL.UEM.1524.FE.ZS": 22.983,
             "SL.UEM.1524.MA.ZS": 19.838,
-            "SL.EMP.VULN.FE.ZS": 20.627380090748535,
+            "SL.EMP.VULN.FE.ZS": 20.62738009074853,
             "SL.EMP.VULN.MA.ZS": 23.8099641986599
         },
         {
@@ -641,6 +596,30 @@
             "SL.UEM.1524.MA.ZS": 24.784,
             "SL.EMP.VULN.FE.ZS": 66.49187521468562,
             "SL.EMP.VULN.MA.ZS": 52.98561282793818
+        },
+        {
+            "id": 533,
+            "SP.ADO.TFRT": 18.788,
+            "SH.STA.BRTC.ZS": 96.0,
+            "SP.DYN.TFRT.IN": 1.602,
+            "SE.PRM.GINT.FE.ZS": 108.88554,
+            "SE.PRM.GINT.MA.ZS": 113.00578,
+            "SP.DYN.LE00.FE.IN": 78.779,
+            "SP.DYN.LE00.MA.IN": 73.702,
+            "SE.ADT.1524.LT.FE.ZS": 99.3199996948242,
+            "SE.ADT.1524.LT.MA.ZS": 98.9700012207031,
+            "SE.PRM.PRSL.FE.ZS": 85.2162322998047,
+            "SE.PRM.PRSL.MA.ZS": 86.0003280639648,
+            "SE.PRM.CMPT.FE.ZS": 91.9629135131836,
+            "SE.PRM.CMPT.MA.ZS": 95.7413177490234,
+            "SE.SEC.PROG.FE.ZS": 97.27055,
+            "SE.SEC.PROG.MA.ZS": 100.0,
+            "SE.PRM.REPT.FE.ZS": 6.30288,
+            "SE.PRM.REPT.MA.ZS": 8.31368,
+            "SE.ENR.PRIM.FM.ZS": 0.964263737201691,
+            "SE.ENR.PRSC.FM.ZS": 1.02155995368958,
+            "SE.ENR.SECO.FM.ZS": 1.01760005950928,
+            "SE.ENR.TERT.FM.ZS": 1.56790802162285
         },
         {
             "id": 36,
@@ -1011,7 +990,7 @@
             "SL.UEM.TOTL.MA.ZS": 4.001,
             "SL.UEM.1524.FE.ZS": 8.37,
             "SL.UEM.1524.MA.ZS": 11.717,
-            "SL.EMP.VULN.FE.ZS": 2.9388136676774814,
+            "SL.EMP.VULN.FE.ZS": 2.938813667677481,
             "SL.EMP.VULN.MA.ZS": 5.057857647487906
         },
         {
@@ -1052,7 +1031,7 @@
             "SL.UEM.1524.FE.ZS": 14.659,
             "SL.UEM.1524.MA.ZS": 18.598,
             "SL.EMP.VULN.FE.ZS": 9.29764398281467,
-            "SL.EMP.VULN.MA.ZS": 13.368690905794635
+            "SL.EMP.VULN.MA.ZS": 13.368690905794637
         },
         {
             "id": 84,
@@ -1156,7 +1135,7 @@
             "SL.UEM.TOTL.MA.ZS": 1.865,
             "SL.UEM.1524.FE.ZS": 2.929,
             "SL.UEM.1524.MA.ZS": 3.569,
-            "SL.EMP.VULN.FE.ZS": 91.61891963242189,
+            "SL.EMP.VULN.FE.ZS": 91.61891963242188,
             "SL.EMP.VULN.MA.ZS": 81.9064675236978
         },
         {
@@ -1424,7 +1403,7 @@
             "SL.UEM.TOTL.MA.ZS": 6.341,
             "SL.UEM.1524.FE.ZS": 20.855,
             "SL.UEM.1524.MA.ZS": 15.692,
-            "SL.EMP.VULN.FE.ZS": 22.598081950825332,
+            "SL.EMP.VULN.FE.ZS": 22.59808195082533,
             "SL.EMP.VULN.MA.ZS": 30.268049366589416
         },
         {
@@ -1594,7 +1573,7 @@
             "SL.UEM.1524.FE.ZS": 8.462,
             "SL.UEM.1524.MA.ZS": 7.803,
             "SL.EMP.VULN.FE.ZS": 83.8585785526667,
-            "SL.EMP.VULN.MA.ZS": 61.335291611813204
+            "SL.EMP.VULN.MA.ZS": 61.3352916118132
         },
         {
             "id": 108,
@@ -1695,7 +1674,7 @@
             "SL.UEM.1524.FE.ZS": 33.8,
             "SL.UEM.1524.MA.ZS": 24.608,
             "SL.EMP.VULN.FE.ZS": 43.9333702974035,
-            "SL.EMP.VULN.MA.ZS": 26.710385098139092
+            "SL.EMP.VULN.MA.ZS": 26.71038509813909
         },
         {
             "id": 116,
@@ -1923,7 +1902,7 @@
             "SL.UEM.TOTL.MA.ZS": 5.231,
             "SL.UEM.1524.FE.ZS": 10.555,
             "SL.UEM.1524.MA.ZS": 8.517,
-            "SL.EMP.VULN.FE.ZS": 96.79979422533461,
+            "SL.EMP.VULN.FE.ZS": 96.7997942253346,
             "SL.EMP.VULN.MA.ZS": 90.0596421471173
         },
         {
@@ -1977,7 +1956,7 @@
             "SL.UEM.TOTL.MA.ZS": 1.322,
             "SL.UEM.1524.FE.ZS": 0.665,
             "SL.UEM.1524.MA.ZS": 2.101,
-            "SL.EMP.VULN.FE.ZS": 95.98357235692559,
+            "SL.EMP.VULN.FE.ZS": 95.9835723569256,
             "SL.EMP.VULN.MA.ZS": 85.82692557786156
         },
         {
@@ -2030,8 +2009,8 @@
             "SL.UEM.TOTL.MA.ZS": 8.679,
             "SL.UEM.1524.FE.ZS": 24.887,
             "SL.UEM.1524.MA.ZS": 20.323,
-            "SL.EMP.VULN.FE.ZS": 21.790637056004222,
-            "SL.EMP.VULN.MA.ZS": 21.273071879158042
+            "SL.EMP.VULN.FE.ZS": 21.790637056004226,
+            "SL.EMP.VULN.MA.ZS": 21.27307187915804
         },
         {
             "id": 156,
@@ -2130,7 +2109,7 @@
             "SL.UEM.1524.FE.ZS": 24.298,
             "SL.UEM.1524.MA.ZS": 16.508,
             "SL.EMP.VULN.FE.ZS": 41.28277152978862,
-            "SL.EMP.VULN.MA.ZS": 45.509787971440424
+            "SL.EMP.VULN.MA.ZS": 45.50978797144042
         },
         {
             "id": 174,
@@ -2438,7 +2417,7 @@
             "SL.UEM.1524.FE.ZS": 18.199,
             "SL.UEM.1524.MA.ZS": 15.508,
             "SL.EMP.VULN.FE.ZS": 5.860926636516105,
-            "SL.EMP.VULN.MA.ZS": 9.810258788098587
+            "SL.EMP.VULN.MA.ZS": 9.810258788098588
         },
         {
             "id": 192,
@@ -2485,7 +2464,7 @@
             "SL.UEM.1524.FE.ZS": 3.515,
             "SL.UEM.1524.MA.ZS": 4.112,
             "SL.EMP.VULN.FE.ZS": 17.54615191443784,
-            "SL.EMP.VULN.MA.ZS": 26.264993739576518
+            "SL.EMP.VULN.MA.ZS": 26.26499373957652
         },
         {
             "id": 531,
@@ -2542,7 +2521,7 @@
             "SL.UEM.1524.FE.ZS": 13.709,
             "SL.UEM.1524.MA.ZS": 17.393,
             "SL.EMP.VULN.FE.ZS": 7.59643341145225,
-            "SL.EMP.VULN.MA.ZS": 9.632020757803403
+            "SL.EMP.VULN.MA.ZS": 9.632020757803405
         },
         {
             "id": 203,
@@ -2672,7 +2651,7 @@
             "SL.UEM.1524.FE.ZS": 77.86,
             "SL.UEM.1524.MA.ZS": 75.27,
             "SL.EMP.VULN.FE.ZS": 48.0441384895728,
-            "SL.EMP.VULN.MA.ZS": 24.201427771556542
+            "SL.EMP.VULN.MA.ZS": 24.201427771556546
         },
         {
             "id": 212,
@@ -2756,7 +2735,7 @@
             "SL.UEM.1524.FE.ZS": 15.474,
             "SL.UEM.1524.MA.ZS": 9.175,
             "SL.EMP.VULN.FE.ZS": 29.53473846158418,
-            "SL.EMP.VULN.MA.ZS": 44.181022807977826
+            "SL.EMP.VULN.MA.ZS": 44.18102280797783
         },
         {
             "id": 218,
@@ -2809,8 +2788,8 @@
             "SL.UEM.TOTL.MA.ZS": 4.111,
             "SL.UEM.1524.FE.ZS": 12.971,
             "SL.UEM.1524.MA.ZS": 8.3,
-            "SL.EMP.VULN.FE.ZS": 57.862033891670706,
-            "SL.EMP.VULN.MA.ZS": 42.022750813068264
+            "SL.EMP.VULN.FE.ZS": 57.86203389167071,
+            "SL.EMP.VULN.MA.ZS": 42.02275081306826
         },
         {
             "id": 818,
@@ -2863,7 +2842,7 @@
             "SL.UEM.TOTL.MA.ZS": 4.885,
             "SL.UEM.1524.FE.ZS": 47.076,
             "SL.UEM.1524.MA.ZS": 12.383,
-            "SL.EMP.VULN.FE.ZS": 26.672988288284202,
+            "SL.EMP.VULN.FE.ZS": 26.6729882882842,
             "SL.EMP.VULN.MA.ZS": 22.671914419361613
         },
         {
@@ -2918,7 +2897,7 @@
             "SL.UEM.1524.FE.ZS": 9.485,
             "SL.UEM.1524.MA.ZS": 5.24,
             "SL.EMP.VULN.FE.ZS": 40.06477385968281,
-            "SL.EMP.VULN.MA.ZS": 25.485993693453597
+            "SL.EMP.VULN.MA.ZS": 25.4859936934536
         },
         {
             "id": 226,
@@ -3335,7 +3314,7 @@
             "SL.UEM.TOTL.MA.ZS": 10.99,
             "SL.UEM.1524.FE.ZS": 41.544,
             "SL.UEM.1524.MA.ZS": 33.462,
-            "SL.EMP.VULN.FE.ZS": 12.340331491712659,
+            "SL.EMP.VULN.FE.ZS": 12.34033149171266,
             "SL.EMP.VULN.MA.ZS": 17.257102770957598
         },
         {
@@ -4823,7 +4802,7 @@
             "SL.UEM.TOTL.MA.ZS": 2.758,
             "SL.UEM.1524.FE.ZS": 7.409,
             "SL.UEM.1524.MA.ZS": 6.076,
-            "SL.EMP.VULN.FE.ZS": 91.25810332412419,
+            "SL.EMP.VULN.FE.ZS": 91.2581033241242,
             "SL.EMP.VULN.MA.ZS": 80.0755698065856
         },
         {
@@ -4871,6 +4850,16 @@
             "SL.EMP.VULN.MA.ZS": 19.26657368438378
         },
         {
+            "id": 689,
+            "SP.ADO.TFRT": 7.834,
+            "SH.STA.BRTC.ZS": 99.0,
+            "SP.DYN.CONU.ZS": 66.7,
+            "SP.DYN.TFRT.IN": 1.545,
+            "SP.DYN.LE00.FE.IN": 80.118,
+            "SP.DYN.LE00.MA.IN": 75.804,
+            "SH.STA.ANVC.ZS": 99.7
+        },
+        {
             "id": 414,
             "SP.ADO.TFRT": 1.576,
             "SH.STA.BRTC.ZS": 99.9,
@@ -4914,7 +4903,7 @@
             "SL.UEM.TOTL.MA.ZS": 0.928,
             "SL.UEM.1524.FE.ZS": 28.944,
             "SL.UEM.1524.MA.ZS": 9.334,
-            "SL.EMP.VULN.FE.ZS": 0.023576422368584198,
+            "SL.EMP.VULN.FE.ZS": 0.0235764223685841,
             "SL.EMP.VULN.MA.ZS": 1.6234233938538545
         },
         {
@@ -5113,7 +5102,7 @@
             "SL.UEM.TOTL.MA.ZS": 5.895,
             "SL.UEM.1524.FE.ZS": 24.16,
             "SL.UEM.1524.MA.ZS": 16.892,
-            "SL.EMP.VULN.FE.ZS": 6.9262520456096395,
+            "SL.EMP.VULN.FE.ZS": 6.92625204560964,
             "SL.EMP.VULN.MA.ZS": 6.34758898635533,
             "SE.PRM.GINT.FE.ZS": 105.08701,
             "SE.PRM.GINT.MA.ZS": 106.43915
@@ -5223,7 +5212,7 @@
             "SL.UEM.TOTL.MA.ZS": 3.492,
             "SL.UEM.1524.FE.ZS": 2.044,
             "SL.UEM.1524.MA.ZS": 2.212,
-            "SL.EMP.VULN.FE.ZS": 90.45126370693613,
+            "SL.EMP.VULN.FE.ZS": 90.45126370693612,
             "SL.EMP.VULN.MA.ZS": 65.85431984685427
         },
         {
@@ -5538,7 +5527,7 @@
             "SL.UEM.1524.FE.ZS": 13.813,
             "SL.UEM.1524.MA.ZS": 11.267,
             "SL.EMP.VULN.FE.ZS": 18.208018679202866,
-            "SL.EMP.VULN.MA.ZS": 27.910888599947732
+            "SL.EMP.VULN.MA.ZS": 27.91088859994773
         },
         {
             "id": 462,
@@ -5586,7 +5575,7 @@
             "SL.UEM.1524.FE.ZS": 9.453,
             "SL.UEM.1524.MA.ZS": 19.975,
             "SL.EMP.VULN.FE.ZS": 32.82679406383413,
-            "SL.EMP.VULN.MA.ZS": 14.939519722936689
+            "SL.EMP.VULN.MA.ZS": 14.939519722936687
         },
         {
             "id": 466,
@@ -5942,7 +5931,7 @@
             "SL.UEM.1524.FE.ZS": 3.289,
             "SL.UEM.1524.MA.ZS": 3.363,
             "SL.EMP.VULN.FE.ZS": 59.44777282969703,
-            "SL.EMP.VULN.MA.ZS": 57.886566358265114
+            "SL.EMP.VULN.MA.ZS": 57.88656635826512
         },
         {
             "id": 492,
@@ -6463,7 +6452,7 @@
             "SL.UEM.TOTL.MA.ZS": 4.665,
             "SL.UEM.1524.FE.ZS": 13.981,
             "SL.UEM.1524.MA.ZS": 14.558,
-            "SL.EMP.VULN.FE.ZS": 11.467051159437561,
+            "SL.EMP.VULN.FE.ZS": 11.46705115943756,
             "SL.EMP.VULN.MA.ZS": 14.546428454779978
         },
         {
@@ -6569,7 +6558,7 @@
             "SL.UEM.TOTL.MA.ZS": 0.423,
             "SL.UEM.1524.FE.ZS": 0.163,
             "SL.UEM.1524.MA.ZS": 0.396,
-            "SL.EMP.VULN.FE.ZS": 93.76146708772771,
+            "SL.EMP.VULN.FE.ZS": 93.76146708772772,
             "SL.EMP.VULN.MA.ZS": 78.0662521393495
         },
         {
@@ -6773,7 +6762,7 @@
             "SL.UEM.TOTL.MA.ZS": 1.656,
             "SL.UEM.1524.FE.ZS": 30.885,
             "SL.UEM.1524.MA.ZS": 11.024,
-            "SL.EMP.VULN.FE.ZS": 3.5873237629549353,
+            "SL.EMP.VULN.FE.ZS": 3.5873237629549357,
             "SL.EMP.VULN.MA.ZS": 2.2118956575339093
         },
         {
@@ -7304,8 +7293,8 @@
             "SL.UEM.TOTL.MA.ZS": 0.067,
             "SL.UEM.1524.FE.ZS": 1.156,
             "SL.UEM.1524.MA.ZS": 0.098,
-            "SL.EMP.VULN.FE.ZS": 0.052222482914165896,
-            "SL.EMP.VULN.MA.ZS": 0.14160361684752223
+            "SL.EMP.VULN.FE.ZS": 0.0522224829141658,
+            "SL.EMP.VULN.MA.ZS": 0.1416036168475222
         },
         {
             "id": 642,
@@ -7357,7 +7346,7 @@
             "SL.UEM.TOTL.MA.ZS": 5.75,
             "SL.UEM.1524.FE.ZS": 21.815,
             "SL.UEM.1524.MA.ZS": 21.051,
-            "SL.EMP.VULN.FE.ZS": 19.764336896088942,
+            "SL.EMP.VULN.FE.ZS": 19.764336896088945,
             "SL.EMP.VULN.MA.ZS": 23.03710763581553
         },
         {
@@ -7620,7 +7609,7 @@
             "SL.UEM.TOTL.MA.ZS": 1.79,
             "SL.UEM.1524.FE.ZS": 23.82,
             "SL.UEM.1524.MA.ZS": 9.813,
-            "SL.EMP.VULN.FE.ZS": 3.7756940584559784,
+            "SL.EMP.VULN.FE.ZS": 3.7756940584559775,
             "SL.EMP.VULN.MA.ZS": 1.4605895787336751
         },
         {
@@ -7856,7 +7845,7 @@
             "SL.UEM.1524.FE.ZS": 10.799,
             "SL.UEM.1524.MA.ZS": 5.627,
             "SL.EMP.VULN.FE.ZS": 6.417208670980938,
-            "SL.EMP.VULN.MA.ZS": 11.481193191665687
+            "SL.EMP.VULN.MA.ZS": 11.481193191665689
         },
         {
             "id": 534,
@@ -8010,7 +7999,7 @@
             "SL.UEM.1524.FE.ZS": 3.384,
             "SL.UEM.1524.MA.ZS": 2.58,
             "SL.EMP.VULN.FE.ZS": 74.19303211867205,
-            "SL.EMP.VULN.MA.ZS": 53.135315054959804
+            "SL.EMP.VULN.MA.ZS": 53.13531505495981
         },
         {
             "id": 706,
@@ -8055,7 +8044,7 @@
             "SL.UEM.1524.FE.ZS": 37.02,
             "SL.UEM.1524.MA.ZS": 32.112,
             "SL.EMP.VULN.FE.ZS": 59.4995065557592,
-            "SL.EMP.VULN.MA.ZS": 39.310740628642534
+            "SL.EMP.VULN.MA.ZS": 39.31074062864253
         },
         {
             "id": 710,
@@ -8489,7 +8478,7 @@
             "SL.UEM.1524.FE.ZS": 35.94,
             "SL.UEM.1524.MA.ZS": 16.927,
             "SL.EMP.VULN.FE.ZS": 18.287762855155428,
-            "SL.EMP.VULN.MA.ZS": 21.186731975595038
+            "SL.EMP.VULN.MA.ZS": 21.18673197559504
         },
         {
             "id": 752,
@@ -8574,8 +8563,8 @@
             "SL.UEM.TOTL.MA.ZS": 3.894,
             "SL.UEM.1524.FE.ZS": 7.505,
             "SL.UEM.1524.MA.ZS": 8.325,
-            "SL.EMP.VULN.FE.ZS": 11.365828006127739,
-            "SL.EMP.VULN.MA.ZS": 11.902288122772319
+            "SL.EMP.VULN.FE.ZS": 11.36582800612774,
+            "SL.EMP.VULN.MA.ZS": 11.90228812277232
         },
         {
             "id": 760,
@@ -9098,7 +9087,7 @@
             "SL.UEM.TOTL.MA.ZS": 6.929,
             "SL.UEM.1524.FE.ZS": 21.184,
             "SL.UEM.1524.MA.ZS": 12.438,
-            "SL.EMP.VULN.FE.ZS": 25.760434982849812,
+            "SL.EMP.VULN.FE.ZS": 25.76043498284981,
             "SL.EMP.VULN.MA.ZS": 23.06185443521181
         },
         {
@@ -9135,7 +9124,7 @@
             "SL.UEM.1524.FE.ZS": 6.05,
             "SL.UEM.1524.MA.ZS": 14.705,
             "SL.EMP.VULN.FE.ZS": 30.00173386397634,
-            "SL.EMP.VULN.MA.ZS": 26.976245482194482
+            "SL.EMP.VULN.MA.ZS": 26.97624548219448
         },
         {
             "id": 796,
@@ -9683,7 +9672,7 @@
             "SL.UEM.1524.FE.ZS": 6.625,
             "SL.UEM.1524.MA.ZS": 6.996,
             "SL.EMP.VULN.FE.ZS": 56.203159040313,
-            "SL.EMP.VULN.MA.ZS": 46.378265599100715
+            "SL.EMP.VULN.MA.ZS": 46.37826559910072
         },
         {
             "id": 850,
@@ -9807,7 +9796,7 @@
             "SL.UEM.TOTL.MA.ZS": 16.088,
             "SL.UEM.1524.FE.ZS": 38.38,
             "SL.UEM.1524.MA.ZS": 31.757,
-            "SL.EMP.VULN.FE.ZS": 63.728490055466196,
+            "SL.EMP.VULN.FE.ZS": 63.7284900554662,
             "SL.EMP.VULN.MA.ZS": 45.78396844427527
         },
         {
@@ -9920,6 +9909,6 @@
         }
     ],
     "id": "gender",
-    "name": "World Development Indicators (2012) - Gender",
+    "name": "World Development Indicators (2025) - Gender",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

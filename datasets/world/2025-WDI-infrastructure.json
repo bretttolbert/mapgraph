@@ -72,24 +72,6 @@
     ],
     "data": [
         {
-            "id": 533,
-            "IS.AIR.DPRT": 2276.0,
-            "ER.H2O.FWAG.ZS": 80.22728310787959,
-            "ER.H2O.FWDM.ZS": 13.809447275849083,
-            "ER.H2O.FWIN.ZS": 5.984399960131771,
-            "ER.H2O.FWTL.K3": 230.58392000000003,
-            "IS.SHP.GOOD.TU": 57062.0,
-            "EG.USE.ELEC.KH.PC": 2663.4718324135015,
-            "IT.NET.BBND.P2": 17.4862,
-            "TX.VAL.ICTG.ZS.UN": 0.65,
-            "TM.VAL.ICTG.ZS.UN": 4.23,
-            "IT.CEL.SETS.P2": 130.648,
-            "ER.H2O.INTR.PC": 240.1114520647314,
-            "ER.H2O.INTR.K3": 112.77800000000002,
-            "IT.NET.SECR.P6": 1579.573329368914,
-            "BX.GSR.CCIS.ZS": 0.661532629582052
-        },
-        {
             "id": 4,
             "IS.AIR.DPRT": 2865.737,
             "ER.H2O.FWAG.ZS": 98.1696273,
@@ -132,16 +114,16 @@
             "ER.H2O.FWIN.ZS": 1.651309187,
             "ER.H2O.FWTL.K3": 10.292,
             "IS.SHP.GOOD.TU": 1541273.0,
-            "EG.USE.ELEC.KH.PC": 1827.9525101464405,
+            "EG.USE.ELEC.KH.PC": 1827.9525101464403,
             "IT.NET.BBND.P2": 12.0087,
             "TX.VAL.ICTG.ZS.UN": 0.03,
             "TM.VAL.ICTG.ZS.UN": 4.87,
             "BX.GSR.CCIS.ZS": 1.7241870780377972,
             "IT.CEL.SETS.P2": 111.606,
             "IS.RRS.TOTL.KM": 4000.5,
-            "ER.H2O.INTR.PC": 247.30971252549259,
+            "ER.H2O.INTR.PC": 247.30971252549256,
             "ER.H2O.INTR.K3": 11.247,
-            "IT.NET.SECR.P6": 119.34385530167401
+            "IT.NET.SECR.P6": 119.343855301674
         },
         {
             "id": 16,
@@ -155,7 +137,7 @@
             "IT.NET.BBND.P2": 51.7401,
             "TX.VAL.ICTG.ZS.UN": 12.56,
             "TM.VAL.ICTG.ZS.UN": 5.89,
-            "BX.GSR.CCIS.ZS": 3.9160492572123764,
+            "BX.GSR.CCIS.ZS": 3.916049257212376,
             "IT.CEL.SETS.P2": 156.097,
             "ER.H2O.INTR.PC": 3959.601028793677,
             "ER.H2O.INTR.K3": 0.3156,
@@ -190,11 +172,11 @@
             "IT.NET.BBND.P2": 10.6818,
             "TX.VAL.ICTG.ZS.UN": 0.7,
             "TM.VAL.ICTG.ZS.UN": 3.58,
-            "BX.GSR.CCIS.ZS": 0.43862571588125276,
+            "BX.GSR.CCIS.ZS": 0.4386257158812527,
             "IT.CEL.SETS.P2": 200.541,
             "ER.H2O.INTR.PC": 560.1034037052995,
             "ER.H2O.INTR.K3": 0.052,
-            "IT.NET.SECR.P6": 970.4389369961183
+            "IT.NET.SECR.P6": 970.4389369961184
         },
         {
             "id": 32,
@@ -213,7 +195,7 @@
             "IS.RRS.TOTL.KM": 17866.0,
             "ER.H2O.INTR.PC": 6430.598514302707,
             "ER.H2O.INTR.K3": 292.0,
-            "IT.NET.SECR.P6": 5453.4342809862865
+            "IT.NET.SECR.P6": 5453.434280986287
         },
         {
             "id": 51,
@@ -234,6 +216,17 @@
             "IT.NET.SECR.P6": 1735.2892698203395
         },
         {
+            "id": 533,
+            "IS.AIR.DPRT": 2276.0,
+            "IS.SHP.GOOD.TU": 57062.0,
+            "IT.NET.BBND.P2": 17.4862,
+            "TX.VAL.ICTG.ZS.UN": 0.65,
+            "TM.VAL.ICTG.ZS.UN": 4.23,
+            "BX.GSR.CCIS.ZS": 0.661532629582052,
+            "IT.CEL.SETS.P2": 130.648,
+            "IT.NET.SECR.P6": 1579.573329368914
+        },
+        {
             "id": 36,
             "IS.AIR.DPRT": 383008.0,
             "ER.H2O.FWAG.ZS": 66.88583383,
@@ -241,7 +234,7 @@
             "ER.H2O.FWIN.ZS": 18.58936043,
             "ER.H2O.FWTL.K3": 11.62,
             "IS.SHP.GOOD.TU": 9375992.0,
-            "EG.USE.ELEC.KH.PC": 9822.503673819805,
+            "EG.USE.ELEC.KH.PC": 9822.503673819803,
             "IT.NET.BBND.P2": 36.6047,
             "TX.VAL.ICTG.ZS.UN": 0.7,
             "TM.VAL.ICTG.ZS.UN": 8.52,
@@ -268,7 +261,7 @@
             "IS.RRS.TOTL.KM": 4962.0,
             "ER.H2O.INTR.PC": 6082.825297607757,
             "ER.H2O.INTR.K3": 55.0,
-            "IT.NET.SECR.P6": 47129.470864572155
+            "IT.NET.SECR.P6": 47129.47086457216
         },
         {
             "id": 31,
@@ -277,7 +270,7 @@
             "ER.H2O.FWDM.ZS": 3.146206046,
             "ER.H2O.FWIN.ZS": 4.611351018,
             "ER.H2O.FWTL.K3": 13.027,
-            "EG.USE.ELEC.KH.PC": 2366.9587760752997,
+            "EG.USE.ELEC.KH.PC": 2366.9587760753,
             "IT.NET.BBND.P2": 20.8825,
             "TX.VAL.ICTG.ZS.UN": 0.07,
             "TM.VAL.ICTG.ZS.UN": 4.54,
@@ -296,7 +289,7 @@
             "TX.VAL.ICTG.ZS.UN": 0.71,
             "TM.VAL.ICTG.ZS.UN": 3.01,
             "IT.CEL.SETS.P2": 100.048,
-            "ER.H2O.INTR.PC": 1760.8379576292077,
+            "ER.H2O.INTR.PC": 1760.8379576292075,
             "ER.H2O.INTR.K3": 0.7,
             "IT.NET.SECR.P6": 6354.617564162947
         },
@@ -348,9 +341,9 @@
             "IT.NET.BBND.P2": 37.4843,
             "TX.VAL.ICTG.ZS.UN": 1.1,
             "TM.VAL.ICTG.ZS.UN": 3.88,
-            "BX.GSR.CCIS.ZS": 0.22577056480336388,
+            "BX.GSR.CCIS.ZS": 0.2257705648033638,
             "IT.CEL.SETS.P2": 114.581,
-            "ER.H2O.INTR.PC": 283.36840017285476,
+            "ER.H2O.INTR.PC": 283.3684001728548,
             "ER.H2O.INTR.K3": 0.08,
             "IT.NET.SECR.P6": 1171.818300898866
         },
@@ -370,7 +363,7 @@
             "IS.RRS.TOTL.KM": 5474.0,
             "ER.H2O.INTR.PC": 3684.4103171724623,
             "ER.H2O.INTR.K3": 34.0,
-            "IT.NET.SECR.P6": 12728.012444447559
+            "IT.NET.SECR.P6": 12728.01244444756
         },
         {
             "id": 56,
@@ -406,7 +399,7 @@
             "IT.CEL.SETS.P2": 67.175,
             "ER.H2O.INTR.PC": 37891.10899777272,
             "ER.H2O.INTR.K3": 15.26,
-            "IT.NET.SECR.P6": 464560.07595810795
+            "IT.NET.SECR.P6": 464560.075958108
         },
         {
             "id": 204,
@@ -416,7 +409,7 @@
             "ER.H2O.FWIN.ZS": 12.82051282,
             "ER.H2O.FWTL.K3": 0.13,
             "IS.SHP.GOOD.TU": 510895.6,
-            "EG.USE.ELEC.KH.PC": 105.30905154191275,
+            "EG.USE.ELEC.KH.PC": 105.30905154191277,
             "IT.NET.BBND.P2": 0.17088,
             "TX.VAL.ICTG.ZS.UN": 0.05,
             "TM.VAL.ICTG.ZS.UN": 1.58,
@@ -433,7 +426,7 @@
             "IT.NET.BBND.P2": 35.5805,
             "TX.VAL.ICTG.ZS.UN": 2.5,
             "TM.VAL.ICTG.ZS.UN": 2.4,
-            "BX.GSR.CCIS.ZS": 2.5344397828400753,
+            "BX.GSR.CCIS.ZS": 2.5344397828400758,
             "IT.CEL.SETS.P2": 105.274,
             "IT.NET.SECR.P6": 4347.422489015409
         },
@@ -449,7 +442,7 @@
             "TM.VAL.ICTG.ZS.UN": 2.38,
             "BX.GSR.CCIS.ZS": 0.4470552162588526,
             "IT.CEL.SETS.P2": 95.6261,
-            "ER.H2O.INTR.PC": 99882.95766243145,
+            "ER.H2O.INTR.PC": 99882.95766243144,
             "ER.H2O.INTR.K3": 78.0,
             "IT.NET.SECR.P6": 1339.1887043222948
         },
@@ -464,7 +457,7 @@
             "IT.NET.BBND.P2": 10.9975,
             "TX.VAL.ICTG.ZS.UN": 0.03,
             "TM.VAL.ICTG.ZS.UN": 2.49,
-            "BX.GSR.CCIS.ZS": 4.3722739902346115,
+            "BX.GSR.CCIS.ZS": 4.372273990234612,
             "IT.CEL.SETS.P2": 101.572,
             "ER.H2O.INTR.PC": 25130.092735424256,
             "ER.H2O.INTR.K3": 303.5,
@@ -474,14 +467,14 @@
             "id": 70,
             "IS.AIR.DPRT": 44.0,
             "ER.H2O.FWTL.K3": 0.312035,
-            "EG.USE.ELEC.KH.PC": 3676.5248394620785,
+            "EG.USE.ELEC.KH.PC": 3676.5248394620794,
             "IT.NET.BBND.P2": 28.5064,
             "TX.VAL.ICTG.ZS.UN": 0.24,
             "TM.VAL.ICTG.ZS.UN": 2.39,
             "BX.GSR.CCIS.ZS": 13.576690287161073,
             "IT.CEL.SETS.P2": 117.734,
             "IS.RRS.TOTL.KM": 1018.054,
-            "ER.H2O.INTR.PC": 11077.127385716809,
+            "ER.H2O.INTR.PC": 11077.127385716807,
             "ER.H2O.INTR.K3": 35.5,
             "IT.NET.SECR.P6": 5554.233495235684
         },
@@ -496,12 +489,12 @@
             "IT.NET.BBND.P2": 3.41003,
             "TX.VAL.ICTG.ZS.UN": 0.16,
             "TM.VAL.ICTG.ZS.UN": 2.5,
-            "BX.GSR.CCIS.ZS": 3.7792558648578076,
+            "BX.GSR.CCIS.ZS": 3.779255864857808,
             "IT.CEL.SETS.P2": 179.027,
             "IS.RRS.TOTL.KM": 886.0,
             "ER.H2O.INTR.PC": 983.6500959878553,
             "ER.H2O.INTR.K3": 2.4,
-            "IT.NET.SECR.P6": 471.21558946174724
+            "IT.NET.SECR.P6": 471.2155894617472
         },
         {
             "id": 76,
@@ -542,7 +535,7 @@
             "TM.VAL.ICTG.ZS.UN": 1.53,
             "BX.GSR.CCIS.ZS": 3.607839307790798,
             "IT.CEL.SETS.P2": 127.012,
-            "ER.H2O.INTR.PC": 18666.139622724375,
+            "ER.H2O.INTR.PC": 18666.13962272437,
             "ER.H2O.INTR.K3": 8.5,
             "IT.NET.SECR.P6": 16128.509404154987
         },
@@ -581,7 +574,7 @@
             "IS.RRS.TOTL.KM": 518.0,
             "ER.H2O.INTR.PC": 555.3324846668258,
             "ER.H2O.INTR.K3": 12.5,
-            "IT.NET.SECR.P6": 28.833764261513156
+            "IT.NET.SECR.P6": 28.83376426151316
         },
         {
             "id": 108,
@@ -593,7 +586,7 @@
             "IT.NET.BBND.P2": 0.0203441,
             "TX.VAL.ICTG.ZS.UN": 0.1,
             "TM.VAL.ICTG.ZS.UN": 1.91,
-            "BX.GSR.CCIS.ZS": 3.8686027347879666,
+            "BX.GSR.CCIS.ZS": 3.868602734787967,
             "IT.CEL.SETS.P2": 63.1631,
             "ER.H2O.INTR.PC": 755.1930595505761,
             "ER.H2O.INTR.K3": 10.06,
@@ -647,7 +640,7 @@
             "IT.NET.BBND.P2": 2.12862,
             "TX.VAL.ICTG.ZS.UN": 0.17,
             "TM.VAL.ICTG.ZS.UN": 4.4,
-            "BX.GSR.CCIS.ZS": 9.453079316736483,
+            "BX.GSR.CCIS.ZS": 9.453079316736485,
             "IT.CEL.SETS.P2": 96.4817,
             "IS.RRS.TOTL.KM": 884.0,
             "ER.H2O.INTR.PC": 9879.573785777762,
@@ -694,9 +687,9 @@
             "TX.VAL.ICTG.ZS.UN": 0.26,
             "TM.VAL.ICTG.ZS.UN": 5.91,
             "IT.CEL.SETS.P2": 38.8218,
-            "ER.H2O.INTR.PC": 27657.693477825494,
+            "ER.H2O.INTR.PC": 27657.69347782549,
             "ER.H2O.INTR.K3": 141.0,
-            "IT.NET.SECR.P6": 1.6883367819175379
+            "IT.NET.SECR.P6": 1.688336781917538
         },
         {
             "id": 148,
@@ -729,7 +722,7 @@
             "IS.RRS.TOTL.KM": 2396.0,
             "ER.H2O.INTR.PC": 45261.513352709015,
             "ER.H2O.INTR.K3": 885.0,
-            "IT.NET.SECR.P6": 11912.609561729807
+            "IT.NET.SECR.P6": 11912.609561729809
         },
         {
             "id": 156,
@@ -779,7 +772,7 @@
             "IT.NET.BBND.P2": 0.387941,
             "TX.VAL.ICTG.ZS.UN": 0.09,
             "TM.VAL.ICTG.ZS.UN": 3.01,
-            "BX.GSR.CCIS.ZS": 11.687275223313145,
+            "BX.GSR.CCIS.ZS": 11.687275223313144,
             "IT.CEL.SETS.P2": 109.856,
             "ER.H2O.INTR.PC": 1438.5246491198625,
             "ER.H2O.INTR.K3": 1.2,
@@ -802,7 +795,7 @@
             "IS.RRS.TOTL.KM": 3641.0,
             "ER.H2O.INTR.PC": 8789.322746353193,
             "ER.H2O.INTR.K3": 900.0,
-            "IT.NET.SECR.P6": 9.663580650381855
+            "IT.NET.SECR.P6": 9.663580650381856
         },
         {
             "id": 178,
@@ -838,7 +831,7 @@
             "BX.GSR.CCIS.ZS": 14.816038843086412,
             "IT.CEL.SETS.P2": 145.789,
             "IS.RRS.TOTL.KM": 848.0,
-            "ER.H2O.INTR.PC": 22236.368663249876,
+            "ER.H2O.INTR.PC": 22236.36866324988,
             "ER.H2O.INTR.K3": 113.0,
             "IT.NET.SECR.P6": 1999.840153141088
         },
@@ -876,7 +869,7 @@
             "BX.GSR.CCIS.ZS": 7.683505052583538,
             "IT.CEL.SETS.P2": 117.113,
             "IS.RRS.TOTL.KM": 2617.0,
-            "ER.H2O.INTR.PC": 9777.881291333919,
+            "ER.H2O.INTR.PC": 9777.88129133392,
             "ER.H2O.INTR.K3": 37.7,
             "IT.NET.SECR.P6": 29457.879626516307
         },
@@ -919,7 +912,7 @@
             "IT.NET.BBND.P2": 38.7322,
             "TX.VAL.ICTG.ZS.UN": 1.66,
             "TM.VAL.ICTG.ZS.UN": 3.81,
-            "BX.GSR.CCIS.ZS": 29.693407411694174,
+            "BX.GSR.CCIS.ZS": 29.69340741169417,
             "IT.CEL.SETS.P2": 155.696,
             "ER.H2O.INTR.PC": 585.8626828004236,
             "ER.H2O.INTR.K3": 0.78,
@@ -973,7 +966,7 @@
             "IT.NET.BBND.P2": 1.47206,
             "TX.VAL.ICTG.ZS.UN": 0.15,
             "TM.VAL.ICTG.ZS.UN": 5.41,
-            "BX.GSR.CCIS.ZS": 6.8638941750244955,
+            "BX.GSR.CCIS.ZS": 6.863894175024496,
             "IT.CEL.SETS.P2": 48.4505,
             "IS.RRS.TOTL.KM": 781.0,
             "ER.H2O.INTR.PC": 263.82996686295616,
@@ -1012,7 +1005,7 @@
             "IT.CEL.SETS.P2": 91.8676,
             "ER.H2O.INTR.PC": 2092.4723174816536,
             "ER.H2O.INTR.K3": 23.5,
-            "IT.NET.SECR.P6": 180.87855523275886
+            "IT.NET.SECR.P6": 180.87855523275888
         },
         {
             "id": 218,
@@ -1022,7 +1015,7 @@
             "ER.H2O.FWIN.ZS": 5.5353902,
             "ER.H2O.FWTL.K3": 9.9158,
             "IS.SHP.GOOD.TU": 2682600.0,
-            "EG.USE.ELEC.KH.PC": 1589.2708536185999,
+            "EG.USE.ELEC.KH.PC": 1589.2708536186,
             "IT.NET.BBND.P2": 16.0679,
             "TX.VAL.ICTG.ZS.UN": 0.04,
             "TM.VAL.ICTG.ZS.UN": 5.8,
@@ -1082,7 +1075,7 @@
             "EG.USE.ELEC.KH.PC": 744.6445749898118,
             "IT.NET.BBND.P2": 0.100691,
             "IT.CEL.SETS.P2": 49.538,
-            "ER.H2O.INTR.PC": 14416.052829288983,
+            "ER.H2O.INTR.PC": 14416.052829288985,
             "ER.H2O.INTR.K3": 26.0,
             "IT.NET.SECR.P6": 66.57803685675576
         },
@@ -1098,7 +1091,7 @@
             "IT.NET.BBND.P2": 0.165393,
             "TX.VAL.ICTG.ZS.UN": 0.23,
             "TM.VAL.ICTG.ZS.UN": 3.02,
-            "BX.GSR.CCIS.ZS": 13.530891596836145,
+            "BX.GSR.CCIS.ZS": 13.530891596836144,
             "IT.CEL.SETS.P2": 59.1248,
             "ER.H2O.INTR.PC": 821.2475512891093,
             "ER.H2O.INTR.K3": 2.8,
@@ -1119,7 +1112,7 @@
             "BX.GSR.CCIS.ZS": 25.903845722024315,
             "IT.CEL.SETS.P2": 150.196,
             "IS.RRS.TOTL.KM": 1033.0,
-            "ER.H2O.INTR.PC": 9422.911538803713,
+            "ER.H2O.INTR.PC": 9422.911538803712,
             "ER.H2O.INTR.K3": 12.71,
             "IT.NET.SECR.P6": 139058.27027389492
         },
@@ -1130,11 +1123,11 @@
             "ER.H2O.FWDM.ZS": 3.867041199,
             "ER.H2O.FWIN.ZS": 1.938202247,
             "ER.H2O.FWTL.K3": 1.068,
-            "EG.USE.ELEC.KH.PC": 1137.0749608053707,
+            "EG.USE.ELEC.KH.PC": 1137.074960805371,
             "IT.NET.BBND.P2": 2.76366,
             "TX.VAL.ICTG.ZS.UN": 0.05,
             "TM.VAL.ICTG.ZS.UN": 2.73,
-            "BX.GSR.CCIS.ZS": 4.1720618619312955,
+            "BX.GSR.CCIS.ZS": 4.172061861931296,
             "IT.CEL.SETS.P2": 128.399,
             "IS.RRS.TOTL.KM": 300.0,
             "ER.H2O.INTR.PC": 2165.857068200706,
@@ -1148,16 +1141,16 @@
             "ER.H2O.FWDM.ZS": 7.679108086,
             "ER.H2O.FWIN.ZS": 0.484447436,
             "ER.H2O.FWTL.K3": 10.5481,
-            "EG.USE.ELEC.KH.PC": 92.43582491321261,
+            "EG.USE.ELEC.KH.PC": 92.4358249132126,
             "IT.NET.BBND.P2": 0.451577,
             "TX.VAL.ICTG.ZS.UN": 0.71,
             "TM.VAL.ICTG.ZS.UN": 3.36,
-            "BX.GSR.CCIS.ZS": 2.1237398242662193,
+            "BX.GSR.CCIS.ZS": 2.1237398242662198,
             "IT.CEL.SETS.P2": 56.9643,
             "IS.RRS.TOTL.KM": 754.0,
-            "ER.H2O.INTR.PC": 973.0086832969749,
+            "ER.H2O.INTR.PC": 973.0086832969748,
             "ER.H2O.INTR.K3": 122.0,
-            "IT.NET.SECR.P6": 23.731679005612662
+            "IT.NET.SECR.P6": 23.731679005612666
         },
         {
             "id": 234,
@@ -1268,7 +1261,7 @@
             "IT.CEL.SETS.P2": 106.782,
             "ER.H2O.INTR.PC": 1137.8851267035088,
             "ER.H2O.INTR.K3": 3.0,
-            "IT.NET.SECR.P6": 58.695907373510316
+            "IT.NET.SECR.P6": 58.69590737351032
         },
         {
             "id": 268,
@@ -1282,10 +1275,10 @@
             "IT.NET.BBND.P2": 29.3086,
             "TX.VAL.ICTG.ZS.UN": 1.26,
             "TM.VAL.ICTG.ZS.UN": 5.13,
-            "BX.GSR.CCIS.ZS": 10.936376706767637,
+            "BX.GSR.CCIS.ZS": 10.936376706767636,
             "IT.CEL.SETS.P2": 155.25,
             "IS.RRS.TOTL.KM": 1387.0,
-            "ER.H2O.INTR.PC": 15657.904022677967,
+            "ER.H2O.INTR.PC": 15657.904022677969,
             "ER.H2O.INTR.K3": 58.13,
             "IT.NET.SECR.P6": 5493.147515549083
         },
@@ -1304,7 +1297,7 @@
             "BX.GSR.CCIS.ZS": 11.475788746096846,
             "IT.CEL.SETS.P2": 124.663,
             "IS.RRS.TOTL.KM": 33401.0,
-            "ER.H2O.INTR.PC": 1276.8803450345495,
+            "ER.H2O.INTR.PC": 1276.8803450345497,
             "ER.H2O.INTR.K3": 107.0,
             "IT.NET.SECR.P6": 152124.12264499444
         },
@@ -1361,7 +1354,7 @@
             "TX.VAL.ICTG.ZS.UN": 0.02,
             "TM.VAL.ICTG.ZS.UN": 3.67,
             "IT.CEL.SETS.P2": 118.637,
-            "IT.NET.SECR.P6": 3905.9750862129636
+            "IT.NET.SECR.P6": 3905.975086212964
         },
         {
             "id": 308,
@@ -1399,7 +1392,7 @@
             "IT.NET.BBND.P2": 5.08083,
             "TX.VAL.ICTG.ZS.UN": 0.26,
             "TM.VAL.ICTG.ZS.UN": 5.82,
-            "BX.GSR.CCIS.ZS": 12.354089848725481,
+            "BX.GSR.CCIS.ZS": 12.35408984872548,
             "IT.CEL.SETS.P2": 113.709,
             "IS.RRS.TOTL.KM": 885.0,
             "ER.H2O.INTR.PC": 6118.3747512379205,
@@ -1419,9 +1412,9 @@
             "TM.VAL.ICTG.ZS.UN": 1.63,
             "BX.GSR.CCIS.ZS": 51.76966292134831,
             "IT.CEL.SETS.P2": 108.885,
-            "ER.H2O.INTR.PC": 16079.530210200015,
+            "ER.H2O.INTR.PC": 16079.530210200017,
             "ER.H2O.INTR.K3": 226.0,
-            "IT.NET.SECR.P6": 12.267206875600017
+            "IT.NET.SECR.P6": 12.267206875600015
         },
         {
             "id": 624,
@@ -1519,7 +1512,7 @@
             "IS.RRS.TOTL.KM": 8037.0,
             "ER.H2O.INTR.PC": 624.6698359637833,
             "ER.H2O.INTR.K3": 6.0,
-            "IT.NET.SECR.P6": 55075.999386759315
+            "IT.NET.SECR.P6": 55075.99938675932
         },
         {
             "id": 352,
@@ -1593,7 +1586,7 @@
             "IS.RRS.TOTL.KM": 9455.0,
             "ER.H2O.INTR.PC": 1435.3653422559962,
             "ER.H2O.INTR.K3": 128.5,
-            "IT.NET.SECR.P6": 7225.7108720977685
+            "IT.NET.SECR.P6": 7225.710872097768
         },
         {
             "id": 368,
@@ -1628,7 +1621,7 @@
             "BX.GSR.CCIS.ZS": 57.23403045970949,
             "IT.CEL.SETS.P2": 110.798,
             "IS.RRS.TOTL.KM": 1650.0,
-            "ER.H2O.INTR.PC": 9399.873696390987,
+            "ER.H2O.INTR.PC": 9399.873696390989,
             "ER.H2O.INTR.K3": 49.0,
             "IT.NET.SECR.P6": 121818.5302300615
         },
@@ -1653,7 +1646,7 @@
             "IS.RRS.TOTL.KM": 1720.0,
             "ER.H2O.INTR.PC": 80.03073180101158,
             "ER.H2O.INTR.K3": 0.75,
-            "IT.NET.SECR.P6": 12353.023740776387
+            "IT.NET.SECR.P6": 12353.023740776389
         },
         {
             "id": 380,
@@ -1688,7 +1681,7 @@
             "TM.VAL.ICTG.ZS.UN": 2.67,
             "BX.GSR.CCIS.ZS": 2.427034448653,
             "IT.CEL.SETS.P2": 115.092,
-            "ER.H2O.INTR.PC": 3812.0644814070724,
+            "ER.H2O.INTR.PC": 3812.064481407072,
             "ER.H2O.INTR.K3": 10.823,
             "IT.NET.SECR.P6": 191.957170656969
         },
@@ -1725,7 +1718,7 @@
             "TM.VAL.ICTG.ZS.UN": 3.16,
             "BX.GSR.CCIS.ZS": 0.5097933995170378,
             "IT.CEL.SETS.P2": 67.5457,
-            "ER.H2O.INTR.PC": 60.588491935556235,
+            "ER.H2O.INTR.PC": 60.58849193555624,
             "ER.H2O.INTR.K3": 0.682,
             "IT.NET.SECR.P6": 212.241523236292
         },
@@ -1789,7 +1782,7 @@
             "IS.RRS.TOTL.KM": 5214.0,
             "ER.H2O.INTR.PC": 2544.7375302638607,
             "ER.H2O.INTR.K3": 67.0,
-            "IT.NET.SECR.P6": 10.415556947567067
+            "IT.NET.SECR.P6": 10.415556947567069
         },
         {
             "id": 410,
@@ -1799,7 +1792,7 @@
             "ER.H2O.FWIN.ZS": 16.43157817,
             "ER.H2O.FWTL.K3": 29.197,
             "IS.SHP.GOOD.TU": 28502044.0,
-            "EG.USE.ELEC.KH.PC": 11426.069911485241,
+            "EG.USE.ELEC.KH.PC": 11426.06991148524,
             "IT.NET.BBND.P2": 46.5676,
             "TX.VAL.ICTG.ZS.UN": 27.66,
             "TM.VAL.ICTG.ZS.UN": 15.27,
@@ -1809,6 +1802,12 @@
             "ER.H2O.INTR.PC": 1255.017918694927,
             "ER.H2O.INTR.K3": 64.85,
             "IT.NET.SECR.P6": 11902.383071730022
+        },
+        {
+            "id": 689,
+            "EG.USE.ELEC.KH.PC": 2818.3108008217177,
+            "BX.GSR.CCIS.ZS": 9.622443898881365,
+            "IT.CEL.SETS.P2": 34.5402
         },
         {
             "id": 414,
@@ -1826,7 +1825,7 @@
             "IT.CEL.SETS.P2": 167.684,
             "ER.H2O.INTR.PC": 0.0,
             "ER.H2O.INTR.K3": 0.0,
-            "IT.NET.SECR.P6": 378.37808495251477
+            "IT.NET.SECR.P6": 378.3780849525148
         },
         {
             "id": 417,
@@ -1861,7 +1860,7 @@
             "IT.CEL.SETS.P2": 64.7588,
             "ER.H2O.INTR.PC": 25188.493673838377,
             "ER.H2O.INTR.K3": 190.4,
-            "IT.NET.SECR.P6": 301.68012922823556
+            "IT.NET.SECR.P6": 301.6801292282356
         },
         {
             "id": 428,
@@ -1871,14 +1870,14 @@
             "ER.H2O.FWIN.ZS": 17.5769146,
             "ER.H2O.FWTL.K3": 0.172334,
             "IS.SHP.GOOD.TU": 471684.0,
-            "EG.USE.ELEC.KH.PC": 3628.8679561851345,
+            "EG.USE.ELEC.KH.PC": 3628.8679561851354,
             "IT.NET.BBND.P2": 25.9948,
             "TX.VAL.ICTG.ZS.UN": 7.28,
             "TM.VAL.ICTG.ZS.UN": 7.24,
             "BX.GSR.CCIS.ZS": 17.483701000858225,
             "IT.CEL.SETS.P2": 119.91,
             "IS.RRS.TOTL.KM": 1859.1,
-            "ER.H2O.INTR.PC": 9013.596483526775,
+            "ER.H2O.INTR.PC": 9013.596483526777,
             "ER.H2O.INTR.K3": 16.94,
             "IT.NET.SECR.P6": 28274.184256038177
         },
@@ -1911,7 +1910,7 @@
             "IT.NET.BBND.P2": 0.383738,
             "TX.VAL.ICTG.ZS.UN": 0.54,
             "TM.VAL.ICTG.ZS.UN": 2.95,
-            "BX.GSR.CCIS.ZS": 0.09921382218478784,
+            "BX.GSR.CCIS.ZS": 0.0992138221847878,
             "IT.CEL.SETS.P2": 69.3513,
             "ER.H2O.INTR.PC": 2287.7289369277946,
             "ER.H2O.INTR.K3": 5.23,
@@ -1972,7 +1971,7 @@
             "IS.RRS.TOTL.KM": 1919.0,
             "ER.H2O.INTR.PC": 5459.735510070316,
             "ER.H2O.INTR.K3": 15.46,
-            "IT.NET.SECR.P6": 98560.79610672235
+            "IT.NET.SECR.P6": 98560.79610672237
         },
         {
             "id": 446,
@@ -1980,7 +1979,7 @@
             "IT.NET.BBND.P2": 29.6759,
             "TX.VAL.ICTG.ZS.UN": 18.95,
             "TM.VAL.ICTG.ZS.UN": 13.26,
-            "BX.GSR.CCIS.ZS": 0.04314496386667048,
+            "BX.GSR.CCIS.ZS": 0.0431449638666704,
             "IT.CEL.SETS.P2": 192.478,
             "IT.NET.SECR.P6": 6586.608442503639
         },
@@ -2001,7 +2000,7 @@
             "IS.RRS.TOTL.KM": 673.0,
             "ER.H2O.INTR.PC": 11071.955521884838,
             "ER.H2O.INTR.K3": 337.0,
-            "IT.NET.SECR.P6": 25.058692400515113
+            "IT.NET.SECR.P6": 25.058692400515117
         },
         {
             "id": 454,
@@ -2050,9 +2049,9 @@
             "IT.NET.BBND.P2": 18.7278,
             "TX.VAL.ICTG.ZS.UN": 0.0,
             "TM.VAL.ICTG.ZS.UN": 5.53,
-            "BX.GSR.CCIS.ZS": 0.9323392139238521,
+            "BX.GSR.CCIS.ZS": 0.932339213923852,
             "IT.CEL.SETS.P2": 141.601,
-            "ER.H2O.INTR.PC": 57.240329246373825,
+            "ER.H2O.INTR.PC": 57.24032924637383,
             "ER.H2O.INTR.K3": 0.03,
             "IT.NET.SECR.P6": 1330.0517810757503
         },
@@ -2066,7 +2065,7 @@
             "IT.NET.BBND.P2": 0.77422,
             "TX.VAL.ICTG.ZS.UN": 0.09,
             "TM.VAL.ICTG.ZS.UN": 4.83,
-            "BX.GSR.CCIS.ZS": 38.173677874997196,
+            "BX.GSR.CCIS.ZS": 38.1736778749972,
             "IT.CEL.SETS.P2": 112.12,
             "IS.RRS.TOTL.KM": 733.0,
             "ER.H2O.INTR.PC": 2600.482649579762,
@@ -2081,7 +2080,7 @@
             "ER.H2O.FWIN.ZS": 1.616677751,
             "ER.H2O.FWTL.K3": 0.036663004,
             "IS.SHP.GOOD.TU": 2993799.0,
-            "EG.USE.ELEC.KH.PC": 5042.0897806772355,
+            "EG.USE.ELEC.KH.PC": 5042.089780677236,
             "IT.NET.BBND.P2": 44.2825,
             "TX.VAL.ICTG.ZS.UN": 25.7,
             "TM.VAL.ICTG.ZS.UN": 9.41,
@@ -2161,7 +2160,7 @@
             "TM.VAL.ICTG.ZS.UN": 1.91,
             "BX.GSR.CCIS.ZS": 4.029878951402085,
             "IT.CEL.SETS.P2": 19.9886,
-            "IT.NET.SECR.P6": 194.41498762813717
+            "IT.NET.SECR.P6": 194.4149876281372
         },
         {
             "id": 498,
@@ -2175,7 +2174,7 @@
             "IT.NET.BBND.P2": 27.4209,
             "TX.VAL.ICTG.ZS.UN": 0.27,
             "TM.VAL.ICTG.ZS.UN": 3.79,
-            "BX.GSR.CCIS.ZS": 26.680918582846658,
+            "BX.GSR.CCIS.ZS": 26.680918582846655,
             "IT.CEL.SETS.P2": 130.772,
             "IS.RRS.TOTL.KM": 1149.0,
             "ER.H2O.INTR.PC": 640.6570452106141,
@@ -2204,7 +2203,7 @@
             "IT.NET.BBND.P2": 14.5529,
             "TX.VAL.ICTG.ZS.UN": 0.01,
             "TM.VAL.ICTG.ZS.UN": 4.53,
-            "BX.GSR.CCIS.ZS": 3.8519932353436355,
+            "BX.GSR.CCIS.ZS": 3.851993235343636,
             "IT.CEL.SETS.P2": 141.085,
             "IS.RRS.TOTL.KM": 1821.0,
             "ER.H2O.INTR.PC": 10134.698294691398,
@@ -2262,7 +2261,7 @@
             "BX.GSR.CCIS.ZS": 0.7948448073366784,
             "IT.CEL.SETS.P2": 45.8178,
             "IS.RRS.TOTL.KM": 3116.0,
-            "ER.H2O.INTR.PC": 3071.3879360168958,
+            "ER.H2O.INTR.PC": 3071.387936016896,
             "ER.H2O.INTR.K3": 100.3,
             "IT.NET.SECR.P6": 37.162413259549055
         },
@@ -2297,7 +2296,7 @@
             "IT.NET.BBND.P2": 3.52007,
             "TX.VAL.ICTG.ZS.UN": 0.21,
             "TM.VAL.ICTG.ZS.UN": 2.46,
-            "BX.GSR.CCIS.ZS": 2.0204764436476412,
+            "BX.GSR.CCIS.ZS": 2.020476443647641,
             "IT.CEL.SETS.P2": 87.6761,
             "ER.H2O.INTR.PC": 2131.73720663524,
             "ER.H2O.INTR.K3": 6.16,
@@ -2347,7 +2346,7 @@
             "IS.RRS.TOTL.KM": 3041.0,
             "ER.H2O.INTR.PC": 621.4344492299919,
             "ER.H2O.INTR.K3": 11.0,
-            "IT.NET.SECR.P6": 198674.10882717618
+            "IT.NET.SECR.P6": 198674.10882717615
         },
         {
             "id": 540,
@@ -2390,7 +2389,7 @@
             "IT.NET.BBND.P2": 5.43031,
             "TX.VAL.ICTG.ZS.UN": 0.03,
             "TM.VAL.ICTG.ZS.UN": 2.24,
-            "BX.GSR.CCIS.ZS": 19.435825065851716,
+            "BX.GSR.CCIS.ZS": 19.43582506585172,
             "IT.CEL.SETS.P2": 105.843,
             "ER.H2O.INTR.PC": 23208.740190774923,
             "ER.H2O.INTR.K3": 156.21,
@@ -2443,7 +2442,7 @@
             "IT.NET.BBND.P2": 29.1772,
             "TX.VAL.ICTG.ZS.UN": 0.63,
             "TM.VAL.ICTG.ZS.UN": 3.81,
-            "BX.GSR.CCIS.ZS": 21.666889424162182,
+            "BX.GSR.CCIS.ZS": 21.666889424162186,
             "IT.CEL.SETS.P2": 104.837,
             "IS.RRS.TOTL.KM": 683.0,
             "ER.H2O.INTR.PC": 2948.06170402334,
@@ -2508,7 +2507,7 @@
             "BX.GSR.CCIS.ZS": 44.85740518111495,
             "IT.CEL.SETS.P2": 76.5398,
             "IS.RRS.TOTL.KM": 7791.0,
-            "ER.H2O.INTR.PC": 225.68670277787953,
+            "ER.H2O.INTR.PC": 225.68670277787956,
             "ER.H2O.INTR.K3": 55.0,
             "IT.NET.SECR.P6": 109.65133787765538
         },
@@ -2530,7 +2529,7 @@
             "ER.H2O.FWIN.ZS": 0.511804524,
             "ER.H2O.FWTL.K3": 1.2114,
             "IS.SHP.GOOD.TU": 8518425.0,
-            "EG.USE.ELEC.KH.PC": 2546.3708307608686,
+            "EG.USE.ELEC.KH.PC": 2546.370830760869,
             "IT.NET.BBND.P2": 18.1341,
             "TX.VAL.ICTG.ZS.UN": 17.82,
             "TM.VAL.ICTG.ZS.UN": 3.99,
@@ -2608,10 +2607,10 @@
             "IT.NET.BBND.P2": 6.53931,
             "TX.VAL.ICTG.ZS.UN": 50.71,
             "TM.VAL.ICTG.ZS.UN": 19.37,
-            "BX.GSR.CCIS.ZS": 15.555483412791471,
+            "BX.GSR.CCIS.ZS": 15.555483412791473,
             "IT.CEL.SETS.P2": 117.276,
             "IS.RRS.TOTL.KM": 509.0,
-            "ER.H2O.INTR.PC": 4203.0692092468435,
+            "ER.H2O.INTR.PC": 4203.069209246844,
             "ER.H2O.INTR.K3": 479.0,
             "IT.NET.SECR.P6": 131.5566055529836
         },
@@ -2649,9 +2648,9 @@
             "BX.GSR.CCIS.ZS": 8.160617022390008,
             "IT.CEL.SETS.P2": 123.002,
             "IS.RRS.TOTL.KM": 2527.053,
-            "ER.H2O.INTR.PC": 3641.8239327634965,
+            "ER.H2O.INTR.PC": 3641.823932763497,
             "ER.H2O.INTR.K3": 38.0,
-            "IT.NET.SECR.P6": 28691.594444064438
+            "IT.NET.SECR.P6": 28691.59444406444
         },
         {
             "id": 630,
@@ -2680,7 +2679,7 @@
             "TM.VAL.ICTG.ZS.UN": 5.02,
             "BX.GSR.CCIS.ZS": 3.4454187039616864,
             "IT.CEL.SETS.P2": 157.821,
-            "ER.H2O.INTR.PC": 21.073760797009633,
+            "ER.H2O.INTR.PC": 21.073760797009637,
             "ER.H2O.INTR.K3": 0.056,
             "IT.NET.SECR.P6": 445.44411793316726
         },
@@ -2720,7 +2719,7 @@
             "IS.RRS.TOTL.KM": 85544.0,
             "ER.H2O.INTR.PC": 29895.255745627925,
             "ER.H2O.INTR.K3": 4312.0,
-            "IT.NET.SECR.P6": 26130.017231962935
+            "IT.NET.SECR.P6": 26130.01723196293
         },
         {
             "id": 646,
@@ -2771,7 +2770,7 @@
             "IT.CEL.SETS.P2": 63.4541,
             "ER.H2O.INTR.PC": 9633.017388038266,
             "ER.H2O.INTR.K3": 2.18,
-            "IT.NET.SECR.P6": 42.456354867196524
+            "IT.NET.SECR.P6": 42.45635486719653
         },
         {
             "id": 682,
@@ -2785,7 +2784,7 @@
             "IT.NET.BBND.P2": 43.5732,
             "TX.VAL.ICTG.ZS.UN": 0.4,
             "TM.VAL.ICTG.ZS.UN": 7.45,
-            "BX.GSR.CCIS.ZS": 3.1102034167468666,
+            "BX.GSR.CCIS.ZS": 3.110203416746866,
             "IT.CEL.SETS.P2": 157.775,
             "IS.RRS.TOTL.KM": 2939.0,
             "ER.H2O.INTR.PC": 74.59155529111467,
@@ -2809,7 +2808,7 @@
             "IS.RRS.TOTL.KM": 906.0,
             "ER.H2O.INTR.PC": 1461.6650302250232,
             "ER.H2O.INTR.K3": 25.8,
-            "IT.NET.SECR.P6": 59.615228291192984
+            "IT.NET.SECR.P6": 59.61522829119298
         },
         {
             "id": 688,
@@ -2825,7 +2824,7 @@
             "BX.GSR.CCIS.ZS": 28.56997868657928,
             "IT.CEL.SETS.P2": 128.471,
             "IS.RRS.TOTL.KM": 3348.077,
-            "ER.H2O.INTR.PC": 1261.4696278717117,
+            "ER.H2O.INTR.PC": 1261.4696278717115,
             "ER.H2O.INTR.K3": 8.407,
             "IT.NET.SECR.P6": 12940.395633836642
         },
@@ -2859,7 +2858,7 @@
             "IT.CEL.SETS.P2": 107.882,
             "ER.H2O.INTR.PC": 19331.126121462057,
             "ER.H2O.INTR.K3": 160.0,
-            "IT.NET.SECR.P6": 11.339938731931023
+            "IT.NET.SECR.P6": 11.339938731931024
         },
         {
             "id": 702,
@@ -2897,7 +2896,7 @@
             "IT.NET.BBND.P2": 33.1726,
             "TX.VAL.ICTG.ZS.UN": 10.48,
             "TM.VAL.ICTG.ZS.UN": 10.67,
-            "BX.GSR.CCIS.ZS": 19.593199907678553,
+            "BX.GSR.CCIS.ZS": 19.593199907678557,
             "IT.CEL.SETS.P2": 138.233,
             "IS.RRS.TOTL.KM": 3626.457,
             "ER.H2O.INTR.PC": 2319.693535345502,
@@ -2930,7 +2929,7 @@
             "IT.NET.BBND.P2": 0.107033,
             "TX.VAL.ICTG.ZS.UN": 0.01,
             "TM.VAL.ICTG.ZS.UN": 2.6,
-            "BX.GSR.CCIS.ZS": 1.9164165768129122,
+            "BX.GSR.CCIS.ZS": 1.916416576812912,
             "IT.CEL.SETS.P2": 62.0735,
             "ER.H2O.INTR.PC": 57229.47868682032,
             "ER.H2O.INTR.K3": 44.7,
@@ -2980,7 +2979,7 @@
             "IT.NET.BBND.P2": 0.00174165,
             "BX.GSR.CCIS.ZS": 7.356447108507595,
             "IT.CEL.SETS.P2": 46.6152,
-            "ER.H2O.INTR.PC": 2359.0946774559557,
+            "ER.H2O.INTR.PC": 2359.094677455956,
             "ER.H2O.INTR.K3": 26.0,
             "IT.NET.SECR.P6": 5.274876316709602
         },
@@ -3082,7 +3081,7 @@
             "ER.H2O.FWIN.ZS": 0.278448116,
             "ER.H2O.FWTL.K3": 26.935,
             "IS.SHP.GOOD.TU": 320274.0,
-            "EG.USE.ELEC.KH.PC": 278.81869324933956,
+            "EG.USE.ELEC.KH.PC": 278.8186932493396,
             "IT.NET.BBND.P2": 0.0604394,
             "TX.VAL.ICTG.ZS.UN": 0.01,
             "TM.VAL.ICTG.ZS.UN": 1.59,
@@ -3119,11 +3118,11 @@
             "ER.H2O.FWIN.ZS": 61.26692456,
             "ER.H2O.FWTL.K3": 2.483,
             "IS.SHP.GOOD.TU": 1631248.0,
-            "EG.USE.ELEC.KH.PC": 12149.517986392615,
+            "EG.USE.ELEC.KH.PC": 12149.517986392617,
             "IT.NET.BBND.P2": 40.734,
             "TX.VAL.ICTG.ZS.UN": 5.27,
             "TM.VAL.ICTG.ZS.UN": 8.69,
-            "BX.GSR.CCIS.ZS": 20.721110276347694,
+            "BX.GSR.CCIS.ZS": 20.72111027634769,
             "IT.CEL.SETS.P2": 140.266,
             "IS.RRS.TOTL.KM": 9714.0,
             "ER.H2O.INTR.PC": 16305.99428374776,
@@ -3138,7 +3137,7 @@
             "ER.H2O.FWIN.ZS": 37.09025854,
             "ER.H2O.FWTL.K3": 1.704,
             "IS.SHP.GOOD.TU": 114075.0,
-            "EG.USE.ELEC.KH.PC": 7096.9104396184875,
+            "EG.USE.ELEC.KH.PC": 7096.910439618488,
             "IT.NET.BBND.P2": 47.6963,
             "TX.VAL.ICTG.ZS.UN": 1.0490728917,
             "TM.VAL.ICTG.ZS.UN": 3.7767842901,
@@ -3161,12 +3160,12 @@
             "IT.NET.BBND.P2": 6.86125,
             "TX.VAL.ICTG.ZS.UN": 0.02,
             "TM.VAL.ICTG.ZS.UN": 2.22,
-            "BX.GSR.CCIS.ZS": 1.9181389901471182,
+            "BX.GSR.CCIS.ZS": 1.9181389901471184,
             "IT.CEL.SETS.P2": 72.4406,
             "IS.RRS.TOTL.KM": 2139.0,
             "ER.H2O.INTR.PC": 317.5115782431201,
             "ER.H2O.INTR.K3": 7.132,
-            "IT.NET.SECR.P6": 113.89078481693981
+            "IT.NET.SECR.P6": 113.8907848169398
         },
         {
             "id": 762,
@@ -3248,7 +3247,7 @@
             "ER.H2O.FWIN.ZS": 2.825112108,
             "ER.H2O.FWTL.K3": 0.223,
             "IS.SHP.GOOD.TU": 1952879.0,
-            "EG.USE.ELEC.KH.PC": 191.86471601271677,
+            "EG.USE.ELEC.KH.PC": 191.8647160127168,
             "IT.NET.BBND.P2": 1.22816,
             "TX.VAL.ICTG.ZS.UN": 0.13,
             "TM.VAL.ICTG.ZS.UN": 2.48,
@@ -3265,7 +3264,7 @@
             "IT.NET.BBND.P2": 8.17387,
             "TX.VAL.ICTG.ZS.UN": 0.78,
             "TM.VAL.ICTG.ZS.UN": 10.22,
-            "BX.GSR.CCIS.ZS": 10.167360261370673,
+            "BX.GSR.CCIS.ZS": 10.167360261370671,
             "IT.CEL.SETS.P2": 61.7258,
             "IT.NET.SECR.P6": 969.5224382049436
         },
@@ -3295,16 +3294,16 @@
             "ER.H2O.FWIN.ZS": 1.725483637,
             "ER.H2O.FWTL.K3": 3.864,
             "IS.SHP.GOOD.TU": 464823.0,
-            "EG.USE.ELEC.KH.PC": 1595.4672096668019,
+            "EG.USE.ELEC.KH.PC": 1595.467209666802,
             "IT.NET.BBND.P2": 14.1436,
             "TX.VAL.ICTG.ZS.UN": 4.26,
             "TM.VAL.ICTG.ZS.UN": 5.22,
             "BX.GSR.CCIS.ZS": 4.600322642858676,
             "IT.CEL.SETS.P2": 134.136,
             "IS.RRS.TOTL.KM": 1777.0,
-            "ER.H2O.INTR.PC": 346.14113283782757,
+            "ER.H2O.INTR.PC": 346.1411328378276,
             "ER.H2O.INTR.K3": 4.195,
-            "IT.NET.SECR.P6": 912.3483386846203
+            "IT.NET.SECR.P6": 912.3483386846204
         },
         {
             "id": 792,
@@ -3394,7 +3393,7 @@
             "IS.RRS.TOTL.KM": 21625.9,
             "ER.H2O.INTR.PC": 1342.305880766306,
             "ER.H2O.INTR.K3": 55.1,
-            "IT.NET.SECR.P6": 9936.867510625465
+            "IT.NET.SECR.P6": 9936.867510625463
         },
         {
             "id": 784,
@@ -3441,7 +3440,7 @@
             "ER.H2O.FWIN.ZS": 47.19890162,
             "ER.H2O.FWTL.K3": 444.29,
             "IS.SHP.GOOD.TU": 62214119.0,
-            "EG.USE.ELEC.KH.PC": 12551.225633352371,
+            "EG.USE.ELEC.KH.PC": 12551.225633352373,
             "IT.NET.BBND.P2": 38.1475,
             "TX.VAL.ICTG.ZS.UN": 7.85,
             "TM.VAL.ICTG.ZS.UN": 12.98,
@@ -3467,7 +3466,7 @@
             "BX.GSR.CCIS.ZS": 19.58363739324982,
             "IT.CEL.SETS.P2": 141.719,
             "IS.RRS.TOTL.KM": 1498.0,
-            "ER.H2O.INTR.PC": 27190.317180063306,
+            "ER.H2O.INTR.PC": 27190.317180063303,
             "ER.H2O.INTR.K3": 92.2,
             "IT.NET.SECR.P6": 4640.658975936843
         },
@@ -3478,11 +3477,11 @@
             "ER.H2O.FWDM.ZS": 5.168539326,
             "ER.H2O.FWIN.ZS": 2.696629214,
             "ER.H2O.FWTL.K3": 42.9,
-            "EG.USE.ELEC.KH.PC": 2094.0523264075873,
+            "EG.USE.ELEC.KH.PC": 2094.0523264075878,
             "IT.NET.BBND.P2": 30.2699,
             "TX.VAL.ICTG.ZS.UN": 0.53,
             "TM.VAL.ICTG.ZS.UN": 4.07,
-            "BX.GSR.CCIS.ZS": 9.465643357530853,
+            "BX.GSR.CCIS.ZS": 9.465643357530851,
             "IT.CEL.SETS.P2": 106.885,
             "IS.RRS.TOTL.KM": 4732.0,
             "ER.H2O.INTR.PC": 467.67283108495945,
@@ -3498,7 +3497,7 @@
             "TM.VAL.ICTG.ZS.UN": 3.12,
             "BX.GSR.CCIS.ZS": 8.217911257174595,
             "IT.CEL.SETS.P2": 89.2943,
-            "ER.H2O.INTR.PC": 31944.187116270452,
+            "ER.H2O.INTR.PC": 31944.18711627045,
             "ER.H2O.INTR.K3": 10.0,
             "IT.NET.SECR.P6": 1918.9876043773663
         },
@@ -3517,7 +3516,7 @@
             "BX.GSR.CCIS.ZS": 4.980544747081712,
             "IT.CEL.SETS.P2": 70.2197,
             "IS.RRS.TOTL.KM": 336.0,
-            "ER.H2O.INTR.PC": 28532.928612349402,
+            "ER.H2O.INTR.PC": 28532.9286123494,
             "ER.H2O.INTR.K3": 805.0,
             "IT.NET.SECR.P6": 246.67720662829785
         },
@@ -3558,7 +3557,7 @@
             "IT.CEL.SETS.P2": 76.6919,
             "ER.H2O.INTR.PC": 164.94848711563398,
             "ER.H2O.INTR.K3": 0.812,
-            "IT.NET.SECR.P6": 427.10060138184724
+            "IT.NET.SECR.P6": 427.1006013818472
         },
         {
             "id": 887,
@@ -3592,7 +3591,7 @@
             "BX.GSR.CCIS.ZS": 2.6812074498285448,
             "IT.CEL.SETS.P2": 102.062,
             "IS.RRS.TOTL.KM": 1248.0,
-            "ER.H2O.INTR.PC": 3979.5686365928386,
+            "ER.H2O.INTR.PC": 3979.568636592839,
             "ER.H2O.INTR.K3": 80.2,
             "IT.NET.SECR.P6": 80.50685162099326
         },
@@ -3616,6 +3615,6 @@
         }
     ],
     "id": "infrastructure",
-    "name": "World Development Indicators (2012) - Infrastructure",
+    "name": "World Development Indicators (2025) - Infrastructure",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

@@ -84,24 +84,6 @@
     ],
     "data": [
         {
-            "id": 533,
-            "FS.AST.PRVT.GD.ZS": 59.60546988801932,
-            "IC.FRM.BNKS.ZS": 20.35801804544545,
-            "IC.FRM.CORR.ZS": 15.889407958909091,
-            "LP.EXP.DURS.MD": 3.5,
-            "LP.IMP.DURS.MD": 4.0,
-            "LP.LPI.OVRL.XQ": 2.7937499999999997,
-            "TG.VAL.TOTL.GD.ZS": 42.70162449431812,
-            "IC.TAX.METG": 2.043579459272727,
-            "BG.GSR.NFSV.GD.ZS": 114.24689001333431,
-            "IC.FRM.OUTG.ZS": 0.0,
-            "TX.VAL.MRCH.XD.WD": 41.8,
-            "TX.QTY.MRCH.XD.WD": 35.7,
-            "TM.VAL.MRCH.XD.WD": 108.7,
-            "TM.QTY.MRCH.XD.WD": 88.8,
-            "TT.PRI.MRCH.XD.WD": 95.7
-        },
-        {
             "id": 4,
             "FS.AST.PRVT.GD.ZS": 3.0965980896605854,
             "TX.VAL.MRCH.XD.WD": 163.8,
@@ -169,7 +151,7 @@
             "TX.QTY.MRCH.XD.WD": 50.8,
             "TM.VAL.MRCH.XD.WD": 94.2,
             "TM.QTY.MRCH.XD.WD": 88.6,
-            "TG.VAL.TOTL.GD.ZS": 117.68082663605051,
+            "TG.VAL.TOTL.GD.ZS": 117.68082663605053,
             "TT.PRI.MRCH.XD.WD": 202.5
         },
         {
@@ -264,6 +246,17 @@
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
+            "id": 533,
+            "FS.AST.PRVT.GD.ZS": 59.60546988801932,
+            "TX.VAL.MRCH.XD.WD": 41.8,
+            "TX.QTY.MRCH.XD.WD": 35.7,
+            "TM.VAL.MRCH.XD.WD": 108.7,
+            "TM.QTY.MRCH.XD.WD": 88.8,
+            "TG.VAL.TOTL.GD.ZS": 42.70162449431812,
+            "TT.PRI.MRCH.XD.WD": 95.7,
+            "BG.GSR.NFSV.GD.ZS": 114.24689001333432
+        },
+        {
             "id": 36,
             "FS.AST.PRVT.GD.ZS": 129.67375560500832,
             "TX.VAL.MRCH.XD.WD": 197.8,
@@ -299,7 +292,7 @@
         },
         {
             "id": 31,
-            "FS.AST.PRVT.GD.ZS": 26.394691931298986,
+            "FS.AST.PRVT.GD.ZS": 26.394691931298983,
             "TX.VAL.MRCH.XD.WD": 206.8,
             "TX.QTY.MRCH.XD.WD": 140.0,
             "IC.FRM.BNKS.ZS": 31.63585663,
@@ -329,7 +322,7 @@
             "LP.EXP.DURS.MD": 1.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 2.7,
-            "TG.VAL.TOTL.GD.ZS": 30.771562831590117,
+            "TG.VAL.TOTL.GD.ZS": 30.77156283159012,
             "TT.PRI.MRCH.XD.WD": 101.4,
             "IC.TAX.METG": 1.886180401,
             "BG.GSR.NFSV.GD.ZS": 52.86379911638481,
@@ -389,7 +382,7 @@
             "TT.PRI.MRCH.XD.WD": 97.8,
             "IC.BUS.NREG": 1028.0,
             "IC.TAX.METG": 1.756856918,
-            "BG.GSR.NFSV.GD.ZS": 40.052476504868395,
+            "BG.GSR.NFSV.GD.ZS": 40.0524765048684,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -478,7 +471,7 @@
             "TX.QTY.MRCH.XD.WD": 116.6,
             "TM.VAL.MRCH.XD.WD": 117.9,
             "TM.QTY.MRCH.XD.WD": 102.2,
-            "TG.VAL.TOTL.GD.ZS": 14.910581056101199,
+            "TG.VAL.TOTL.GD.ZS": 14.9105810561012,
             "TT.PRI.MRCH.XD.WD": 126.3,
             "BG.GSR.NFSV.GD.ZS": 31.124991976050985
         },
@@ -558,7 +551,7 @@
             "TT.PRI.MRCH.XD.WD": 82.1,
             "IC.BUS.NREG": 14552.0,
             "IC.TAX.METG": 2.647873163,
-            "BG.GSR.NFSV.GD.ZS": 11.469955705368239,
+            "BG.GSR.NFSV.GD.ZS": 11.46995570536824,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -601,7 +594,7 @@
             "LP.EXP.DURS.MD": 1.0,
             "LP.IMP.DURS.MD": 1.0,
             "LP.LPI.OVRL.XQ": 2.71,
-            "TG.VAL.TOTL.GD.ZS": 124.13395317761413,
+            "TG.VAL.TOTL.GD.ZS": 124.13395317761412,
             "TT.PRI.MRCH.XD.WD": 111.5,
             "IC.BUS.NREG": 316.0,
             "BG.GSR.NFSV.GD.ZS": 13.9419386764327
@@ -630,7 +623,7 @@
         },
         {
             "id": 854,
-            "FS.AST.PRVT.GD.ZS": 27.010620732111306,
+            "FS.AST.PRVT.GD.ZS": 27.010620732111303,
             "TX.VAL.MRCH.XD.WD": 205.5,
             "TX.QTY.MRCH.XD.WD": 129.7,
             "IC.FRM.BNKS.ZS": 15.96293831,
@@ -688,7 +681,7 @@
         },
         {
             "id": 116,
-            "FS.AST.PRVT.GD.ZS": 124.65976574946555,
+            "FS.AST.PRVT.GD.ZS": 124.65976574946556,
             "TX.VAL.MRCH.XD.WD": 274.6,
             "TX.QTY.MRCH.XD.WD": 246.3,
             "IC.FRM.BNKS.ZS": 9.397100449,
@@ -730,7 +723,7 @@
         },
         {
             "id": 124,
-            "FS.AST.PRVT.GD.ZS": 124.09777168927727,
+            "FS.AST.PRVT.GD.ZS": 124.09777168927728,
             "TX.VAL.MRCH.XD.WD": 138.7,
             "TX.QTY.MRCH.XD.WD": 108.9,
             "IC.FRM.BNKS.ZS": 29.90517044,
@@ -753,7 +746,7 @@
             "TX.QTY.MRCH.XD.WD": 37.4,
             "TM.VAL.MRCH.XD.WD": 212.1,
             "TM.QTY.MRCH.XD.WD": 160.5,
-            "TG.VAL.TOTL.GD.ZS": 26.290619547861166,
+            "TG.VAL.TOTL.GD.ZS": 26.29061954786117,
             "TT.PRI.MRCH.XD.WD": 142.1,
             "IC.BUS.NREG": 11796.0,
             "BG.GSR.NFSV.GD.ZS": 87.59764344265199
@@ -808,7 +801,7 @@
             "LP.EXP.DURS.MD": 3.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 3.0,
-            "TG.VAL.TOTL.GD.ZS": 55.808156229792004,
+            "TG.VAL.TOTL.GD.ZS": 55.808156229792,
             "TT.PRI.MRCH.XD.WD": 129.7,
             "IC.BUS.NREG": 145590.0,
             "IC.TAX.METG": 4.712566853,
@@ -913,7 +906,7 @@
             "TT.PRI.MRCH.XD.WD": 113.7,
             "IC.BUS.NREG": 132.0,
             "IC.TAX.METG": 2.21388483,
-            "BG.GSR.NFSV.GD.ZS": 13.134212350060645,
+            "BG.GSR.NFSV.GD.ZS": 13.134212350060643,
             "IC.FRM.OUTG.ZS": 1.0
         },
         {
@@ -1121,7 +1114,7 @@
         },
         {
             "id": 218,
-            "FS.AST.PRVT.GD.ZS": 56.180515915777384,
+            "FS.AST.PRVT.GD.ZS": 56.18051591577738,
             "TX.VAL.MRCH.XD.WD": 169.8,
             "TX.QTY.MRCH.XD.WD": 122.2,
             "IC.FRM.BNKS.ZS": 37.84175873,
@@ -1159,7 +1152,7 @@
             "TT.PRI.MRCH.XD.WD": 110.2,
             "IC.BUS.NREG": 18587.0,
             "IC.TAX.METG": 2.583812237,
-            "BG.GSR.NFSV.GD.ZS": 14.662240541014565,
+            "BG.GSR.NFSV.GD.ZS": 14.662240541014564,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -1210,7 +1203,7 @@
             "LP.EXP.DURS.MD": 3.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 2.09,
-            "TG.VAL.TOTL.GD.ZS": 28.589898697637757,
+            "TG.VAL.TOTL.GD.ZS": 28.58989869763776,
             "TT.PRI.MRCH.XD.WD": 95.7,
             "IC.TAX.METG": 1.70947051,
             "BG.GSR.NFSV.GD.ZS": 12.654936100337776,
@@ -1232,7 +1225,7 @@
             "TT.PRI.MRCH.XD.WD": 100.4,
             "IC.BUS.NREG": 20608.0,
             "IC.TAX.METG": 1.290654659,
-            "BG.GSR.NFSV.GD.ZS": 56.025713179308134,
+            "BG.GSR.NFSV.GD.ZS": 56.02571317930813,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -1269,7 +1262,7 @@
             "TT.PRI.MRCH.XD.WD": 103.1,
             "IC.BUS.NREG": 34327.0,
             "IC.TAX.METG": 3.744972229,
-            "BG.GSR.NFSV.GD.ZS": 11.400773025238237,
+            "BG.GSR.NFSV.GD.ZS": 11.400773025238236,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -1296,12 +1289,12 @@
             "TT.PRI.MRCH.XD.WD": 99.3,
             "IC.BUS.NREG": 1352.0,
             "IC.TAX.METG": 2.198546648,
-            "BG.GSR.NFSV.GD.ZS": 41.913118222511194,
+            "BG.GSR.NFSV.GD.ZS": 41.9131182225112,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
             "id": 246,
-            "FS.AST.PRVT.GD.ZS": 91.68492680901757,
+            "FS.AST.PRVT.GD.ZS": 91.68492680901755,
             "TX.VAL.MRCH.XD.WD": 137.9,
             "TX.QTY.MRCH.XD.WD": 101.9,
             "IC.FRM.BNKS.ZS": 24.95624542,
@@ -1349,7 +1342,7 @@
         },
         {
             "id": 266,
-            "FS.AST.PRVT.GD.ZS": 13.376477965793121,
+            "FS.AST.PRVT.GD.ZS": 13.37647796579312,
             "TX.VAL.MRCH.XD.WD": 72.3,
             "TX.QTY.MRCH.XD.WD": 50.4,
             "IC.FRM.BNKS.ZS": 6.342372894,
@@ -1425,7 +1418,7 @@
             "TT.PRI.MRCH.XD.WD": 101.6,
             "IC.BUS.NREG": 74773.0,
             "IC.TAX.METG": 1.250636935,
-            "BG.GSR.NFSV.GD.ZS": 21.914173176193962,
+            "BG.GSR.NFSV.GD.ZS": 21.91417317619396,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -1470,7 +1463,7 @@
             "LP.EXP.DURS.MD": 3.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 3.7,
-            "TG.VAL.TOTL.GD.ZS": 56.550236912773414,
+            "TG.VAL.TOTL.GD.ZS": 56.55023691277341,
             "TT.PRI.MRCH.XD.WD": 95.4,
             "IC.BUS.NREG": 14032.0,
             "IC.TAX.METG": 1.466534138,
@@ -1559,7 +1552,7 @@
         },
         {
             "id": 624,
-            "FS.AST.PRVT.GD.ZS": 11.119557547756703,
+            "FS.AST.PRVT.GD.ZS": 11.119557547756704,
             "TX.VAL.MRCH.XD.WD": 93.2,
             "TX.QTY.MRCH.XD.WD": 60.6,
             "IC.FRM.BNKS.ZS": 0.7443068027,
@@ -1607,7 +1600,7 @@
             "TG.VAL.TOTL.GD.ZS": 15.16007177007734,
             "TT.PRI.MRCH.XD.WD": 82.1,
             "IC.BUS.NREG": 383.0,
-            "BG.GSR.NFSV.GD.ZS": 3.6641920501633862
+            "BG.GSR.NFSV.GD.ZS": 3.664192050163386
         },
         {
             "id": 340,
@@ -1891,7 +1884,7 @@
         },
         {
             "id": 398,
-            "FS.AST.PRVT.GD.ZS": 27.570455138363414,
+            "FS.AST.PRVT.GD.ZS": 27.57045513836341,
             "TX.VAL.MRCH.XD.WD": 170.9,
             "TX.QTY.MRCH.XD.WD": 102.8,
             "IC.FRM.BNKS.ZS": 27.57072639,
@@ -1903,7 +1896,7 @@
             "LP.EXP.DURS.MD": 10.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 2.7,
-            "TG.VAL.TOTL.GD.ZS": 49.098816297295436,
+            "TG.VAL.TOTL.GD.ZS": 49.09881629729544,
             "TT.PRI.MRCH.XD.WD": 124.6,
             "IC.BUS.NREG": 41211.0,
             "IC.TAX.METG": 1.0,
@@ -1912,7 +1905,7 @@
         },
         {
             "id": 404,
-            "FS.AST.PRVT.GD.ZS": 31.639826911354806,
+            "FS.AST.PRVT.GD.ZS": 31.63982691135481,
             "TX.VAL.MRCH.XD.WD": 122.4,
             "TX.QTY.MRCH.XD.WD": 103.0,
             "IC.FRM.BNKS.ZS": 31.60090446,
@@ -1920,11 +1913,11 @@
             "TM.QTY.MRCH.XD.WD": 91.3,
             "IC.FRM.CORR.ZS": 26.29192734,
             "IE.PPI.ENGY.CD": 155600000.0,
-            "IE.PPI.TRAN.CD": 130800000.00000001,
+            "IE.PPI.TRAN.CD": 130800000.0,
             "LP.EXP.DURS.MD": 4.0,
             "LP.IMP.DURS.MD": 4.0,
             "LP.LPI.OVRL.XQ": 2.81,
-            "TG.VAL.TOTL.GD.ZS": 22.784175169126996,
+            "TG.VAL.TOTL.GD.ZS": 22.784175169127,
             "TT.PRI.MRCH.XD.WD": 91.9,
             "IC.BUS.NREG": 49037.0,
             "IC.TAX.METG": 2.749420404,
@@ -1937,10 +1930,10 @@
             "TX.QTY.MRCH.XD.WD": 142.7,
             "TM.VAL.MRCH.XD.WD": 273.4,
             "TM.QTY.MRCH.XD.WD": 217.4,
-            "TG.VAL.TOTL.GD.ZS": 116.61048209456821,
+            "TG.VAL.TOTL.GD.ZS": 116.6104820945682,
             "TT.PRI.MRCH.XD.WD": 101.9,
             "IC.BUS.NREG": 2.0,
-            "BG.GSR.NFSV.GD.ZS": 37.419752772799484
+            "BG.GSR.NFSV.GD.ZS": 37.41975277279949
         },
         {
             "id": 408,
@@ -1967,6 +1960,18 @@
             "IC.BUS.NREG": 113180.0,
             "IC.TAX.METG": 2.178367376,
             "BG.GSR.NFSV.GD.ZS": 16.239903110147814,
+            "IC.FRM.OUTG.ZS": 0.0
+        },
+        {
+            "id": 689,
+            "FS.AST.PRVT.GD.ZS": 60.977765212174496,
+            "IC.FRM.BNKS.ZS": 34.2277832,
+            "IC.FRM.CORR.ZS": 6.543920994,
+            "IE.PPI.ENGY.CD": 211730000.0,
+            "IE.PPI.TRAN.CD": 63000000.0,
+            "IC.BUS.NREG": 7250.0,
+            "IC.TAX.METG": 2.592038631,
+            "BG.GSR.NFSV.GD.ZS": 44.53375895541086,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2018,7 +2023,7 @@
             "LP.EXP.DURS.MD": 2.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 2.4,
-            "TG.VAL.TOTL.GD.ZS": 109.44721079265531,
+            "TG.VAL.TOTL.GD.ZS": 109.44721079265533,
             "TT.PRI.MRCH.XD.WD": 155.8,
             "IC.BUS.NREG": 699.0,
             "IC.TAX.METG": 3.15098834,
@@ -2085,7 +2090,7 @@
         },
         {
             "id": 430,
-            "FS.AST.PRVT.GD.ZS": 14.787430409394037,
+            "FS.AST.PRVT.GD.ZS": 14.787430409394036,
             "TX.VAL.MRCH.XD.WD": 397.0,
             "TX.QTY.MRCH.XD.WD": 267.8,
             "IC.FRM.BNKS.ZS": 19.39966202,
@@ -2114,7 +2119,7 @@
             "LP.EXP.DURS.MD": 11.0,
             "LP.IMP.DURS.MD": 4.0,
             "LP.LPI.OVRL.XQ": 1.9,
-            "TG.VAL.TOTL.GD.ZS": 101.14228903043269,
+            "TG.VAL.TOTL.GD.ZS": 101.14228903043268,
             "TT.PRI.MRCH.XD.WD": 125.5,
             "BG.GSR.NFSV.GD.ZS": 23.71959860032989
         },
@@ -2134,7 +2139,7 @@
             "LP.EXP.DURS.MD": 2.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 3.4,
-            "TG.VAL.TOTL.GD.ZS": 99.52136294543591,
+            "TG.VAL.TOTL.GD.ZS": 99.52136294543592,
             "TT.PRI.MRCH.XD.WD": 102.5,
             "IC.BUS.NREG": 5334.0,
             "IC.TAX.METG": 1.422195196,
@@ -2196,14 +2201,14 @@
         },
         {
             "id": 458,
-            "FS.AST.PRVT.GD.ZS": 116.25715917904489,
+            "FS.AST.PRVT.GD.ZS": 116.25715917904488,
             "TX.VAL.MRCH.XD.WD": 156.5,
             "TX.QTY.MRCH.XD.WD": 136.1,
             "IC.FRM.BNKS.ZS": 32.3910675,
             "TM.VAL.MRCH.XD.WD": 151.0,
             "TM.QTY.MRCH.XD.WD": 146.8,
             "IC.FRM.CORR.ZS": 4.863255501,
-            "IE.PPI.ENGY.CD": 130789999.99999999,
+            "IE.PPI.ENGY.CD": 130790000.0,
             "IE.PPI.TRAN.CD": 1543000000.0,
             "IE.PPI.WATR.CD": 2521000000.0,
             "LP.EXP.DURS.MD": 2.0,
@@ -2348,7 +2353,7 @@
         },
         {
             "id": 583,
-            "FS.AST.PRVT.GD.ZS": 23.427360540843086,
+            "FS.AST.PRVT.GD.ZS": 23.42736054084309,
             "TX.VAL.MRCH.XD.WD": 269.0,
             "TX.QTY.MRCH.XD.WD": 197.1,
             "IC.FRM.BNKS.ZS": 7.177756786,
@@ -2364,7 +2369,7 @@
         },
         {
             "id": 498,
-            "FS.AST.PRVT.GD.ZS": 29.331812381267458,
+            "FS.AST.PRVT.GD.ZS": 29.331812381267454,
             "TX.VAL.MRCH.XD.WD": 205.8,
             "TX.QTY.MRCH.XD.WD": 177.1,
             "IC.FRM.BNKS.ZS": 26.98579597,
@@ -2396,11 +2401,11 @@
             "LP.EXP.DURS.MD": 4.0,
             "LP.IMP.DURS.MD": 4.0,
             "LP.LPI.OVRL.XQ": 2.5,
-            "TG.VAL.TOTL.GD.ZS": 116.15337566170041,
+            "TG.VAL.TOTL.GD.ZS": 116.1533756617004,
             "TT.PRI.MRCH.XD.WD": 110.3,
             "IC.BUS.NREG": 15488.0,
             "IC.TAX.METG": 2.470526934,
-            "BG.GSR.NFSV.GD.ZS": 27.668192657756197,
+            "BG.GSR.NFSV.GD.ZS": 27.6681926577562,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2437,7 +2442,7 @@
             "TT.PRI.MRCH.XD.WD": 90.8,
             "IC.BUS.NREG": 63229.0,
             "IC.TAX.METG": 1.181265354,
-            "BG.GSR.NFSV.GD.ZS": 27.477531817395306,
+            "BG.GSR.NFSV.GD.ZS": 27.477531817395302,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2500,7 +2505,7 @@
             "TT.PRI.MRCH.XD.WD": 104.5,
             "IC.BUS.NREG": 1153.0,
             "IC.TAX.METG": 2.231208086,
-            "BG.GSR.NFSV.GD.ZS": 28.082932871631634,
+            "BG.GSR.NFSV.GD.ZS": 28.082932871631638,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2509,7 +2514,7 @@
             "TX.QTY.MRCH.XD.WD": 594.9,
             "TM.VAL.MRCH.XD.WD": 82.3,
             "TM.QTY.MRCH.XD.WD": 70.5,
-            "TG.VAL.TOTL.GD.ZS": 60.492431007782955,
+            "TG.VAL.TOTL.GD.ZS": 60.49243100778296,
             "TT.PRI.MRCH.XD.WD": 58.1,
             "BG.GSR.NFSV.GD.ZS": 62.26005665428188
         },
@@ -2550,7 +2555,7 @@
             "TT.PRI.MRCH.XD.WD": 95.7,
             "IC.BUS.NREG": 39055.0,
             "IC.TAX.METG": 1.432819009,
-            "BG.GSR.NFSV.GD.ZS": 46.422706331323624,
+            "BG.GSR.NFSV.GD.ZS": 46.42270633132362,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2579,7 +2584,7 @@
             "TT.PRI.MRCH.XD.WD": 105.1,
             "IC.BUS.NREG": 54348.0,
             "IC.TAX.METG": 1.012393832,
-            "BG.GSR.NFSV.GD.ZS": 14.590755833657381,
+            "BG.GSR.NFSV.GD.ZS": 14.59075583365738,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2624,7 +2629,7 @@
         },
         {
             "id": 566,
-            "FS.AST.PRVT.GD.ZS": 12.957467311764143,
+            "FS.AST.PRVT.GD.ZS": 12.957467311764145,
             "TX.VAL.MRCH.XD.WD": 110.1,
             "TX.QTY.MRCH.XD.WD": 65.6,
             "IC.FRM.BNKS.ZS": 6.919577122,
@@ -2690,7 +2695,7 @@
         },
         {
             "id": 512,
-            "FS.AST.PRVT.GD.ZS": 63.322630617776476,
+            "FS.AST.PRVT.GD.ZS": 63.32263061777648,
             "TX.VAL.MRCH.XD.WD": 196.5,
             "TX.QTY.MRCH.XD.WD": 154.6,
             "TM.VAL.MRCH.XD.WD": 125.4,
@@ -2731,13 +2736,13 @@
             "TM.VAL.MRCH.XD.WD": 149.8,
             "TM.QTY.MRCH.XD.WD": 117.6,
             "IE.PPI.ENGY.CD": 22000000.0,
-            "TG.VAL.TOTL.GD.ZS": 44.983886267012835,
+            "TG.VAL.TOTL.GD.ZS": 44.98388626701284,
             "TT.PRI.MRCH.XD.WD": 91.8,
             "BG.GSR.NFSV.GD.ZS": 31.50853061785015
         },
         {
             "id": 591,
-            "FS.AST.PRVT.GD.ZS": 100.15389155037423,
+            "FS.AST.PRVT.GD.ZS": 100.15389155037424,
             "TX.VAL.MRCH.XD.WD": 147.5,
             "TX.QTY.MRCH.XD.WD": 132.3,
             "IC.FRM.BNKS.ZS": 1.151481748,
@@ -2747,11 +2752,11 @@
             "LP.EXP.DURS.MD": 3.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 3.1,
-            "TG.VAL.TOTL.GD.ZS": 45.533060361417284,
+            "TG.VAL.TOTL.GD.ZS": 45.53306036141728,
             "TT.PRI.MRCH.XD.WD": 80.6,
             "IC.BUS.NREG": 13048.0,
             "IC.TAX.METG": 2.075731754,
-            "BG.GSR.NFSV.GD.ZS": 27.838786540649014,
+            "BG.GSR.NFSV.GD.ZS": 27.83878654064901,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2810,7 +2815,7 @@
             "LP.EXP.DURS.MD": 2.0,
             "LP.IMP.DURS.MD": 4.0,
             "LP.LPI.OVRL.XQ": 3.0,
-            "TG.VAL.TOTL.GD.ZS": 43.362888513509105,
+            "TG.VAL.TOTL.GD.ZS": 43.36288851350911,
             "TT.PRI.MRCH.XD.WD": 120.9,
             "IC.BUS.NREG": 104701.0,
             "IC.TAX.METG": 3.229010344,
@@ -2874,7 +2879,7 @@
             "TT.PRI.MRCH.XD.WD": 96.3,
             "IC.BUS.NREG": 46119.0,
             "IC.TAX.METG": 1.990110278,
-            "BG.GSR.NFSV.GD.ZS": 29.158049151865516,
+            "BG.GSR.NFSV.GD.ZS": 29.15804915186552,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -2883,7 +2888,7 @@
         },
         {
             "id": 634,
-            "FS.AST.PRVT.GD.ZS": 120.02891381774461,
+            "FS.AST.PRVT.GD.ZS": 120.0289138177446,
             "TX.VAL.MRCH.XD.WD": 123.9,
             "TX.QTY.MRCH.XD.WD": 74.3,
             "TM.VAL.MRCH.XD.WD": 97.0,
@@ -2898,7 +2903,7 @@
         },
         {
             "id": 642,
-            "FS.AST.PRVT.GD.ZS": 22.716044748637366,
+            "FS.AST.PRVT.GD.ZS": 22.71604474863737,
             "TX.VAL.MRCH.XD.WD": 166.0,
             "TX.QTY.MRCH.XD.WD": 116.1,
             "IC.FRM.BNKS.ZS": 24.72225761,
@@ -2979,7 +2984,7 @@
         },
         {
             "id": 674,
-            "BG.GSR.NFSV.GD.ZS": 94.96400407658005
+            "BG.GSR.NFSV.GD.ZS": 94.96400407658004
         },
         {
             "id": 678,
@@ -3029,7 +3034,7 @@
             "LP.EXP.DURS.MD": 1.0,
             "LP.IMP.DURS.MD": 7.0,
             "LP.LPI.OVRL.XQ": 2.25,
-            "TG.VAL.TOTL.GD.ZS": 56.450417999797395,
+            "TG.VAL.TOTL.GD.ZS": 56.4504179997974,
             "TT.PRI.MRCH.XD.WD": 112.8,
             "IC.BUS.NREG": 12455.0,
             "IC.TAX.METG": 1.583942652,
@@ -3047,7 +3052,7 @@
             "IC.FRM.CORR.ZS": 6.403296471,
             "IE.PPI.ENGY.CD": 168850000.0,
             "IE.PPI.TRAN.CD": 42560000.0,
-            "IE.PPI.WATR.CD": 33299999.999999996,
+            "IE.PPI.WATR.CD": 33300000.0,
             "LP.EXP.DURS.MD": 2.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 2.8,
@@ -3076,7 +3081,7 @@
         },
         {
             "id": 694,
-            "FS.AST.PRVT.GD.ZS": 3.6646525015899227,
+            "FS.AST.PRVT.GD.ZS": 3.6646525015899223,
             "TX.VAL.MRCH.XD.WD": 263.9,
             "TX.QTY.MRCH.XD.WD": 205.9,
             "IC.FRM.BNKS.ZS": 10.6865797,
@@ -3118,7 +3123,7 @@
             "id": 534,
             "TG.VAL.TOTL.GD.ZS": 89.21109241330414,
             "TT.PRI.MRCH.XD.WD": 109.3479040531,
-            "BG.GSR.NFSV.GD.ZS": 98.49652573664163
+            "BG.GSR.NFSV.GD.ZS": 98.49652573664164
         },
         {
             "id": 703,
@@ -3151,11 +3156,11 @@
             "LP.EXP.DURS.MD": 1.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 3.3,
-            "TG.VAL.TOTL.GD.ZS": 225.17069723927122,
+            "TG.VAL.TOTL.GD.ZS": 225.1706972392712,
             "TT.PRI.MRCH.XD.WD": 104.4,
             "IC.BUS.NREG": 3720.0,
             "IC.TAX.METG": 2.135202646,
-            "BG.GSR.NFSV.GD.ZS": 31.886676900860394,
+            "BG.GSR.NFSV.GD.ZS": 31.886676900860397,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -3175,12 +3180,12 @@
             "TT.PRI.MRCH.XD.WD": 77.0,
             "IC.BUS.NREG": 444.0,
             "IC.TAX.METG": 1.965866327,
-            "BG.GSR.NFSV.GD.ZS": 21.641030369035438,
+            "BG.GSR.NFSV.GD.ZS": 21.64103036903544,
             "IC.FRM.OUTG.ZS": 1.0
         },
         {
             "id": 706,
-            "FS.AST.PRVT.GD.ZS": 0.0001879154161981669,
+            "FS.AST.PRVT.GD.ZS": 0.0001879154161981,
             "TX.VAL.MRCH.XD.WD": 112.7,
             "TX.QTY.MRCH.XD.WD": 73.7,
             "TM.VAL.MRCH.XD.WD": 194.0,
@@ -3194,7 +3199,7 @@
         },
         {
             "id": 710,
-            "FS.AST.PRVT.GD.ZS": 90.54849256431325,
+            "FS.AST.PRVT.GD.ZS": 90.54849256431324,
             "TX.VAL.MRCH.XD.WD": 136.9,
             "TX.QTY.MRCH.XD.WD": 109.6,
             "IC.FRM.BNKS.ZS": 15.39394093,
@@ -3211,7 +3216,7 @@
             "TT.PRI.MRCH.XD.WD": 113.8,
             "IC.BUS.NREG": 434024.0,
             "IC.TAX.METG": 1.018328071,
-            "BG.GSR.NFSV.GD.ZS": 9.034109635304281,
+            "BG.GSR.NFSV.GD.ZS": 9.03410963530428,
             "IC.FRM.OUTG.ZS": 0.0
         },
         {
@@ -3246,7 +3251,7 @@
         },
         {
             "id": 144,
-            "FS.AST.PRVT.GD.ZS": 47.008492945045624,
+            "FS.AST.PRVT.GD.ZS": 47.00849294504562,
             "TX.VAL.MRCH.XD.WD": 112.9,
             "TX.QTY.MRCH.XD.WD": 130.4,
             "IC.FRM.BNKS.ZS": 43.56275558,
@@ -3276,7 +3281,7 @@
             "TM.QTY.MRCH.XD.WD": 90.1,
             "IC.FRM.CORR.ZS": 6.09139967,
             "IE.PPI.ENGY.CD": 47850000.0,
-            "TG.VAL.TOTL.GD.ZS": 30.562075526728798,
+            "TG.VAL.TOTL.GD.ZS": 30.5620755267288,
             "TT.PRI.MRCH.XD.WD": 102.1,
             "IC.BUS.NREG": 104.0,
             "IC.TAX.METG": 2.844061613,
@@ -3395,7 +3400,7 @@
         },
         {
             "id": 760,
-            "FS.AST.PRVT.GD.ZS": 20.742524788574606,
+            "FS.AST.PRVT.GD.ZS": 20.74252478857461,
             "TX.VAL.MRCH.XD.WD": 288.4,
             "TX.QTY.MRCH.XD.WD": 212.8,
             "IC.FRM.BNKS.ZS": 20.7,
@@ -3511,12 +3516,12 @@
             "TT.PRI.MRCH.XD.WD": 107.5,
             "IC.BUS.NREG": 5427.0,
             "IC.TAX.METG": 1.725901365,
-            "BG.GSR.NFSV.GD.ZS": 12.863931839720493,
+            "BG.GSR.NFSV.GD.ZS": 12.863931839720491,
             "IC.FRM.OUTG.ZS": 1.0
         },
         {
             "id": 776,
-            "FS.AST.PRVT.GD.ZS": 41.666344827111004,
+            "FS.AST.PRVT.GD.ZS": 41.66634482711101,
             "TX.VAL.MRCH.XD.WD": 58.7,
             "TX.QTY.MRCH.XD.WD": 57.2,
             "IC.FRM.BNKS.ZS": 13.48148727,
@@ -3552,7 +3557,7 @@
         },
         {
             "id": 788,
-            "FS.AST.PRVT.GD.ZS": 58.253866993952364,
+            "FS.AST.PRVT.GD.ZS": 58.25386699395237,
             "TX.VAL.MRCH.XD.WD": 142.0,
             "TX.QTY.MRCH.XD.WD": 111.3,
             "IC.FRM.BNKS.ZS": 32.58698273,
@@ -3604,7 +3609,7 @@
             "IC.FRM.CORR.ZS": 17.21480942,
             "LP.EXP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 2.41,
-            "TG.VAL.TOTL.GD.ZS": 26.835350330214442,
+            "TG.VAL.TOTL.GD.ZS": 26.83535033021444,
             "TT.PRI.MRCH.XD.WD": 144.0,
             "IC.TAX.METG": 1.100232124,
             "IC.FRM.OUTG.ZS": 0.0
@@ -3685,7 +3690,7 @@
         },
         {
             "id": 826,
-            "FS.AST.PRVT.GD.ZS": 113.96655686851125,
+            "FS.AST.PRVT.GD.ZS": 113.96655686851123,
             "TX.VAL.MRCH.XD.WD": 111.8,
             "TX.QTY.MRCH.XD.WD": 99.5,
             "IC.FRM.BNKS.ZS": 13.29700661,
@@ -3714,7 +3719,7 @@
             "LP.EXP.DURS.MD": 2.0,
             "LP.IMP.DURS.MD": 2.0,
             "LP.LPI.OVRL.XQ": 3.8,
-            "TG.VAL.TOTL.GD.ZS": 18.586669334713957,
+            "TG.VAL.TOTL.GD.ZS": 18.58666933471396,
             "TT.PRI.MRCH.XD.WD": 106.5,
             "IC.TAX.METG": 1.538291097,
             "BG.GSR.NFSV.GD.ZS": 6.831024547291424,
@@ -3722,7 +3727,7 @@
         },
         {
             "id": 858,
-            "FS.AST.PRVT.GD.ZS": 31.079204054424135,
+            "FS.AST.PRVT.GD.ZS": 31.07920405442413,
             "TX.VAL.MRCH.XD.WD": 119.7,
             "TX.QTY.MRCH.XD.WD": 110.9,
             "IC.FRM.BNKS.ZS": 28.84536934,
@@ -3734,7 +3739,7 @@
             "LP.EXP.DURS.MD": 4.0,
             "LP.IMP.DURS.MD": 3.0,
             "LP.LPI.OVRL.XQ": 3.0,
-            "TG.VAL.TOTL.GD.ZS": 28.084950118254575,
+            "TG.VAL.TOTL.GD.ZS": 28.08495011825457,
             "TT.PRI.MRCH.XD.WD": 102.8,
             "IC.BUS.NREG": 6999.0,
             "IC.TAX.METG": 2.251144648,
@@ -3782,7 +3787,7 @@
         },
         {
             "id": 862,
-            "FS.AST.PRVT.GD.ZS": 29.896149692090855,
+            "FS.AST.PRVT.GD.ZS": 29.89614969209085,
             "TX.VAL.MRCH.XD.WD": 20.9,
             "TX.QTY.MRCH.XD.WD": 73.2,
             "IC.FRM.BNKS.ZS": 35.31985855,
@@ -3852,7 +3857,7 @@
             "LP.EXP.DURS.MD": 3.0,
             "LP.IMP.DURS.MD": 7.0,
             "LP.LPI.OVRL.XQ": 2.2,
-            "TG.VAL.TOTL.GD.ZS": 27.133766251424852,
+            "TG.VAL.TOTL.GD.ZS": 27.13376625142485,
             "TT.PRI.MRCH.XD.WD": 106.1,
             "IC.TAX.METG": 3.989539146,
             "BG.GSR.NFSV.GD.ZS": 6.1417453013769645,
@@ -3902,6 +3907,6 @@
         }
     ],
     "id": "private-sector",
-    "name": "World Development Indicators (2012) - Private Sector",
+    "name": "World Development Indicators (2025) - Private Sector",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

@@ -118,14 +118,7 @@ def main():
     if dataset == "*" or dataset == "worldbank-gini":
 
         """
-        WIP - not yet working
-        Need to get 3-digit numberic country code etc.
-        See convert_WDI_Data_csv.py
-
-        {
-            "Data_Item": "id",
-            "Item_Description": "ISO 3166-1 numeric country code"
-        },
+        WIP - not yet working, use convert_WDI_Data_csv.py instead
         """
 
         convert_csv_json(

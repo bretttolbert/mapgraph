@@ -124,34 +124,6 @@
     ],
     "data": [
         {
-            "id": 533,
-            "SP.ADO.TFRT": 18.788,
-            "SP.DYN.CBRT.IN": 7.973,
-            "SH.STA.BRTC.ZS": 96.0,
-            "SP.DYN.CONU.ZS": 51.322592348553435,
-            "SP.DYN.CDRT.IN": 7.582,
-            "SP.DYN.TFRT.IN": 1.602,
-            "SH.IMM.IDPT": 77.05218401515499,
-            "SH.IMM.MEAS": 78.60725817063759,
-            "SP.DYN.LE00.FE.IN": 78.779,
-            "SP.DYN.LE00.MA.IN": 73.702,
-            "SP.DYN.LE00.IN": 76.353,
-            "SH.STA.MMRT": 121.0,
-            "SP.DYN.IMRT.IN": 25.64777849785915,
-            "SH.DYN.MORT": 31.77919995470123,
-            "SP.POP.0014.TO.ZS": 16.8448764869454,
-            "SP.POP.1564.TO.ZS": 66.098801190019,
-            "SP.POP.65UP.TO.ZS": 17.0563223230356,
-            "SP.POP.GROW": 0.246531245928562,
-            "SP.POP.TOTL.FE.ZS": 52.7612755168138,
-            "SP.POP.TOTL": 107624.0,
-            "SH.STA.ANVC.ZS": 81.12748847133842,
-            "SH.HIV.1524.FE.ZS": 0.10082087245736726,
-            "SH.HIV.1524.MA.ZS": 0.10052426501314013,
-            "SH.DYN.AIDS.ZS": 0.11158821113154359,
-            "SH.TBS.INCD": 3.6
-        },
-        {
             "id": 4,
             "SP.ADO.TFRT": 64.068,
             "SP.DYN.CBRT.IN": 35.437,
@@ -409,6 +381,24 @@
             "SH.STA.MALN.ZS": 2.6,
             "SP.MTR.1519.ZS": 3.6,
             "SP.UWT.TFRT": 12.5
+        },
+        {
+            "id": 533,
+            "SP.ADO.TFRT": 18.788,
+            "SP.DYN.CBRT.IN": 7.973,
+            "SH.STA.BRTC.ZS": 96.0,
+            "SP.DYN.CDRT.IN": 7.582,
+            "SP.DYN.TFRT.IN": 1.602,
+            "SH.TBS.INCD": 3.6,
+            "SP.DYN.LE00.FE.IN": 78.779,
+            "SP.DYN.LE00.MA.IN": 73.702,
+            "SP.DYN.LE00.IN": 76.353,
+            "SP.POP.0014.TO.ZS": 16.8448764869454,
+            "SP.POP.1564.TO.ZS": 66.098801190019,
+            "SP.POP.65UP.TO.ZS": 17.0563223230356,
+            "SP.POP.GROW": 0.246531245928562,
+            "SP.POP.TOTL.FE.ZS": 52.7612755168138,
+            "SP.POP.TOTL": 107624.0
         },
         {
             "id": 36,
@@ -2799,7 +2789,7 @@
             "SP.POP.0014.TO.ZS": 14.2234183494632,
             "SP.POP.1564.TO.ZS": 62.6237961989294,
             "SP.POP.65UP.TO.ZS": 23.1527854516073,
-            "SP.POP.GROW": -0.00594088816452728,
+            "SP.POP.GROW": -0.0059408881645272,
             "SP.POP.TOTL.FE.ZS": 50.4925084065066,
             "SP.POP.TOTL": 84160.0,
             "SH.STA.ANVC.ZS": 84.903397092
@@ -3092,6 +3082,28 @@
             "SH.STA.STNT.ZS": 0.9,
             "SH.STA.MALN.ZS": 0.4,
             "SP.UWT.TFRT": 8.61
+        },
+        {
+            "id": 689,
+            "SP.ADO.TFRT": 7.834,
+            "SP.DYN.CBRT.IN": 12.067,
+            "SH.STA.BRTC.ZS": 99.0,
+            "SP.DYN.CONU.ZS": 66.7,
+            "SP.DYN.CDRT.IN": 5.871,
+            "SP.DYN.TFRT.IN": 1.545,
+            "SP.DYN.LE00.FE.IN": 80.118,
+            "SP.DYN.LE00.MA.IN": 75.804,
+            "SP.DYN.LE00.IN": 78.033,
+            "SP.DYN.IMRT.IN": 8.3,
+            "SH.DYN.MORT": 9.1,
+            "SP.POP.0014.TO.ZS": 20.7108304299052,
+            "SP.POP.1564.TO.ZS": 69.215065379068,
+            "SP.POP.65UP.TO.ZS": 10.0741041910268,
+            "SP.POP.GROW": -9.68634444876089,
+            "SP.POP.TOTL.FE.ZS": 50.814107396174,
+            "SP.POP.TOTL": 1527324.0,
+            "SH.STA.ANVC.ZS": 99.7,
+            "SP.UWT.TFRT": 8.4
         },
         {
             "id": 414,
@@ -6294,6 +6306,6 @@
         }
     ],
     "id": "health",
-    "name": "World Development Indicators (2012) - Health",
+    "name": "World Development Indicators (2025) - Health",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

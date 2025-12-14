@@ -1954,10 +1954,10 @@
             "id": 882
         },
         {
-            "remark": "XK is being used by the EU as a temporary country code for Kosovo. UNK identifies Kosovo residents to whom travel documents were issued by UNMIK. 689 is a non-standard country code (I made it up)",
+            "remark": "689 is a non-standard country code (I made it up as there's no standard 3-digit numeric code)",
             "f": "",
             "sid2": "xk",
-	    "sid3": "UNK",
+	        "sid3": "XKX",
             "n": [],
             "s": "Kosovo",
             "id": 689

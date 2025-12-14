@@ -56,26 +56,12 @@
     ],
     "data": [
         {
-            "id": 533,
-            "IQ.CPA.ECON.XQ": 2.5833333333333335,
-            "IQ.CPA.SOCI.XQ": 2.783333333333333,
-            "IQ.CPA.PUBS.XQ": 2.25,
-            "IQ.CPA.STRC.XQ": 2.5833333333333335,
-            "GC.XPN.TOTL.GD.ZS": 23.336521309523857,
-            "IQ.CPA.IRAI.XQ": 2.5500001666666665,
-            "MS.MIL.XPND.GD.ZS": 5.20852406706929,
-            "MS.MIL.XPND.ZS": 18.64859763826046,
-            "SG.GEN.PARL.ZS": 18.15243738217074,
-            "GC.REV.XGRT.GD.ZS": 19.07920851054089,
-            "GC.TAX.TOTL.GD.ZS": 5.297094081508722
-        },
-        {
             "id": 4,
             "IQ.CPA.ECON.XQ": 1.333333,
             "IQ.CPA.SOCI.XQ": 1.6,
             "IQ.CPA.PUBS.XQ": 1.7,
             "IQ.CPA.STRC.XQ": 2.166667,
-            "GC.XPN.TOTL.GD.ZS": 39.220109980768356,
+            "GC.XPN.TOTL.GD.ZS": 39.22010998076836,
             "IQ.CPA.IRAI.XQ": 1.7,
             "MS.MIL.XPND.GD.ZS": 1.827933856217,
             "MS.MIL.XPND.ZS": 10.5026598533092,
@@ -108,7 +94,7 @@
             "id": 20,
             "SG.GEN.PARL.ZS": 50.0,
             "GC.REV.XGRT.GD.ZS": 27.85244126144756,
-            "GC.TAX.TOTL.GD.ZS": 13.947297221603305
+            "GC.TAX.TOTL.GD.ZS": 13.947297221603304
         },
         {
             "id": 24,
@@ -131,11 +117,11 @@
         {
             "id": 32,
             "GC.XPN.TOTL.GD.ZS": 21.118907051075333,
-            "MS.MIL.XPND.GD.ZS": 0.47274719673825905,
+            "MS.MIL.XPND.GD.ZS": 0.472747196738259,
             "MS.MIL.XPND.ZS": 1.25231519144319,
             "SG.GEN.PARL.ZS": 42.4124513618677,
             "GC.REV.XGRT.GD.ZS": 17.86849697267386,
-            "GC.TAX.TOTL.GD.ZS": 9.980936481413133
+            "GC.TAX.TOTL.GD.ZS": 9.980936481413131
         },
         {
             "id": 51,
@@ -160,7 +146,7 @@
             "MS.MIL.XPND.ZS": 5.0598473314133,
             "SG.GEN.PARL.ZS": 38.0,
             "GC.REV.XGRT.GD.ZS": 26.205055166030206,
-            "GC.TAX.TOTL.GD.ZS": 23.627951246369076
+            "GC.TAX.TOTL.GD.ZS": 23.62795124636908
         },
         {
             "id": 40,
@@ -178,10 +164,10 @@
             "IQ.CPA.SOCI.XQ": 3.8,
             "IQ.CPA.PUBS.XQ": 3.1,
             "IQ.CPA.STRC.XQ": 3.5,
-            "GC.XPN.TOTL.GD.ZS": 23.008821149383415,
+            "GC.XPN.TOTL.GD.ZS": 23.00882114938341,
             "IQ.CPA.IRAI.XQ": 3.68333333333333,
             "MS.MIL.XPND.GD.ZS": 4.6021031480828105,
-            "MS.MIL.XPND.ZS": 14.706208102594001,
+            "MS.MIL.XPND.ZS": 14.706208102594,
             "SG.GEN.PARL.ZS": 20.8,
             "GC.REV.XGRT.GD.ZS": 37.62051043234928,
             "GC.TAX.TOTL.GD.ZS": 15.44768971588988
@@ -191,7 +177,7 @@
             "GC.DOD.TOTL.GD.ZS": 73.73032081430003,
             "GC.XPN.TOTL.GD.ZS": 20.347142731791006,
             "SG.GEN.PARL.ZS": 17.9487179487179,
-            "GC.REV.XGRT.GD.ZS": 18.691039629893986,
+            "GC.REV.XGRT.GD.ZS": 18.691039629893982,
             "GC.TAX.TOTL.GD.ZS": 16.198005349904722
         },
         {
@@ -199,7 +185,7 @@
             "GC.DOD.TOTL.GD.ZS": 111.59808947714092,
             "GC.XPN.TOTL.GD.ZS": 26.108512175258536,
             "MS.MIL.XPND.GD.ZS": 3.10846000977851,
-            "MS.MIL.XPND.ZS": 10.754443985117799,
+            "MS.MIL.XPND.ZS": 10.7544439851178,
             "SG.GEN.PARL.ZS": 20.0,
             "GC.REV.XGRT.GD.ZS": 15.453675550439891,
             "GC.TAX.TOTL.GD.ZS": 2.8231754784989924
@@ -229,7 +215,7 @@
         },
         {
             "id": 112,
-            "GC.DOD.TOTL.GD.ZS": 33.244203942490316,
+            "GC.DOD.TOTL.GD.ZS": 33.24420394249032,
             "GC.XPN.TOTL.GD.ZS": 28.467508378737342,
             "MS.MIL.XPND.GD.ZS": 1.79770336310455,
             "MS.MIL.XPND.ZS": 50.5913118885667,
@@ -259,7 +245,7 @@
             "MS.MIL.XPND.ZS": 3.58421578590786,
             "SG.GEN.PARL.ZS": 15.625,
             "GC.REV.XGRT.GD.ZS": 23.804238168821428,
-            "GC.TAX.TOTL.GD.ZS": 21.344134307020255
+            "GC.TAX.TOTL.GD.ZS": 21.34413430702025
         },
         {
             "id": 204,
@@ -276,7 +262,7 @@
         },
         {
             "id": 64,
-            "GC.DOD.TOTL.GD.ZS": 111.00788409952571,
+            "GC.DOD.TOTL.GD.ZS": 111.00788409952573,
             "IQ.CPA.ECON.XQ": 3.666667,
             "IQ.CPA.SOCI.XQ": 4.1,
             "IQ.CPA.PUBS.XQ": 4.0,
@@ -296,7 +282,7 @@
             "IQ.CPA.STRC.XQ": 3.33333,
             "GC.XPN.TOTL.GD.ZS": 21.811043363786567,
             "IQ.CPA.IRAI.XQ": 3.45,
-            "MS.MIL.XPND.GD.ZS": 1.3861216470934599,
+            "MS.MIL.XPND.GD.ZS": 1.38612164709346,
             "MS.MIL.XPND.ZS": 4.20280676436152,
             "SG.GEN.PARL.ZS": 46.1538461538462,
             "GC.REV.XGRT.GD.ZS": 23.265606011086444,
@@ -320,7 +306,7 @@
         {
             "id": 72,
             "GC.DOD.TOTL.GD.ZS": 19.616133242625544,
-            "GC.XPN.TOTL.GD.ZS": 26.370935759277735,
+            "GC.XPN.TOTL.GD.ZS": 26.37093575927773,
             "MS.MIL.XPND.GD.ZS": 2.5298225030212103,
             "MS.MIL.XPND.ZS": 7.82650014898347,
             "SG.GEN.PARL.ZS": 8.69565217391304,
@@ -346,7 +332,7 @@
         {
             "id": 100,
             "GC.XPN.TOTL.GD.ZS": 35.68682505265477,
-            "MS.MIL.XPND.GD.ZS": 1.8473728028825398,
+            "MS.MIL.XPND.GD.ZS": 1.84737280288254,
             "MS.MIL.XPND.ZS": 5.01929385920541,
             "SG.GEN.PARL.ZS": 20.8333333333333,
             "GC.REV.XGRT.GD.ZS": 34.78153037988662,
@@ -379,7 +365,7 @@
             "MS.MIL.XPND.ZS": 10.2296308057884,
             "SG.GEN.PARL.ZS": 38.2113821138211,
             "GC.REV.XGRT.GD.ZS": 17.55228353937355,
-            "GC.TAX.TOTL.GD.ZS": 15.636245476257901
+            "GC.TAX.TOTL.GD.ZS": 15.6362454762579
         },
         {
             "id": 132,
@@ -402,10 +388,10 @@
             "IQ.CPA.SOCI.XQ": 3.8,
             "IQ.CPA.PUBS.XQ": 2.9,
             "IQ.CPA.STRC.XQ": 3.5,
-            "GC.XPN.TOTL.GD.ZS": 12.949720670299927,
+            "GC.XPN.TOTL.GD.ZS": 12.949720670299929,
             "IQ.CPA.IRAI.XQ": 3.55,
-            "MS.MIL.XPND.GD.ZS": 2.0896828063757598,
-            "MS.MIL.XPND.ZS": 7.7088225211077805,
+            "MS.MIL.XPND.GD.ZS": 2.08968280637576,
+            "MS.MIL.XPND.ZS": 7.708822521107779,
             "SG.GEN.PARL.ZS": 13.6,
             "GC.REV.XGRT.GD.ZS": 13.759439063224804,
             "GC.TAX.TOTL.GD.ZS": 12.203542055021453
@@ -422,7 +408,7 @@
             "MS.MIL.XPND.GD.ZS": 0.933338169286478,
             "MS.MIL.XPND.ZS": 5.62588621506434,
             "SG.GEN.PARL.ZS": 33.8888888888889,
-            "GC.REV.XGRT.GD.ZS": 13.742834646661725,
+            "GC.REV.XGRT.GD.ZS": 13.742834646661723,
             "GC.TAX.TOTL.GD.ZS": 11.341515724913362
         },
         {
@@ -446,7 +432,7 @@
             "MS.MIL.XPND.GD.ZS": 2.28543299952889,
             "MS.MIL.XPND.ZS": 12.719932230282598,
             "SG.GEN.PARL.ZS": 11.4285714285714,
-            "GC.REV.XGRT.GD.ZS": 9.204779247888935,
+            "GC.REV.XGRT.GD.ZS": 9.204779247888936,
             "GC.TAX.TOTL.GD.ZS": 8.206292297099948
         },
         {
@@ -472,10 +458,10 @@
         },
         {
             "id": 156,
-            "MS.MIL.XPND.GD.ZS": 1.6653391452461301,
+            "MS.MIL.XPND.GD.ZS": 1.66533914524613,
             "MS.MIL.XPND.ZS": 4.97382615430347,
             "SG.GEN.PARL.ZS": 26.5367819952973,
-            "GC.REV.XGRT.GD.ZS": 15.066125033870401,
+            "GC.REV.XGRT.GD.ZS": 15.0661250338704,
             "GC.TAX.TOTL.GD.ZS": 7.638233007798903
         },
         {
@@ -485,7 +471,7 @@
             "MS.MIL.XPND.GD.ZS": 2.8729831874167298,
             "MS.MIL.XPND.ZS": 8.30994304586852,
             "SG.GEN.PARL.ZS": 29.4117647058824,
-            "GC.REV.XGRT.GD.ZS": 28.412827574064398,
+            "GC.REV.XGRT.GD.ZS": 28.4128275740644,
             "GC.TAX.TOTL.GD.ZS": 17.56746742392737
         },
         {
@@ -509,7 +495,7 @@
             "MS.MIL.XPND.GD.ZS": 1.1643969015800302,
             "MS.MIL.XPND.ZS": 6.96315015321446,
             "SG.GEN.PARL.ZS": 12.9979035639413,
-            "GC.REV.XGRT.GD.ZS": 14.164669154008061,
+            "GC.REV.XGRT.GD.ZS": 14.16466915400806,
             "GC.TAX.TOTL.GD.ZS": 11.411022567212605
         },
         {
@@ -533,7 +519,7 @@
             "GC.XPN.TOTL.GD.ZS": 28.908924395322927,
             "SG.GEN.PARL.ZS": 49.1228070175439,
             "GC.REV.XGRT.GD.ZS": 29.33904028646031,
-            "GC.TAX.TOTL.GD.ZS": 13.911529659194763
+            "GC.TAX.TOTL.GD.ZS": 13.911529659194764
         },
         {
             "id": 384,
@@ -557,7 +543,7 @@
             "MS.MIL.XPND.ZS": 3.8988408851422496,
             "SG.GEN.PARL.ZS": 33.112582781457,
             "GC.REV.XGRT.GD.ZS": 35.59172361170107,
-            "GC.TAX.TOTL.GD.ZS": 21.492281684330372
+            "GC.TAX.TOTL.GD.ZS": 21.49228168433037
         },
         {
             "id": 192,
@@ -568,11 +554,11 @@
             "id": 196,
             "GC.DOD.TOTL.GD.ZS": 53.65108046012937,
             "GC.XPN.TOTL.GD.ZS": 39.808246263264486,
-            "MS.MIL.XPND.GD.ZS": 1.8246030055427802,
+            "MS.MIL.XPND.GD.ZS": 1.82460300554278,
             "MS.MIL.XPND.ZS": 4.61639978884392,
             "SG.GEN.PARL.ZS": 14.2857142857143,
             "GC.REV.XGRT.GD.ZS": 41.259108291327095,
-            "GC.TAX.TOTL.GD.ZS": 24.082312217786676
+            "GC.TAX.TOTL.GD.ZS": 24.08231221778668
         },
         {
             "id": 203,
@@ -581,14 +567,14 @@
             "MS.MIL.XPND.GD.ZS": 1.52418962408317,
             "MS.MIL.XPND.ZS": 3.30061492359817,
             "SG.GEN.PARL.ZS": 26.0,
-            "GC.REV.XGRT.GD.ZS": 30.221030963399052,
+            "GC.REV.XGRT.GD.ZS": 30.22103096339905,
             "GC.TAX.TOTL.GD.ZS": 12.641988393548138
         },
         {
             "id": 208,
             "GC.DOD.TOTL.GD.ZS": 75.33126004176172,
             "GC.XPN.TOTL.GD.ZS": 33.138731304513854,
-            "MS.MIL.XPND.GD.ZS": 1.9531959640583099,
+            "MS.MIL.XPND.GD.ZS": 1.9531959640583096,
             "MS.MIL.XPND.ZS": 4.1000167886888,
             "SG.GEN.PARL.ZS": 45.2513966480447,
             "GC.REV.XGRT.GD.ZS": 36.6991297613195,
@@ -617,7 +603,7 @@
         {
             "id": 214,
             "GC.DOD.TOTL.GD.ZS": 16.416803836801414,
-            "GC.XPN.TOTL.GD.ZS": 18.066236602365986,
+            "GC.XPN.TOTL.GD.ZS": 18.066236602365983,
             "MS.MIL.XPND.GD.ZS": 0.740729436807107,
             "MS.MIL.XPND.ZS": 3.91525596573526,
             "SG.GEN.PARL.ZS": 36.8421052631579,
@@ -636,7 +622,7 @@
         {
             "id": 818,
             "GC.DOD.TOTL.GD.ZS": 85.78853383458647,
-            "GC.XPN.TOTL.GD.ZS": 30.230369491386718,
+            "GC.XPN.TOTL.GD.ZS": 30.23036949138672,
             "MS.MIL.XPND.GD.ZS": 0.870565509711049,
             "MS.MIL.XPND.ZS": 4.14739522315053,
             "SG.GEN.PARL.ZS": 27.7027027027027,
@@ -670,7 +656,7 @@
             "IQ.CPA.STRC.XQ": 1.166667,
             "IQ.CPA.IRAI.XQ": 1.691667,
             "MS.MIL.XPND.GD.ZS": 20.8657453093811,
-            "MS.MIL.XPND.ZS": 46.366145354185804,
+            "MS.MIL.XPND.ZS": 46.36614535418581,
             "SG.GEN.PARL.ZS": 22.0
         },
         {
@@ -689,7 +675,7 @@
             "IQ.CPA.SOCI.XQ": 3.2,
             "IQ.CPA.PUBS.XQ": 2.5,
             "IQ.CPA.STRC.XQ": 3.666667,
-            "GC.XPN.TOTL.GD.ZS": 24.725447556315036,
+            "GC.XPN.TOTL.GD.ZS": 24.72544755631504,
             "IQ.CPA.IRAI.XQ": 3.133333,
             "MS.MIL.XPND.GD.ZS": 1.56832126015003,
             "MS.MIL.XPND.ZS": 4.72468701539393,
@@ -704,10 +690,10 @@
             "IQ.CPA.SOCI.XQ": 3.5,
             "IQ.CPA.PUBS.XQ": 3.1,
             "IQ.CPA.STRC.XQ": 3.166667,
-            "GC.XPN.TOTL.GD.ZS": 6.1216215860361505,
+            "GC.XPN.TOTL.GD.ZS": 6.121621586036151,
             "IQ.CPA.IRAI.XQ": 3.191667,
             "MS.MIL.XPND.GD.ZS": 0.788322879616043,
-            "MS.MIL.XPND.ZS": 7.5371174912873204,
+            "MS.MIL.XPND.ZS": 7.53711749128732,
             "SG.GEN.PARL.ZS": 41.3135593220339,
             "GC.REV.XGRT.GD.ZS": 4.083310090515909,
             "GC.TAX.TOTL.GD.ZS": 3.407567990231629
@@ -724,7 +710,7 @@
             "MS.MIL.XPND.GD.ZS": 1.31648157529348,
             "MS.MIL.XPND.ZS": 4.7722140257696495,
             "SG.GEN.PARL.ZS": 9.09090909090909,
-            "GC.REV.XGRT.GD.ZS": 23.317640410247698,
+            "GC.REV.XGRT.GD.ZS": 23.317640410247694,
             "GC.TAX.TOTL.GD.ZS": 20.668668359372607
         },
         {
@@ -732,10 +718,10 @@
             "GC.DOD.TOTL.GD.ZS": 58.3135962623348,
             "GC.XPN.TOTL.GD.ZS": 44.942848135140885,
             "MS.MIL.XPND.GD.ZS": 2.42148617618712,
-            "MS.MIL.XPND.ZS": 4.4407236923719795,
+            "MS.MIL.XPND.ZS": 4.44072369237198,
             "SG.GEN.PARL.ZS": 46.0,
             "GC.REV.XGRT.GD.ZS": 42.148675499116514,
-            "GC.TAX.TOTL.GD.ZS": 25.381806717452033
+            "GC.TAX.TOTL.GD.ZS": 25.381806717452037
         },
         {
             "id": 249,
@@ -743,13 +729,13 @@
             "MS.MIL.XPND.GD.ZS": 2.05638673841337,
             "MS.MIL.XPND.ZS": 3.56687138932718,
             "SG.GEN.PARL.ZS": 36.0485268630849,
-            "GC.REV.XGRT.GD.ZS": 42.274986460366804,
-            "GC.TAX.TOTL.GD.ZS": 23.110380588584135
+            "GC.REV.XGRT.GD.ZS": 42.2749864603668,
+            "GC.TAX.TOTL.GD.ZS": 23.110380588584132
         },
         {
             "id": 266,
             "GC.XPN.TOTL.GD.ZS": 14.05195848913468,
-            "MS.MIL.XPND.GD.ZS": 1.1532198117916301,
+            "MS.MIL.XPND.GD.ZS": 1.15321981179163,
             "MS.MIL.XPND.ZS": 7.27360221224143,
             "SG.GEN.PARL.ZS": 25.5102040816327,
             "GC.REV.XGRT.GD.ZS": 15.114912354305288,
@@ -776,7 +762,7 @@
             "IQ.CPA.SOCI.XQ": 4.1,
             "IQ.CPA.PUBS.XQ": 4.0,
             "IQ.CPA.STRC.XQ": 5.0,
-            "GC.XPN.TOTL.GD.ZS": 25.241719707501037,
+            "GC.XPN.TOTL.GD.ZS": 25.24171970750104,
             "IQ.CPA.IRAI.XQ": 4.44166666666667,
             "MS.MIL.XPND.GD.ZS": 1.68114376621765,
             "MS.MIL.XPND.ZS": 5.53911949685535,
@@ -788,7 +774,7 @@
             "id": 276,
             "GC.DOD.TOTL.GD.ZS": 20.85418475184078,
             "GC.XPN.TOTL.GD.ZS": 31.455113370512283,
-            "MS.MIL.XPND.GD.ZS": 1.5196519209697499,
+            "MS.MIL.XPND.GD.ZS": 1.51965192096975,
             "MS.MIL.XPND.ZS": 3.0810880816111,
             "SG.GEN.PARL.ZS": 35.3260869565217,
             "GC.REV.XGRT.GD.ZS": 28.562363369210736,
@@ -800,12 +786,12 @@
             "IQ.CPA.SOCI.XQ": 3.7,
             "IQ.CPA.PUBS.XQ": 3.6,
             "IQ.CPA.STRC.XQ": 3.5,
-            "GC.XPN.TOTL.GD.ZS": 22.678992950766652,
+            "GC.XPN.TOTL.GD.ZS": 22.67899295076665,
             "IQ.CPA.IRAI.XQ": 3.408333,
             "MS.MIL.XPND.GD.ZS": 0.389157461523268,
-            "MS.MIL.XPND.ZS": 1.9150304983312199,
+            "MS.MIL.XPND.ZS": 1.91503049833122,
             "SG.GEN.PARL.ZS": 14.5454545454545,
-            "GC.REV.XGRT.GD.ZS": 15.550550687300845,
+            "GC.REV.XGRT.GD.ZS": 15.550550687300843,
             "GC.TAX.TOTL.GD.ZS": 12.297535806285326
         },
         {
@@ -814,7 +800,7 @@
             "MS.MIL.XPND.GD.ZS": 3.23440755796675,
             "MS.MIL.XPND.ZS": 6.56533029905393,
             "SG.GEN.PARL.ZS": 23.0,
-            "GC.REV.XGRT.GD.ZS": 43.237275420467505,
+            "GC.REV.XGRT.GD.ZS": 43.23727542046751,
             "GC.TAX.TOTL.GD.ZS": 26.633582610161344
         },
         {
@@ -830,10 +816,10 @@
             "id": 320,
             "GC.DOD.TOTL.GD.ZS": 25.209949604686315,
             "GC.XPN.TOTL.GD.ZS": 13.500801100919638,
-            "MS.MIL.XPND.GD.ZS": 0.41117640781576603,
+            "MS.MIL.XPND.GD.ZS": 0.411176407815766,
             "MS.MIL.XPND.ZS": 2.9817870345325,
             "SG.GEN.PARL.ZS": 20.0,
-            "GC.REV.XGRT.GD.ZS": 12.849892998704865,
+            "GC.REV.XGRT.GD.ZS": 12.849892998704863,
             "GC.TAX.TOTL.GD.ZS": 11.567861466936796
         },
         {
@@ -882,7 +868,7 @@
             "IQ.CPA.PUBS.XQ": 1.9,
             "IQ.CPA.STRC.XQ": 2.333333,
             "IQ.CPA.IRAI.XQ": 2.3,
-            "MS.MIL.XPND.GD.ZS": 0.054092848952568606,
+            "MS.MIL.XPND.GD.ZS": 0.0540928489525686,
             "MS.MIL.XPND.ZS": 0.6740394050718109,
             "SG.GEN.PARL.ZS": 2.54237288135593
         },
@@ -897,7 +883,7 @@
             "MS.MIL.XPND.GD.ZS": 1.56610457514466,
             "MS.MIL.XPND.ZS": 5.85942210778812,
             "SG.GEN.PARL.ZS": 27.34375,
-            "GC.REV.XGRT.GD.ZS": 22.209912610084494,
+            "GC.REV.XGRT.GD.ZS": 22.20991261008449,
             "GC.TAX.TOTL.GD.ZS": 15.066131552102998
         },
         {
@@ -916,7 +902,7 @@
             "GC.XPN.TOTL.GD.ZS": 32.304141062872766,
             "SG.GEN.PARL.ZS": 46.031746031746,
             "GC.REV.XGRT.GD.ZS": 31.696776267198985,
-            "GC.TAX.TOTL.GD.ZS": 23.341386366107052
+            "GC.TAX.TOTL.GD.ZS": 23.34138636610705
         },
         {
             "id": 356,
@@ -927,7 +913,7 @@
             "IQ.CPA.STRC.XQ": 3.5,
             "GC.XPN.TOTL.GD.ZS": 13.333517849133624,
             "IQ.CPA.IRAI.XQ": 3.7,
-            "MS.MIL.XPND.GD.ZS": 2.4430507647693798,
+            "MS.MIL.XPND.GD.ZS": 2.44305076476938,
             "MS.MIL.XPND.ZS": 8.14548948116923,
             "SG.GEN.PARL.ZS": 13.6531365313653,
             "GC.REV.XGRT.GD.ZS": 9.11011784382656,
@@ -949,7 +935,7 @@
         },
         {
             "id": 364,
-            "GC.XPN.TOTL.GD.ZS": 19.637386077563157,
+            "GC.XPN.TOTL.GD.ZS": 19.63738607756316,
             "MS.MIL.XPND.GD.ZS": 2.06140369835077,
             "MS.MIL.XPND.ZS": 13.5311645865246,
             "SG.GEN.PARL.ZS": 4.82758620689655,
@@ -958,9 +944,9 @@
         },
         {
             "id": 368,
-            "GC.DOD.TOTL.GD.ZS": 27.438248367377966,
+            "GC.DOD.TOTL.GD.ZS": 27.43824836737797,
             "GC.XPN.TOTL.GD.ZS": 27.612135277090687,
-            "MS.MIL.XPND.GD.ZS": 2.0731627753066197,
+            "MS.MIL.XPND.GD.ZS": 2.07316277530662,
             "MS.MIL.XPND.ZS": 4.15014114622835,
             "SG.GEN.PARL.ZS": 28.8753799392097,
             "GC.REV.XGRT.GD.ZS": 38.60382950653244,
@@ -968,7 +954,7 @@
         },
         {
             "id": 372,
-            "GC.XPN.TOTL.GD.ZS": 19.234713659472593,
+            "GC.XPN.TOTL.GD.ZS": 19.234713659472597,
             "MS.MIL.XPND.GD.ZS": 0.216857882649718,
             "MS.MIL.XPND.ZS": 1.01636011281643,
             "SG.GEN.PARL.ZS": 25.2873563218391,
@@ -979,11 +965,11 @@
             "id": 376,
             "GC.DOD.TOTL.GD.ZS": 88.24251711426928,
             "GC.XPN.TOTL.GD.ZS": 37.43647991289845,
-            "MS.MIL.XPND.GD.ZS": 5.3174115336773795,
+            "MS.MIL.XPND.GD.ZS": 5.31741153367738,
             "MS.MIL.XPND.ZS": 14.5901821393534,
             "SG.GEN.PARL.ZS": 25.0,
             "GC.REV.XGRT.GD.ZS": 30.36329215287746,
-            "GC.TAX.TOTL.GD.ZS": 22.136406033712277
+            "GC.TAX.TOTL.GD.ZS": 22.13640603371228
         },
         {
             "id": 380,
@@ -993,11 +979,11 @@
             "MS.MIL.XPND.ZS": 3.04345179262221,
             "SG.GEN.PARL.ZS": 32.25,
             "GC.REV.XGRT.GD.ZS": 39.27906202055935,
-            "GC.TAX.TOTL.GD.ZS": 24.838016505660626
+            "GC.TAX.TOTL.GD.ZS": 24.838016505660622
         },
         {
             "id": 388,
-            "GC.DOD.TOTL.GD.ZS": 106.28237300166707,
+            "GC.DOD.TOTL.GD.ZS": 106.28237300166708,
             "GC.XPN.TOTL.GD.ZS": 29.82962048805498,
             "MS.MIL.XPND.GD.ZS": 1.22435313075752,
             "MS.MIL.XPND.ZS": 4.05757864175511,
@@ -1007,11 +993,11 @@
         },
         {
             "id": 392,
-            "GC.XPN.TOTL.GD.ZS": 20.931194313709398,
+            "GC.XPN.TOTL.GD.ZS": 20.9311943137094,
             "MS.MIL.XPND.GD.ZS": 1.19606991540042,
-            "MS.MIL.XPND.ZS": 2.8216413716788202,
+            "MS.MIL.XPND.ZS": 2.82164137167882,
             "SG.GEN.PARL.ZS": 15.6989247311828,
-            "GC.REV.XGRT.GD.ZS": 19.750135679481655,
+            "GC.REV.XGRT.GD.ZS": 19.75013567948165,
             "GC.TAX.TOTL.GD.ZS": 11.37923693621657
         },
         {
@@ -1026,7 +1012,7 @@
         },
         {
             "id": 398,
-            "GC.DOD.TOTL.GD.ZS": 20.885849718393334,
+            "GC.DOD.TOTL.GD.ZS": 20.88584971839333,
             "GC.XPN.TOTL.GD.ZS": 17.44578115454555,
             "MS.MIL.XPND.GD.ZS": 0.480059037069259,
             "MS.MIL.XPND.ZS": 2.09628200279524,
@@ -1042,7 +1028,7 @@
             "IQ.CPA.STRC.XQ": 3.833333,
             "GC.XPN.TOTL.GD.ZS": 27.70605928891224,
             "IQ.CPA.IRAI.XQ": 3.85,
-            "MS.MIL.XPND.GD.ZS": 0.9058168350536879,
+            "MS.MIL.XPND.GD.ZS": 0.905816835053688,
             "MS.MIL.XPND.ZS": 4.11434008984267,
             "SG.GEN.PARL.ZS": 23.2758620689655,
             "GC.REV.XGRT.GD.ZS": 18.5460646224245,
@@ -1072,7 +1058,17 @@
             "MS.MIL.XPND.ZS": 11.1047908895188,
             "SG.GEN.PARL.ZS": 20.0,
             "GC.REV.XGRT.GD.ZS": 29.46038996873417,
-            "GC.TAX.TOTL.GD.ZS": 15.724279130793523
+            "GC.TAX.TOTL.GD.ZS": 15.724279130793525
+        },
+        {
+            "id": 689,
+            "IQ.CPA.ECON.XQ": 4.5,
+            "IQ.CPA.SOCI.XQ": 3.5,
+            "IQ.CPA.PUBS.XQ": 3.6,
+            "IQ.CPA.STRC.XQ": 4.166667,
+            "IQ.CPA.IRAI.XQ": 3.941667,
+            "MS.MIL.XPND.GD.ZS": 1.2541803572726,
+            "MS.MIL.XPND.ZS": 4.022088091354
         },
         {
             "id": 414,
@@ -1096,7 +1092,7 @@
             "MS.MIL.XPND.ZS": 10.4931204074558,
             "SG.GEN.PARL.ZS": 21.1111111111111,
             "GC.REV.XGRT.GD.ZS": 30.666536705330167,
-            "GC.TAX.TOTL.GD.ZS": 19.608466481221836
+            "GC.TAX.TOTL.GD.ZS": 19.60846648122184
         },
         {
             "id": 418,
@@ -1110,7 +1106,7 @@
             "MS.MIL.XPND.ZS": 0.783407667330604,
             "SG.GEN.PARL.ZS": 21.9512195121951,
             "GC.REV.XGRT.GD.ZS": 13.91398852555513,
-            "GC.TAX.TOTL.GD.ZS": 12.112932782542277
+            "GC.TAX.TOTL.GD.ZS": 12.112932782542275
         },
         {
             "id": 428,
@@ -1129,12 +1125,12 @@
             "MS.MIL.XPND.GD.ZS": 0.7490545294635,
             "MS.MIL.XPND.ZS": 1.62266737232072,
             "SG.GEN.PARL.ZS": 33.3333333333333,
-            "GC.REV.XGRT.GD.ZS": 43.343773593017346,
+            "GC.REV.XGRT.GD.ZS": 43.34377359301735,
             "GC.TAX.TOTL.GD.ZS": 27.219404444534767
         },
         {
             "id": 426,
-            "GC.DOD.TOTL.GD.ZS": 2.9927168525560175,
+            "GC.DOD.TOTL.GD.ZS": 2.992716852556017,
             "IQ.CPA.ECON.XQ": 3.166667,
             "IQ.CPA.SOCI.XQ": 3.5,
             "IQ.CPA.PUBS.XQ": 2.9,
@@ -1162,7 +1158,7 @@
         },
         {
             "id": 434,
-            "MS.MIL.XPND.GD.ZS": 15.479576301383199,
+            "MS.MIL.XPND.GD.ZS": 15.4795763013832,
             "MS.MIL.XPND.ZS": 10.9067877847263,
             "SG.GEN.PARL.ZS": 16.4705882352941
         },
@@ -1182,7 +1178,7 @@
         {
             "id": 446,
             "GC.XPN.TOTL.GD.ZS": 19.511206440619176,
-            "GC.REV.XGRT.GD.ZS": 27.318628394597756,
+            "GC.REV.XGRT.GD.ZS": 27.31862839459776,
             "GC.TAX.TOTL.GD.ZS": 22.842212492031475
         },
         {
@@ -1196,7 +1192,7 @@
             "MS.MIL.XPND.GD.ZS": 0.662961133220886,
             "MS.MIL.XPND.ZS": 3.45481167276877,
             "SG.GEN.PARL.ZS": 15.9509202453988,
-            "GC.REV.XGRT.GD.ZS": 10.765023813886733,
+            "GC.REV.XGRT.GD.ZS": 10.765023813886732,
             "GC.TAX.TOTL.GD.ZS": 9.614870958868083
         },
         {
@@ -1208,17 +1204,17 @@
             "IQ.CPA.STRC.XQ": 3.333333,
             "GC.XPN.TOTL.GD.ZS": 20.1738542237372,
             "IQ.CPA.IRAI.XQ": 2.958333,
-            "MS.MIL.XPND.GD.ZS": 1.0108778793239899,
+            "MS.MIL.XPND.GD.ZS": 1.01087787932399,
             "MS.MIL.XPND.ZS": 3.95813642251071,
             "SG.GEN.PARL.ZS": 20.7253886010363,
-            "GC.REV.XGRT.GD.ZS": 14.136184681699637,
+            "GC.REV.XGRT.GD.ZS": 14.136184681699635,
             "GC.TAX.TOTL.GD.ZS": 13.503857394226948
         },
         {
             "id": 458,
             "GC.DOD.TOTL.GD.ZS": 64.32091015535475,
             "GC.XPN.TOTL.GD.ZS": 17.01926840934251,
-            "MS.MIL.XPND.GD.ZS": 0.9296717162001059,
+            "MS.MIL.XPND.GD.ZS": 0.929671716200106,
             "MS.MIL.XPND.ZS": 4.11401149851632,
             "SG.GEN.PARL.ZS": 13.5135135135135,
             "GC.REV.XGRT.GD.ZS": 17.277866714816053,
@@ -1253,7 +1249,7 @@
         },
         {
             "id": 470,
-            "GC.DOD.TOTL.GD.ZS": 29.967401722937126,
+            "GC.DOD.TOTL.GD.ZS": 29.96740172293713,
             "GC.XPN.TOTL.GD.ZS": 34.30006447256404,
             "MS.MIL.XPND.GD.ZS": 0.5586440181308749,
             "MS.MIL.XPND.ZS": 1.37723910171731,
@@ -1303,11 +1299,11 @@
             "MS.MIL.XPND.ZS": 2.36916156773443,
             "SG.GEN.PARL.ZS": 50.2,
             "GC.REV.XGRT.GD.ZS": 19.09297396996279,
-            "GC.TAX.TOTL.GD.ZS": 14.229341435168857
+            "GC.TAX.TOTL.GD.ZS": 14.229341435168855
         },
         {
             "id": 583,
-            "GC.DOD.TOTL.GD.ZS": 27.795565912498986,
+            "GC.DOD.TOTL.GD.ZS": 27.795565912498983,
             "IQ.CPA.ECON.XQ": 2.833333,
             "IQ.CPA.SOCI.XQ": 2.7,
             "IQ.CPA.PUBS.XQ": 2.9,
@@ -1330,7 +1326,7 @@
             "MS.MIL.XPND.GD.ZS": 0.546678815870651,
             "MS.MIL.XPND.ZS": 1.40451344350748,
             "SG.GEN.PARL.ZS": 40.8163265306122,
-            "GC.REV.XGRT.GD.ZS": 29.401881980565186,
+            "GC.REV.XGRT.GD.ZS": 29.401881980565182,
             "GC.TAX.TOTL.GD.ZS": 18.58502702573174
         },
         {
@@ -1349,7 +1345,7 @@
             "MS.MIL.XPND.GD.ZS": 0.60144199287179,
             "MS.MIL.XPND.ZS": 1.73109742242753,
             "SG.GEN.PARL.ZS": 25.3968253968254,
-            "GC.REV.XGRT.GD.ZS": 28.990216650732197,
+            "GC.REV.XGRT.GD.ZS": 28.9902166507322,
             "GC.TAX.TOTL.GD.ZS": 16.908849519202867
         },
         {
@@ -1361,12 +1357,12 @@
         {
             "id": 504,
             "GC.DOD.TOTL.GD.ZS": 51.22632157045693,
-            "GC.XPN.TOTL.GD.ZS": 26.909462764272313,
+            "GC.XPN.TOTL.GD.ZS": 26.909462764272316,
             "MS.MIL.XPND.GD.ZS": 3.63868518644989,
             "MS.MIL.XPND.ZS": 11.1220390401381,
             "SG.GEN.PARL.ZS": 24.3037974683544,
             "GC.REV.XGRT.GD.ZS": 26.44541128976327,
-            "GC.TAX.TOTL.GD.ZS": 20.976426831327398
+            "GC.TAX.TOTL.GD.ZS": 20.9764268313274
         },
         {
             "id": 508,
@@ -1375,9 +1371,9 @@
             "IQ.CPA.SOCI.XQ": 3.3,
             "IQ.CPA.PUBS.XQ": 2.9,
             "IQ.CPA.STRC.XQ": 3.166667,
-            "GC.XPN.TOTL.GD.ZS": 26.004035087884052,
+            "GC.XPN.TOTL.GD.ZS": 26.00403508788405,
             "IQ.CPA.IRAI.XQ": 3.05,
-            "MS.MIL.XPND.GD.ZS": 1.7319324225536399,
+            "MS.MIL.XPND.GD.ZS": 1.73193242255364,
             "MS.MIL.XPND.ZS": 5.62613529296511,
             "SG.GEN.PARL.ZS": 39.2,
             "GC.REV.XGRT.GD.ZS": 24.882390753689883,
@@ -1394,13 +1390,13 @@
             "MS.MIL.XPND.GD.ZS": 3.7885823650653,
             "MS.MIL.XPND.ZS": 20.6812935625671,
             "SG.GEN.PARL.ZS": 15.2941176470588,
-            "GC.REV.XGRT.GD.ZS": 14.389196164586263,
+            "GC.REV.XGRT.GD.ZS": 14.389196164586265,
             "GC.TAX.TOTL.GD.ZS": 6.017652477264844
         },
         {
             "id": 516,
             "GC.DOD.TOTL.GD.ZS": 4.667582355740399,
-            "GC.XPN.TOTL.GD.ZS": 36.495550364478355,
+            "GC.XPN.TOTL.GD.ZS": 36.49555036447836,
             "MS.MIL.XPND.GD.ZS": 2.73954354378882,
             "MS.MIL.XPND.ZS": 7.478684494543709,
             "SG.GEN.PARL.ZS": 40.625,
@@ -1416,7 +1412,7 @@
         },
         {
             "id": 524,
-            "GC.DOD.TOTL.GD.ZS": 39.922268642228865,
+            "GC.DOD.TOTL.GD.ZS": 39.92226864222887,
             "IQ.CPA.ECON.XQ": 3.333333,
             "IQ.CPA.SOCI.XQ": 3.5,
             "IQ.CPA.PUBS.XQ": 2.9,
@@ -1426,7 +1422,7 @@
             "MS.MIL.XPND.GD.ZS": 1.07668555382218,
             "MS.MIL.XPND.ZS": 4.0769145680469,
             "SG.GEN.PARL.ZS": 33.0882352941176,
-            "GC.REV.XGRT.GD.ZS": 19.882121562855957,
+            "GC.REV.XGRT.GD.ZS": 19.88212156285596,
             "GC.TAX.TOTL.GD.ZS": 17.485303278777245
         },
         {
@@ -1492,9 +1488,9 @@
             "id": 807,
             "GC.XPN.TOTL.GD.ZS": 33.57238502026862,
             "MS.MIL.XPND.GD.ZS": 1.69895545621264,
-            "MS.MIL.XPND.ZS": 4.7006723198436395,
+            "MS.MIL.XPND.ZS": 4.70067231984364,
             "SG.GEN.PARL.ZS": 39.1666666666667,
-            "GC.REV.XGRT.GD.ZS": 29.547470416835154,
+            "GC.REV.XGRT.GD.ZS": 29.547470416835157,
             "GC.TAX.TOTL.GD.ZS": 17.860903268377943
         },
         {
@@ -1509,13 +1505,13 @@
         },
         {
             "id": 512,
-            "MS.MIL.XPND.GD.ZS": 5.4042663512380305,
+            "MS.MIL.XPND.GD.ZS": 5.404266351238031,
             "MS.MIL.XPND.ZS": 20.6573632023504,
             "SG.GEN.PARL.ZS": 0.0
         },
         {
             "id": 586,
-            "GC.DOD.TOTL.GD.ZS": 55.032421614474714,
+            "GC.DOD.TOTL.GD.ZS": 55.03242161447472,
             "IQ.CPA.ECON.XQ": 3.166667,
             "IQ.CPA.SOCI.XQ": 3.2,
             "IQ.CPA.PUBS.XQ": 3.2,
@@ -1531,8 +1527,8 @@
             "GC.DOD.TOTL.GD.ZS": 85.20256464459305,
             "GC.XPN.TOTL.GD.ZS": 58.95360478055592,
             "SG.GEN.PARL.ZS": 25.0,
-            "GC.REV.XGRT.GD.ZS": 24.215918094387913,
-            "GC.TAX.TOTL.GD.ZS": 18.080951138032706
+            "GC.REV.XGRT.GD.ZS": 24.215918094387916,
+            "GC.TAX.TOTL.GD.ZS": 18.080951138032702
         },
         {
             "id": 591,
@@ -1553,14 +1549,14 @@
             "GC.XPN.TOTL.GD.ZS": 20.323569664034363,
             "IQ.CPA.IRAI.XQ": 2.85,
             "MS.MIL.XPND.GD.ZS": 0.313337015687892,
-            "MS.MIL.XPND.ZS": 1.4184882158993801,
+            "MS.MIL.XPND.ZS": 1.41848821589938,
             "SG.GEN.PARL.ZS": 2.7027027027027,
             "GC.REV.XGRT.GD.ZS": 16.860836335224626,
             "GC.TAX.TOTL.GD.ZS": 15.93479892369711
         },
         {
             "id": 600,
-            "GC.XPN.TOTL.GD.ZS": 18.955534261479926,
+            "GC.XPN.TOTL.GD.ZS": 18.95553426147993,
             "MS.MIL.XPND.GD.ZS": 0.906254792632729,
             "MS.MIL.XPND.ZS": 3.79258370096719,
             "SG.GEN.PARL.ZS": 23.75,
@@ -1579,18 +1575,18 @@
         },
         {
             "id": 608,
-            "GC.DOD.TOTL.GD.ZS": 43.426338941461985,
+            "GC.DOD.TOTL.GD.ZS": 43.42633894146199,
             "GC.XPN.TOTL.GD.ZS": 16.880590340118435,
             "MS.MIL.XPND.GD.ZS": 1.2494955502556602,
             "MS.MIL.XPND.ZS": 5.02415526967586,
             "SG.GEN.PARL.ZS": 27.3311897106109,
-            "GC.REV.XGRT.GD.ZS": 15.722046659197803,
+            "GC.REV.XGRT.GD.ZS": 15.722046659197805,
             "GC.TAX.TOTL.GD.ZS": 14.104435135749377
         },
         {
             "id": 616,
             "GC.DOD.TOTL.GD.ZS": 60.45439847045757,
-            "GC.XPN.TOTL.GD.ZS": 39.098239262794145,
+            "GC.XPN.TOTL.GD.ZS": 39.09823926279415,
             "MS.MIL.XPND.GD.ZS": 3.8327285389822303,
             "MS.MIL.XPND.ZS": 8.11915596843084,
             "SG.GEN.PARL.ZS": 29.5652173913043,
@@ -1624,7 +1620,7 @@
         },
         {
             "id": 643,
-            "GC.DOD.TOTL.GD.ZS": 18.503222757146478,
+            "GC.DOD.TOTL.GD.ZS": 18.50322275714648,
             "GC.XPN.TOTL.GD.ZS": 29.60425489357177,
             "MS.MIL.XPND.GD.ZS": 5.86418887229231,
             "MS.MIL.XPND.ZS": 16.1414084576468,
@@ -1645,7 +1641,7 @@
             "MS.MIL.XPND.ZS": 4.55416377803654,
             "SG.GEN.PARL.ZS": 63.75,
             "GC.REV.XGRT.GD.ZS": 19.29320375584641,
-            "GC.TAX.TOTL.GD.ZS": 13.508069545714383
+            "GC.TAX.TOTL.GD.ZS": 13.508069545714385
         },
         {
             "id": 882,
@@ -1653,15 +1649,15 @@
             "IQ.CPA.SOCI.XQ": 3.8,
             "IQ.CPA.PUBS.XQ": 4.0,
             "IQ.CPA.STRC.XQ": 3.666667,
-            "GC.XPN.TOTL.GD.ZS": 29.719281221752038,
+            "GC.XPN.TOTL.GD.ZS": 29.71928122175204,
             "IQ.CPA.IRAI.XQ": 3.95,
             "SG.GEN.PARL.ZS": 12.962962962963,
-            "GC.REV.XGRT.GD.ZS": 34.218086303116756,
-            "GC.TAX.TOTL.GD.ZS": 26.681329500940855
+            "GC.REV.XGRT.GD.ZS": 34.21808630311676,
+            "GC.TAX.TOTL.GD.ZS": 26.68132950094085
         },
         {
             "id": 674,
-            "GC.DOD.TOTL.GD.ZS": 103.15357346590359,
+            "GC.DOD.TOTL.GD.ZS": 103.1535734659036,
             "GC.XPN.TOTL.GD.ZS": 44.64064259247001,
             "SG.GEN.PARL.ZS": 35.0,
             "GC.REV.XGRT.GD.ZS": 44.41158458589043,
@@ -1680,7 +1676,7 @@
             "id": 682,
             "GC.XPN.TOTL.GD.ZS": 24.21913187315425,
             "MS.MIL.XPND.GD.ZS": 7.086386302249879,
-            "MS.MIL.XPND.ZS": 24.044519997631898,
+            "MS.MIL.XPND.ZS": 24.044519997631895,
             "SG.GEN.PARL.ZS": 19.8675496688742,
             "GC.REV.XGRT.GD.ZS": 26.52891268547749,
             "GC.TAX.TOTL.GD.ZS": 7.804403936959427
@@ -1711,16 +1707,16 @@
             "MS.MIL.XPND.ZS": 6.42362180074009,
             "SG.GEN.PARL.ZS": 38.0,
             "GC.REV.XGRT.GD.ZS": 38.65712647296061,
-            "GC.TAX.TOTL.GD.ZS": 23.897406632594077
+            "GC.TAX.TOTL.GD.ZS": 23.89740663259408
         },
         {
             "id": 690,
             "GC.DOD.TOTL.GD.ZS": 174.6843865357224,
-            "GC.XPN.TOTL.GD.ZS": 24.617146084990036,
+            "GC.XPN.TOTL.GD.ZS": 24.61714608499004,
             "MS.MIL.XPND.GD.ZS": 1.70691302906347,
             "MS.MIL.XPND.ZS": 4.43010899182561,
             "SG.GEN.PARL.ZS": 20.5882352941176,
-            "GC.REV.XGRT.GD.ZS": 29.487067763180917,
+            "GC.REV.XGRT.GD.ZS": 29.48706776318092,
             "GC.TAX.TOTL.GD.ZS": 22.084701660804985
         },
         {
@@ -1772,21 +1768,21 @@
             "IQ.CPA.IRAI.XQ": 2.958333,
             "SG.GEN.PARL.ZS": 6.0,
             "GC.REV.XGRT.GD.ZS": 23.059842106462096,
-            "GC.TAX.TOTL.GD.ZS": 20.669740498649652
+            "GC.TAX.TOTL.GD.ZS": 20.66974049864965
         },
         {
             "id": 706,
-            "GC.DOD.TOTL.GD.ZS": 0.0016166582767583185,
+            "GC.DOD.TOTL.GD.ZS": 0.0016166582767583,
             "IQ.CPA.ECON.XQ": 2.5,
             "IQ.CPA.SOCI.XQ": 2.5,
             "IQ.CPA.PUBS.XQ": 1.8,
             "IQ.CPA.STRC.XQ": 2.166667,
-            "GC.XPN.TOTL.GD.ZS": 0.00023274560988046018,
+            "GC.XPN.TOTL.GD.ZS": 0.0002327456098804,
             "IQ.CPA.IRAI.XQ": 2.241667,
-            "MS.MIL.XPND.GD.ZS": 1.5299921355544401,
+            "MS.MIL.XPND.GD.ZS": 1.52999213555444,
             "MS.MIL.XPND.ZS": 19.788275862069,
             "SG.GEN.PARL.ZS": 19.6363636363636,
-            "GC.REV.XGRT.GD.ZS": 0.00011033765364135496,
+            "GC.REV.XGRT.GD.ZS": 0.0001103376536413,
             "GC.TAX.TOTL.GD.ZS": 7.584386277871907e-05
         },
         {
@@ -1814,7 +1810,7 @@
             "id": 724,
             "GC.DOD.TOTL.GD.ZS": 107.25996894972984,
             "GC.XPN.TOTL.GD.ZS": 34.03135770367424,
-            "MS.MIL.XPND.GD.ZS": 1.5090122846218599,
+            "MS.MIL.XPND.GD.ZS": 1.50901228462186,
             "MS.MIL.XPND.ZS": 3.20646584361177,
             "SG.GEN.PARL.ZS": 44.2857142857143,
             "GC.REV.XGRT.GD.ZS": 29.635112298808536,
@@ -1829,7 +1825,7 @@
             "IQ.CPA.STRC.XQ": 3.5,
             "GC.XPN.TOTL.GD.ZS": 18.113506805919744,
             "IQ.CPA.IRAI.XQ": 3.225,
-            "MS.MIL.XPND.GD.ZS": 1.6400307958709799,
+            "MS.MIL.XPND.GD.ZS": 1.64003079587098,
             "MS.MIL.XPND.ZS": 7.024814874911491,
             "SG.GEN.PARL.ZS": 10.0,
             "GC.REV.XGRT.GD.ZS": 11.119051764577348,
@@ -1853,7 +1849,7 @@
             "GC.XPN.TOTL.GD.ZS": 17.6109533799361,
             "IQ.CPA.IRAI.XQ": 3.733333,
             "SG.GEN.PARL.ZS": 11.1111111111111,
-            "GC.REV.XGRT.GD.ZS": 19.407853282826412,
+            "GC.REV.XGRT.GD.ZS": 19.40785328282641,
             "GC.TAX.TOTL.GD.ZS": 18.225116568692133
         },
         {
@@ -1878,8 +1874,8 @@
             "IQ.CPA.STRC.XQ": 1.833333,
             "GC.XPN.TOTL.GD.ZS": 9.72624152630822,
             "IQ.CPA.IRAI.XQ": 1.816667,
-            "MS.MIL.XPND.GD.ZS": 0.9159187570581431,
-            "MS.MIL.XPND.ZS": 9.495771523637881,
+            "MS.MIL.XPND.GD.ZS": 0.9159187570581432,
+            "MS.MIL.XPND.ZS": 9.49577152363788,
             "SG.GEN.PARL.ZS": 30.5164319248826,
             "GC.REV.XGRT.GD.ZS": 8.774134825052133,
             "GC.TAX.TOTL.GD.ZS": 7.39027026174951
@@ -1915,7 +1911,7 @@
         {
             "id": 760,
             "MS.MIL.XPND.GD.ZS": 4.05614173609585,
-            "MS.MIL.XPND.ZS": 13.621820528727799,
+            "MS.MIL.XPND.ZS": 13.6218205287278,
             "SG.GEN.PARL.ZS": 9.6
         },
         {
@@ -1931,7 +1927,7 @@
             "MS.MIL.XPND.ZS": 3.77969870337522,
             "SG.GEN.PARL.ZS": 26.984126984127,
             "GC.REV.XGRT.GD.ZS": 18.431538036724803,
-            "GC.TAX.TOTL.GD.ZS": 10.752156064592993
+            "GC.TAX.TOTL.GD.ZS": 10.752156064592992
         },
         {
             "id": 834,
@@ -1949,12 +1945,12 @@
         },
         {
             "id": 764,
-            "GC.DOD.TOTL.GD.ZS": 61.124361363852564,
-            "GC.XPN.TOTL.GD.ZS": 20.766468460769477,
+            "GC.DOD.TOTL.GD.ZS": 61.12436136385256,
+            "GC.XPN.TOTL.GD.ZS": 20.76646846076948,
             "MS.MIL.XPND.GD.ZS": 1.16558115305502,
             "MS.MIL.XPND.ZS": 4.91637232240685,
             "SG.GEN.PARL.ZS": 19.4,
-            "GC.REV.XGRT.GD.ZS": 19.921008239559182,
+            "GC.REV.XGRT.GD.ZS": 19.921008239559185,
             "GC.TAX.TOTL.GD.ZS": 15.423073843242827
         },
         {
@@ -1966,10 +1962,10 @@
             "GC.XPN.TOTL.GD.ZS": 52.49359810933654,
             "IQ.CPA.IRAI.XQ": 2.833333,
             "MS.MIL.XPND.GD.ZS": 1.26187058679104,
-            "MS.MIL.XPND.ZS": 3.2115967365967397,
+            "MS.MIL.XPND.ZS": 3.21159673659674,
             "SG.GEN.PARL.ZS": 35.3846153846154,
             "GC.REV.XGRT.GD.ZS": 51.467618591466014,
-            "GC.TAX.TOTL.GD.ZS": 21.643177789506993
+            "GC.TAX.TOTL.GD.ZS": 21.643177789506996
         },
         {
             "id": 768,
@@ -2030,7 +2026,7 @@
         {
             "id": 795,
             "MS.MIL.XPND.GD.ZS": 2.9018747506980502,
-            "MS.MIL.XPND.ZS": 14.961439588688899,
+            "MS.MIL.XPND.ZS": 14.9614395886889,
             "SG.GEN.PARL.ZS": 25.6
         },
         {
@@ -2051,7 +2047,7 @@
             "IQ.CPA.STRC.XQ": 3.5,
             "GC.XPN.TOTL.GD.ZS": 16.583340036457876,
             "IQ.CPA.IRAI.XQ": 3.508333,
-            "MS.MIL.XPND.GD.ZS": 1.9820563125892199,
+            "MS.MIL.XPND.GD.ZS": 1.98205631258922,
             "MS.MIL.XPND.ZS": 9.57629023811651,
             "SG.GEN.PARL.ZS": 33.9317773788151,
             "GC.REV.XGRT.GD.ZS": 14.379354694505544,
@@ -2069,12 +2065,12 @@
         },
         {
             "id": 784,
-            "GC.DOD.TOTL.GD.ZS": 1.8456851368758052,
-            "GC.XPN.TOTL.GD.ZS": 3.8309642901577403,
+            "GC.DOD.TOTL.GD.ZS": 1.8456851368758047,
+            "GC.XPN.TOTL.GD.ZS": 3.83096429015774,
             "MS.MIL.XPND.GD.ZS": 5.64365135247024,
             "MS.MIL.XPND.ZS": 17.038767845564802,
             "SG.GEN.PARL.ZS": 50.0,
-            "GC.REV.XGRT.GD.ZS": 3.7392872497272065,
+            "GC.REV.XGRT.GD.ZS": 3.7392872497272074,
             "GC.TAX.TOTL.GD.ZS": 0.6268559988352167
         },
         {
@@ -2089,8 +2085,8 @@
         },
         {
             "id": 840,
-            "GC.DOD.TOTL.GD.ZS": 114.75555333018359,
-            "GC.XPN.TOTL.GD.ZS": 24.513376623952873,
+            "GC.DOD.TOTL.GD.ZS": 114.7555533301836,
+            "GC.XPN.TOTL.GD.ZS": 24.513376623952876,
             "MS.MIL.XPND.GD.ZS": 3.3618364855807403,
             "MS.MIL.XPND.ZS": 9.05528677909805,
             "SG.GEN.PARL.ZS": 28.735632183908,
@@ -2116,10 +2112,10 @@
             "GC.XPN.TOTL.GD.ZS": 23.407719997082467,
             "IQ.CPA.IRAI.XQ": 3.841667,
             "MS.MIL.XPND.GD.ZS": 3.5554825523167,
-            "MS.MIL.XPND.ZS": 10.976459158960001,
+            "MS.MIL.XPND.ZS": 10.97645915896,
             "SG.GEN.PARL.ZS": 38.0,
             "GC.REV.XGRT.GD.ZS": 20.28162659438351,
-            "GC.TAX.TOTL.GD.ZS": 11.529695300220459
+            "GC.TAX.TOTL.GD.ZS": 11.52969530022046
         },
         {
             "id": 548,
@@ -2128,7 +2124,7 @@
             "IQ.CPA.SOCI.XQ": 3.2,
             "IQ.CPA.PUBS.XQ": 3.1,
             "IQ.CPA.STRC.XQ": 3.333333,
-            "GC.XPN.TOTL.GD.ZS": 28.074137562426394,
+            "GC.XPN.TOTL.GD.ZS": 28.074137562426397,
             "IQ.CPA.IRAI.XQ": 3.241667,
             "SG.GEN.PARL.ZS": 1.96078431372549,
             "GC.REV.XGRT.GD.ZS": 25.49076106605644,
@@ -2146,7 +2142,7 @@
             "IQ.CPA.PUBS.XQ": 3.5,
             "IQ.CPA.STRC.XQ": 3.5,
             "IQ.CPA.IRAI.XQ": 3.69167,
-            "MS.MIL.XPND.GD.ZS": 1.8065013887431098,
+            "MS.MIL.XPND.GD.ZS": 1.8065013887431096,
             "MS.MIL.XPND.ZS": 8.82091097444329,
             "SG.GEN.PARL.ZS": 30.6288032454361
         },
@@ -2172,7 +2168,7 @@
             "IQ.CPA.SOCI.XQ": 3.4,
             "IQ.CPA.PUBS.XQ": 2.9,
             "IQ.CPA.STRC.XQ": 3.833333,
-            "GC.XPN.TOTL.GD.ZS": 25.137096100654354,
+            "GC.XPN.TOTL.GD.ZS": 25.137096100654357,
             "IQ.CPA.IRAI.XQ": 3.283333,
             "MS.MIL.XPND.GD.ZS": 1.30300202080578,
             "MS.MIL.XPND.ZS": 4.69156681042612,
@@ -2188,14 +2184,14 @@
             "IQ.CPA.STRC.XQ": 2.833333,
             "GC.XPN.TOTL.GD.ZS": 10.977284277782273,
             "IQ.CPA.IRAI.XQ": 2.983333,
-            "MS.MIL.XPND.GD.ZS": 0.24880825015248803,
+            "MS.MIL.XPND.GD.ZS": 0.248808250152488,
             "MS.MIL.XPND.ZS": 1.38052733984895,
             "SG.GEN.PARL.ZS": 28.0898876404494,
             "GC.REV.XGRT.GD.ZS": 8.116958295203139,
-            "GC.TAX.TOTL.GD.ZS": 7.2147680498527285
+            "GC.TAX.TOTL.GD.ZS": 7.214768049852728
         }
     ],
     "id": "public-sector",
-    "name": "World Development Indicators (2012) - Public Sector",
+    "name": "World Development Indicators (2025) - Public Sector",
     "sourceUrl": "http://data.worldbank.org/data-catalog/world-development-indicators"
 }

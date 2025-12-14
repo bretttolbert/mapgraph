@@ -4,7 +4,14 @@
 
 ## Demo
 
-Live demo: [bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2024-census-pop-est](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2024-census-pop-est)
+- Visualizing population growth of U.S. Counties at the county level
+    - [2010 US Counties Population](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2010-quick-facts&dataitem=POP010210)
+    - [2024 US Counties Population](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=us-counties&mode=graph&dataset=2024-census-pop-est&dataitem=2024-population-est)
+- Gini indexes for all countries (high number means greater inequality)
+    - [2025 World Gini indexes](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=world&mode=graph&dataset=2025-WDI-poverty&dataitem=SI.POV.GINI)
+- Visualizing changes in adolecesent fertility rates around the world
+    - [2010 World Adolecesent fertility rates](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=world&mode=graph&dataset=2012-WDI-social-dev&dataitem=SP.ADO.TFRT)
+    - [2024 World Adolecesent fertility rates](https://bretttolbert.com/assets/projects/mapgraph/mapgraph.php?map=world&mode=graph&dataset=2025-WDI-social-dev&dataitem=SP.ADO.TFRT)
 
 ## Features
 

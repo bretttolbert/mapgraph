@@ -336,14 +336,16 @@ function svgLoadCallback() {
     function updateSelectedDataItem(dataItem) {
         selectedDataItemId = dataItem;
         log('selectedDataItemId=' + selectedDataItemId);
-        visualizeSelectedDataItem();
         const queryString = window.location.search;
         let urlParams = new URLSearchParams(queryString);
         if (urlParams.get("dataitem") != dataItem) {
             urlParams.set("dataitem", dataItem);
-            window.location.search = urlParams;
+            window.location.search = urlParams; // this causes page to reload, so no need to call visualizeSelectedDataItem
+        } else {
+            visualizeSelectedDataItem();
         }
     }
+
 
     //load data set
     $.getJSON('datasets/<?php echo $_REQUEST['map'] . '/' . $_REQUEST['dataset']; ?>.min.json', function(respData) {
@@ -366,7 +368,7 @@ function svgLoadCallback() {
             let itemDesc = node['Item_Description'];
             let selected = "";
             if ((urlParams.has('dataitem') && urlParams.get('dataitem') == dataItem) 
-             || (defaultDataItem.length > 0 && defaultDataItem == dataItem)) {
+             || (!urlParams.has('dataitem') && defaultDataItem.length > 0 && defaultDataItem == dataItem)) {
                 selected = 'selected="selected" '
                 updateSelectedDataItem(dataItem);
             }
@@ -381,9 +383,6 @@ function svgLoadCallback() {
             updateSelectedDataItem($('#dataItemSel option:selected').val());
         });
         setTimeout(function(){$('#loaderContainer').hide()}, 100);
-        //if (selectedDataItemId != null) {
-        //    visualizeSelectedDataItem();
-        //}
     });
     <?php } else { ?>
         alert('Error: No data set specified.');

@@ -3,6 +3,12 @@
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+const URL_BASE_DEFAULT = 'http://en.wikipedia.org/wiki/'; //default is Wikipedia
+const URL_VALUE_SOURCE_DEFAULT = "s"; //default is string name
+
+var urlBase = URL_BASE_DEFAULT;
+var urlValueSource = URL_VALUE_SOURCE_DEFAULT;
+
 var svg = null;
 var svgdoc = null;
 var mapData = null;
@@ -12,7 +18,39 @@ var svgElemIdToSvgElemMap = {}; //a map for faster lookups
 var datasetData = null;
 var selectedDataItemId = null;
 var selectedDataItemStats = {};
-var colorScale = ['#d2a3f5','#cea3f5','#caa3f5','#c6a3f5','#c3a3f5','#bfa3f5','#bba3f5','#b7a3f5','#b4a3f5','#b0a3f5','#aca3f5','#a8a3f5','#a4a3f5','#a3a6f5','#a3a9f5','#a3adf5','#a3b1f5','#a3b5f5','#a3b9f5','#a3bcf5','#a3c0f5','#a3c4f5','#a3c8f5','#a3cbf5','#a3cff5','#a3d3f5','#a3d7f5','#a3daf5','#a3def5','#a3e2f5','#a3e6f5','#a3eaf5','#a3edf5','#a3f1f5','#a3f5f5','#a3f5f1','#a3f5ed','#a3f5ea','#a3f5e6','#a3f5e2','#a3f5de','#a3f5da','#a3f5d7','#a3f5d3','#a3f5cf','#a3f5cb','#a3f5c8','#a3f5c4','#a3f5c0','#a3f5bc','#a3f5b9','#a3f5b5','#a3f5b1','#a3f5ad','#a3f5a9','#a3f5a6','#a4f5a3','#a8f5a3','#acf5a3','#b0f5a3','#b4f5a3','#b7f5a3','#bbf5a3','#bff5a3','#c3f5a3','#c6f5a3','#caf5a3','#cef5a3','#d2f5a3','#d5f5a3','#d9f5a3','#ddf5a3','#e1f5a3','#e4f5a3','#e8f5a3','#ecf5a3','#f0f5a3','#f4f5a3','#f5f2a3','#f5efa3','#f5eba3','#f5e7a3','#f5e3a3','#f5dfa3','#f5dca3','#f5d8a3','#f5d4a3','#f5d0a3','#f5cda3','#f5c9a3','#f5c5a3','#f5c1a3','#f5bea3','#f5baa3','#f5b6a3','#f5b2a3','#f5aea3','#f5aba3','#f5a7a3','#f5a3a3'];
+var colorScaleOrig = ['#d2a3f5','#cea3f5','#caa3f5','#c6a3f5','#c3a3f5','#bfa3f5','#bba3f5','#b7a3f5','#b4a3f5','#b0a3f5','#aca3f5','#a8a3f5','#a4a3f5','#a3a6f5','#a3a9f5','#a3adf5','#a3b1f5','#a3b5f5','#a3b9f5','#a3bcf5','#a3c0f5','#a3c4f5','#a3c8f5','#a3cbf5','#a3cff5','#a3d3f5','#a3d7f5','#a3daf5','#a3def5','#a3e2f5','#a3e6f5','#a3eaf5','#a3edf5','#a3f1f5','#a3f5f5','#a3f5f1','#a3f5ed','#a3f5ea','#a3f5e6','#a3f5e2','#a3f5de','#a3f5da','#a3f5d7','#a3f5d3','#a3f5cf','#a3f5cb','#a3f5c8','#a3f5c4','#a3f5c0','#a3f5bc','#a3f5b9','#a3f5b5','#a3f5b1','#a3f5ad','#a3f5a9','#a3f5a6','#a4f5a3','#a8f5a3','#acf5a3','#b0f5a3','#b4f5a3','#b7f5a3','#bbf5a3','#bff5a3','#c3f5a3','#c6f5a3','#caf5a3','#cef5a3','#d2f5a3','#d5f5a3','#d9f5a3','#ddf5a3','#e1f5a3','#e4f5a3','#e8f5a3','#ecf5a3','#f0f5a3','#f4f5a3','#f5f2a3','#f5efa3','#f5eba3','#f5e7a3','#f5e3a3','#f5dfa3','#f5dca3','#f5d8a3','#f5d4a3','#f5d0a3','#f5cda3','#f5c9a3','#f5c5a3','#f5c1a3','#f5bea3','#f5baa3','#f5b6a3','#f5b2a3','#f5aea3','#f5aba3','#f5a7a3','#f5a3a3'];
+var colorScaleViridis = [
+  '#440154', '#440558', '#450a5c', '#450f61', '#451465', '#461969', '#461e6d', '#472372', 
+  '#472876', '#482d7a', '#48317e', '#483682', '#483b85', '#483f89', '#48448d', '#484890', 
+  '#474d93', '#475196', '#465698', '#465a9b', '#455e9e', '#4463a0', '#4467a2', '#436ba4', 
+  '#4270a5', '#4174a7', '#4078a8', '#3f7ca9', '#3e80ab', '#3d84ac', '#3c88ad', '#3b8cae', 
+  '#3a90af', '#3994b0', '#3898b1', '#379cb1', '#35a0b2', '#34a4b2', '#33a8b3', '#32acb3', 
+  '#31afb3', '#30b3b4', '#2fb7b4', '#2ebbb4', '#2dbfb4', '#2cc2b4', '#2bc6b4', '#2bcab3', 
+  '#2aceb3', '#2ad2b2', '#2ad6b1', '#2bd9b0', '#2bddaf', '#2ee1ad', '#31e5ab', '#35e8a9', 
+  '#39eba7', '#3deea4', '#42f2a1', '#47f59e', '#4cf89b', '#52fb98', '#58fe94', '#5eff91', 
+  '#64ff8d', '#6aff89', '#71ff85', '#77ff81', '#7eff7d', '#84ff79', '#8bff75', '#92ff71', 
+  '#99ff6d', '#a0ff69', '#a7ff65', '#aeff61', '#b5ff5d', '#bcff59', '#c3ff56', '#caff52', 
+  '#d1ff4e', '#d8ff4b', '#dfff47', '#e6ff43', '#edff40', '#f3ff3c', '#faff39', '#ffff35', 
+  '#ffff37', '#ffff3a', '#ffff3d', '#ffff41', '#ffff45', '#ffff4a', '#ffff4f', '#ffff55', 
+  '#ffff5b', '#ffff62', '#ffff69', '#ffff71'
+];
+var colorScaleMako = [
+  '#000004', '#02020b', '#050512', '#080718', '#0b0a1f', '#0e0d26', '#11102d', '#141334', 
+  '#17163a', '#1a1941', '#1d1c48', '#211f4f', '#242255', '#27265c', '#2a2a63', '#2d2d69', 
+  '#303170', '#333576', '#35397d', '#383d83', '#3a4189', '#3d458f', '#3f4995', '#414e9a', 
+  '#4352a0', '#4457a5', '#455bab', '#4660b0', '#4765b5', '#476aba', '#476fbe', '#4774c3', 
+  '#4779c7', '#467ecc', '#4583d0', '#4488d4', '#428dd8', '#4192dc', '#3f97df', '#3d9ce3', 
+  '#3ba1e6', '#39a6e9', '#37abec', '#35afef', '#33b4f1', '#32b9f3', '#31bef5', '#2fc3f7', 
+  '#2ec8f8', '#2dcdf9', '#2cd2fa', '#2bd7fb', '#2bdcfb', '#2be1fb', '#2ce5fb', '#2deafa', 
+  '#2eeffa', '#30f3f9', '#33f8f8', '#36fcf7', '#39fff5', '#3dfff3', '#41fff1', '#46fef0', 
+  '#4afded', '#4ffceb', '#54fbe9', '#5afae6', '#5ff9e4', '#65f8e1', '#6af6df', '#70f5dc', 
+  '#76f4d9', '#7cf2d6', '#82f1d3', '#88efd0', '#8eedcd', '#94ecca', '#9beac7', '#a1e8c4', 
+  '#a8e7c1', '#aee5be', '#b5e3bb', '#bbe1b8', '#c2dfb5', '#c8ddb2', '#cfdbaf', '#d5d9ac', 
+  '#dcd7a9', '#e2d5a6', '#e9d2a3', '#efd0a1', '#f5ce9e', '#fbcc9c', '#ffca9b', '#ffc89b', 
+  '#ffc79d', '#ffc6a0', '#ffc5a4', '#ffc5a8'
+];
+var  colorScale = colorScaleMako;
+//colorScale = colorScale.reverse();
 <?php } ?>
 
 function log(msg) {
@@ -99,8 +137,9 @@ var nodeMouseoutCallback = function(node) {
 
 var nodeClickCallback = function(node) {
     return function() {
-        var url = 'http://en.wikipedia.org/wiki/' + node.s.replace(' ','_');
-        window.open(url);
+        if (node.hasOwnProperty('url')) {
+            window.open(node.url);
+        } 
     }
 }
 
@@ -186,19 +225,21 @@ function calculateSelectedDataItemStats() {
     selectedDataItemStats.spanInStdDeviations = maxStdDeviations - minStdDeviations;
     
     var minNode = getNodeById(selectedDataItemStats.minNodeId);
-    if (!minNode) {
-        console.log('Error: getNodeById returned null for minNodeId ' + minNodeId);
-    }
     var maxNode = getNodeById(selectedDataItemStats.maxNodeId);
-    if (!maxNode) {
-        console.log('Error: getNodeById returned null for maxNodeId ' + maxNodeId);
+    if (!minNode) {
+        console.error('getNodeById returned null for minNodeId ' + minNodeId);
     }
-    
+    if (!maxNode) {
+        console.error('getNodeById returned null for maxNodeId ' + maxNodeId);
+    }
+
     log('Stats:');
     log('n: ' + selectedDataItemStats.n);
     log('total: ' + selectedDataItemStats.total);
-    log('Min: ' + selectedDataItemStats.min + ' (' + minNode.s + ')');
-    log('Max: ' + selectedDataItemStats.max + ' (' + maxNode.s + ')');
+    if (minNode && maxNode) {
+        log('Min: ' + selectedDataItemStats.min + ' (' + minNode.s + ')');
+        log('Max: ' + selectedDataItemStats.max + ' (' + maxNode.s + ')');
+    }
     log('Span: ' + selectedDataItemStats.span);
     log('Mean: ' + selectedDataItemStats.mean);
     log('Sigma: ' + selectedDataItemStats.sigma);
@@ -209,8 +250,10 @@ function calculateSelectedDataItemStats() {
     $("#statsValue_n").text(fmtnum(selectedDataItemStats.n));
     $("#statsValue_mu").text(fmtnum(selectedDataItemStats.mean));
     $("#statsValue_sigma").text(fmtnum(selectedDataItemStats.sigma));
-    $("#statsValue_min").text(fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')');
-    $("#statsValue_max").text(fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')');
+    if (minNode && maxNode) {
+        $("#statsValue_min").text(fmtnum(selectedDataItemStats.min) + ' (' + minNode.s + ')');
+        $("#statsValue_max").text(fmtnum(selectedDataItemStats.max) + ' (' + maxNode.s + ')');
+    }
 
     generateScale();
 }
@@ -241,23 +284,29 @@ function visualizeSelectedDataItem() {
         for (var i=0; i<datasetData.data.length; ++i) {
             var record = datasetData.data[i];
             var node = getNodeById(record[datasetData.nodeIdSource]);
-            var val = record[selectedDataItemId];
-            if (val != undefined) {
-                node.val = val;
-                var deviationFromMean = val - selectedDataItemStats.mean;
-                var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
-                //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
-                //need to go from minSigma to maxSigma
-                var stepWidth = (maxSigma - minSigma) / colorScale.length;
-                var currentStep = minSigma;
-                for (var j=0; j<colorScale.length; ++j) {
-                    currentStep += stepWidth;
-                    if (stdDeviations < currentStep || j==colorScale.length-1) {
-                        node.fill = colorScale[j];
-                        setSvgElemFill(getSvgElemByNode(node), node.fill);
-                        break;
+            if (node != undefined) {
+                var urlValue = record[urlValueSource];
+                node.url = urlBase + urlValue;
+                var val = record[selectedDataItemId];
+                if (val != undefined) {
+                    node.val = val;
+                    var deviationFromMean = val - selectedDataItemStats.mean;
+                    var stdDeviations = deviationFromMean / selectedDataItemStats.sigma;
+                    //log('node ' + node.s + ' stdDeviations: ' + stdDeviations);
+                    //need to go from minSigma to maxSigma
+                    var stepWidth = (maxSigma - minSigma) / colorScale.length;
+                    var currentStep = minSigma;
+                    for (var j=0; j<colorScale.length; ++j) {
+                        currentStep += stepWidth;
+                        if (stdDeviations < currentStep || j==colorScale.length-1) {
+                            node.fill = colorScale[j];
+                            setSvgElemFill(getSvgElemByNode(node), node.fill);
+                            break;
+                        }
                     }
                 }
+            } else {
+                console.error(`SVG node is undefined for selectedDataItemId=${selectedDataItemId} record.id=${record.id}`);
             }
         }
         $('#loaderContainer').hide();
@@ -350,6 +399,14 @@ function svgLoadCallback() {
     //load data set
     $.getJSON('datasets/<?php echo $_REQUEST['map'] . '/' . $_REQUEST['dataset']; ?>.min.json', function(respData) {
         datasetData = respData;
+
+        if (datasetData.hasOwnProperty("urlBase")) {
+            urlBase = datasetData.urlBase;
+        }
+        if (datasetData.hasOwnProperty("urlValueSource")) {
+            urlValueSource = datasetData.urlValueSource;
+        }
+
         let html = '';
         if (datasetData.hasOwnProperty('sourceUrl')) {
             html += '<a href="' + datasetData.sourceUrl + '" class="subtle-link">' + datasetData['name'] + '</a>'

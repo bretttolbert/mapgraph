@@ -1,6 +1,6 @@
 {
     "nodeIdSource": "id",
-    "urlBase": "https://bretttolbert.com/mediaserver/artists?sort=count&countryCode=",
+    "urlBase": "/mediaserver/artists?sort=count&countryCode=",
     "urlValueSource": "alpha_code",
     "metadata": [
         {
@@ -702,8 +702,8 @@
         {
             "id": 392,
             "alpha_code": "JP",
-            "ARTIST.COUNT": 9,
-            "TRACK.COUNT": 52
+            "ARTIST.COUNT": 10,
+            "TRACK.COUNT": 53
         },
         {
             "id": 404,
@@ -1416,8 +1416,8 @@
         {
             "id": 840,
             "alpha_code": "US",
-            "ARTIST.COUNT": 1482,
-            "TRACK.COUNT": 12917
+            "ARTIST.COUNT": 1483,
+            "TRACK.COUNT": 12919
         },
         {
             "id": 858,

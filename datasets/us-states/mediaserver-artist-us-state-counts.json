@@ -1,6 +1,6 @@
 {
     "nodeIdSource": "id",
-    "urlBase": "https://bretttolbert.com/mediaserver/artists?sort=count&regionCode=",
+    "urlBase": "/mediaserver/artists?sort=count&regionCode=",
     "urlValueSource": "alpha_code",
     "metadata": [
         {
@@ -30,8 +30,8 @@
         {
             "id": 1,
             "alpha_code": "US-AL",
-            "ARTIST.COUNT": 28,
-            "TRACK.COUNT": 439
+            "ARTIST.COUNT": 29,
+            "TRACK.COUNT": 440
         },
         {
             "id": 5,
@@ -241,7 +241,7 @@
             "id": 36,
             "alpha_code": "US-NY",
             "ARTIST.COUNT": 223,
-            "TRACK.COUNT": 1890
+            "TRACK.COUNT": 1891
         },
         {
             "id": 39,

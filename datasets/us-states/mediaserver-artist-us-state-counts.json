@@ -54,8 +54,8 @@
         {
             "id": 6,
             "alpha_code": "US-CA",
-            "ARTIST.COUNT": 354,
-            "TRACK.COUNT": 4090
+            "ARTIST.COUNT": 356,
+            "TRACK.COUNT": 4092
         },
         {
             "id": 8,
@@ -127,7 +127,7 @@
             "id": 18,
             "alpha_code": "US-IN",
             "ARTIST.COUNT": 12,
-            "TRACK.COUNT": 74
+            "TRACK.COUNT": 73
         },
         {
             "id": 20,
@@ -168,8 +168,8 @@
         {
             "id": 26,
             "alpha_code": "US-MI",
-            "ARTIST.COUNT": 42,
-            "TRACK.COUNT": 292
+            "ARTIST.COUNT": 43,
+            "TRACK.COUNT": 293
         },
         {
             "id": 27,
@@ -240,8 +240,8 @@
         {
             "id": 36,
             "alpha_code": "US-NY",
-            "ARTIST.COUNT": 223,
-            "TRACK.COUNT": 1891
+            "ARTIST.COUNT": 227,
+            "TRACK.COUNT": 1900
         },
         {
             "id": 39,
@@ -313,7 +313,7 @@
             "id": 51,
             "alpha_code": "US-VA",
             "ARTIST.COUNT": 22,
-            "TRACK.COUNT": 239
+            "TRACK.COUNT": 240
         },
         {
             "id": 78,

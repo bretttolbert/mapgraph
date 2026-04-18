@@ -30,8 +30,8 @@
         {
             "id": 1,
             "alpha_code": "US-AL",
-            "ARTIST.COUNT": 29,
-            "TRACK.COUNT": 440
+            "ARTIST.COUNT": 35,
+            "TRACK.COUNT": 459
         },
         {
             "id": 5,
@@ -85,13 +85,13 @@
             "id": 12,
             "alpha_code": "US-FL",
             "ARTIST.COUNT": 47,
-            "TRACK.COUNT": 221
+            "TRACK.COUNT": 300
         },
         {
             "id": 13,
             "alpha_code": "US-GA",
             "ARTIST.COUNT": 62,
-            "TRACK.COUNT": 355
+            "TRACK.COUNT": 356
         },
         {
             "id": 66,
@@ -168,8 +168,8 @@
         {
             "id": 26,
             "alpha_code": "US-MI",
-            "ARTIST.COUNT": 43,
-            "TRACK.COUNT": 293
+            "ARTIST.COUNT": 44,
+            "TRACK.COUNT": 294
         },
         {
             "id": 27,
@@ -240,14 +240,14 @@
         {
             "id": 36,
             "alpha_code": "US-NY",
-            "ARTIST.COUNT": 227,
-            "TRACK.COUNT": 1900
+            "ARTIST.COUNT": 228,
+            "TRACK.COUNT": 1906
         },
         {
             "id": 39,
             "alpha_code": "US-OH",
             "ARTIST.COUNT": 37,
-            "TRACK.COUNT": 324
+            "TRACK.COUNT": 337
         },
         {
             "id": 40,
@@ -300,8 +300,8 @@
         {
             "id": 48,
             "alpha_code": "US-TX",
-            "ARTIST.COUNT": 97,
-            "TRACK.COUNT": 879
+            "ARTIST.COUNT": 98,
+            "TRACK.COUNT": 880
         },
         {
             "id": 49,

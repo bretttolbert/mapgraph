@@ -96,8 +96,8 @@
         {
             "id": 36,
             "alpha_code": "AU",
-            "ARTIST.COUNT": 50,
-            "TRACK.COUNT": 285
+            "ARTIST.COUNT": 49,
+            "TRACK.COUNT": 284
         },
         {
             "id": 533,
@@ -468,8 +468,8 @@
         {
             "id": 250,
             "alpha_code": "FR",
-            "ARTIST.COUNT": 76,
-            "TRACK.COUNT": 615
+            "ARTIST.COUNT": 77,
+            "TRACK.COUNT": 616
         },
         {
             "id": 266,
@@ -480,7 +480,7 @@
         {
             "id": 826,
             "alpha_code": "GB",
-            "ARTIST.COUNT": 421,
+            "ARTIST.COUNT": 420,
             "TRACK.COUNT": 4534
         },
         {
@@ -1416,8 +1416,8 @@
         {
             "id": 840,
             "alpha_code": "US",
-            "ARTIST.COUNT": 1490,
-            "TRACK.COUNT": 12931
+            "ARTIST.COUNT": 1499,
+            "TRACK.COUNT": 13051
         },
         {
             "id": 858,
